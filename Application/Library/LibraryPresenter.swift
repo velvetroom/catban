@@ -8,7 +8,7 @@ class LibraryPresenter:Presenter {
     
     required init() { }
     
-    func didAppear() {
+    func willAppear() {
         self.showLoading()
         self.interactor.load()
     }

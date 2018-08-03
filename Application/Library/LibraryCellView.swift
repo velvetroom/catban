@@ -14,7 +14,7 @@ class LibraryCellView:UIButton {
     required init?(coder:NSCoder) { return nil }
     
     func highlight() {
-        self.backgroundColor = UIColor(white:0, alpha:0.1)
+        self.backgroundColor = Colors.navyBlue
     }
     
     private func makeOutlets() {

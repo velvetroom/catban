@@ -12,6 +12,9 @@ class LibraryView:View<LibraryPresenter> {
         self.makeOutlets()
         self.layoutOutlets()
         self.configureViewModel()
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
+        }
     }
     
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {

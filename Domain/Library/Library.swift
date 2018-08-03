@@ -13,7 +13,7 @@ class Library:LibraryProtocol {
     let queue:DispatchQueue
     
     init() {
-        self.session = SessionNil()
+        self.session = Factory.makeSession()
         self.boards = [:]
         self.cache = Factory.makeCache()
         self.database = Factory.makeDatabase()

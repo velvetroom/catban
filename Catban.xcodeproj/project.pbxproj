@@ -38,7 +38,6 @@
 		DA5D1023210DB7D9005E323A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D1022210DB7D9005E323A /* Card.swift */; };
 		DA5D1025210DB8E0005E323A /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D1024210DB8E0005E323A /* BoardProtocol.swift */; };
 		DA5D1027210DB913005E323A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D1026210DB913005E323A /* Configuration.swift */; };
-		DA66C187211040A00025B710 /* SessionNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA66C186211040A00025B710 /* SessionNil.swift */; };
 		DA6E1D9A2111856F00FDB6DF /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1D992111856F00FDB6DF /* DomainError.swift */; };
 		DA6E1D9D211186E000FDB6DF /* Domain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6E1D9B211186E000FDB6DF /* Domain.strings */; };
 		DA6E1D9F2111881300FDB6DF /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1D9E2111881300FDB6DF /* TestSession.swift */; };
@@ -117,7 +116,6 @@
 		DA5D1022210DB7D9005E323A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		DA5D1024210DB8E0005E323A /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 		DA5D1026210DB913005E323A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		DA66C186211040A00025B710 /* SessionNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionNil.swift; sourceTree = "<group>"; };
 		DA6E1D992111856F00FDB6DF /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		DA6E1D9C211186E000FDB6DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Domain.strings; sourceTree = "<group>"; };
 		DA6E1D9E2111881300FDB6DF /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */,
-				DA66C186211040A00025B710 /* SessionNil.swift */,
 				DA36DEA4210EDE22008409E8 /* Session_v1.swift */,
 			);
 			path = Session;
@@ -551,7 +548,6 @@
 				DA5D101F210DB545005E323A /* Board_v1.swift in Sources */,
 				DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */,
 				DA1984FE21134EE50061A234 /* DatabaseServiceProtocol.swift in Sources */,
-				DA66C187211040A00025B710 /* SessionNil.swift in Sources */,
 				DA36DEA3210EDE06008409E8 /* SessionProtocol.swift in Sources */,
 				DA899B89211306E700A23696 /* LibraryStateReady.swift in Sources */,
 				DA5D1023210DB7D9005E323A /* Card.swift in Sources */,

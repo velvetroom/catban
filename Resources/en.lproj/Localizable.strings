@@ -1,0 +1,2 @@
+LibraryView.title="Library";
+LibraryPresenter.empty="You haven't created any board yet.\nUse the button on the top right corner to begin.";

@@ -40,7 +40,6 @@
 		DA5D1027210DB913005E323A /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D1026210DB913005E323A /* Configuration.swift */; };
 		DA6E1D9A2111856F00FDB6DF /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1D992111856F00FDB6DF /* DomainError.swift */; };
 		DA6E1D9D211186E000FDB6DF /* Domain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6E1D9B211186E000FDB6DF /* Domain.strings */; };
-		DA6E1D9F2111881300FDB6DF /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1D9E2111881300FDB6DF /* TestSession.swift */; };
 		DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */; };
 		DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */; };
 		DA899B87211306CE00A23696 /* LibraryStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B86211306CE00A23696 /* LibraryStateProtocol.swift */; };
@@ -118,7 +117,6 @@
 		DA5D1026210DB913005E323A /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		DA6E1D992111856F00FDB6DF /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		DA6E1D9C211186E000FDB6DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Domain.strings; sourceTree = "<group>"; };
-		DA6E1D9E2111881300FDB6DF /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
 		DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
 		DA899B86211306CE00A23696 /* LibraryStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStateProtocol.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				DA511E68210B655100ABD604 /* TestLibrary.swift */,
-				DA6E1D9E2111881300FDB6DF /* TestSession.swift */,
 				DA1538F82114449A005C05EE /* TestFactory.swift */,
 				DA52931C21102B0100C5B8A5 /* MockCacheServiceProtocol.swift */,
 				DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */,
@@ -593,7 +590,6 @@
 			files = (
 				DA1538F92114449A005C05EE /* TestFactory.swift in Sources */,
 				DA511E69210B655100ABD604 /* TestLibrary.swift in Sources */,
-				DA6E1D9F2111881300FDB6DF /* TestSession.swift in Sources */,
 				DAB5C24A21135CC5004611AC /* MockDatabaseServiceProtocol.swift in Sources */,
 				DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */,
 				DA52931D21102B0100C5B8A5 /* MockCacheServiceProtocol.swift in Sources */,

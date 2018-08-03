@@ -20,17 +20,12 @@ class TestLibrary:XCTestCase {
         self.library.state = Library.stateReady
     }
     
-    func testSessionStartsWithNullObject() {
-        let sessionNil:SessionNil? = Library().session as? SessionNil
-        XCTAssertNotNil(sessionNil, "Session is not the null object")
-    }
-    
     func testLoadUpdatesSession() {
         self.library.state = Library.stateDefault
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
+        self.library.session.boards.append(String())
         self.delegate.onSessionLoaded = {
-            let sessionNil:SessionNil? = self.library.session as? SessionNil
-            XCTAssertNil(sessionNil, "Session not loaded")
+            XCTAssertTrue(self.library.session.boards.isEmpty, "Session not updated")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
             XCTAssertTrue(self.library.state === Library.stateReady, "Should be ready")
             expect.fulfill()
@@ -47,9 +42,9 @@ class TestLibrary:XCTestCase {
         let expectSave:XCTestExpectation = self.expectation(description:"Not saved")
         self.cache.error = NSError()
         self.cache.onSaveSession = { expectSave.fulfill() }
+        self.library.session.boards.append(String())
         self.delegate.onSessionLoaded = {
-            let sessionNil:SessionNil? = self.library.session as? SessionNil
-            XCTAssertNil(sessionNil, "Session not loaded")
+            XCTAssertTrue(self.library.session.boards.isEmpty, "Session not updated")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
             XCTAssertTrue(self.library.state === Library.stateReady, "Should be ready")
             expectLoad.fulfill()

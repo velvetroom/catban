@@ -17,7 +17,7 @@ class TestLibrary:XCTestCase {
         self.cache = self.library.cache as? MockCacheServiceProtocol
         self.database = self.library.database as? MockDatabaseServiceProtocol
         self.library.session = Factory.makeSession()
-        self.library.state = Library.stateDefault
+        self.library.state = Library.stateReady
     }
     
     func testSessionStartsWithNullObject() {
@@ -26,6 +26,7 @@ class TestLibrary:XCTestCase {
     }
     
     func testLoadUpdatesSession() {
+        self.library.state = Library.stateDefault
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
         self.delegate.onSessionLoaded = {
             let sessionNil:SessionNil? = self.library.session as? SessionNil
@@ -41,6 +42,7 @@ class TestLibrary:XCTestCase {
     }
     
     func testLoadCreatesSessionOnError() {
+        self.library.state = Library.stateDefault
         let expectLoad:XCTestExpectation = self.expectation(description:"Not loaded")
         let expectSave:XCTestExpectation = self.expectation(description:"Not saved")
         self.cache.error = NSError()
@@ -59,7 +61,6 @@ class TestLibrary:XCTestCase {
     }
     
     func testLoadUpdatesEmptyBoards() {
-        self.library.state = Library.stateReady
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
         self.delegate.onBoardsUpdated = {
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -72,7 +73,6 @@ class TestLibrary:XCTestCase {
     }
     
     func testLoadUpdatesNonEmptyBoards() {
-        self.library.state = Library.stateReady
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
         self.library.session.boards = ["a", "b"]
         self.delegate.onBoardsUpdated = {
@@ -87,7 +87,6 @@ class TestLibrary:XCTestCase {
     }
     
     func testNewBoardAddsBoardAndNotifiesDelegate() {
-        self.library.state = Library.stateReady
         let expectLoad:XCTestExpectation = self.expectation(description:"Not loaded")
         let expectCreate:XCTestExpectation = self.expectation(description:"Board not created on remote")
         let expectSaveSession:XCTestExpectation = self.expectation(description:"Session not saved")
@@ -106,7 +105,6 @@ class TestLibrary:XCTestCase {
     }
     
     func testSaveBoardCallsDatabase() {
-        self.library.state = Library.stateReady
         let identifier:String = "hello"
         self.library.boards[identifier] = Factory.makeBoard()
         let expect:XCTestExpectation = self.expectation(description:"Not saved")

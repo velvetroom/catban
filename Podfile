@@ -1,5 +1,5 @@
 platform :ios, '9.0'
-use_frameworks!
+use_modular_headers!
 
 def podlist
     pod 'CleanArchitecture'

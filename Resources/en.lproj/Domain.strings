@@ -1,3 +1,4 @@
+LibraryStateReady.boardName="Board";
 DomainError.noSession="Error: No session.";
 DomainError.sessionLoaded="Error: Session already loaded.";
 DomainError.noBoardSelected="Error: no board selected.";

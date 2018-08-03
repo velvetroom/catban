@@ -6,7 +6,7 @@ Human management.
 ![iOS](https://img.shields.io/badge/iOS-11.0%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/Swift-4.1-blue.svg)
 [![AppStore](https://img.shields.io/itunes/v/1363004864.svg)](https://itunes.apple.com/us/app/catban/id1363004864)
-[![Bitrise](https://www.bitrise.io/app/036974dc42c09110/status.svg?token=0BY73fiitQQi81oKJUVdKg)](https://www.bitrise.io/app/036974dc42c09110)
+[![Bitrise](https://app.bitrise.io/app/807a375d287b2f0b/status.svg?token=lutdvZqnAiBoLp3vkTwX8w)](https://app.bitrise.io/app/807a375d287b2f0b)
 
 
 ## Description

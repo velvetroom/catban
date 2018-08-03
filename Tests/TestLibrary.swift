@@ -1,10 +1,10 @@
 import XCTest
 @testable import Domain
 
-class TestsLibrary:XCTestCase {
+class TestLibrary:XCTestCase {
     private var library:Library!
     private var delegate:MockLibraryDelegate!
-    private var repository:MockCacheServiceProtocol!
+    private var cache:MockCacheServiceProtocol!
     private var database:MockDatabaseServiceProtocol!
     
     override func setUp() {
@@ -14,7 +14,7 @@ class TestsLibrary:XCTestCase {
         self.library = Library()
         self.delegate = MockLibraryDelegate()
         self.library.delegate = self.delegate
-        self.repository = self.library.cache as? MockCacheServiceProtocol
+        self.cache = self.library.cache as? MockCacheServiceProtocol
         self.database = self.library.database as? MockDatabaseServiceProtocol
         self.library.session = Factory.makeSession()
         self.library.state = Library.stateDefault
@@ -43,8 +43,8 @@ class TestsLibrary:XCTestCase {
     func testLoadCreatesSessionOnError() {
         let expectLoad:XCTestExpectation = self.expectation(description:"Not loaded")
         let expectSave:XCTestExpectation = self.expectation(description:"Not saved")
-        self.repository.error = NSError()
-        self.repository.onSaveSession = { expectSave.fulfill() }
+        self.cache.error = NSError()
+        self.cache.onSaveSession = { expectSave.fulfill() }
         self.delegate.onSessionLoaded = {
             let sessionNil:SessionNil? = self.library.session as? SessionNil
             XCTAssertNil(sessionNil, "Session not loaded")
@@ -90,11 +90,9 @@ class TestsLibrary:XCTestCase {
         self.library.state = Library.stateReady
         let expectLoad:XCTestExpectation = self.expectation(description:"Not loaded")
         let expectCreate:XCTestExpectation = self.expectation(description:"Board not created on remote")
-        let expectSaveBoard:XCTestExpectation = self.expectation(description:"Board not saved")
         let expectSaveSession:XCTestExpectation = self.expectation(description:"Session not saved")
         self.database.onCreate = { expectCreate.fulfill() }
-        self.repository.onSaveBoard = { expectSaveBoard.fulfill() }
-        self.repository.onSaveSession = { expectSaveSession.fulfill() }
+        self.cache.onSaveSession = { expectSaveSession.fulfill() }
         self.delegate.onBoardsUpdated = {
             XCTAssertFalse(self.library.session.boards.isEmpty, "Not added to session")
             XCTAssertFalse(self.library.boards.isEmpty, "Board not added")
@@ -107,35 +105,13 @@ class TestsLibrary:XCTestCase {
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
     
-    func testLoadFromCacheOnDatabaseError() {
+    func testSaveBoardCallsDatabase() {
         self.library.state = Library.stateReady
-        self.library.loader.timeout = 0
-        let expect:XCTestExpectation = self.expectation(description:"Not loaded")
-        self.database.error = NSError()
-        self.library.session.boards = [String()]
-        self.delegate.onBoardsUpdated = {
-            XCTAssertEqual(self.library.boards.count, self.library.session.boards.count, "Invalid amount")
-            XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
-            expect.fulfill()
-        }
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            do { try self.library.loadBoards() } catch {}
-        }
-        self.waitForExpectations(timeout:0.3, handler:nil)
-    }
-    
-    func testLoadRemoteSavesToCache() {
-        self.library.state = Library.stateReady
-        let expectLoaded:XCTestExpectation = self.expectation(description:"Not loaded")
-        let expectSaved:XCTestExpectation = self.expectation(description:"Not saved")
-        self.library.session.boards = [String()]
-        self.repository.onSaveBoard = { expectSaved.fulfill() }
-        self.delegate.onBoardsUpdated = {
-            expectLoaded.fulfill()
-        }
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            do { try self.library.loadBoards() } catch {}
-        }
+        let identifier:String = "hello"
+        self.library.boards[identifier] = Factory.makeBoard()
+        let expect:XCTestExpectation = self.expectation(description:"Not saved")
+        self.database.onSave = { expect.fulfill() }
+        do { try self.library.saveBoard(identifier:identifier) } catch { }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
 }

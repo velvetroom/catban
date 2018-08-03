@@ -8,4 +8,5 @@ public protocol LibraryProtocol:AnyObject {
     func loadSession() throws
     func loadBoards() throws
     func newBoard() throws
+    func saveBoard(identifier:String) throws
 }

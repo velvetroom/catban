@@ -5,6 +5,7 @@ class MockDatabaseServiceProtocol:DatabaseServiceProtocol {
     var error:Error?
     var onLoad:(() -> Void)?
     var onCreate:(() -> Void)?
+    var onSave:(() -> Void)?
     var board:Configuration.Board
     
     required init() {
@@ -20,8 +21,12 @@ class MockDatabaseServiceProtocol:DatabaseServiceProtocol {
         }
     }
     
-    func create<M>(board:M, completion:@escaping((String) -> Void)) where M:Codable & BoardProtocol {
+    func create<M>(board:M) -> String where M:Codable & BoardProtocol {
         self.onCreate?()
-        completion(String())
+        return String()
+    }
+    
+    func save<M>(identifier:String, board:M) where M:Codable & BoardProtocol {
+        self.onSave?()
     }
 }

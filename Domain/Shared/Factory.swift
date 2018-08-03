@@ -2,7 +2,10 @@ import Foundation
 
 public class Factory {
     public class func makeLibrary() -> LibraryProtocol {
-        return Library()
+        if library == nil {
+            library = Library()
+        }
+        return library
     }
     
     class func makeSession() -> SessionProtocol {
@@ -22,4 +25,6 @@ public class Factory {
     }
     
     private init() { }
+    
+    private static var library:LibraryProtocol!
 }

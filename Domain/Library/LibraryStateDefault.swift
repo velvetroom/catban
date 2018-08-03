@@ -2,21 +2,23 @@ import Foundation
 
 class LibraryStateDefault:LibraryStateProtocol {
     func loadSession(context:Library) throws {
-        context.cache.load(session: { (session:Configuration.Session) in
-            context.session = session
-            context.sessionLoaded()
-        }, error: { [weak self] (_:Error) in
-            self?.loadSessionFailed(context:context)
-        })
+        context.queue.async { [weak self] in
+            do {
+                let session:Configuration.Session = try context.cache.loadSession()
+                context.loaded(session:session)
+            } catch {
+                self?.createSession(context:context)
+            }
+        }
     }
     
     func loadBoards(context:Library) throws { throw DomainError.noSession }
     func newBoard(context:Library) throws { throw DomainError.noSession }
+    func saveBoard(context:Library, identifier:String) throws { throw DomainError.noSession }
     
-    private func loadSessionFailed(context:Library) {
+    private func createSession(context:Library) {
         let session:Configuration.Session = Configuration.Session()
-        context.session = session
         context.cache.save(session:session)
-        context.sessionLoaded()
+        context.loaded(session:session)
     }
 }

@@ -53,6 +53,10 @@ class Library:LibraryProtocol {
     func notifyBoards() {
         DispatchQueue.main.async { [weak self] in self?.delegate?.libraryBoardsUpdated() }
     }
+    
+    func notifyCreated(board:String) {
+        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryCreated(board:board) }
+    }
 }
 
 private struct Constants {

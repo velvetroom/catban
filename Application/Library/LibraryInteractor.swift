@@ -36,4 +36,8 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     func libraryBoardsUpdated() {
         self.delegate?.shouldUpdate()
     }
+    
+    func libraryCreated(board:String) {
+        self.select(identifier:board)
+    }
 }

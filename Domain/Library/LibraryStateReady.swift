@@ -15,7 +15,7 @@ class LibraryStateReady:LibraryStateProtocol {
             context.boards[identifier] = board
             context.session.boards.append(identifier)
             context.saveSession()
-            context.notifyBoards()
+            context.notifyCreated(board:identifier)
         }
     }
     

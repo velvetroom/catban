@@ -92,7 +92,7 @@ class TestLibrary:XCTestCase {
         let expectSaveSession:XCTestExpectation = self.expectation(description:"Session not saved")
         self.database.onCreate = { expectCreate.fulfill() }
         self.cache.onSaveSession = { expectSaveSession.fulfill() }
-        self.delegate.onBoardsUpdated = {
+        self.delegate.onCreated = {
             XCTAssertFalse(self.library.session.boards.isEmpty, "Not added to session")
             XCTAssertFalse(self.library.boards.isEmpty, "Board not added")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")

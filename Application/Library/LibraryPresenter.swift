@@ -28,6 +28,7 @@ class LibraryPresenter:Presenter {
     
     @objc func selected(cell:LibraryCellView) {
         cell.highlight()
+        self.interactor.select(identifier:cell.viewModel.board)
     }
     
     private func showLoading() {
@@ -53,7 +54,7 @@ class LibraryPresenter:Presenter {
         self.interactor.library.boards.forEach { (key:String, board:BoardProtocol) in
             var item:LibraryItemViewModel = LibraryItemViewModel()
             item.board = key
-            item.name = key
+            item.name = board.name
             items.append(item)
         }
         return items.sorted { (left:LibraryItemViewModel, right:LibraryItemViewModel) -> Bool in

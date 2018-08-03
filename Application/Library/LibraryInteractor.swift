@@ -23,6 +23,12 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         do { try self.library.newBoard() } catch { }
     }
     
+    func select(identifier:String) {
+        let view:BoardView = BoardView()
+        view.presenter.interactor.board = self.library.boards[identifier]
+        Application.router.pushViewController(view, animated:true)
+    }
+    
     func librarySessionLoaded() {
         self.load()
     }

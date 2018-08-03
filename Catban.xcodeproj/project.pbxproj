@@ -51,6 +51,10 @@
 		DA899B932113301200A23696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA899B922113300200A23696 /* GoogleService-Info.plist */; };
 		DA899B97211330A600A23696 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B942113302C00A23696 /* Services.swift */; };
 		DAB5C24A21135CC5004611AC /* MockDatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */; };
+		DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB02114690800C92463 /* BoardInteractor.swift */; };
+		DABBCFB32114691200C92463 /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB22114691200C92463 /* BoardPresenter.swift */; };
+		DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB42114691A00C92463 /* BoardViewModel.swift */; };
+		DABBCFB72114692100C92463 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB62114692100C92463 /* BoardView.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +131,10 @@
 		DA899B922113300200A23696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA899B942113302C00A23696 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseServiceProtocol.swift; sourceTree = "<group>"; };
+		DABBCFB02114690800C92463 /* BoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
+		DABBCFB22114691200C92463 /* BoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
+		DABBCFB42114691A00C92463 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		DABBCFB62114692100C92463 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		DAD7ABD8210B6183008BDF4F /* Catban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -188,6 +196,7 @@
 			children = (
 				DA5C69DA210DE03B00A07619 /* Services */,
 				DA8EDE14210C51D20056B6B0 /* Shared */,
+				DABBCFAF211468F800C92463 /* Board */,
 				DA36DEAA210EE1DA008409E8 /* Library */,
 			);
 			path = Application;
@@ -294,6 +303,17 @@
 				DA36DEB5210EE412008409E8 /* Colors.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		DABBCFAF211468F800C92463 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				DABBCFB02114690800C92463 /* BoardInteractor.swift */,
+				DABBCFB22114691200C92463 /* BoardPresenter.swift */,
+				DABBCFB42114691A00C92463 /* BoardViewModel.swift */,
+				DABBCFB62114692100C92463 /* BoardView.swift */,
+			);
+			path = Board;
 			sourceTree = "<group>";
 		};
 		DAD7ABCF210B6183008BDF4F = {
@@ -566,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
@@ -579,7 +600,10 @@
 				DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */,
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,
 				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
+				DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */,
+				DABBCFB72114692100C92463 /* BoardView.swift in Sources */,
 				DA36DEB4210EE34C008409E8 /* LoadingView.swift in Sources */,
+				DABBCFB32114691200C92463 /* BoardPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,11 +653,8 @@
 		DA5D101C210DB518005E323A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -656,11 +677,8 @@
 		DA5D101D210DB518005E323A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -713,6 +731,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -775,6 +794,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -801,8 +821,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B0596316A0FCD7974C6752E /* Pods-Catban.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -818,8 +836,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 60F2CCC791665504012E8AEE /* Pods-Catban.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -834,8 +850,6 @@
 		DAD7AC0C210B61D5008BDF4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/tests.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -851,8 +865,6 @@
 		DAD7AC0D210B61D5008BDF4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/tests.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

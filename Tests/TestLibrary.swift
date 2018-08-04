@@ -100,11 +100,15 @@ class TestLibrary:XCTestCase {
     }
     
     func testSaveBoardCallsDatabase() {
-        let identifier:String = "hello"
-        self.library.boards[identifier] = Factory.makeBoard()
+        let board:BoardProtocol = Factory.makeBoard()
+        let originalSyncstamp:Date = board.syncstamp
+        self.library.boards["a"] = board
         let expect:XCTestExpectation = self.expectation(description:"Not saved")
-        self.database.onSave = { expect.fulfill() }
-        do { try self.library.saveBoard(identifier:identifier) } catch { }
+        self.database.onSave = {
+            XCTAssertNotEqual(originalSyncstamp, board.syncstamp, "Failed to update syncstamp")
+            expect.fulfill()
+        }
+        do { try self.library.save(board:board) } catch { }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
 }

@@ -19,9 +19,14 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func saveBoard(context:Library, identifier:String) throws {
+    func save(context:Library, board:BoardProtocol) throws {
         context.queue.async {
-            guard let board:Configuration.Board = context.boards[identifier] as? Configuration.Board else { return }
+            guard
+                let identifier:String = context.boards.first(where: { (_:String, value:BoardProtocol) -> Bool in
+                    return board === value })?.key,
+                let board:Configuration.Board = board as? Configuration.Board
+            else { return }
+            board.syncstamp = Date()
             context.database.save(identifier:identifier, board:board)
         }
     }

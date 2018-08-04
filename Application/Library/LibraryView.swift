@@ -12,9 +12,6 @@ class LibraryView:View<LibraryPresenter> {
         self.makeOutlets()
         self.layoutOutlets()
         self.configureViewModel()
-        if #available(iOS 11.0, *) {
-            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
-        }
     }
     
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {
@@ -62,6 +59,7 @@ class LibraryView:View<LibraryPresenter> {
         self.loading.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
             self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             self.message.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor,

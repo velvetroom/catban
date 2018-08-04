@@ -7,4 +7,11 @@ class BoardInteractor:Interactor {
     weak var delegate:InteractorDelegate?
     
     required init() { }
+    
+    func name() {
+        let view:NameView = NameView()
+        view.presenter.interactor.board = self.board
+        view.presenter.interactor.model = self.board
+        Application.router.pushViewController(view, animated:true)
+    }
 }

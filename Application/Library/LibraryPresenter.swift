@@ -8,19 +8,6 @@ class LibraryPresenter:Presenter {
     
     required init() { }
     
-    func willAppear() {
-        self.viewModels.update(viewModel:LibraryViewModel())
-        self.interactor.load()
-    }
-    
-    func shouldUpdate() {
-        if self.interactor.library.boards.isEmpty {
-            self.showEmpty()
-        } else {
-            self.showItems()
-        }
-    }
-    
     @objc func newBoard() {
         self.viewModels.update(viewModel:LibraryViewModel())
         self.interactor.newBoard()
@@ -36,6 +23,19 @@ class LibraryPresenter:Presenter {
     
     @objc func unhighlight(cell:LibraryCellView) {
         cell.unhighlight()
+    }
+    
+    func willAppear() {
+        self.viewModels.update(viewModel:LibraryViewModel())
+        self.interactor.load()
+    }
+    
+    func shouldUpdate() {
+        if self.interactor.library.boards.isEmpty {
+            self.showEmpty()
+        } else {
+            self.showItems()
+        }
     }
     
     private func showEmpty() {

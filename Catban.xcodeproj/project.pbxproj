@@ -54,6 +54,10 @@
 		DABBCFB72114692100C92463 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB62114692100C92463 /* BoardView.swift */; };
 		DABBCFB921146B0600C92463 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB821146B0600C92463 /* Localized.swift */; };
 		DAD3F15221159069005D7BBB /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD3F15121159069005D7BBB /* assets.xcassets */; };
+		DAD3F15621159FDD005D7BBB /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15521159FDD005D7BBB /* NameView.swift */; };
+		DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */; };
+		DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1592115A107005D7BBB /* NameInteractor.swift */; };
+		DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
 		E056B8DA688CD12DEF241F69 /* libPods-Catban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C732CED0D61E41E61BCF1 /* libPods-Catban.a */; };
@@ -136,6 +140,10 @@
 		DABBCFB821146B0600C92463 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		DAD3F15121159069005D7BBB /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DAD3F15321159AB8005D7BBB /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
+		DAD3F15521159FDD005D7BBB /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
+		DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamePresenter.swift; sourceTree = "<group>"; };
+		DAD3F1592115A107005D7BBB /* NameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInteractor.swift; sourceTree = "<group>"; };
+		DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameProtocol.swift; sourceTree = "<group>"; };
 		DAD7ABD8210B6183008BDF4F /* Catban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -197,8 +205,9 @@
 			children = (
 				DA5C69DA210DE03B00A07619 /* Services */,
 				DA8EDE14210C51D20056B6B0 /* Shared */,
-				DABBCFAF211468F800C92463 /* Board */,
 				DA36DEAA210EE1DA008409E8 /* Library */,
+				DABBCFAF211468F800C92463 /* Board */,
+				DAD3F15421159F95005D7BBB /* Name */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 				DA5D101E210DB545005E323A /* Board_v1.swift */,
 				DA5D1020210DB7BF005E323A /* Column.swift */,
 				DA5D1022210DB7D9005E323A /* Card.swift */,
+				DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -314,6 +324,16 @@
 				DABBCFB62114692100C92463 /* BoardView.swift */,
 			);
 			path = Board;
+			sourceTree = "<group>";
+		};
+		DAD3F15421159F95005D7BBB /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				DAD3F1592115A107005D7BBB /* NameInteractor.swift */,
+				DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */,
+				DAD3F15521159FDD005D7BBB /* NameView.swift */,
+			);
+			path = Name;
 			sourceTree = "<group>";
 		};
 		DAD7ABCF210B6183008BDF4F = {
@@ -555,6 +575,7 @@
 				DA899B89211306E700A23696 /* LibraryStateReady.swift in Sources */,
 				DA5D1023210DB7D9005E323A /* Card.swift in Sources */,
 				DA36DEA5210EDE22008409E8 /* Session_v1.swift in Sources */,
+				DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */,
 				DA36DEA9210EDEAD008409E8 /* Library.swift in Sources */,
 				DA5D1021210DB7BF005E323A /* Column.swift in Sources */,
 				DA6E1D9A2111856F00FDB6DF /* DomainError.swift in Sources */,
@@ -572,6 +593,8 @@
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
+				DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */,
+				DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
@@ -582,6 +605,7 @@
 				DA36DEB0210EE22F008409E8 /* LibraryInteractor.swift in Sources */,
 				DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */,
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,
+				DAD3F15621159FDD005D7BBB /* NameView.swift in Sources */,
 				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
 				DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */,
 				DABBCFB72114692100C92463 /* BoardView.swift in Sources */,

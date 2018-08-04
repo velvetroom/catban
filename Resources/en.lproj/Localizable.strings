@@ -1,2 +1,3 @@
 LibraryView.title="Library";
+NameView.title="Name";
 LibraryPresenter.empty="You haven't created any board yet.\nUse the button on the top right corner to begin.";

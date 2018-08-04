@@ -76,6 +76,7 @@ class LibraryView:View<LibraryPresenter> {
     private func configureViewModel() {
         self.presenter.viewModels.observe { [weak self] (viewModel:LibraryViewModel) in
             self?.loading.isHidden = viewModel.loadingHidden
+            self?.navigationItem.rightBarButtonItem?.isEnabled = viewModel.addEnabled
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }
@@ -88,6 +89,12 @@ class LibraryView:View<LibraryPresenter> {
             cell.viewModel = item
             cell.addTarget(self.presenter, action:#selector(self.presenter.selected(cell:)),
                            for:UIControl.Event.touchUpInside)
+            cell.addTarget(self.presenter, action:#selector(self.presenter.highlight(cell:)),
+                           for:UIControl.Event(arrayLiteral:UIControl.Event.touchDown,
+                                               UIControl.Event.touchDragEnter))
+            cell.addTarget(self.presenter, action:#selector(self.presenter.unhighlight(cell:)),
+                           for:UIControl.Event(arrayLiteral:UIControl.Event.touchUpOutside,
+                                               UIControl.Event.touchDragExit, UIControl.Event.touchCancel))
             self.scroll.addSubview(cell)
         }
         self.layoutCells(size:self.view.bounds.size)

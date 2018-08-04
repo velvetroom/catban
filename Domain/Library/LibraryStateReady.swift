@@ -33,7 +33,7 @@ class LibraryStateReady:LibraryStateProtocol {
         if let identifier:String = identifiers.popLast() {
             context.database.load(identifier:identifier) { [weak self] (board:Configuration.Board) in
                 context.boards[identifier] = board
-                self?.load(context:context, identifiers:identifiers)
+                context.queue.async { [weak self] in self?.load(context:context, identifiers:identifiers)  }
             }
         } else {
             context.notifyBoards()

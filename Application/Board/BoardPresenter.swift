@@ -6,4 +6,16 @@ class BoardPresenter:Presenter {
     var viewModels:ViewModels!
     
     required init() { }
+    
+    @objc func delete() {
+        
+    }
+    
+    @objc func rename() {
+        
+    }
+    
+    @objc func share() {
+        
+    }
 }

@@ -9,7 +9,7 @@ class LibraryPresenter:Presenter {
     required init() { }
     
     func willAppear() {
-        self.showLoading()
+        self.viewModels.update(viewModel:LibraryViewModel())
         self.interactor.load()
     }
     
@@ -22,30 +22,35 @@ class LibraryPresenter:Presenter {
     }
     
     @objc func newBoard() {
-        self.showLoading()
+        self.viewModels.update(viewModel:LibraryViewModel())
         self.interactor.newBoard()
     }
     
     @objc func selected(cell:LibraryCellView) {
-        cell.highlight()
         self.interactor.select(identifier:cell.viewModel.board)
     }
     
-    private func showLoading() {
-        var viewModel:LibraryViewModel = LibraryViewModel()
-        viewModel.loadingHidden = false
-        self.viewModels.update(viewModel:viewModel)
+    @objc func highlight(cell:LibraryCellView) {
+        cell.highlight()
+    }
+    
+    @objc func unhighlight(cell:LibraryCellView) {
+        cell.unhighlight()
     }
     
     private func showEmpty() {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
+        viewModel.loadingHidden = true
+        viewModel.addEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     
     private func showItems() {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.items = self.items
+        viewModel.loadingHidden = true
+        viewModel.addEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     

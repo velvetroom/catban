@@ -17,18 +17,22 @@ class LibraryCellView:UIButton {
         self.backgroundColor = Colors.navyBlue
     }
     
+    func unhighlight() {
+        self.backgroundColor = UIColor.clear
+    }
+    
     private func makeOutlets() {
         let name:UILabel = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
+        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
         name.textColor = UIColor.black
         self.name = name
         self.addSubview(name)
         
         let border:UIView = UIView()
         border.isUserInteractionEnabled = false
-        border.backgroundColor = UIColor(white:0, alpha:0.2)
+        border.backgroundColor = UIColor(white:0, alpha:0.15)
         border.translatesAutoresizingMaskIntoConstraints = false
         self.border = border
         self.addSubview(border)

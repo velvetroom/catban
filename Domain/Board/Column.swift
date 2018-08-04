@@ -1,6 +1,6 @@
 import Foundation
 
-public class Column:Codable {
+public class Column:Codable, NameProtocol {
     public var identifier:String
     public var name:String
     public var created:Date

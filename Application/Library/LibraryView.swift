@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import CleanArchitecture
 
 class LibraryView:View<LibraryPresenter> {
@@ -9,6 +9,7 @@ class LibraryView:View<LibraryPresenter> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("LibraryView.title", comment:String())
+        self.view.backgroundColor = UIColor.white
         self.makeOutlets()
         self.layoutOutlets()
         self.configureViewModel()

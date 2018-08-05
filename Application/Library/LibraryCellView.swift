@@ -32,7 +32,7 @@ class LibraryCellView:UIButton {
         
         let border:UIView = UIView()
         border.isUserInteractionEnabled = false
-        border.backgroundColor = UIColor(white:0, alpha:0.15)
+        border.backgroundColor = UIColor(white:0.0, alpha:0.15)
         border.translatesAutoresizingMaskIntoConstraints = false
         self.border = border
         self.addSubview(border)

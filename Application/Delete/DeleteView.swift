@@ -36,7 +36,7 @@ class DeleteView:View<DeletePresenter> {
         let base:UIView = UIView()
         base.isUserInteractionEnabled = false
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.backgroundColor = UIColor(white:1, alpha:0.9)
+        base.backgroundColor = UIColor(white:1.0, alpha:0.9)
         base.layer.cornerRadius = Constants.radius
         base.clipsToBounds = true
         self.base = base
@@ -64,7 +64,7 @@ class DeleteView:View<DeletePresenter> {
         delete.translatesAutoresizingMaskIntoConstraints = false
         delete.addTarget(self.presenter, action:#selector(self.presenter.delete), for:UIControl.Event.touchUpInside)
         delete.setTitleColor(UIColor.black, for:UIControl.State.normal)
-        delete.setTitleColor(UIColor(white:0, alpha:0.2), for:UIControl.State.highlighted)
+        delete.setTitleColor(UIColor(white:0.0, alpha:0.2), for:UIControl.State.highlighted)
         delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:UIControl.State())
         delete.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
         self.delete = delete
@@ -72,7 +72,7 @@ class DeleteView:View<DeletePresenter> {
         
         let border:UIView = UIView()
         border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0, alpha:0.1)
+        border.backgroundColor = UIColor(white:0.0, alpha:0.1)
         border.isUserInteractionEnabled = false
         self.border = border
         self.view.addSubview(border)

@@ -31,7 +31,7 @@ class LibraryView:View<LibraryPresenter> {
         let message:UILabel = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
         message.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
-        message.textColor = UIColor(white:0, alpha:0.8)
+        message.textColor = UIColor(white:0.0, alpha:0.8)
         message.numberOfLines = 0
         message.isUserInteractionEnabled = false
         self.message = message

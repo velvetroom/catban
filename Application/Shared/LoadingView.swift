@@ -17,22 +17,22 @@ class LoadingView:UIView {
         self.backgroundColor = UIColor.clear
         
         let circle:CAShapeLayer = CAShapeLayer()
-        circle.lineWidth = 0
+        circle.lineWidth = 0.0
         circle.strokeColor = nil
         circle.backgroundColor = nil
         circle.fillColor = self.tintColor.cgColor
         circle.path = self.arch(radius:Constants.circleRadius)
-        circle.frame = CGRect(x:0, y:0, width:Constants.size, height:Constants.size)
+        circle.frame = CGRect(x:0.0, y:0.0, width:Constants.size, height:Constants.size)
         self.circle = circle
         self.layer.addSublayer(circle)
         
         let pulse:CAShapeLayer = CAShapeLayer()
-        pulse.lineWidth = 0
+        pulse.lineWidth = 0.0
         pulse.strokeColor = nil
         pulse.backgroundColor = nil
         pulse.fillColor = self.tintColor.cgColor
         pulse.path = self.arch(radius:Constants.circleRadius)
-        pulse.frame = CGRect(x:0, y:0, width:Constants.size, height:Constants.size)
+        pulse.frame = CGRect(x:0.0, y:0.0, width:Constants.size, height:Constants.size)
         self.pulse = pulse
         self.layer.addSublayer(pulse)
         
@@ -80,7 +80,7 @@ class LoadingView:UIView {
     private func arch(radius:CGFloat) -> CGPath {
         let path:UIBezierPath = UIBezierPath()
         path.addArc(withCenter:CGPoint(x:Constants.size / 2.0, y:Constants.size / 2.0), radius:radius,
-                    startAngle:0.0001, endAngle:0, clockwise:true)
+                    startAngle:0.0001, endAngle:0.0, clockwise:true)
         return path.cgPath
     }
 }

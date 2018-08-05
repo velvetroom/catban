@@ -8,7 +8,7 @@ class BoardPresenter:Presenter {
     required init() { }
     
     @objc func delete() {
-        
+        self.interactor.delete()
     }
     
     @objc func name() {

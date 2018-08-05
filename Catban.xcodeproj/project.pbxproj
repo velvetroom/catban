@@ -42,6 +42,10 @@
 		DA6E1D9D211186E000FDB6DF /* Domain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6E1D9B211186E000FDB6DF /* Domain.strings */; };
 		DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */; };
 		DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */; };
+		DA780E8A2116EE6F00F1CFC1 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E892116EE6F00F1CFC1 /* DeleteView.swift */; };
+		DA780E8C2116EE7B00F1CFC1 /* DeleteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E8B2116EE7B00F1CFC1 /* DeleteInteractor.swift */; };
+		DA780E8E2116EE8500F1CFC1 /* DeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */; };
+		DA780E902116F4A000F1CFC1 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E8F2116F4A000F1CFC1 /* DeleteViewModel.swift */; };
 		DA899B87211306CE00A23696 /* LibraryStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B86211306CE00A23696 /* LibraryStateProtocol.swift */; };
 		DA899B89211306E700A23696 /* LibraryStateReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B88211306E700A23696 /* LibraryStateReady.swift */; };
 		DA899B8B2113070E00A23696 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B8A2113070E00A23696 /* LibraryStateDefault.swift */; };
@@ -124,6 +128,10 @@
 		DA6E1D9C211186E000FDB6DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Domain.strings; sourceTree = "<group>"; };
 		DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
 		DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
+		DA780E892116EE6F00F1CFC1 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
+		DA780E8B2116EE7B00F1CFC1 /* DeleteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteInteractor.swift; sourceTree = "<group>"; };
+		DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePresenter.swift; sourceTree = "<group>"; };
+		DA780E8F2116F4A000F1CFC1 /* DeleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewModel.swift; sourceTree = "<group>"; };
 		DA899B86211306CE00A23696 /* LibraryStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStateProtocol.swift; sourceTree = "<group>"; };
 		DA899B88211306E700A23696 /* LibraryStateReady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStateReady.swift; sourceTree = "<group>"; };
 		DA899B8A2113070E00A23696 /* LibraryStateDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStateDefault.swift; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 				DA36DEAA210EE1DA008409E8 /* Library */,
 				DABBCFAF211468F800C92463 /* Board */,
 				DAD3F15421159F95005D7BBB /* Name */,
+				DA780E882116EE5D00F1CFC1 /* Delete */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -290,6 +299,17 @@
 				DA36DEA4210EDE22008409E8 /* Session_v1.swift */,
 			);
 			path = Session;
+			sourceTree = "<group>";
+		};
+		DA780E882116EE5D00F1CFC1 /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				DA780E8B2116EE7B00F1CFC1 /* DeleteInteractor.swift */,
+				DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */,
+				DA780E8F2116F4A000F1CFC1 /* DeleteViewModel.swift */,
+				DA780E892116EE6F00F1CFC1 /* DeleteView.swift */,
+			);
+			path = Delete;
 			sourceTree = "<group>";
 		};
 		DA899B8E2113300200A23696 /* Configuration */ = {
@@ -590,9 +610,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA780E902116F4A000F1CFC1 /* DeleteViewModel.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
+				DA780E8E2116EE8500F1CFC1 /* DeletePresenter.swift in Sources */,
+				DA780E8C2116EE7B00F1CFC1 /* DeleteInteractor.swift in Sources */,
 				DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */,
 				DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
@@ -609,6 +632,7 @@
 				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
 				DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */,
 				DABBCFB72114692100C92463 /* BoardView.swift in Sources */,
+				DA780E8A2116EE6F00F1CFC1 /* DeleteView.swift in Sources */,
 				DA36DEB4210EE34C008409E8 /* LoadingView.swift in Sources */,
 				DABBCFB32114691200C92463 /* BoardPresenter.swift in Sources */,
 			);

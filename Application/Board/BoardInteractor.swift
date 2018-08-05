@@ -14,4 +14,10 @@ class BoardInteractor:Interactor {
         view.presenter.interactor.model = self.board
         Application.router.pushViewController(view, animated:true)
     }
+    
+    func delete() {
+        let view:DeleteView = DeleteView()
+        view.presenter.interactor.board = self.board
+        Application.router.present(view, animated:true, completion:nil)
+    }
 }

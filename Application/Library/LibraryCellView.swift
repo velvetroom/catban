@@ -52,7 +52,7 @@ class LibraryCellView:UIButton {
 }
 
 private struct Constants {
-    static let margin:CGFloat = 20
-    static let font:CGFloat = 16
+    static let margin:CGFloat = 20.0
+    static let font:CGFloat = 16.0
     static let border:CGFloat = 0.5
 }

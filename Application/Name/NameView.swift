@@ -90,9 +90,9 @@ class NameView:View<NamePresenter>, UITextFieldDelegate {
 }
 
 private struct Constants {
-    static let margin:CGFloat = 20
-    static let border:CGFloat = 1
-    static let font:CGFloat = 26
-    static let fieldWidth:CGFloat = 270
-    static let fieldHeight:CGFloat = 40
+    static let margin:CGFloat = 20.0
+    static let border:CGFloat = 1.0
+    static let font:CGFloat = 26.0
+    static let fieldWidth:CGFloat = 270.0
+    static let fieldHeight:CGFloat = 40.0
 }

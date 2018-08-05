@@ -63,6 +63,7 @@
 		DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */; };
 		DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1592115A107005D7BBB /* NameInteractor.swift */; };
 		DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */; };
+		DADA70D021171DDD007A825F /* CanvasItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* CanvasItem.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
 		E056B8DA688CD12DEF241F69 /* libPods-Catban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C732CED0D61E41E61BCF1 /* libPods-Catban.a */; };
@@ -156,6 +157,7 @@
 		DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameProtocol.swift; sourceTree = "<group>"; };
 		DAD7ABD8210B6183008BDF4F /* Catban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DADA70CF21171DDD007A825F /* CanvasItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasItem.swift; sourceTree = "<group>"; };
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFD730921135176004718FE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				DA063644211718B2004C1341 /* Canvas.swift */,
+				DADA70CF21171DDD007A825F /* CanvasItem.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */,
 				DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
+				DADA70D021171DDD007A825F /* CanvasItem.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
 				DA36DEB2210EE260008409E8 /* LibraryViewModel.swift in Sources */,

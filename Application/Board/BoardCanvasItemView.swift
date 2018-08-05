@@ -1,6 +1,6 @@
 import UIKit
 
-class CanvasItem:UIView {
+class BoardCanvasItemView:UIView {
     weak var left:NSLayoutConstraint!
     weak var top:NSLayoutConstraint!
     weak var width:NSLayoutConstraint!

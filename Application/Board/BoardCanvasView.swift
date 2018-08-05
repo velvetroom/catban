@@ -1,7 +1,7 @@
 import UIKit
 
-class Canvas:UIView {
-    private weak var item:CanvasItem?
+class BoardCanvasView:UIView {
+    private weak var item:BoardCanvasItemView?
     private var touch:CGPoint
     
     init() {
@@ -15,7 +15,7 @@ class Canvas:UIView {
     override func touchesBegan(_ touches:Set<UITouch>, with:UIEvent?) {
         guard let touch:UITouch = touches.first else { return }
         self.touch = touch.location(in:self)
-        self.item = touch.view as? CanvasItem
+        self.item = touch.view as? BoardCanvasItemView
         self.dragBegin()
     }
     

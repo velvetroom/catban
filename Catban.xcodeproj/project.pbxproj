@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA063645211718B2004C1341 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA063644211718B2004C1341 /* Canvas.swift */; };
+		DA063645211718B2004C1341 /* BoardCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA063644211718B2004C1341 /* BoardCanvasView.swift */; };
 		DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C6E2112EF7300B536CB /* LibraryCellView.swift */; };
 		DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */; };
 		DA1538F92114449A005C05EE /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1538F82114449A005C05EE /* TestFactory.swift */; };
@@ -63,7 +63,8 @@
 		DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */; };
 		DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1592115A107005D7BBB /* NameInteractor.swift */; };
 		DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */; };
-		DADA70D021171DDD007A825F /* CanvasItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* CanvasItem.swift */; };
+		DADA70D021171DDD007A825F /* BoardCanvasItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* BoardCanvasItemView.swift */; };
+		DADA70D221172084007A825F /* BoardItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70D121172084007A825F /* BoardItemViewModel.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
 		E056B8DA688CD12DEF241F69 /* libPods-Catban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C732CED0D61E41E61BCF1 /* libPods-Catban.a */; };
@@ -97,7 +98,7 @@
 		577C732CED0D61E41E61BCF1 /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0596316A0FCD7974C6752E /* Pods-Catban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.debug.xcconfig"; sourceTree = "<group>"; };
 		60F2CCC791665504012E8AEE /* Pods-Catban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.release.xcconfig"; sourceTree = "<group>"; };
-		DA063644211718B2004C1341 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		DA063644211718B2004C1341 /* BoardCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCanvasView.swift; sourceTree = "<group>"; };
 		DA135C6E2112EF7300B536CB /* LibraryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
 		DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
 		DA1538F82114449A005C05EE /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
@@ -157,7 +158,8 @@
 		DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameProtocol.swift; sourceTree = "<group>"; };
 		DAD7ABD8210B6183008BDF4F /* Catban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DADA70CF21171DDD007A825F /* CanvasItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasItem.swift; sourceTree = "<group>"; };
+		DADA70CF21171DDD007A825F /* BoardCanvasItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCanvasItemView.swift; sourceTree = "<group>"; };
+		DADA70D121172084007A825F /* BoardItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardItemViewModel.swift; sourceTree = "<group>"; };
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFD730921135176004718FE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,15 +201,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		DA06364321171899004C1341 /* Canvas */ = {
-			isa = PBXGroup;
-			children = (
-				DA063644211718B2004C1341 /* Canvas.swift */,
-				DADA70CF21171DDD007A825F /* CanvasItem.swift */,
-			);
-			path = Canvas;
-			sourceTree = "<group>";
-		};
 		DA36DEAA210EE1DA008409E8 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +221,6 @@
 				DA8EDE14210C51D20056B6B0 /* Shared */,
 				DA36DEAA210EE1DA008409E8 /* Library */,
 				DABBCFAF211468F800C92463 /* Board */,
-				DA06364321171899004C1341 /* Canvas */,
 				DAD3F15421159F95005D7BBB /* Name */,
 				DA780E882116EE5D00F1CFC1 /* Delete */,
 			);
@@ -355,7 +347,10 @@
 				DABBCFB02114690800C92463 /* BoardInteractor.swift */,
 				DABBCFB22114691200C92463 /* BoardPresenter.swift */,
 				DABBCFB42114691A00C92463 /* BoardViewModel.swift */,
+				DADA70D121172084007A825F /* BoardItemViewModel.swift */,
 				DABBCFB62114692100C92463 /* BoardView.swift */,
+				DA063644211718B2004C1341 /* BoardCanvasView.swift */,
+				DADA70CF21171DDD007A825F /* BoardCanvasItemView.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -625,7 +620,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA780E902116F4A000F1CFC1 /* DeleteViewModel.swift in Sources */,
-				DA063645211718B2004C1341 /* Canvas.swift in Sources */,
+				DA063645211718B2004C1341 /* BoardCanvasView.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
@@ -634,7 +629,8 @@
 				DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */,
 				DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
-				DADA70D021171DDD007A825F /* CanvasItem.swift in Sources */,
+				DADA70D221172084007A825F /* BoardItemViewModel.swift in Sources */,
+				DADA70D021171DDD007A825F /* BoardCanvasItemView.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
 				DA36DEB2210EE260008409E8 /* LibraryViewModel.swift in Sources */,

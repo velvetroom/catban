@@ -15,6 +15,7 @@ class LibraryStateDefault:LibraryStateProtocol {
     func loadBoards(context:Library) throws { throw DomainError.noSession }
     func newBoard(context:Library) throws { throw DomainError.noSession }
     func save(context:Library, board:BoardProtocol) throws { throw DomainError.noSession }
+    func delete(context:Library, board:BoardProtocol) throws { throw DomainError.noSession }
     
     private func createSession(context:Library) {
         let session:Configuration.Session = Configuration.Session()

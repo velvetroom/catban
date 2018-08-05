@@ -111,4 +111,19 @@ class TestLibrary:XCTestCase {
         do { try self.library.save(board:board) } catch { }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
+    
+    func testDeleteBoardCallsCache() {
+        let board:BoardProtocol = Factory.makeBoard()
+        let identifier:String = "a"
+        self.library.session.boards.append(identifier)
+        self.library.boards[identifier] = board
+        let expect:XCTestExpectation = self.expectation(description:"Not deleted")
+        self.cache.onSaveSession = {
+            XCTAssertTrue(self.library.session.boards.isEmpty, "Not removed from session")
+            XCTAssertTrue(self.library.boards.isEmpty, "Not removed boards")
+            expect.fulfill()
+        }
+        do { try self.library.delete(board:board) } catch { }
+        self.waitForExpectations(timeout:0.3, handler:nil)
+    }
 }

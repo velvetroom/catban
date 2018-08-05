@@ -40,6 +40,10 @@ class Library:LibraryProtocol {
         try self.state.save(context:self, board:board)
     }
     
+    func delete(board:BoardProtocol) throws {
+        try self.state.delete(context:self, board:board)
+    }
+    
     func loaded(session:SessionProtocol) {
         self.session = session
         self.state = Library.stateReady

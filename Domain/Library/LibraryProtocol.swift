@@ -9,4 +9,5 @@ public protocol LibraryProtocol:AnyObject {
     func loadBoards() throws
     func newBoard() throws
     func save(board:BoardProtocol) throws
+    func delete(board:BoardProtocol) throws
 }

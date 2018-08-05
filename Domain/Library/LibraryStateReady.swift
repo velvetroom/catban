@@ -20,14 +20,26 @@ class LibraryStateReady:LibraryStateProtocol {
     }
     
     func save(context:Library, board:BoardProtocol) throws {
-        context.queue.async {
+        context.queue.async { [weak self] in
             guard
-                let identifier:String = context.boards.first(where: { (_:String, value:BoardProtocol) -> Bool in
-                    return board === value })?.key,
+                let identifier:String = self?.identifier(context:context, board:board),
                 let board:Configuration.Board = board as? Configuration.Board
             else { return }
             board.syncstamp = Date()
             context.database.save(identifier:identifier, board:board)
+        }
+    }
+    
+    func delete(context:Library, board:BoardProtocol) throws {
+        context.queue.async { [weak self] in
+            guard
+                let identifier:String = self?.identifier(context:context, board:board)
+            else { return }
+            context.boards.removeValue(forKey:identifier)
+            context.session.boards.removeAll(where: { (item:String) -> Bool in
+                item == identifier
+            })
+            context.saveSession()
         }
     }
     
@@ -43,5 +55,11 @@ class LibraryStateReady:LibraryStateProtocol {
         } else {
             context.notifyBoards()
         }
+    }
+    
+    private func identifier(context:Library, board:BoardProtocol) -> String? {
+        return context.boards.first(where: { (_:String, value:BoardProtocol) -> Bool in
+            return board === value
+        })?.key
     }
 }

@@ -5,4 +5,5 @@ protocol LibraryStateProtocol:AnyObject {
     func loadBoards(context:Library) throws
     func newBoard(context:Library) throws
     func save(context:Library, board:BoardProtocol) throws
+    func delete(context:Library, board:BoardProtocol) throws
 }

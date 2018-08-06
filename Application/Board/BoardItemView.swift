@@ -16,9 +16,21 @@ class BoardItemView:UIButton {
     }
     
     required init?(coder:NSCoder) { return nil }
-    
+    override var isSelected:Bool { didSet { self.updateState() } }
+    override var isHighlighted:Bool { didSet { self.updateState() } }
     func makeOutlets() { }
     func layoutOutlets() { }
-    func stateHighlighted() { }
-    func stateDefault() { }
+    
+    private func updateState() {
+        if self.isSelected || self.isHighlighted {
+            self.alpha = Constants.selected
+        } else {
+            self.alpha = Constants.notSelected
+        }
+    }
+}
+
+private struct Constants {
+    static let selected:CGFloat = 0.2
+    static let notSelected:CGFloat = 1.0
 }

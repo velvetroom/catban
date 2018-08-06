@@ -3,7 +3,15 @@ import CleanArchitecture
 
 class BoardView:View<BoardPresenter> {
     weak var scroll:UIScrollView!
-    weak var canvas:BoardTouchView!
+    weak var touch:BoardTouchView!
+    private let factory:BoardFactory
+    
+    required init() {
+        self.factory = BoardFactory()
+        super.init()
+    }
+    
+    required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {
         self.makeOutlets()
@@ -12,10 +20,9 @@ class BoardView:View<BoardPresenter> {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.title = self.presenter.interactor.board.name
-    }
-    
-    private func clearCanvas() {
-        self.canvas.subviews.forEach { (view:UIView) in view.removeFromSuperview() }
+        self.factory.board = self.presenter.interactor.board
+        self.factory.touch = self.touch
+        self.factory.scroll = self.scroll
     }
     
     private func makeOutlets() {
@@ -32,9 +39,9 @@ class BoardView:View<BoardPresenter> {
         self.scroll = scroll
         self.view.addSubview(scroll)
         
-        let canvas:BoardTouchView = BoardTouchView()
-        self.canvas = canvas
-        self.scroll.addSubview(canvas)
+        let touch:BoardTouchView = BoardTouchView()
+        self.touch = touch
+        self.scroll.addSubview(touch)
         
         self.navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetDelete.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
@@ -62,6 +69,7 @@ class BoardView:View<BoardPresenter> {
     private func configureViewModel() {
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardViewModel) in
             self?.title = viewModel.title
+            self?.factory.refresh()
         }
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 import CleanArchitecture
 
 struct BoardViewModel:ViewModel {
-    var items:[BoardCanvasItemView]
+    var items:[BoardItemViewModel]
     var title:String
     
     init() {

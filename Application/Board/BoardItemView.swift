@@ -1,6 +1,6 @@
 import UIKit
 
-class BoardCanvasItemView:UIView {
+class BoardItemView:UIButton {
     weak var left:NSLayoutConstraint!
     weak var top:NSLayoutConstraint!
     weak var width:NSLayoutConstraint!
@@ -13,7 +13,6 @@ class BoardCanvasItemView:UIView {
         self.clipsToBounds = true
         self.makeOutlets()
         self.layoutOutlets()
-        self.stateDefault()
     }
     
     required init?(coder:NSCoder) { return nil }
@@ -22,22 +21,4 @@ class BoardCanvasItemView:UIView {
     func layoutOutlets() { }
     func stateHighlighted() { }
     func stateDefault() { }
-    func action() { }
-    func endMoving() { self.animateChanges() }
-    func update(position:CGPoint) { self.animateChanges() }
-    
-    func stateMoving() {
-        self.superview?.bringSubviewToFront(self)
-        self.animateChanges()
-    }
-    
-    private func animateChanges() {
-        UIView.animate(withDuration:Constants.animation) { [weak self] in
-            self?.superview?.layoutIfNeeded()
-        }
-    }
-}
-
-private struct Constants {
-    static let animation:TimeInterval = 0.3
 }

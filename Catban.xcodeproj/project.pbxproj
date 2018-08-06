@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA063645211718B2004C1341 /* BoardCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA063644211718B2004C1341 /* BoardCanvasView.swift */; };
+		DA063645211718B2004C1341 /* BoardTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA063644211718B2004C1341 /* BoardTouchView.swift */; };
 		DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C6E2112EF7300B536CB /* LibraryCellView.swift */; };
 		DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */; };
 		DA1538F92114449A005C05EE /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1538F82114449A005C05EE /* TestFactory.swift */; };
@@ -58,12 +58,13 @@
 		DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB42114691A00C92463 /* BoardViewModel.swift */; };
 		DABBCFB72114692100C92463 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB62114692100C92463 /* BoardView.swift */; };
 		DABBCFB921146B0600C92463 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB821146B0600C92463 /* Localized.swift */; };
+		DAC5AE642118141400AE39E2 /* BoardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5AE632118141400AE39E2 /* BoardFactory.swift */; };
 		DAD3F15221159069005D7BBB /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD3F15121159069005D7BBB /* assets.xcassets */; };
 		DAD3F15621159FDD005D7BBB /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15521159FDD005D7BBB /* NameView.swift */; };
 		DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */; };
 		DAD3F15A2115A107005D7BBB /* NameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1592115A107005D7BBB /* NameInteractor.swift */; };
 		DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */; };
-		DADA70D021171DDD007A825F /* BoardCanvasItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* BoardCanvasItemView.swift */; };
+		DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* BoardItemView.swift */; };
 		DADA70D221172084007A825F /* BoardItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70D121172084007A825F /* BoardItemViewModel.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
@@ -98,7 +99,7 @@
 		577C732CED0D61E41E61BCF1 /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0596316A0FCD7974C6752E /* Pods-Catban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.debug.xcconfig"; sourceTree = "<group>"; };
 		60F2CCC791665504012E8AEE /* Pods-Catban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.release.xcconfig"; sourceTree = "<group>"; };
-		DA063644211718B2004C1341 /* BoardCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCanvasView.swift; sourceTree = "<group>"; };
+		DA063644211718B2004C1341 /* BoardTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTouchView.swift; sourceTree = "<group>"; };
 		DA135C6E2112EF7300B536CB /* LibraryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
 		DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
 		DA1538F82114449A005C05EE /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 		DABBCFB42114691A00C92463 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		DABBCFB62114692100C92463 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		DABBCFB821146B0600C92463 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		DAC5AE632118141400AE39E2 /* BoardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardFactory.swift; sourceTree = "<group>"; };
 		DAD3F15121159069005D7BBB /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DAD3F15321159AB8005D7BBB /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		DAD3F15521159FDD005D7BBB /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 		DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameProtocol.swift; sourceTree = "<group>"; };
 		DAD7ABD8210B6183008BDF4F /* Catban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DADA70CF21171DDD007A825F /* BoardCanvasItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCanvasItemView.swift; sourceTree = "<group>"; };
+		DADA70CF21171DDD007A825F /* BoardItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
 		DADA70D121172084007A825F /* BoardItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardItemViewModel.swift; sourceTree = "<group>"; };
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAFD730921135176004718FE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -349,8 +351,9 @@
 				DABBCFB42114691A00C92463 /* BoardViewModel.swift */,
 				DADA70D121172084007A825F /* BoardItemViewModel.swift */,
 				DABBCFB62114692100C92463 /* BoardView.swift */,
-				DA063644211718B2004C1341 /* BoardCanvasView.swift */,
-				DADA70CF21171DDD007A825F /* BoardCanvasItemView.swift */,
+				DA063644211718B2004C1341 /* BoardTouchView.swift */,
+				DADA70CF21171DDD007A825F /* BoardItemView.swift */,
+				DAC5AE632118141400AE39E2 /* BoardFactory.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -620,7 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA780E902116F4A000F1CFC1 /* DeleteViewModel.swift in Sources */,
-				DA063645211718B2004C1341 /* BoardCanvasView.swift in Sources */,
+				DA063645211718B2004C1341 /* BoardTouchView.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
@@ -630,9 +633,10 @@
 				DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
 				DADA70D221172084007A825F /* BoardItemViewModel.swift in Sources */,
-				DADA70D021171DDD007A825F /* BoardCanvasItemView.swift in Sources */,
+				DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
+				DAC5AE642118141400AE39E2 /* BoardFactory.swift in Sources */,
 				DA36DEB2210EE260008409E8 /* LibraryViewModel.swift in Sources */,
 				DA5C69DE210DE0CF00A07619 /* Router.swift in Sources */,
 				DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */,

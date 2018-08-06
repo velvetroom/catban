@@ -3,7 +3,7 @@ import CleanArchitecture
 
 class BoardView:View<BoardPresenter> {
     weak var scroll:UIScrollView!
-    weak var canvas:BoardCanvasView!
+    weak var canvas:BoardTouchView!
     
     override func viewDidLoad() {
         self.makeOutlets()
@@ -32,7 +32,7 @@ class BoardView:View<BoardPresenter> {
         self.scroll = scroll
         self.view.addSubview(scroll)
         
-        let canvas:BoardCanvasView = BoardCanvasView()
+        let canvas:BoardTouchView = BoardTouchView()
         self.canvas = canvas
         self.scroll.addSubview(canvas)
         

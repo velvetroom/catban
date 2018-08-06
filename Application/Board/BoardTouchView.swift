@@ -1,7 +1,7 @@
 import UIKit
 
-class BoardCanvasView:UIView {
-    private weak var item:BoardCanvasItemView?
+class BoardTouchView:UIView {
+    private weak var item:BoardItemView?
     private var touch:CGPoint
     
     init() {
@@ -11,11 +11,13 @@ class BoardCanvasView:UIView {
     }
     
     required init?(coder:NSCoder) { return nil }
+    override func touchesCancelled(_ touches:Set<UITouch>, with:UIEvent?) { self.dragEnd() }
+    override func touchesEnded(_ touches:Set<UITouch>, with:UIEvent?) { self.dragEnd() }
     
     override func touchesBegan(_ touches:Set<UITouch>, with:UIEvent?) {
         guard let touch:UITouch = touches.first else { return }
         self.touch = touch.location(in:self)
-        self.item = touch.view as? BoardCanvasItemView
+        self.item = touch.view as? BoardItemView
         self.dragBegin()
     }
     
@@ -23,14 +25,6 @@ class BoardCanvasView:UIView {
         guard let touch:UITouch = touches.first else { return }
         self.touch = touch.location(in:self)
         self.dragUpdate()
-    }
-    
-    override func touchesCancelled(_ touches:Set<UITouch>, with:UIEvent?) {
-        self.dragEnd()
-    }
-    
-    override func touchesEnded(_ touches:Set<UITouch>, with:UIEvent?) {
-        self.dragEnd()
     }
     
     private func dragBegin() {
@@ -44,4 +38,14 @@ class BoardCanvasView:UIView {
     private func dragEnd() {
         
     }
+    
+    private func animateChanges() {
+        UIView.animate(withDuration:Constants.animation) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+    }
+}
+
+private struct Constants {
+    static let animation:TimeInterval = 0.3
 }

@@ -4,8 +4,11 @@ import CleanArchitecture
 class BoardPresenter:Presenter {
     var interactor:BoardInteractor!
     var viewModels:ViewModels!
+    private let factory:BoardFactory
     
-    required init() { }
+    required init() {
+        self.factory = BoardFactory()
+    }
     
     @objc func delete() {
         self.interactor.delete()
@@ -17,6 +20,10 @@ class BoardPresenter:Presenter {
     
     @objc func share() {
         
+    }
+    
+    func didLoad() {
+        self.factory.board = self.interactor.board
     }
     
     func didAppear() {

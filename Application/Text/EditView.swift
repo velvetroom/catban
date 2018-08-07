@@ -7,7 +7,6 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-        print("deinit edit")
     }
     
     override func viewDidLoad() {

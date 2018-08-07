@@ -12,10 +12,6 @@ class BoardView:View<BoardPresenter> {
         self.organiser.view = self
     }
     
-    deinit {
-        print("de init board")
-    }
-    
     required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {

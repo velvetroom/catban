@@ -9,11 +9,7 @@ class DeleteView:View<DeletePresenter> {
     weak var cancel:UIButton!
     weak var delete:UIButton!
     weak var border:UIView!
-    
-    deinit {
-        print("de init delete")
-    }
-    
+
     override func viewDidLoad() {
         self.makeOutlets()
         self.layoutOutlets()

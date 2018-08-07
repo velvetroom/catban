@@ -12,9 +12,11 @@ class BoardInteractor:Interactor {
     }
     
     func name() {
-        var strategy:NameStrategy = NameChange()
+        let strategy:TextChange = TextChange()
+        strategy.title = NSLocalizedString("BoardInteractor.editTitle", comment:String())
+        strategy.text = self.board.text
         strategy.subject = self.board
-        self.name(strategy:strategy)
+        self.text(strategy:strategy)
     }
     
     func delete() {
@@ -24,18 +26,22 @@ class BoardInteractor:Interactor {
     }
     
     func newColumn() {
-        var strategy:NameStrategy = NameCreateColumn()
-        strategy.subject = Factory.makeColumn()
-        self.name(strategy:strategy)
+        self.text(strategy:TextCreateColumn())
+    }
+    
+    func newCard(column:Column) {
+        let strategy:TextCreateCard = TextCreateCard()
+        strategy.column = column
+        self.text(strategy:strategy)
     }
     
     func save() {
         do { try self.library.save(board:self.board) } catch { }
     }
     
-    private func name(strategy:NameStrategy) {
-        let presenter:NamePresenter = NamePresenter()
-        let view:NameView = NameView(presenter:presenter)
+    private func text(strategy:TextStrategy) {
+        let presenter:TextPresenter = TextPresenter()
+        let view:TextView = TextView(presenter:presenter)
         presenter.strategy = strategy
         presenter.interactor = self
         Application.router.pushViewController(view, animated:true)

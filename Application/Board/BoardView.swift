@@ -20,7 +20,7 @@ class BoardView:View<BoardPresenter> {
         self.configureViewModel()
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.title = self.presenter.interactor.board.name
+        self.title = self.presenter.interactor.board.text
     }
     
     private func makeOutlets() {

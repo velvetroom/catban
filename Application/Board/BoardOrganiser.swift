@@ -23,7 +23,7 @@ class BoardOrganiser {
         self.top = 0
         self.view.presenter.interactor.board.columns.forEach { (column:Column) in
             self.makeHeader(column:column)
-            self.makeNewCard()
+            self.makeNewCard(column:column)
             self.left += Constants.columnWidth + Constants.spacing
             self.top = 0
         }
@@ -37,7 +37,7 @@ class BoardOrganiser {
     
     private func makeHeader(column:Column) {
         let item:BoardItemView = BoardItemView()
-        item.set(text:NSAttributedString(string:column.name, attributes:[NSAttributedString.Key.font:
+        item.set(text:NSAttributedString(string:column.text, attributes:[NSAttributedString.Key.font:
             UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)]))
         self.layout(item:item, height:Constants.headerHeight)
     }
@@ -50,10 +50,11 @@ class BoardOrganiser {
         self.layout(item:item, height:Constants.headerHeight)
     }
     
-    private func makeNewCard() {
+    private func makeNewCard(column:Column) {
         let item:BoardItemView = BoardItemView()
+        item.column = column
         item.set(image:#imageLiteral(resourceName: "assetNewCard.pdf"))
-        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newColumn),
+        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newCard(view:)),
                        for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:Constants.cardHeight)
     }

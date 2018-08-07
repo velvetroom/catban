@@ -21,7 +21,7 @@ class DeletePresenter:Presenter {
             string:NSLocalizedString("DeletePresenter.message", comment:String()), attributes:
             [NSAttributedString.Key.font:UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.medium)]))
         viewModel.message.append(NSAttributedString(
-            string:self.interactor.board.name, attributes:
+            string:self.interactor.board.text, attributes:
             [NSAttributedString.Key.font:UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)]))
         self.viewModels.update(viewModel:viewModel)
     }

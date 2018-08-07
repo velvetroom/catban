@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA063645211718B2004C1341 /* BoardTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA063644211718B2004C1341 /* BoardTouchView.swift */; };
+		DA06A1C12119A35100371607 /* TextCreateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1C02119A35100371607 /* TextCreateCard.swift */; };
 		DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C6E2112EF7300B536CB /* LibraryCellView.swift */; };
 		DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */; };
 		DA1538F92114449A005C05EE /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1538F82114449A005C05EE /* TestFactory.swift */; };
@@ -52,9 +53,9 @@
 		DA899B8B2113070E00A23696 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B8A2113070E00A23696 /* LibraryStateDefault.swift */; };
 		DA899B932113301200A23696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA899B922113300200A23696 /* GoogleService-Info.plist */; };
 		DA899B97211330A600A23696 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B942113302C00A23696 /* Services.swift */; };
-		DA96888921196E7400F0B240 /* NameStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888821196E7400F0B240 /* NameStrategy.swift */; };
-		DA96888B21196F0300F0B240 /* NameChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888A21196F0300F0B240 /* NameChange.swift */; };
-		DA96888D21196F4A00F0B240 /* NameCreateColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888C21196F4A00F0B240 /* NameCreateColumn.swift */; };
+		DA96888921196E7400F0B240 /* TextStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888821196E7400F0B240 /* TextStrategy.swift */; };
+		DA96888B21196F0300F0B240 /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888A21196F0300F0B240 /* TextChange.swift */; };
+		DA96888D21196F4A00F0B240 /* TextCreateColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888C21196F4A00F0B240 /* TextCreateColumn.swift */; };
 		DAB5C24A21135CC5004611AC /* MockDatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */; };
 		DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB02114690800C92463 /* BoardInteractor.swift */; };
 		DABBCFB32114691200C92463 /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB22114691200C92463 /* BoardPresenter.swift */; };
@@ -63,9 +64,9 @@
 		DABBCFB921146B0600C92463 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB821146B0600C92463 /* Localized.swift */; };
 		DAC5AE642118141400AE39E2 /* BoardOrganiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5AE632118141400AE39E2 /* BoardOrganiser.swift */; };
 		DAD3F15221159069005D7BBB /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD3F15121159069005D7BBB /* assets.xcassets */; };
-		DAD3F15621159FDD005D7BBB /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15521159FDD005D7BBB /* NameView.swift */; };
-		DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */; };
-		DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */; };
+		DAD3F15621159FDD005D7BBB /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15521159FDD005D7BBB /* TextView.swift */; };
+		DAD3F1582115A0DA005D7BBB /* TextPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* TextPresenter.swift */; };
+		DAD3F15C2115A2DF005D7BBB /* TextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* TextProtocol.swift */; };
 		DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* BoardItemView.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
@@ -101,6 +102,7 @@
 		5B0596316A0FCD7974C6752E /* Pods-Catban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.debug.xcconfig"; sourceTree = "<group>"; };
 		60F2CCC791665504012E8AEE /* Pods-Catban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.release.xcconfig"; sourceTree = "<group>"; };
 		DA063644211718B2004C1341 /* BoardTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTouchView.swift; sourceTree = "<group>"; };
+		DA06A1C02119A35100371607 /* TextCreateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateCard.swift; sourceTree = "<group>"; };
 		DA135C6E2112EF7300B536CB /* LibraryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
 		DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
 		DA1538F82114449A005C05EE /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
@@ -146,9 +148,9 @@
 		DA899B912113300200A23696 /* application.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = application.plist; sourceTree = "<group>"; };
 		DA899B922113300200A23696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA899B942113302C00A23696 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
-		DA96888821196E7400F0B240 /* NameStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameStrategy.swift; sourceTree = "<group>"; };
-		DA96888A21196F0300F0B240 /* NameChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChange.swift; sourceTree = "<group>"; };
-		DA96888C21196F4A00F0B240 /* NameCreateColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCreateColumn.swift; sourceTree = "<group>"; };
+		DA96888821196E7400F0B240 /* TextStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStrategy.swift; sourceTree = "<group>"; };
+		DA96888A21196F0300F0B240 /* TextChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
+		DA96888C21196F4A00F0B240 /* TextCreateColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateColumn.swift; sourceTree = "<group>"; };
 		DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseServiceProtocol.swift; sourceTree = "<group>"; };
 		DABBCFB02114690800C92463 /* BoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
 		DABBCFB22114691200C92463 /* BoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
@@ -158,9 +160,9 @@
 		DAC5AE632118141400AE39E2 /* BoardOrganiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardOrganiser.swift; sourceTree = "<group>"; };
 		DAD3F15121159069005D7BBB /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DAD3F15321159AB8005D7BBB /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
-		DAD3F15521159FDD005D7BBB /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
-		DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamePresenter.swift; sourceTree = "<group>"; };
-		DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameProtocol.swift; sourceTree = "<group>"; };
+		DAD3F15521159FDD005D7BBB /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		DAD3F1572115A0DA005D7BBB /* TextPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPresenter.swift; sourceTree = "<group>"; };
+		DAD3F15B2115A2DF005D7BBB /* TextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextProtocol.swift; sourceTree = "<group>"; };
 		DAD7ABD8210B6183008BDF4F /* Catban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADA70CF21171DDD007A825F /* BoardItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
@@ -225,7 +227,7 @@
 				DA8EDE14210C51D20056B6B0 /* Shared */,
 				DA36DEAA210EE1DA008409E8 /* Library */,
 				DABBCFAF211468F800C92463 /* Board */,
-				DAD3F15421159F95005D7BBB /* Name */,
+				DAD3F15421159F95005D7BBB /* Text */,
 				DA780E882116EE5D00F1CFC1 /* Delete */,
 			);
 			path = Application;
@@ -297,7 +299,7 @@
 				DA5D101E210DB545005E323A /* Board_v1.swift */,
 				DA5D1020210DB7BF005E323A /* Column.swift */,
 				DA5D1022210DB7D9005E323A /* Card.swift */,
-				DAD3F15B2115A2DF005D7BBB /* NameProtocol.swift */,
+				DAD3F15B2115A2DF005D7BBB /* TextProtocol.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -359,16 +361,17 @@
 			path = Board;
 			sourceTree = "<group>";
 		};
-		DAD3F15421159F95005D7BBB /* Name */ = {
+		DAD3F15421159F95005D7BBB /* Text */ = {
 			isa = PBXGroup;
 			children = (
-				DAD3F1572115A0DA005D7BBB /* NamePresenter.swift */,
-				DAD3F15521159FDD005D7BBB /* NameView.swift */,
-				DA96888821196E7400F0B240 /* NameStrategy.swift */,
-				DA96888A21196F0300F0B240 /* NameChange.swift */,
-				DA96888C21196F4A00F0B240 /* NameCreateColumn.swift */,
+				DAD3F1572115A0DA005D7BBB /* TextPresenter.swift */,
+				DAD3F15521159FDD005D7BBB /* TextView.swift */,
+				DA96888821196E7400F0B240 /* TextStrategy.swift */,
+				DA96888A21196F0300F0B240 /* TextChange.swift */,
+				DA96888C21196F4A00F0B240 /* TextCreateColumn.swift */,
+				DA06A1C02119A35100371607 /* TextCreateCard.swift */,
 			);
-			path = Name;
+			path = Text;
 			sourceTree = "<group>";
 		};
 		DAD7ABCF210B6183008BDF4F = {
@@ -610,7 +613,7 @@
 				DA899B89211306E700A23696 /* LibraryStateReady.swift in Sources */,
 				DA5D1023210DB7D9005E323A /* Card.swift in Sources */,
 				DA36DEA5210EDE22008409E8 /* Session_v1.swift in Sources */,
-				DAD3F15C2115A2DF005D7BBB /* NameProtocol.swift in Sources */,
+				DAD3F15C2115A2DF005D7BBB /* TextProtocol.swift in Sources */,
 				DA36DEA9210EDEAD008409E8 /* Library.swift in Sources */,
 				DA5D1021210DB7BF005E323A /* Column.swift in Sources */,
 				DA6E1D9A2111856F00FDB6DF /* DomainError.swift in Sources */,
@@ -629,10 +632,11 @@
 				DA063645211718B2004C1341 /* BoardTouchView.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
+				DA06A1C12119A35100371607 /* TextCreateCard.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
 				DA780E8E2116EE8500F1CFC1 /* DeletePresenter.swift in Sources */,
 				DA780E8C2116EE7B00F1CFC1 /* DeleteInteractor.swift in Sources */,
-				DAD3F1582115A0DA005D7BBB /* NamePresenter.swift in Sources */,
+				DAD3F1582115A0DA005D7BBB /* TextPresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
 				DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
@@ -645,13 +649,13 @@
 				DA36DEB0210EE22F008409E8 /* LibraryInteractor.swift in Sources */,
 				DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */,
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,
-				DAD3F15621159FDD005D7BBB /* NameView.swift in Sources */,
+				DAD3F15621159FDD005D7BBB /* TextView.swift in Sources */,
 				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
-				DA96888921196E7400F0B240 /* NameStrategy.swift in Sources */,
+				DA96888921196E7400F0B240 /* TextStrategy.swift in Sources */,
 				DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */,
-				DA96888D21196F4A00F0B240 /* NameCreateColumn.swift in Sources */,
+				DA96888D21196F4A00F0B240 /* TextCreateColumn.swift in Sources */,
 				DABBCFB72114692100C92463 /* BoardView.swift in Sources */,
-				DA96888B21196F0300F0B240 /* NameChange.swift in Sources */,
+				DA96888B21196F0300F0B240 /* TextChange.swift in Sources */,
 				DA780E8A2116EE6F00F1CFC1 /* DeleteView.swift in Sources */,
 				DA36DEB4210EE34C008409E8 /* LoadingView.swift in Sources */,
 				DABBCFB32114691200C92463 /* BoardPresenter.swift in Sources */,

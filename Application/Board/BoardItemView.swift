@@ -1,10 +1,12 @@
 import UIKit
+import Domain
 
 class BoardItemView:UIControl {
     weak var left:NSLayoutConstraint!
     weak var top:NSLayoutConstraint!
     weak var width:NSLayoutConstraint!
     weak var height:NSLayoutConstraint!
+    weak var column:Column!
     var position:CGPoint { get { return CGPoint(x:self.left.constant, y:self.top.constant) } }
     
     init() {

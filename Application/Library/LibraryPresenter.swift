@@ -59,7 +59,7 @@ class LibraryPresenter:Presenter {
         self.interactor.library.boards.forEach { (key:String, board:BoardProtocol) in
             var item:LibraryItemViewModel = LibraryItemViewModel()
             item.board = key
-            item.name = board.name
+            item.name = board.text
             items.append(item)
         }
         return items.sorted { (left:LibraryItemViewModel, right:LibraryItemViewModel) -> Bool in

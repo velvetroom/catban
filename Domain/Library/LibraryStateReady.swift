@@ -10,7 +10,7 @@ class LibraryStateReady:LibraryStateProtocol {
     func newBoard(context:Library) throws {
         context.queue.async {
             let board:Configuration.Board = Configuration.Board()
-            board.name = Localized.string(key:"LibraryStateReady.boardName")
+            board.text = Localized.string(key:"LibraryStateReady.boardName")
             let identifier:String = context.database.create(board:board)
             context.boards[identifier] = board
             context.session.boards.append(identifier)

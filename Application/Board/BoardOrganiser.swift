@@ -1,10 +1,8 @@
 import UIKit
 import Domain
 
-class BoardFactory {
-    weak var scroll:UIScrollView!
-    weak var touch:BoardTouchView!
-    var board:BoardProtocol!
+class BoardOrganiser {
+    weak var view:BoardView!
     var left:CGFloat
     var maxY:CGFloat
     var top:CGFloat { didSet {
@@ -23,7 +21,7 @@ class BoardFactory {
         self.clearTouch()
         self.left = Constants.Content.left
         self.top = 0
-        self.board.columns.forEach { (column:Column) in
+        self.view.presenter.interactor.board.columns.forEach { (column:Column) in
             self.left += Constants.Column.width
             self.top = 0
         }
@@ -32,18 +30,18 @@ class BoardFactory {
     }
     
     private func clearTouch() {
-        self.touch.subviews.forEach { (view:UIView) in view.removeFromSuperview() }
+        self.view.touch.subviews.forEach { (view:UIView) in view.removeFromSuperview() }
     }
     
     private func makeNewColumn() {
         let item:BoardNewColumnView = BoardNewColumnView()
-        self.touch.addSubview(item)
+        self.view.touch.addSubview(item)
         self.layout(item:item, height:Constants.Column.height)
     }
     
     private func layout(item:BoardItemView, height:CGFloat) {
-        item.top = item.topAnchor.constraint(equalTo:self.touch.topAnchor, constant:self.top)
-        item.left = item.leftAnchor.constraint(equalTo:self.touch.leftAnchor, constant:self.left)
+        item.top = item.topAnchor.constraint(equalTo:self.view.touch.topAnchor, constant:self.top)
+        item.left = item.leftAnchor.constraint(equalTo:self.view.touch.leftAnchor, constant:self.left)
         item.width = item.widthAnchor.constraint(equalToConstant:Constants.Column.width)
         item.height = item.heightAnchor.constraint(equalToConstant:height)
         item.top.isActive = true
@@ -54,9 +52,9 @@ class BoardFactory {
     }
     
     private func updateSize() {
-        self.scroll.contentSize = CGSize(width:self.left + Constants.Column.width,
+        self.view.scroll.contentSize = CGSize(width:self.left + Constants.Column.width,
                                          height:self.maxY + Constants.Content.bottom)
-        self.touch.frame = CGRect(origin:CGPoint.zero, size:self.scroll.contentSize)
+        self.view.touch.frame = CGRect(origin:CGPoint.zero, size:self.view.scroll.contentSize)
     }
 }
 

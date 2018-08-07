@@ -4,11 +4,12 @@ import CleanArchitecture
 class BoardView:View<BoardPresenter> {
     weak var scroll:UIScrollView!
     weak var touch:BoardTouchView!
-    private let factory:BoardFactory
+    private let organiser:BoardOrganiser
     
     required init() {
-        self.factory = BoardFactory()
+        self.organiser = BoardOrganiser()
         super.init()
+        self.organiser.view = self
     }
     
     required init?(coder:NSCoder) { return nil }
@@ -20,9 +21,6 @@ class BoardView:View<BoardPresenter> {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.title = self.presenter.interactor.board.name
-        self.factory.board = self.presenter.interactor.board
-        self.factory.touch = self.touch
-        self.factory.scroll = self.scroll
     }
     
     private func makeOutlets() {
@@ -69,7 +67,7 @@ class BoardView:View<BoardPresenter> {
     private func configureViewModel() {
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardViewModel) in
             self?.title = viewModel.title
-            self?.factory.refresh()
+            self?.organiser.refresh()
         }
     }
 }

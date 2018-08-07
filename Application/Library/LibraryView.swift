@@ -54,7 +54,6 @@ class LibraryView:View<LibraryPresenter> {
         
         self.message.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:Constants.margin).isActive = true
         self.message.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:-Constants.margin).isActive = true
-        self.message.heightAnchor.constraint(greaterThanOrEqualToConstant:0)
         
         self.loading.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
         self.loading.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true

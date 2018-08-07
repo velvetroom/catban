@@ -1,6 +1,6 @@
 import UIKit
 
-class LibraryCellView:UIButton {
+class LibraryCellView:UIControl {
     weak var name:UILabel!
     weak var border:UIView!
     var viewModel:LibraryItemViewModel! { didSet { self.name.text = self.viewModel.name } }

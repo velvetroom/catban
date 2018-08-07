@@ -3,7 +3,7 @@ import CleanArchitecture
 
 class DeleteView:View<DeletePresenter> {
     weak var blur:UIVisualEffectView!
-    weak var back:UIButton!
+    weak var back:UIControl!
     weak var base:UIView!
     weak var message:UILabel!
     weak var cancel:UIButton!
@@ -27,7 +27,7 @@ class DeleteView:View<DeletePresenter> {
         self.blur = blur
         self.view.addSubview(blur)
         
-        let back:UIButton = UIButton()
+        let back:UIControl = UIControl()
         back.translatesAutoresizingMaskIntoConstraints = false
         back.addTarget(self.presenter, action:#selector(self.presenter.cancel), for:UIControl.Event.touchUpInside)
         self.back = back
@@ -97,7 +97,6 @@ class DeleteView:View<DeletePresenter> {
         self.message.topAnchor.constraint(equalTo:self.base.topAnchor, constant:Constants.margin).isActive = true
         self.message.leftAnchor.constraint(equalTo:self.base.leftAnchor, constant:Constants.margin).isActive = true
         self.message.rightAnchor.constraint(equalTo:self.base.rightAnchor, constant:-Constants.margin).isActive = true
-        self.message.heightAnchor.constraint(greaterThanOrEqualToConstant:0).isActive = true
         
         self.cancel.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
         self.cancel.rightAnchor.constraint(equalTo:self.base.centerXAnchor).isActive = true

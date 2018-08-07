@@ -23,6 +23,12 @@ class BoardInteractor:Interactor {
         Application.router.present(view, animated:true, completion:nil)
     }
     
+    func newColumn() {
+        var strategy:NameStrategy = NameCreateColumn()
+        strategy.subject = Factory.makeColumn()
+        self.name(strategy:strategy)
+    }
+    
     func save() {
         do { try self.library.save(board:self.board) } catch { }
     }

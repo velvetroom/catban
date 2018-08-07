@@ -35,6 +35,8 @@ class BoardOrganiser {
     
     private func makeNewColumn() {
         let item:BoardNewColumnView = BoardNewColumnView()
+        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newColumn),
+                       for:UIControl.Event.touchUpInside)
         self.view.touch.addSubview(item)
         self.layout(item:item, height:Constants.Column.height)
     }

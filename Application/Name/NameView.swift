@@ -10,7 +10,7 @@ class NameView:View<NamePresenter>, UITextFieldDelegate {
         self.layoutOutlets()
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.title = NSLocalizedString("NameView.title", comment:String())
+        self.title = self.presenter.strategy.title
     }
     
     override func viewDidAppear(_ animated:Bool) {

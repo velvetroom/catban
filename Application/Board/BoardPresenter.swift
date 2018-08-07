@@ -19,6 +19,10 @@ class BoardPresenter:Presenter {
         
     }
     
+    @objc func newColumn() {
+        self.interactor.newColumn()
+    }
+    
     func didAppear() {
         self.updateViewModel()
     }

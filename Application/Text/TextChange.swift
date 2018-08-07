@@ -11,8 +11,7 @@ class TextChange:TextStrategy {
         self.title = String()
     }
     
-    func success(interactor:BoardInteractor, text:String) {
-        self.update(subject:self.subject, text:text)
-        interactor.save()
+    func save(interactor:BoardInteractor, text:String) {
+        self.save(interactor:interactor, subject:self.subject, text:text)
     }
 }

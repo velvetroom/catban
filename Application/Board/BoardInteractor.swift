@@ -11,54 +11,54 @@ class BoardInteractor:Interactor {
         self.library = Factory.makeLibrary()
     }
     
-    func name() {
-        let strategy:TextChange = TextChange()
-        strategy.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
-        strategy.text = self.board.text
-        strategy.subject = self.board
-        self.text(strategy:strategy)
-    }
-    
-    func delete() {
-        let view:DeleteView = DeleteView()
-        view.presenter.interactor.board = self.board
-        Application.router.present(view, animated:true, completion:nil)
+    func edit() {
+        let text:TextChange = TextChange()
+        text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
+        text.text = self.board.text
+        text.subject = self.board
+        self.edit(text:text, delete:DeleteBoard())
     }
     
     func newColumn() {
-        self.text(strategy:TextCreateColumn())
+        self.edit(text:TextCreateColumn(), delete:nil)
     }
     
     func editColumn(column:Column) {
-        let strategy:TextChange = TextChange()
-        strategy.title = NSLocalizedString("BoardInteractor.columnTitle", comment:String())
-        strategy.text = column.text
-        strategy.subject = column
-        self.text(strategy:strategy)
+        let text:TextChange = TextChange()
+        text.title = NSLocalizedString("BoardInteractor.columnTitle", comment:String())
+        text.text = column.text
+        text.subject = column
+        let delete:DeleteColumn = DeleteColumn()
+        delete.column = column
+        self.edit(text:text, delete:delete)
     }
     
     func newCard(column:Column) {
-        let strategy:TextCreateCard = TextCreateCard()
-        strategy.column = column
-        self.text(strategy:strategy)
+        let text:TextCreateCard = TextCreateCard()
+        text.column = column
+        self.edit(text:text, delete:nil)
     }
     
     func editCard(column:Column, card:Card) {
-        let strategy:TextChange = TextChange()
-        strategy.title = column.text
-        strategy.text = card.text
-        strategy.subject = card
-        self.text(strategy:strategy)
+        let text:TextChange = TextChange()
+        text.title = column.text
+        text.text = card.text
+        text.subject = card
+        let delete:DeleteCard = DeleteCard()
+        delete.column = column
+        delete.card = card
+        self.edit(text:text, delete:delete)
     }
     
     func save() {
         do { try self.library.save(board:self.board) } catch { }
     }
     
-    private func text(strategy:TextStrategy) {
-        let presenter:TextPresenter = TextPresenter()
-        let view:TextView = TextView(presenter:presenter)
-        presenter.strategy = strategy
+    private func edit(text:TextStrategy, delete:DeleteStrategy?) {
+        let presenter:EditPresenter = EditPresenter()
+        let view:EditView = EditView(presenter:presenter)
+        presenter.strategyText = text
+        presenter.strategyDelete = delete
         presenter.interactor = self
         Application.router.pushViewController(view, animated:true)
     }

@@ -44,40 +44,40 @@ class BoardOrganiser {
     }
     
     private func makeHeader(column:Column) {
-        let item:BoardItemView = BoardItemView()
+        let item:BoardTextView = BoardTextView()
         item.column = column
-        item.set(text:NSAttributedString(string:column.text, attributes:[NSAttributedString.Key.font:
-            UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)]))
+        item.label.attributedText = NSAttributedString(string:column.text, attributes:[NSAttributedString.Key.font:
+            UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)])
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editColumn(view:)),
                        for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:Constants.headerHeight)
     }
     
     private func makeNewColumn() {
-        let item:BoardItemView = BoardItemView()
-        item.set(image:#imageLiteral(resourceName: "assetNewColumn.pdf"))
+        let item:BoardImageView = BoardImageView()
+        item.imageView.image = #imageLiteral(resourceName: "assetNewColumn.pdf")
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newColumn),
                        for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:Constants.headerHeight)
     }
     
     private func makeCard(column:Column, card:Card) {
-        let item:BoardItemView = BoardItemView()
+        let item:BoardCardView = BoardCardView()
         item.column = column
         item.card = card
         let text:NSAttributedString = NSAttributedString(string:card.text, attributes:[NSAttributedString.Key.font:
             UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.light)])
         let textHeight:CGFloat = ceil(text.boundingRect(with:self.size, options:self.options, context:nil).size.height)
-        item.set(text:text)
+        item.label.attributedText = text
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editCard(view:)),
                        for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:max(Constants.min, ceil(textHeight)))
     }
     
     private func makeNewCard(column:Column) {
-        let item:BoardItemView = BoardItemView()
+        let item:BoardImageView = BoardImageView()
         item.column = column
-        item.set(image:#imageLiteral(resourceName: "assetNewCard.pdf"))
+        item.imageView.image = #imageLiteral(resourceName: "assetNewCard.pdf")
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newCard(view:)),
                        for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:Constants.newCard)
@@ -115,5 +115,5 @@ private struct Constants {
     static let headerHeight:CGFloat = 25.0
     static let newCard:CGFloat = 60.0
     static let max:CGFloat = 10000.0
-    static let min:CGFloat = 30.0
+    static let min:CGFloat = 45.0
 }

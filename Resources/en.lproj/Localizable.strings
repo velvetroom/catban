@@ -1,9 +1,12 @@
 LibraryView.title="Library";
 LibraryPresenter.empty="You haven't created any board yet.\nUse the button on the top right corner to begin.";
-BoardInteractor.boardTitle="Board name";
-BoardInteractor.columnTitle="Column name";
+BoardInteractor.boardTitle="Edit board";
+BoardInteractor.columnTitle="Edit column";
 TextCreateColumn.title="New column";
 TextCreateCard.title="New card";
-DeletePresenter.message="Delete this board?\n";
+EditView.delete="Delete";
+DeleteBoard.title="Delete board?";
+DeleteColumn.title="Delete column?";
+DeleteCard.title="Delete card?";
 DeleteView.cancel="Cancel";
 DeleteView.delete="Delete";

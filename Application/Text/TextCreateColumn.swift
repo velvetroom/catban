@@ -10,10 +10,9 @@ class TextCreateColumn:TextStrategy {
         self.title = NSLocalizedString("TextCreateColumn.title", comment:String())
     }
     
-    func success(interactor:BoardInteractor, text:String) {
+    func save(interactor:BoardInteractor, text:String) {
         let column:Column = Factory.makeColumn()
-        self.update(subject:column, text:text)
         interactor.board.columns.append(column)
-        interactor.save()
+        self.save(interactor:interactor, subject:column, text:text)
     }
 }

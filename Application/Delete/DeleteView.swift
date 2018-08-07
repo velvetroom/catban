@@ -5,15 +5,18 @@ class DeleteView:View<DeletePresenter> {
     weak var blur:UIVisualEffectView!
     weak var back:UIControl!
     weak var base:UIView!
-    weak var message:UILabel!
+    weak var label:UILabel!
     weak var cancel:UIButton!
     weak var delete:UIButton!
     weak var border:UIView!
     
+    deinit {
+        print("de init delete")
+    }
+    
     override func viewDidLoad() {
         self.makeOutlets()
         self.layoutOutlets()
-        self.configureViewModel()
         super.viewDidLoad()
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
@@ -42,13 +45,14 @@ class DeleteView:View<DeletePresenter> {
         self.base = base
         self.view.addSubview(base)
         
-        let message:UILabel = UILabel()
-        message.isUserInteractionEnabled = false
-        message.translatesAutoresizingMaskIntoConstraints = false
-        message.numberOfLines = 0
-        message.textColor = UIColor.black
-        self.message = message
-        self.view.addSubview(message)
+        let label:UILabel = UILabel()
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize:Constants.label, weight:UIFont.Weight.regular)
+        label.text = self.presenter.strategy.title
+        self.label = label
+        self.view.addSubview(label)
         
         let cancel:UIButton = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
@@ -94,9 +98,9 @@ class DeleteView:View<DeletePresenter> {
         self.base.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
         self.base.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true
         
-        self.message.topAnchor.constraint(equalTo:self.base.topAnchor, constant:Constants.margin).isActive = true
-        self.message.leftAnchor.constraint(equalTo:self.base.leftAnchor, constant:Constants.margin).isActive = true
-        self.message.rightAnchor.constraint(equalTo:self.base.rightAnchor, constant:-Constants.margin).isActive = true
+        self.label.topAnchor.constraint(equalTo:self.base.topAnchor, constant:Constants.margin).isActive = true
+        self.label.leftAnchor.constraint(equalTo:self.base.leftAnchor, constant:Constants.margin).isActive = true
+        self.label.rightAnchor.constraint(equalTo:self.base.rightAnchor, constant:-Constants.margin).isActive = true
         
         self.cancel.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
         self.cancel.rightAnchor.constraint(equalTo:self.base.centerXAnchor).isActive = true
@@ -113,20 +117,15 @@ class DeleteView:View<DeletePresenter> {
         self.border.bottomAnchor.constraint(equalTo:self.cancel.topAnchor).isActive = true
         self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
     }
-    
-    private func configureViewModel() {
-        self.presenter.viewModels.observe { [weak self] (viewModel:DeleteViewModel) in
-            self?.message.attributedText = viewModel.message
-        }
-    }
 }
 
 private struct Constants {
     static let border:CGFloat = 1.0
     static let radius:CGFloat = 8.0
-    static let width:CGFloat = 280.0
-    static let height:CGFloat = 125.0
-    static let font:CGFloat = 14.0
+    static let width:CGFloat = 260.0
+    static let height:CGFloat = 115.0
+    static let font:CGFloat = 15.0
+    static let label:CGFloat = 18.0
     static let margin:CGFloat = 20.0
-    static let buttonHeight:CGFloat = 40.0
+    static let buttonHeight:CGFloat = 45.0
 }

@@ -12,6 +12,10 @@ class BoardView:View<BoardPresenter> {
         self.organiser.view = self
     }
     
+    deinit {
+        print("de init board")
+    }
+    
     required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {
@@ -42,12 +46,10 @@ class BoardView:View<BoardPresenter> {
         self.scroll.addSubview(touch)
         
         self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetDelete.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.delete)),
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.action, target:self.presenter,
                             action:#selector(self.presenter.share)),
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetRename.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.name))]
+            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.edit, target:self.presenter,
+                            action:#selector(self.presenter.edit))]
     }
     
     private func layoutOutlets() {

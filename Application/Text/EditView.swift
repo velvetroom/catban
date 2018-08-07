@@ -1,12 +1,13 @@
 import UIKit
 import CleanArchitecture
 
-class TextView:View<TextPresenter>, UITextViewDelegate {
+class EditView:View<EditPresenter>, UITextViewDelegate {
     weak var text:UITextView!
     weak var layoutBottom:NSLayoutConstraint!
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        print("deinit edit")
     }
     
     override func viewDidLoad() {
@@ -14,7 +15,7 @@ class TextView:View<TextPresenter>, UITextViewDelegate {
         self.layoutOutlets()
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.title = self.presenter.strategy.title
+        self.title = self.presenter.strategyText.title
         NotificationCenter.default.addObserver(forName:UIResponder.keyboardWillChangeFrameNotification, object:nil,
                                                queue:OperationQueue.main) { [weak self] (notification:Notification) in
             self?.keyboardChanged(notification:notification)
@@ -50,16 +51,23 @@ class TextView:View<TextPresenter>, UITextViewDelegate {
         text.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
         text.textContainerInset = UIEdgeInsets(top:Constants.insets, left:Constants.insets, bottom:Constants.insets,
                                                right:Constants.insets)
-        text.text = self.presenter.strategy.text
+        text.text = self.presenter.strategyText.text
         self.text = text
         self.view.addSubview(text)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem:UIBarButtonItem.SystemItem.save, target:self,
-            action:#selector(self.save))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem:UIBarButtonItem.SystemItem.cancel, target:self.presenter,
-            action:#selector(self.presenter.cancel))
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(
+            barButtonSystemItem:UIBarButtonItem.SystemItem.done, target:self,
+            action:#selector(self.save))]
+        
+        if self.presenter.strategyDelete == nil {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem:UIBarButtonItem.SystemItem.cancel, target:self.presenter,
+                action:#selector(self.presenter.cancel))
+        } else {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem:UIBarButtonItem.SystemItem.stop, target:self.presenter,
+                action:#selector(self.presenter.delete))
+        }
     }
     
     private func layoutOutlets() {
@@ -78,7 +86,7 @@ class TextView:View<TextPresenter>, UITextViewDelegate {
     }
     
     @objc private func save() {
-        self.presenter.update(text:self.text.text)
+        self.presenter.save(text:self.text.text)
     }
     
     private func keyboardChanged(notification:Notification) {

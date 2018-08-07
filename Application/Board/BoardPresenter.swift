@@ -7,12 +7,8 @@ class BoardPresenter:Presenter {
     
     required init() { }
     
-    @objc func delete() {
-        self.interactor.delete()
-    }
-    
-    @objc func name() {
-        self.interactor.name()
+    @objc func edit() {
+        self.interactor.edit()
     }
     
     @objc func share() {
@@ -23,15 +19,15 @@ class BoardPresenter:Presenter {
         self.interactor.newColumn()
     }
     
-    @objc func editColumn(view:BoardItemView) {
+    @objc func editColumn(view:BoardTextView) {
         self.interactor.editColumn(column:view.column!)
     }
     
-    @objc func newCard(view:BoardItemView) {
+    @objc func newCard(view:BoardImageView) {
         self.interactor.newCard(column:view.column!)
     }
     
-    @objc func editCard(view:BoardItemView) {
+    @objc func editCard(view:BoardCardView) {
         self.interactor.editCard(column:view.column!, card:view.card!)
     }
     

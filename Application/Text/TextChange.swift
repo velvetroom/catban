@@ -12,7 +12,7 @@ class TextChange:TextStrategy {
     }
     
     func success(interactor:BoardInteractor, text:String) {
-        self.subject.text = text
+        self.update(subject:self.subject, text:text)
         interactor.save()
     }
 }

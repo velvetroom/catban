@@ -10,11 +10,16 @@ class BoardOrganiser {
             self.maxY = self.top
         }
     } }
+    private let options:NSStringDrawingOptions
+    private let size:CGSize
     
     init() {
         self.left = 0
         self.top = 0
         self.maxY = 0
+        self.options = NSStringDrawingOptions([NSStringDrawingOptions.usesFontLeading,
+                                               NSStringDrawingOptions.usesLineFragmentOrigin])
+        self.size = CGSize(width:Constants.columnWidth, height:Constants.max)
     }
     
     func refresh() {
@@ -23,8 +28,11 @@ class BoardOrganiser {
         self.top = 0
         self.view.presenter.interactor.board.columns.forEach { (column:Column) in
             self.makeHeader(column:column)
+            column.cards.forEach{ (card:Card) in
+                self.makeCard(card:card)
+            }
             self.makeNewCard(column:column)
-            self.left += Constants.columnWidth + Constants.spacing
+            self.left += Constants.columnWidth + Constants.horizontal
             self.top = 0
         }
         self.makeNewColumn()
@@ -50,13 +58,22 @@ class BoardOrganiser {
         self.layout(item:item, height:Constants.headerHeight)
     }
     
+    private func makeCard(card:Card) {
+        let item:BoardItemView = BoardItemView()
+        let text:NSAttributedString = NSAttributedString(string:card.text, attributes:[NSAttributedString.Key.font:
+            UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.light)])
+        let textHeight:CGFloat = ceil(text.boundingRect(with:self.size, options:self.options, context:nil).size.height)
+        item.set(text:text)
+        self.layout(item:item, height:max(Constants.min, ceil(textHeight)))
+    }
+    
     private func makeNewCard(column:Column) {
         let item:BoardItemView = BoardItemView()
         item.column = column
         item.set(image:#imageLiteral(resourceName: "assetNewCard.pdf"))
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newCard(view:)),
                        for:UIControl.Event.touchUpInside)
-        self.layout(item:item, height:Constants.cardHeight)
+        self.layout(item:item, height:Constants.newCard)
     }
     
     private func layout(item:BoardItemView, height:CGFloat) {
@@ -69,7 +86,7 @@ class BoardOrganiser {
         item.left.isActive = true
         item.width.isActive = true
         item.height.isActive = true
-        self.top += height
+        self.top += height + Constants.vertical
     }
     
     private func updateSize() {
@@ -81,10 +98,14 @@ class BoardOrganiser {
 
 private struct Constants {
     static let left:CGFloat = 17.0
-    static let spacing:CGFloat = 3.0
+    static let horizontal:CGFloat = 3.0
+    static let vertical:CGFloat = 10.0
     static let bottom:CGFloat = 20.0
     static let columnWidth:CGFloat = 200.0
-    static let headerFont:CGFloat = 18
+    static let cardFont:CGFloat = 14.0
+    static let headerFont:CGFloat = 18.0
     static let headerHeight:CGFloat = 40.0
-    static let cardHeight:CGFloat = 70
+    static let newCard:CGFloat = 80.0
+    static let max:CGFloat = 10000.0
+    static let min:CGFloat = 50.0
 }

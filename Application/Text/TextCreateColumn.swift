@@ -12,7 +12,7 @@ class TextCreateColumn:TextStrategy {
     
     func success(interactor:BoardInteractor, text:String) {
         let column:Column = Factory.makeColumn()
-        column.text = text
+        self.update(subject:column, text:text)
         interactor.board.columns.append(column)
         interactor.save()
     }

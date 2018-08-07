@@ -13,7 +13,7 @@ class TextCreateCard:TextStrategy {
     
     func success(interactor:BoardInteractor, text:String) {
         let card:Card = Factory.makeCard()
-        card.text = text
+        self.update(subject:card, text:text)
         self.column?.cards.append(card)
         interactor.save()
     }

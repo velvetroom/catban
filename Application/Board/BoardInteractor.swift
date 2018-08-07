@@ -13,7 +13,7 @@ class BoardInteractor:Interactor {
     
     func name() {
         let strategy:TextChange = TextChange()
-        strategy.title = NSLocalizedString("BoardInteractor.editTitle", comment:String())
+        strategy.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
         strategy.text = self.board.text
         strategy.subject = self.board
         self.text(strategy:strategy)
@@ -29,9 +29,25 @@ class BoardInteractor:Interactor {
         self.text(strategy:TextCreateColumn())
     }
     
+    func editColumn(column:Column) {
+        let strategy:TextChange = TextChange()
+        strategy.title = NSLocalizedString("BoardInteractor.columnTitle", comment:String())
+        strategy.text = column.text
+        strategy.subject = column
+        self.text(strategy:strategy)
+    }
+    
     func newCard(column:Column) {
         let strategy:TextCreateCard = TextCreateCard()
         strategy.column = column
+        self.text(strategy:strategy)
+    }
+    
+    func editCard(column:Column, card:Card) {
+        let strategy:TextChange = TextChange()
+        strategy.title = column.text
+        strategy.text = card.text
+        strategy.subject = card
         self.text(strategy:strategy)
     }
     

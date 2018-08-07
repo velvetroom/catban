@@ -25,15 +25,15 @@ class BoardOrganiser {
     func refresh() {
         self.clearTouch()
         self.left = Constants.left
-        self.top = 0
+        self.top = Constants.top
         self.view.presenter.interactor.board.columns.forEach { (column:Column) in
             self.makeHeader(column:column)
             column.cards.forEach{ (card:Card) in
-                self.makeCard(card:card)
+                self.makeCard(column:column, card:card)
             }
             self.makeNewCard(column:column)
             self.left += Constants.columnWidth + Constants.horizontal
-            self.top = 0
+            self.top = Constants.top
         }
         self.makeNewColumn()
         self.updateSize()
@@ -45,8 +45,11 @@ class BoardOrganiser {
     
     private func makeHeader(column:Column) {
         let item:BoardItemView = BoardItemView()
+        item.column = column
         item.set(text:NSAttributedString(string:column.text, attributes:[NSAttributedString.Key.font:
             UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)]))
+        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editColumn(view:)),
+                       for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:Constants.headerHeight)
     }
     
@@ -58,12 +61,16 @@ class BoardOrganiser {
         self.layout(item:item, height:Constants.headerHeight)
     }
     
-    private func makeCard(card:Card) {
+    private func makeCard(column:Column, card:Card) {
         let item:BoardItemView = BoardItemView()
+        item.column = column
+        item.card = card
         let text:NSAttributedString = NSAttributedString(string:card.text, attributes:[NSAttributedString.Key.font:
             UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.light)])
         let textHeight:CGFloat = ceil(text.boundingRect(with:self.size, options:self.options, context:nil).size.height)
         item.set(text:text)
+        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editCard(view:)),
+                       for:UIControl.Event.touchUpInside)
         self.layout(item:item, height:max(Constants.min, ceil(textHeight)))
     }
     
@@ -97,15 +104,16 @@ class BoardOrganiser {
 }
 
 private struct Constants {
+    static let top:CGFloat = 12.0
     static let left:CGFloat = 17.0
-    static let horizontal:CGFloat = 3.0
+    static let horizontal:CGFloat = 5.0
     static let vertical:CGFloat = 10.0
     static let bottom:CGFloat = 20.0
     static let columnWidth:CGFloat = 200.0
     static let cardFont:CGFloat = 14.0
     static let headerFont:CGFloat = 18.0
-    static let headerHeight:CGFloat = 40.0
-    static let newCard:CGFloat = 80.0
+    static let headerHeight:CGFloat = 25.0
+    static let newCard:CGFloat = 60.0
     static let max:CGFloat = 10000.0
-    static let min:CGFloat = 50.0
+    static let min:CGFloat = 30.0
 }

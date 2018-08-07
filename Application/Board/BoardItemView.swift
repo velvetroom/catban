@@ -7,6 +7,7 @@ class BoardItemView:UIControl {
     weak var width:NSLayoutConstraint!
     weak var height:NSLayoutConstraint!
     weak var column:Column!
+    weak var card:Card!
     var position:CGPoint { get { return CGPoint(x:self.left.constant, y:self.top.constant) } }
     
     init() {
@@ -24,7 +25,7 @@ class BoardItemView:UIControl {
         label.attributedText = text
         
         self.addSubview(label)
-        label.bottomAnchor.constraint(equalTo:self.bottomAnchor).isActive = true
+        label.topAnchor.constraint(equalTo:self.topAnchor).isActive = true
         label.leftAnchor.constraint(equalTo:self.leftAnchor).isActive = true
         label.rightAnchor.constraint(equalTo:self.rightAnchor).isActive = true
     }

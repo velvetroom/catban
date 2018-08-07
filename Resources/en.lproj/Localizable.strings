@@ -1,6 +1,7 @@
 LibraryView.title="Library";
 LibraryPresenter.empty="You haven't created any board yet.\nUse the button on the top right corner to begin.";
-BoardInteractor.editTitle="Edit name";
+BoardInteractor.boardTitle="Board name";
+BoardInteractor.columnTitle="Column name";
 TextCreateColumn.title="New column";
 TextCreateCard.title="New card";
 DeletePresenter.message="Delete this board?\n";

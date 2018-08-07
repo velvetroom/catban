@@ -6,7 +6,7 @@ public class Column:Codable, NameProtocol {
     public var created:Date
     public var cards:[Card]
     
-    public init() {
+    init() {
         self.identifier = String()
         self.name = String()
         self.created = Date()

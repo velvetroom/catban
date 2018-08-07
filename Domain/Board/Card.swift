@@ -5,7 +5,7 @@ public class Card:Codable {
     public var created:Date
     public var content:String
     
-    public init() {
+    init() {
         self.identifier = String()
         self.created = Date()
         self.content = String()

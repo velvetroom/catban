@@ -8,6 +8,18 @@ public class Factory {
         return library
     }
     
+    public class func makeColumn() -> Column {
+        let column:Column = Column()
+        column.identifier = UUID().uuidString
+        return column
+    }
+    
+    public class func makeCard() -> Card {
+        let card:Card = Card()
+        card.identifier = UUID().uuidString
+        return card
+    }
+    
     class func makeSession() -> SessionProtocol {
         return Configuration.Session()
     }

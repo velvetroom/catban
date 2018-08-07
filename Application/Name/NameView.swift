@@ -46,7 +46,7 @@ class NameView:View<NamePresenter>, UITextFieldDelegate {
         field.keyboardAppearance = UIKeyboardAppearance.light
         field.keyboardType = UIKeyboardType.alphabet
         field.delegate = self
-        field.text = self.presenter.interactor.model.name
+        field.text = self.presenter.strategy.subject.name
         self.field = field
         self.view.addSubview(field)
         

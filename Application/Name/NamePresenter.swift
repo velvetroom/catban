@@ -2,13 +2,14 @@ import UIKit
 import CleanArchitecture
 
 class NamePresenter:Presenter {
-    var interactor:NameInteractor!
+    var interactor:BoardInteractor!
     var viewModels:ViewModels!
+    var strategy:NameStrategy!
     
     required init() { }
     
     func update(name:String) {
-        self.interactor.update(name:name)
+        self.strategy.success(interactor:self.interactor, name:name)
         DispatchQueue.main.async { Application.router.popViewController(animated:true) }
     }
     

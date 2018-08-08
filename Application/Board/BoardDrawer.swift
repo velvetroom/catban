@@ -1,114 +1,109 @@
 import UIKit
 import Domain
 
-class BoardOrganiser {
+class BoardDrawer {
     weak var view:BoardView!
-    var left:CGFloat
-    var maxY:CGFloat
-    var top:CGFloat { didSet {
-        if self.top > self.maxY {
-            self.maxY = self.top
-        }
-    } }
+    weak var firstColumn:BoardItemView?
+    weak var nextColumn:BoardItemView?
+    private weak var nextItem:BoardItemView?
+    private let header:[NSAttributedString.Key:AnyObject]
+    private let card:[NSAttributedString.Key:AnyObject]
     private let options:NSStringDrawingOptions
     private let size:CGSize
     
     init() {
-        self.left = 0
-        self.top = 0
-        self.maxY = 0
+        self.header = [NSAttributedString.Key.font:
+            UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)]
+        self.card = [NSAttributedString.Key.font:
+            UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.light)]
         self.options = NSStringDrawingOptions([NSStringDrawingOptions.usesFontLeading,
                                                NSStringDrawingOptions.usesLineFragmentOrigin])
         self.size = CGSize(width:Constants.columnWidth, height:Constants.max)
     }
     
-    func refresh() {
-        self.clearTouch()
-        self.left = Constants.left
-        self.top = Constants.top
+    func draw() {
+        self.clearContent()
         self.view.presenter.interactor.board.columns.forEach { (column:Column) in
             self.makeHeader(column:column)
             column.cards.forEach{ (card:Card) in
                 self.makeCard(column:column, card:card)
             }
             self.makeNewCard(column:column)
-            self.left += Constants.columnWidth + Constants.horizontal
-            self.top = Constants.top
         }
         self.makeNewColumn()
-        self.updateSize()
     }
     
-    private func clearTouch() {
-        self.view.touch.subviews.forEach { (view:UIView) in view.removeFromSuperview() }
+    private func clearContent() {
+        self.firstColumn = nil
+        self.view.content.subviews.forEach { (view:UIView) in view.removeFromSuperview() }
     }
     
     private func makeHeader(column:Column) {
-        let item:BoardTextView = BoardTextView()
+        let item:BoardItemView = BoardItemView()
         item.column = column
-        item.label.attributedText = NSAttributedString(string:column.text, attributes:[NSAttributedString.Key.font:
-            UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)])
+        item.label.attributedText = NSAttributedString(string:column.text, attributes:self.header)
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editColumn(view:)),
                        for:UIControl.Event.touchUpInside)
+        self.addColumn(item:item)
         self.layout(item:item, height:Constants.headerHeight)
     }
     
     private func makeNewColumn() {
-        let item:BoardImageView = BoardImageView()
-        item.imageView.image = #imageLiteral(resourceName: "assetNewColumn.pdf")
+        let item:BoardItemView = BoardItemView()
+        item.image.image = #imageLiteral(resourceName: "assetNewColumn.pdf")
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newColumn),
                        for:UIControl.Event.touchUpInside)
+        self.addColumn(item:item)
         self.layout(item:item, height:Constants.headerHeight)
     }
     
     private func makeCard(column:Column, card:Card) {
-        let item:BoardCardView = BoardCardView()
+        let item:BoardItemView = BoardItemView()
         item.column = column
         item.card = card
-        let text:NSAttributedString = NSAttributedString(string:card.text, attributes:[NSAttributedString.Key.font:
-            UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.light)])
+        let text:NSAttributedString = NSAttributedString(string:card.text, attributes:self.card)
         let textHeight:CGFloat = ceil(text.boundingRect(with:self.size, options:self.options, context:nil).size.height)
         item.label.attributedText = text
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editCard(view:)),
                        for:UIControl.Event.touchUpInside)
+        item.addGestureRecognizer(UIPanGestureRecognizer(target:self.view, action:#selector(self.view.dragCard(pan:))))
+        self.nextItem!.down = item
         self.layout(item:item, height:max(Constants.min, ceil(textHeight)))
     }
     
     private func makeNewCard(column:Column) {
-        let item:BoardImageView = BoardImageView()
+        let item:BoardItemView = BoardItemView()
         item.column = column
-        item.imageView.image = #imageLiteral(resourceName: "assetNewCard.pdf")
+        item.image.image = #imageLiteral(resourceName: "assetNewCard.pdf")
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newCard(view:)),
                        for:UIControl.Event.touchUpInside)
+        self.nextItem!.down = item
         self.layout(item:item, height:Constants.newCard)
     }
     
     private func layout(item:BoardItemView, height:CGFloat) {
-        self.view.touch.addSubview(item)
-        item.top = item.topAnchor.constraint(equalTo:self.view.touch.topAnchor, constant:self.top)
-        item.left = item.leftAnchor.constraint(equalTo:self.view.touch.leftAnchor, constant:self.left)
+        self.nextItem = item
+        self.view.content.addSubview(item)
+        item.top = item.topAnchor.constraint(equalTo:self.view.content.topAnchor)
+        item.left = item.leftAnchor.constraint(equalTo:self.view.content.leftAnchor)
         item.width = item.widthAnchor.constraint(equalToConstant:Constants.columnWidth)
         item.height = item.heightAnchor.constraint(equalToConstant:height)
         item.top.isActive = true
         item.left.isActive = true
         item.width.isActive = true
         item.height.isActive = true
-        self.top += height + Constants.vertical
     }
     
-    private func updateSize() {
-        self.view.scroll.contentSize = CGSize(width:self.left + Constants.columnWidth,
-                                              height:self.maxY + Constants.bottom)
-        self.view.touch.frame = CGRect(origin:CGPoint.zero, size:self.view.scroll.contentSize)
+    private func addColumn(item:BoardItemView) {
+        if self.firstColumn == nil {
+            self.firstColumn = item
+        }
+        self.nextColumn?.right = item
+        self.nextColumn = item
     }
 }
 
 private struct Constants {
-    static let top:CGFloat = 12.0
-    static let left:CGFloat = 17.0
-    static let horizontal:CGFloat = 5.0
-    static let vertical:CGFloat = 10.0
-    static let bottom:CGFloat = 20.0
     static let columnWidth:CGFloat = 200.0
     static let cardFont:CGFloat = 14.0
     static let headerFont:CGFloat = 18.0

@@ -3,16 +3,35 @@ import CleanArchitecture
 
 class BoardView:View<BoardPresenter> {
     weak var scroll:UIScrollView!
-    weak var touch:BoardTouchView!
-    private let organiser:BoardOrganiser
+    weak var content:UIView!
+    let drawer:BoardDrawer
+    let layouter:BoardLayouter
     
     required init() {
-        self.organiser = BoardOrganiser()
+        self.drawer = BoardDrawer()
+        self.layouter = BoardLayouter()
         super.init()
-        self.organiser.view = self
+        self.drawer.view = self
+        self.layouter.view = self
     }
     
     required init?(coder:NSCoder) { return nil }
+    
+    @objc func dragCard(pan:UIPanGestureRecognizer) {
+        let view:BoardItemView = pan.view as! BoardItemView
+        switch pan.state {
+        case UIGestureRecognizer.State.began:
+            self.content.bringSubviewToFront(view)
+            view.dragStart()
+        case UIGestureRecognizer.State.possible, UIGestureRecognizer.State.changed:
+            view.drag(point:pan.translation(in:self.content))
+        case UIGestureRecognizer.State.cancelled, UIGestureRecognizer.State.ended, UIGestureRecognizer.State.failed:
+            view.dragEnd()
+            UIView.animate(withDuration:Constants.animation) { [weak self] in
+                self?.content?.layoutIfNeeded()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         self.makeOutlets()
@@ -37,9 +56,10 @@ class BoardView:View<BoardPresenter> {
         self.scroll = scroll
         self.view.addSubview(scroll)
         
-        let touch:BoardTouchView = BoardTouchView()
-        self.touch = touch
-        self.scroll.addSubview(touch)
+        let content:UIView = UIView()
+        content.clipsToBounds = false
+        self.content = content
+        self.scroll.addSubview(content)
         
         self.navigationItem.rightBarButtonItems = [
             UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.action, target:self.presenter,
@@ -65,7 +85,12 @@ class BoardView:View<BoardPresenter> {
     private func configureViewModel() {
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardViewModel) in
             self?.title = viewModel.title
-            self?.organiser.refresh()
+            self?.drawer.draw()
+            self?.layouter.layout()
         }
     }
+}
+
+private struct Constants {
+    static let animation:TimeInterval = 0.3
 }

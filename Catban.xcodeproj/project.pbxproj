@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA063645211718B2004C1341 /* BoardTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA063644211718B2004C1341 /* BoardTouchView.swift */; };
 		DA06A1C12119A35100371607 /* TextCreateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1C02119A35100371607 /* TextCreateCard.swift */; };
-		DA06A1C32119DDA800371607 /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1C22119DDA800371607 /* BoardCardView.swift */; };
-		DA06A1C52119DDC500371607 /* BoardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1C42119DDC500371607 /* BoardImageView.swift */; };
-		DA06A1C72119DDCD00371607 /* BoardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1C62119DDCD00371607 /* BoardTextView.swift */; };
 		DA06A1C92119E4E200371607 /* DeleteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1C82119E4E200371607 /* DeleteStrategy.swift */; };
 		DA06A1CB2119E65A00371607 /* DeleteBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1CA2119E65A00371607 /* DeleteBoard.swift */; };
 		DA06A1CD2119EC4B00371607 /* DeleteColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06A1CC2119EC4B00371607 /* DeleteColumn.swift */; };
@@ -51,6 +47,7 @@
 		DA6E1D9D211186E000FDB6DF /* Domain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6E1D9B211186E000FDB6DF /* Domain.strings */; };
 		DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */; };
 		DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */; };
+		DA6F07A7211ACF070074DAC6 /* BoardLayouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */; };
 		DA780E8A2116EE6F00F1CFC1 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E892116EE6F00F1CFC1 /* DeleteView.swift */; };
 		DA780E8E2116EE8500F1CFC1 /* DeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */; };
 		DA899B87211306CE00A23696 /* LibraryStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA899B86211306CE00A23696 /* LibraryStateProtocol.swift */; };
@@ -67,7 +64,7 @@
 		DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB42114691A00C92463 /* BoardViewModel.swift */; };
 		DABBCFB72114692100C92463 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB62114692100C92463 /* BoardView.swift */; };
 		DABBCFB921146B0600C92463 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB821146B0600C92463 /* Localized.swift */; };
-		DAC5AE642118141400AE39E2 /* BoardOrganiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5AE632118141400AE39E2 /* BoardOrganiser.swift */; };
+		DAC5AE642118141400AE39E2 /* BoardDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5AE632118141400AE39E2 /* BoardDrawer.swift */; };
 		DAD3F15221159069005D7BBB /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD3F15121159069005D7BBB /* assets.xcassets */; };
 		DAD3F15621159FDD005D7BBB /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15521159FDD005D7BBB /* EditView.swift */; };
 		DAD3F1582115A0DA005D7BBB /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F1572115A0DA005D7BBB /* EditPresenter.swift */; };
@@ -106,11 +103,7 @@
 		577C732CED0D61E41E61BCF1 /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0596316A0FCD7974C6752E /* Pods-Catban.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.debug.xcconfig"; sourceTree = "<group>"; };
 		60F2CCC791665504012E8AEE /* Pods-Catban.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catban.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catban/Pods-Catban.release.xcconfig"; sourceTree = "<group>"; };
-		DA063644211718B2004C1341 /* BoardTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTouchView.swift; sourceTree = "<group>"; };
 		DA06A1C02119A35100371607 /* TextCreateCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateCard.swift; sourceTree = "<group>"; };
-		DA06A1C22119DDA800371607 /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
-		DA06A1C42119DDC500371607 /* BoardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardImageView.swift; sourceTree = "<group>"; };
-		DA06A1C62119DDCD00371607 /* BoardTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTextView.swift; sourceTree = "<group>"; };
 		DA06A1C82119E4E200371607 /* DeleteStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStrategy.swift; sourceTree = "<group>"; };
 		DA06A1CA2119E65A00371607 /* DeleteBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBoard.swift; sourceTree = "<group>"; };
 		DA06A1CC2119EC4B00371607 /* DeleteColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteColumn.swift; sourceTree = "<group>"; };
@@ -148,6 +141,7 @@
 		DA6E1D9C211186E000FDB6DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Domain.strings; sourceTree = "<group>"; };
 		DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
 		DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
+		DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardLayouter.swift; sourceTree = "<group>"; };
 		DA780E892116EE6F00F1CFC1 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePresenter.swift; sourceTree = "<group>"; };
 		DA899B86211306CE00A23696 /* LibraryStateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStateProtocol.swift; sourceTree = "<group>"; };
@@ -167,7 +161,7 @@
 		DABBCFB42114691A00C92463 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		DABBCFB62114692100C92463 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		DABBCFB821146B0600C92463 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
-		DAC5AE632118141400AE39E2 /* BoardOrganiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardOrganiser.swift; sourceTree = "<group>"; };
+		DAC5AE632118141400AE39E2 /* BoardDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDrawer.swift; sourceTree = "<group>"; };
 		DAD3F15121159069005D7BBB /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DAD3F15321159AB8005D7BBB /* Design */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Design; sourceTree = "<group>"; };
 		DAD3F15521159FDD005D7BBB /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
@@ -366,12 +360,9 @@
 				DABBCFB22114691200C92463 /* BoardPresenter.swift */,
 				DABBCFB42114691A00C92463 /* BoardViewModel.swift */,
 				DABBCFB62114692100C92463 /* BoardView.swift */,
-				DAC5AE632118141400AE39E2 /* BoardOrganiser.swift */,
-				DA063644211718B2004C1341 /* BoardTouchView.swift */,
 				DADA70CF21171DDD007A825F /* BoardItemView.swift */,
-				DA06A1C42119DDC500371607 /* BoardImageView.swift */,
-				DA06A1C62119DDCD00371607 /* BoardTextView.swift */,
-				DA06A1C22119DDA800371607 /* BoardCardView.swift */,
+				DAC5AE632118141400AE39E2 /* BoardDrawer.swift */,
+				DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -643,8 +634,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA063645211718B2004C1341 /* BoardTouchView.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
+				DA6F07A7211ACF070074DAC6 /* BoardLayouter.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA06A1C12119A35100371607 /* TextCreateCard.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
@@ -653,11 +644,9 @@
 				DAD3F1582115A0DA005D7BBB /* EditPresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
 				DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */,
-				DA06A1C32119DDA800371607 /* BoardCardView.swift in Sources */,
-				DA06A1C72119DDCD00371607 /* BoardTextView.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
-				DAC5AE642118141400AE39E2 /* BoardOrganiser.swift in Sources */,
+				DAC5AE642118141400AE39E2 /* BoardDrawer.swift in Sources */,
 				DA36DEB2210EE260008409E8 /* LibraryViewModel.swift in Sources */,
 				DA5C69DE210DE0CF00A07619 /* Router.swift in Sources */,
 				DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */,
@@ -666,7 +655,6 @@
 				DA06A1CF2119ECA000371607 /* DeleteCard.swift in Sources */,
 				DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */,
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,
-				DA06A1C52119DDC500371607 /* BoardImageView.swift in Sources */,
 				DAD3F15621159FDD005D7BBB /* EditView.swift in Sources */,
 				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
 				DA96888921196E7400F0B240 /* TextStrategy.swift in Sources */,

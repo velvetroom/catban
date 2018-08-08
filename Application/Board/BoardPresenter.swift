@@ -19,15 +19,15 @@ class BoardPresenter:Presenter {
         self.interactor.newColumn()
     }
     
-    @objc func editColumn(view:BoardTextView) {
+    @objc func editColumn(view:BoardItemView) {
         self.interactor.editColumn(column:view.column!)
     }
     
-    @objc func newCard(view:BoardImageView) {
+    @objc func newCard(view:BoardItemView) {
         self.interactor.newCard(column:view.column!)
     }
     
-    @objc func editCard(view:BoardCardView) {
+    @objc func editCard(view:BoardItemView) {
         self.interactor.editCard(column:view.column!, card:view.card!)
     }
     

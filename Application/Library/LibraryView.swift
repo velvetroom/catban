@@ -43,9 +43,11 @@ class LibraryView:View<LibraryPresenter> {
         self.loading = loading
         self.view.addSubview(loading)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem:UIBarButtonItem.SystemItem.add, target:self.presenter,
-            action:#selector(self.presenter.newBoard))
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.add, target:self.presenter,
+                            action:#selector(self.presenter.newBoard)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                            action:#selector(self.presenter.scan))]
     }
     
     private func layoutOutlets() {

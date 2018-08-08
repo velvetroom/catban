@@ -13,6 +13,10 @@ class LibraryPresenter:Presenter {
         self.interactor.newBoard()
     }
     
+    @objc func scan() {
+        self.interactor.scan()
+    }
+    
     @objc func selected(cell:LibraryCellView) {
         self.interactor.select(identifier:cell.viewModel.board)
     }

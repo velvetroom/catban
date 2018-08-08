@@ -19,6 +19,10 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         }
     }
     
+    func scan() {
+        
+    }
+    
     func newBoard() {
         do { try self.library.newBoard() } catch { }
     }

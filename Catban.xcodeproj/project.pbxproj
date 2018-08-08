@@ -51,6 +51,7 @@
 		DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */; };
 		DA6E2112211B1B8B00F1156E /* Qr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E2111211B1B8B00F1156E /* Qr.swift */; };
 		DA6E2114211B1E1800F1156E /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E2113211B1E1800F1156E /* ShareViewModel.swift */; };
+		DA6E2116211B287E00F1156E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6E2115211B287E00F1156E /* InfoPlist.strings */; };
 		DA6F07A7211ACF070074DAC6 /* BoardLayouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */; };
 		DA780E8A2116EE6F00F1CFC1 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E892116EE6F00F1CFC1 /* DeleteView.swift */; };
 		DA780E8E2116EE8500F1CFC1 /* DeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */; };
@@ -149,6 +150,7 @@
 		DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
 		DA6E2111211B1B8B00F1156E /* Qr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qr.swift; sourceTree = "<group>"; };
 		DA6E2113211B1E1800F1156E /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		DA6E2115211B287E00F1156E /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardLayouter.swift; sourceTree = "<group>"; };
 		DA780E892116EE6F00F1CFC1 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePresenter.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			children = (
 				DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */,
 				DA52932121102F1A00C5B8A5 /* Localizable.strings */,
+				DA6E2115211B287E00F1156E /* InfoPlist.strings */,
 				DA6E1D9B211186E000FDB6DF /* Domain.strings */,
 				DAD3F15121159069005D7BBB /* assets.xcassets */,
 			);
@@ -572,6 +575,7 @@
 				DA52932321102F1A00C5B8A5 /* Localizable.strings in Resources */,
 				DAD3F15221159069005D7BBB /* assets.xcassets in Resources */,
 				DA899B932113301200A23696 /* GoogleService-Info.plist in Resources */,
+				DA6E2116211B287E00F1156E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

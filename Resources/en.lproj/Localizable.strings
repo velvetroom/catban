@@ -10,3 +10,6 @@ DeleteColumn.title="Delete column?";
 DeleteCard.title="Delete card?";
 DeleteView.cancel="Cancel";
 DeleteView.delete="Delete";
+ShareView.label="Share board";
+ShareView.done="Done";
+ShareView.send="Send";

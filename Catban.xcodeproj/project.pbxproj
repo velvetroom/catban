@@ -16,6 +16,8 @@
 		DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */; };
 		DA1538F92114449A005C05EE /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1538F82114449A005C05EE /* TestFactory.swift */; };
 		DA1984FE21134EE50061A234 /* DatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */; };
+		DA36095F211B143700F66413 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36095E211B143700F66413 /* SharePresenter.swift */; };
+		DA360961211B144800F66413 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA360960211B144800F66413 /* ShareView.swift */; };
 		DA36DEA3210EDE06008409E8 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */; };
 		DA36DEA5210EDE22008409E8 /* Session_v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA4210EDE22008409E8 /* Session_v1.swift */; };
 		DA36DEA7210EDE9C008409E8 /* LibraryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA6210EDE9C008409E8 /* LibraryProtocol.swift */; };
@@ -47,6 +49,8 @@
 		DA6E1D9D211186E000FDB6DF /* Domain.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA6E1D9B211186E000FDB6DF /* Domain.strings */; };
 		DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */; };
 		DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */; };
+		DA6E2112211B1B8B00F1156E /* Qr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E2111211B1B8B00F1156E /* Qr.swift */; };
+		DA6E2114211B1E1800F1156E /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E2113211B1E1800F1156E /* ShareViewModel.swift */; };
 		DA6F07A7211ACF070074DAC6 /* BoardLayouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */; };
 		DA780E8A2116EE6F00F1CFC1 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E892116EE6F00F1CFC1 /* DeleteView.swift */; };
 		DA780E8E2116EE8500F1CFC1 /* DeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */; };
@@ -112,6 +116,8 @@
 		DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
 		DA1538F82114449A005C05EE /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceProtocol.swift; sourceTree = "<group>"; };
+		DA36095E211B143700F66413 /* SharePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
+		DA360960211B144800F66413 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
 		DA36DEA4210EDE22008409E8 /* Session_v1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session_v1.swift; sourceTree = "<group>"; };
 		DA36DEA6210EDE9C008409E8 /* LibraryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProtocol.swift; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 		DA6E1D9C211186E000FDB6DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Domain.strings; sourceTree = "<group>"; };
 		DA6E1DA02111925F00FDB6DF /* LibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
 		DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
+		DA6E2111211B1B8B00F1156E /* Qr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qr.swift; sourceTree = "<group>"; };
+		DA6E2113211B1E1800F1156E /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		DA6F07A6211ACF070074DAC6 /* BoardLayouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardLayouter.swift; sourceTree = "<group>"; };
 		DA780E892116EE6F00F1CFC1 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		DA780E8D2116EE8500F1CFC1 /* DeletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePresenter.swift; sourceTree = "<group>"; };
@@ -211,6 +219,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA36095D211B036C00F66413 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				DA36095E211B143700F66413 /* SharePresenter.swift */,
+				DA6E2113211B1E1800F1156E /* ShareViewModel.swift */,
+				DA360960211B144800F66413 /* ShareView.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		DA36DEAA210EE1DA008409E8 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,8 +249,9 @@
 				DA8EDE14210C51D20056B6B0 /* Shared */,
 				DA36DEAA210EE1DA008409E8 /* Library */,
 				DABBCFAF211468F800C92463 /* Board */,
-				DAD3F15421159F95005D7BBB /* Text */,
+				DAD3F15421159F95005D7BBB /* Edit */,
 				DA780E882116EE5D00F1CFC1 /* Delete */,
+				DA36095D211B036C00F66413 /* Share */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -349,6 +368,7 @@
 				DA5C69DD210DE0CF00A07619 /* Router.swift */,
 				DA36DEB3210EE34C008409E8 /* LoadingView.swift */,
 				DA36DEB5210EE412008409E8 /* Colors.swift */,
+				DA6E2111211B1B8B00F1156E /* Qr.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -367,7 +387,7 @@
 			path = Board;
 			sourceTree = "<group>";
 		};
-		DAD3F15421159F95005D7BBB /* Text */ = {
+		DAD3F15421159F95005D7BBB /* Edit */ = {
 			isa = PBXGroup;
 			children = (
 				DAD3F1572115A0DA005D7BBB /* EditPresenter.swift */,
@@ -377,7 +397,7 @@
 				DA96888C21196F4A00F0B240 /* TextCreateColumn.swift */,
 				DA06A1C02119A35100371607 /* TextCreateCard.swift */,
 			);
-			path = Text;
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		DAD7ABCF210B6183008BDF4F = {
@@ -634,8 +654,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA6E2114211B1E1800F1156E /* ShareViewModel.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA6F07A7211ACF070074DAC6 /* BoardLayouter.swift in Sources */,
+				DA6E2112211B1B8B00F1156E /* Qr.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA06A1C12119A35100371607 /* TextCreateCard.swift in Sources */,
 				DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */,
@@ -644,6 +666,7 @@
 				DAD3F1582115A0DA005D7BBB /* EditPresenter.swift in Sources */,
 				DA511E60210B651800ABD604 /* Application.swift in Sources */,
 				DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */,
+				DA360961211B144800F66413 /* ShareView.swift in Sources */,
 				DA36DEB6210EE412008409E8 /* Colors.swift in Sources */,
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
 				DAC5AE642118141400AE39E2 /* BoardDrawer.swift in Sources */,
@@ -656,6 +679,7 @@
 				DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */,
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,
 				DAD3F15621159FDD005D7BBB /* EditView.swift in Sources */,
+				DA36095F211B143700F66413 /* SharePresenter.swift in Sources */,
 				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
 				DA96888921196E7400F0B240 /* TextStrategy.swift in Sources */,
 				DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */,

@@ -22,7 +22,7 @@ class BoardPresenter:Presenter {
     }
     
     @objc func share() {
-        
+        self.interactor.share()
     }
     
     @objc func newColumn() {

@@ -25,6 +25,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     
     func select(identifier:String) {
         let view:BoardView = BoardView()
+        view.presenter.interactor.identifier = identifier
         view.presenter.interactor.board = self.library.boards[identifier]
         Application.router.pushViewController(view, animated:true)
     }

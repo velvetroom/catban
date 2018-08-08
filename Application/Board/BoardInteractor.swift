@@ -5,10 +5,12 @@ import Domain
 class BoardInteractor:Interactor {
     weak var delegate:InteractorDelegate?
     var board:BoardProtocol!
+    var identifier:String
     private let library:LibraryProtocol
     
     required init() {
         self.library = Factory.makeLibrary()
+        self.identifier = String()
     }
     
     func detach(card:Card, column:Column) {
@@ -27,6 +29,13 @@ class BoardInteractor:Interactor {
             column.cards.insert(card, at:0)
         }
         self.save()
+    }
+    
+    func share() {
+        let presenter:SharePresenter = SharePresenter()
+        let view:ShareView = ShareView(presenter:presenter)
+        presenter.interactor = self
+        Application.router.present(view, animated:true, completion:nil)
     }
     
     func edit() {

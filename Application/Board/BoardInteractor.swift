@@ -11,6 +11,24 @@ class BoardInteractor:Interactor {
         self.library = Factory.makeLibrary()
     }
     
+    func detach(card:Card, column:Column) {
+        column.delete(card:card)
+    }
+    
+    func attach(card:Card, column:Column, after:Card?) {
+        if let after:Card = after {
+            for index:Int in 0 ..< column.cards.count {
+                if column.cards[index] === after {
+                    column.cards.insert(card, at:index + 1)
+                    break
+                }
+            }
+        } else {
+            column.cards.insert(card, at:0)
+        }
+        self.save()
+    }
+    
     func edit() {
         let text:TextChange = TextChange()
         text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())

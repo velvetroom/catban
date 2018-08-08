@@ -11,7 +11,7 @@ class DeleteCard:DeleteStrategy {
     }
     
     func delete(interactor:BoardInteractor) {
-        column.cards.removeAll { (item:Card) -> Bool in item === self.card }
+        self.column.delete(card:self.card)
         interactor.save()
     }
 }

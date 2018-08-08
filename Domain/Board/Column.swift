@@ -12,4 +12,8 @@ public class Column:Codable, TextProtocol {
         self.created = Date()
         self.cards = []
     }
+    
+    public func delete(card:Card) {
+        self.cards.removeAll { (item:Card) -> Bool in item === card }
+    }
 }

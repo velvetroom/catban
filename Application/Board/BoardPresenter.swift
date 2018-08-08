@@ -7,6 +7,16 @@ class BoardPresenter:Presenter {
     
     required init() { }
     
+    func detach(item:BoardItemView) {
+        self.interactor.detach(card:item.card, column:item.column)
+        item.column = nil
+    }
+    
+    func attach(item:BoardItemView, after:BoardItemView) {
+        self.interactor.attach(card:item.card, column:after.column, after:after.card)
+        item.column = after.column
+    }
+    
     @objc func edit() {
         self.interactor.edit()
     }

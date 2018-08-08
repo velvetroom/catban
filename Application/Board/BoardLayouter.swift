@@ -27,6 +27,7 @@ class BoardLayouter {
         item.up?.down = item.down
         item.down?.up = item.up
         self.layout()
+        self.view.presenter.detach(item:item)
     }
     
     func attach(item:BoardItemView) {
@@ -50,6 +51,7 @@ class BoardLayouter {
         parent.down?.up = item
         parent.down = item
         self.layout()
+        self.view.presenter.attach(item:item, after:parent)
     }
 
     private func update(width:CGFloat, height:CGFloat) {

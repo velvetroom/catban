@@ -10,7 +10,7 @@ class DeleteColumn:DeleteStrategy {
     }
     
     func delete(interactor:BoardInteractor) {
-        interactor.board.columns.removeAll { (item:Column) -> Bool in item === self.column }
+        interactor.board.delete(column:self.column)
         interactor.save()
     }
 }

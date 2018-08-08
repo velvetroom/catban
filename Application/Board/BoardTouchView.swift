@@ -1,9 +1,6 @@
 import UIKit
 
 class BoardTouchView:UIView {
-    private weak var item:BoardItemView?
-    private var touch:CGPoint
-    
     init() {
         self.touch = CGPoint.zero
         super.init(frame:CGRect.zero)
@@ -11,31 +8,28 @@ class BoardTouchView:UIView {
     }
     
     required init?(coder:NSCoder) { return nil }
-    override func touchesCancelled(_ touches:Set<UITouch>, with:UIEvent?) { self.dragEnd() }
-    override func touchesEnded(_ touches:Set<UITouch>, with:UIEvent?) { self.dragEnd() }
+    override func touchesCancelled(_ touches:Set<UITouch>, with:UIEvent?) { self.dragEnd(touch:touches.first!) }
+    override func touchesEnded(_ touches:Set<UITouch>, with:UIEvent?) { self.dragEnd(touch:touches.first!) }
     
     override func touchesBegan(_ touches:Set<UITouch>, with:UIEvent?) {
-        guard let touch:UITouch = touches.first else { return }
-        self.touch = touch.location(in:self)
-        self.item = touch.view as? BoardItemView
-        self.dragBegin()
+        guard
+            let touch:UITouch = touches.first,
+            let item:BoardCardView = touch.view as? BoardCardView
+        else { return }
+        let point:CGPoint = touch.location(in:self)
+        item.dragBegin(point:point)
     }
     
     override func touchesMoved(_ touches:Set<UITouch>, with:UIEvent?) {
-        guard let touch:UITouch = touches.first else { return }
-        self.touch = touch.location(in:self)
-        self.dragUpdate()
+        guard
+            let touch:UITouch = touches.first,
+            let item:BoardCardView = touch.view as? BoardCardView
+        else { return }
+        let point:CGPoint = touch.location(in:self)
+        item.dragUpdate(point:point)
     }
     
-    private func dragBegin() {
-        
-    }
-    
-    private func dragUpdate() {
-        
-    }
-    
-    private func dragEnd() {
+    private func dragEnd(touch:UITouch) {
         
     }
     

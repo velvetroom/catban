@@ -2,7 +2,7 @@ import UIKit
 import CleanArchitecture
 
 class EditPresenter:Presenter {
-    var interactor:BoardInteractor!
+    weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
     var strategyText:TextStrategy!
     var strategyDelete:DeleteStrategy?

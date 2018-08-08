@@ -20,7 +20,10 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     }
     
     func scan() {
-        
+        let presenter:ScanPresenter = ScanPresenter()
+        let view:ScanView = ScanView(presenter:presenter)
+        presenter.interactor = self
+        Application.router.present(view, animated:true, completion:nil)
     }
     
     func newBoard() {

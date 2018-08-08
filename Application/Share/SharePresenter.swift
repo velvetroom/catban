@@ -2,7 +2,7 @@ import UIKit
 import CleanArchitecture
 
 class SharePresenter:Presenter {
-    var interactor:BoardInteractor!
+    weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
     private let qr:Qr
     

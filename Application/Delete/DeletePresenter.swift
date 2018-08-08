@@ -2,7 +2,7 @@ import Foundation
 import CleanArchitecture
 
 class DeletePresenter:Presenter {
-    var interactor:BoardInteractor!
+    weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
     var strategy:DeleteStrategy!
     

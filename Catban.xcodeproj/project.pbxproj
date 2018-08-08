@@ -76,6 +76,8 @@
 		DAD3F15C2115A2DF005D7BBB /* TextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3F15B2115A2DF005D7BBB /* TextProtocol.swift */; };
 		DADA70D021171DDD007A825F /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA70CF21171DDD007A825F /* BoardItemView.swift */; };
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
+		DAE7938A211B2D0D00989DD0 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE79389211B2D0D00989DD0 /* ScanView.swift */; };
+		DAE7938C211B2D3300989DD0 /* ScanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
 		E056B8DA688CD12DEF241F69 /* libPods-Catban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C732CED0D61E41E61BCF1 /* libPods-Catban.a */; };
 /* End PBXBuildFile section */
@@ -181,6 +183,8 @@
 		DAD7AC03210B61D5008BDF4F /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADA70CF21171DDD007A825F /* BoardItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DAE79389211B2D0D00989DD0 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPresenter.swift; sourceTree = "<group>"; };
 		DAFD730921135176004718FE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +258,7 @@
 				DAD3F15421159F95005D7BBB /* Edit */,
 				DA780E882116EE5D00F1CFC1 /* Delete */,
 				DA36095D211B036C00F66413 /* Share */,
+				DAE79388211B2CFB00989DD0 /* Scan */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -437,6 +442,15 @@
 				DAD3F15121159069005D7BBB /* assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DAE79388211B2CFB00989DD0 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */,
+				DAE79389211B2D0D00989DD0 /* ScanView.swift */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		FB0124EE1C9F6F31EAA746DC /* Frameworks */ = {
@@ -661,6 +675,7 @@
 				DA6E2114211B1E1800F1156E /* ShareViewModel.swift in Sources */,
 				DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */,
 				DA6F07A7211ACF070074DAC6 /* BoardLayouter.swift in Sources */,
+				DAE7938C211B2D3300989DD0 /* ScanPresenter.swift in Sources */,
 				DA6E2112211B1B8B00F1156E /* Qr.swift in Sources */,
 				DA899B97211330A600A23696 /* Services.swift in Sources */,
 				DA06A1C12119A35100371607 /* TextCreateCard.swift in Sources */,
@@ -675,6 +690,7 @@
 				DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */,
 				DAC5AE642118141400AE39E2 /* BoardDrawer.swift in Sources */,
 				DA36DEB2210EE260008409E8 /* LibraryViewModel.swift in Sources */,
+				DAE7938A211B2D0D00989DD0 /* ScanView.swift in Sources */,
 				DA5C69DE210DE0CF00A07619 /* Router.swift in Sources */,
 				DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */,
 				DAFD730A21135176004718FE /* DatabaseService.swift in Sources */,

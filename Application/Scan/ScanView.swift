@@ -5,6 +5,9 @@ import AVFoundation
 class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
     weak var bar:UIToolbar!
     weak var name:UILabel!
+    weak var camera:UIView!
+    weak var success:UIView!
+    weak var fail:UIView!
     private var session:AVCaptureSession?
     private var input:AVCaptureInput?
     private var output:AVCaptureMetadataOutput?
@@ -13,6 +16,16 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
     override var shouldAutorotate:Bool { get { return false } }
     override var supportedInterfaceOrientations:UIInterfaceOrientationMask { get {
         return UIInterfaceOrientationMask.portrait } }
+    
+    func metadataOutput(_:AVCaptureMetadataOutput, didOutput objects:[AVMetadataObject], from:AVCaptureConnection) {
+        guard
+            let object:AVMetadataMachineReadableCodeObject = objects.first as? AVMetadataMachineReadableCodeObject,
+            let string:String = object.stringValue
+        else { return }
+        self.cleanSession()
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        self.read(string:string)
+    }
     
     override func viewDidLoad() {
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical

@@ -78,6 +78,7 @@
 		DAE68BFC210B6D3C000E5F31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */; };
 		DAE7938A211B2D0D00989DD0 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE79389211B2D0D00989DD0 /* ScanView.swift */; };
 		DAE7938C211B2D3300989DD0 /* ScanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */; };
+		DAE7938E211B36CC00989DD0 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7938D211B36CC00989DD0 /* ScanViewModel.swift */; };
 		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
 		E056B8DA688CD12DEF241F69 /* libPods-Catban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C732CED0D61E41E61BCF1 /* libPods-Catban.a */; };
 /* End PBXBuildFile section */
@@ -185,6 +186,7 @@
 		DAE68BFB210B6D3C000E5F31 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAE79389211B2D0D00989DD0 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPresenter.swift; sourceTree = "<group>"; };
+		DAE7938D211B36CC00989DD0 /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		DAFD730921135176004718FE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -448,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */,
+				DAE7938D211B36CC00989DD0 /* ScanViewModel.swift */,
 				DAE79389211B2D0D00989DD0 /* ScanView.swift */,
 			);
 			path = Scan;
@@ -695,6 +698,7 @@
 				DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */,
 				DAFD730A21135176004718FE /* DatabaseService.swift in Sources */,
 				DA36DEB0210EE22F008409E8 /* LibraryInteractor.swift in Sources */,
+				DAE7938E211B36CC00989DD0 /* ScanViewModel.swift in Sources */,
 				DA06A1CF2119ECA000371607 /* DeleteCard.swift in Sources */,
 				DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */,
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,

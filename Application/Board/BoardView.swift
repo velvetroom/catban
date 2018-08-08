@@ -21,15 +21,16 @@ class BoardView:View<BoardPresenter> {
         let view:BoardItemView = pan.view as! BoardItemView
         switch pan.state {
         case UIGestureRecognizer.State.began:
-            self.content.bringSubviewToFront(view)
             view.dragStart()
+            self.content.bringSubviewToFront(view)
+            self.layouter.detach(item:view)
+            self.animate()
         case UIGestureRecognizer.State.possible, UIGestureRecognizer.State.changed:
             view.drag(point:pan.translation(in:self.content))
         case UIGestureRecognizer.State.cancelled, UIGestureRecognizer.State.ended, UIGestureRecognizer.State.failed:
             view.dragEnd()
-            UIView.animate(withDuration:Constants.animation) { [weak self] in
-                self?.content?.layoutIfNeeded()
-            }
+            self.layouter.attach(item:view)
+            self.animate()
         }
     }
     
@@ -87,6 +88,12 @@ class BoardView:View<BoardPresenter> {
             self?.title = viewModel.title
             self?.drawer.draw()
             self?.layouter.layout()
+        }
+    }
+    
+    private func animate() {
+        UIView.animate(withDuration:Constants.animation) { [weak self] in
+            self?.content?.layoutIfNeeded()
         }
     }
 }

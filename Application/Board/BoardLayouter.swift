@@ -22,6 +22,35 @@ class BoardLayouter {
         }
         self.update(width:left, height:maxY)
     }
+    
+    func detach(item:BoardItemView) {
+        item.up?.down = item.down
+        item.down?.up = item.up
+        self.layout()
+    }
+    
+    func attach(item:BoardItemView) {
+        var column:BoardItemView = self.view.drawer.firstColumn!
+        while column.frame.maxX < item.frame.midX {
+            if column.right?.right != nil {
+                column = column.right!
+            } else {
+                break
+            }
+        }
+        var parent:BoardItemView = column
+        while let child:BoardItemView = parent.down {
+            if child.top.constant > item.top.constant || child.down == nil {
+                break
+            }
+            parent = child
+        }
+        item.up = parent
+        item.down = parent.down
+        parent.down?.up = item
+        parent.down = item
+        self.layout()
+    }
 
     private func update(width:CGFloat, height:CGFloat) {
         self.view.scroll.contentSize = CGSize(width:width, height:height + Constants.bottom)

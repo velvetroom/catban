@@ -67,7 +67,7 @@ class BoardDrawer {
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editCard(view:)),
                        for:UIControl.Event.touchUpInside)
         item.addGestureRecognizer(UIPanGestureRecognizer(target:self.view, action:#selector(self.view.dragCard(pan:))))
-        self.nextItem!.down = item
+        self.addItem(item:item)
         self.layout(item:item, height:max(Constants.min, ceil(textHeight)))
     }
     
@@ -77,7 +77,7 @@ class BoardDrawer {
         item.image.image = #imageLiteral(resourceName: "assetNewCard.pdf")
         item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newCard(view:)),
                        for:UIControl.Event.touchUpInside)
-        self.nextItem!.down = item
+        self.addItem(item:item)
         self.layout(item:item, height:Constants.newCard)
     }
     
@@ -92,6 +92,11 @@ class BoardDrawer {
         item.left.isActive = true
         item.width.isActive = true
         item.height.isActive = true
+    }
+    
+    private func addItem(item:BoardItemView) {
+        item.up = self.nextItem
+        self.nextItem!.down = item
     }
     
     private func addColumn(item:BoardItemView) {

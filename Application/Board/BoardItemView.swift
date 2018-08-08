@@ -10,6 +10,7 @@ class BoardItemView:UIControl {
     weak var column:Column!
     weak var label:UILabel!
     weak var image:UIImageView!
+    weak var up:BoardItemView?
     weak var down:BoardItemView?
     weak var right:BoardItemView?
     var point:CGPoint
@@ -34,8 +35,6 @@ class BoardItemView:UIControl {
     
     func dragEnd() {
         self.isSelected = false
-        self.left.constant = self.point.x
-        self.top.constant = self.point.y
     }
     
     func drag(point:CGPoint) {

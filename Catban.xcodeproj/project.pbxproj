@@ -16,6 +16,7 @@
 		DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */; };
 		DA1538F92114449A005C05EE /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1538F82114449A005C05EE /* TestFactory.swift */; };
 		DA1984FE21134EE50061A234 /* DatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */; };
+		DA3168B2211C2C2900515F97 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA3168B1211C2C2900515F97 /* brand.xcassets */; };
 		DA36095F211B143700F66413 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36095E211B143700F66413 /* SharePresenter.swift */; };
 		DA360961211B144800F66413 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA360960211B144800F66413 /* ShareView.swift */; };
 		DA36DEA3210EDE06008409E8 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */; };
@@ -120,6 +121,7 @@
 		DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
 		DA1538F82114449A005C05EE /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceProtocol.swift; sourceTree = "<group>"; };
+		DA3168B1211C2C2900515F97 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
 		DA36095E211B143700F66413 /* SharePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA360960211B144800F66413 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				DA6E2115211B287E00F1156E /* InfoPlist.strings */,
 				DA6E1D9B211186E000FDB6DF /* Domain.strings */,
 				DAD3F15121159069005D7BBB /* assets.xcassets */,
+				DA3168B1211C2C2900515F97 /* brand.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				DAD3F15221159069005D7BBB /* assets.xcassets in Resources */,
 				DA899B932113301200A23696 /* GoogleService-Info.plist in Resources */,
 				DA6E2116211B287E00F1156E /* InfoPlist.strings in Resources */,
+				DA3168B2211C2C2900515F97 /* brand.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +935,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B0596316A0FCD7974C6752E /* Pods-Catban.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Configuration/application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -946,6 +951,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 60F2CCC791665504012E8AEE /* Pods-Catban.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Configuration/application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

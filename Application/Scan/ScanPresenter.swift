@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import CleanArchitecture
 
 class ScanPresenter:Presenter {
@@ -7,8 +7,11 @@ class ScanPresenter:Presenter {
     
     required init() { }
     
-    @objc func cancel() {
-        Application.router.dismiss(animated:true, completion:nil)
+    @objc func library() {
+        let picker:UIImagePickerController = UIImagePickerController()
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        picker.allowsEditing = false
+        Application.router.present(picker, animated:true, completion:nil)
     }
     
     func read(string:String) {

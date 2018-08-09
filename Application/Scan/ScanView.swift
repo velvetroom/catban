@@ -3,8 +3,6 @@ import CleanArchitecture
 import AVFoundation
 
 class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
-    weak var bar:UIToolbar!
-    weak var name:UILabel!
     weak var camera:UIView!
     weak var message:UIView!
     weak var icon:UIImageView!
@@ -13,7 +11,6 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
     private var input:AVCaptureInput?
     private var output:AVCaptureMetadataOutput?
     private var previewLayer:AVCaptureVideoPreviewLayer?
-    override var prefersStatusBarHidden:Bool { get { return true } }
     override var shouldAutorotate:Bool { get { return false } }
     override var supportedInterfaceOrientations:UIInterfaceOrientationMask { get {
         return UIInterfaceOrientationMask.portrait } }
@@ -29,19 +26,19 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     override func viewDidLoad() {
-        self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.modalPresentationCapturesStatusBarAppearance = true
         self.makeOutlets()
         self.layoutOutlets()
         self.configureViewModel()
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        self.title = NSLocalizedString("ScanView.title", comment:String())
     }
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        self.startSession()
+        if self.session == nil {
+            self.startSession()
+        }
     }
     
     override func viewWillDisappear(_ animated:Bool) {
@@ -67,7 +64,7 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = false
         label.textAlignment = NSTextAlignment.center
-        label.font = UIFont.systemFont(ofSize:Constants.message, weight:UIFont.Weight.light)
+        label.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
         label.textColor = UIColor.black
         self.label = label
         self.message.addSubview(label)
@@ -80,44 +77,12 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         self.icon = icon
         self.message.addSubview(icon)
         
-        let bar:UIToolbar = UIToolbar()
-        bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.backgroundColor = UIColor.black
-        bar.barTintColor = UIColor.black
-        bar.tintColor = UIColor.white
-        bar.isTranslucent = false
-        bar.setBackgroundImage(UIImage(), forToolbarPosition:UIBarPosition.any, barMetrics:UIBarMetrics.default)
-        bar.setShadowImage(UIImage(), forToolbarPosition:UIBarPosition.any)
-        bar.setItems([UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.stop, target:self.presenter,
-                                      action:#selector(self.presenter.cancel))], animated:false)
-        self.bar = bar
-        self.view.addSubview(bar)
-        
-        let name:UILabel = UILabel()
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.isUserInteractionEnabled = false
-        name.textAlignment = NSTextAlignment.center
-        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
-        name.textColor = UIColor.white
-        name.text = NSLocalizedString("ScanView.name", comment:String())
-        self.name = name
-        self.view.addSubview(name)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title:NSLocalizedString("ScanView.library", comment:String()), style:UIBarButtonItem.Style.plain,
+                target:self.presenter, action:#selector(self.presenter.library))
     }
     
     private func layoutOutlets() {
-        self.bar.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.bar.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        self.bar.heightAnchor.constraint(equalToConstant:Constants.bar).isActive = true
-        if #available(iOS 11.0, *) {
-            self.bar.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            self.bar.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-        }
-        
-        self.name.topAnchor.constraint(equalTo:self.bar.topAnchor).isActive = true
-        self.name.bottomAnchor.constraint(equalTo:self.bar.bottomAnchor).isActive = true
-        self.name.leftAnchor.constraint(equalTo:self.bar.leftAnchor).isActive = true
-        self.name.rightAnchor.constraint(equalTo:self.bar.rightAnchor).isActive = true
         
         self.camera.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
         self.camera.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
@@ -136,6 +101,10 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         
         self.label.topAnchor.constraint(equalTo:self.icon.bottomAnchor).isActive = true
         self.label.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
+        }
     }
     
     private func configureViewModel() {
@@ -201,9 +170,7 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
 }
 
 private struct Constants {
-    static let bar:CGFloat = 44.0
-    static let font:CGFloat = 14.0
-    static let message:CGFloat = 16.0
+    static let font:CGFloat = 16.0
     static let animation:TimeInterval = 0.3
     static let image:CGFloat = 80.0
 }

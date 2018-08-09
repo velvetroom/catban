@@ -23,7 +23,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         let presenter:ScanPresenter = ScanPresenter()
         let view:ScanView = ScanView(presenter:presenter)
         presenter.interactor = self
-        Application.router.present(view, animated:true, completion:nil)
+        Application.router.pushViewController(view, animated:true)
     }
     
     func duplicated(identifier:String) -> Bool {

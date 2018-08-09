@@ -1,5 +1,9 @@
 LibraryView.title="Library";
-LibraryPresenter.empty="You haven't created any board yet.\nUse the button on the top right corner to begin.";
+LibraryPresenter.empty="Empty library.\nUse the options on the top to create a new board or load one from a QR Code.";
+LibraryInteractor.board="Catban board";
+LibraryInteractor.column.todo="To do";
+LibraryInteractor.column.progress="In progress";
+LibraryInteractor.column.done="Done";
 BoardInteractor.boardTitle="Edit board";
 BoardInteractor.columnTitle="Edit column";
 TextCreateColumn.title="New column";

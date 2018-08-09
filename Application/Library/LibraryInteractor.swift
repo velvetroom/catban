@@ -54,6 +54,20 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     }
     
     func libraryCreated(board:String) {
+        self.addTemplate(board:self.library.boards[board]!)
         self.select(identifier:board)
+    }
+    
+    private func addTemplate(board:BoardProtocol) {
+        var board:BoardProtocol = board
+        let todo:Column = Factory.makeColumn()
+        todo.text = NSLocalizedString("LibraryInteractor.column.todo", comment:String())
+        let progress:Column = Factory.makeColumn()
+        progress.text = NSLocalizedString("LibraryInteractor.column.progress", comment:String())
+        let done:Column = Factory.makeColumn()
+        done.text = NSLocalizedString("LibraryInteractor.column.done", comment:String())
+        board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
+        board.columns = [todo, progress, done]
+        do { try self.library.save(board:board) } catch { }
     }
 }

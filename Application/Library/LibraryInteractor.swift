@@ -1,6 +1,7 @@
 import Foundation
 import CleanArchitecture
 import Domain
+import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate {
     weak var delegate:InteractorDelegate?
@@ -56,6 +57,9 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     func libraryCreated(board:String) {
         self.addTemplate(board:self.library.boards[board]!)
         self.select(identifier:board)
+        if self.library.session.boards.count > Constants.minBoards {
+            if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
+        }
     }
     
     private func addTemplate(board:BoardProtocol) {
@@ -70,4 +74,8 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         board.columns = [todo, progress, done]
         do { try self.library.save(board:board) } catch { }
     }
+}
+
+private struct Constants {
+    static let minBoards:Int = 2
 }

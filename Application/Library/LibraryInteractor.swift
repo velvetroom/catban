@@ -26,8 +26,16 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         Application.router.present(view, animated:true, completion:nil)
     }
     
+    func duplicated(identifier:String) -> Bool {
+        return self.library.session.boards.contains(identifier)
+    }
+    
     func newBoard() {
         do { try self.library.newBoard() } catch { }
+    }
+    
+    func addBoard(identifier:String) {
+        do { try self.library.addBoard(identifier:identifier) } catch { }
     }
     
     func select(identifier:String) {

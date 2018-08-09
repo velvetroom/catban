@@ -15,7 +15,12 @@ class ScanPresenter:Presenter {
         let components:[String] = string.components(separatedBy:ShareConstants.prefix)
         if components.count == 2 && !components[1].isEmpty {
             let identifier:String = components[1]
-            self.show(message:NSLocalizedString("ScanPresenter.success", comment:String()), icon:#imageLiteral(resourceName: "assetValid.pdf"))
+            if self.interactor.duplicated(identifier:identifier) {
+                self.show(message:NSLocalizedString("ScanPresenter.duplicate", comment:String()), icon:#imageLiteral(resourceName: "assetError.pdf"))
+            } else {
+                self.interactor.addBoard(identifier:identifier)
+                self.show(message:NSLocalizedString("ScanPresenter.success", comment:String()), icon:#imageLiteral(resourceName: "assetValid.pdf"))
+            }
         } else {
             self.show(message:NSLocalizedString("ScanPresenter.error", comment:String()), icon:#imageLiteral(resourceName: "assetError.pdf"))
         }

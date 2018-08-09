@@ -36,6 +36,10 @@ class Library:LibraryProtocol {
         try self.state.newBoard(context:self)
     }
     
+    func addBoard(identifier:String) throws {
+        try self.state.addBoard(context:self, identifier:identifier)
+    }
+    
     func save(board:BoardProtocol) throws {
         try self.state.save(context:self, board:board)
     }

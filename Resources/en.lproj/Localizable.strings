@@ -16,3 +16,4 @@ ShareView.send="Send";
 ScanView.name="Scan QR Code";
 ScanPresenter.error="Unable to read QR Code";
 ScanPresenter.success="Board loaded successfully";
+ScanPresenter.duplicate="Board already on your library";

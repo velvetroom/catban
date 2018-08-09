@@ -99,6 +99,30 @@ class TestLibrary:XCTestCase {
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
     
+    func testAddBoardSavesSession() {
+        let expect:XCTestExpectation = self.expectation(description:"Session not saved")
+        self.cache.onSaveSession = {
+            XCTAssertFalse(self.library.session.boards.isEmpty, "Failed to add board")
+            expect.fulfill()
+        }
+        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
+            do { try self.library.addBoard(identifier:String()) } catch {}
+        }
+        self.waitForExpectations(timeout:0.3, handler:nil)
+    }
+    
+    func testAddBoardNotRepeating() {
+        let expect:XCTestExpectation = self.expectation(description:"Session not saved")
+        let identifier:String = "hello world"
+        self.library.session.boards.append(identifier)
+        self.cache.onSaveSession = {
+            XCTAssertEqual(self.library.session.boards.count, 1, "Should be only 1 board")
+            expect.fulfill()
+        }
+        do { try self.library.addBoard(identifier:identifier) } catch { }
+        self.waitForExpectations(timeout:0.3, handler:nil)
+    }
+    
     func testSaveBoardCallsDatabase() {
         let board:BoardProtocol = Factory.makeBoard()
         let originalSyncstamp:Date = board.syncstamp

@@ -2,7 +2,8 @@ import UIKit
 import CleanArchitecture
 import AVFoundation
 
-class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
+class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
     weak var camera:UIView!
     weak var message:UIView!
     weak var icon:UIImageView!
@@ -23,6 +24,13 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         self.cleanSession()
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         self.presenter.read(string:string)
+    }
+    
+    func imagePickerController(_:UIImagePickerController, didFinishPickingMediaWithInfo info:
+        [UIImagePickerController.InfoKey:Any]) {
+        Application.router.dismiss(animated:true, completion:nil)
+        guard let image:UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        self.presenter.read(image:image)
     }
     
     override func viewDidLoad() {
@@ -79,7 +87,7 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title:NSLocalizedString("ScanView.library", comment:String()), style:UIBarButtonItem.Style.plain,
-                target:self.presenter, action:#selector(self.presenter.library))
+                target:self, action:#selector(self.library))
     }
     
     private func layoutOutlets() {
@@ -166,6 +174,14 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         }
         output.setMetadataObjectsDelegate(self, queue:DispatchQueue.global(qos:DispatchQoS.QoSClass.background))
         self.output = output
+    }
+    
+    @objc private func library() {
+        let picker:UIImagePickerController = UIImagePickerController()
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        picker.allowsEditing = false
+        picker.delegate = self
+        Application.router.present(picker, animated:true, completion:nil)
     }
 }
 

@@ -9,6 +9,26 @@ class Qr {
         }
     }
     
+    func read(image:UIImage) -> String {
+        guard let ci:CIImage = CIImage(image:image) else { return String() }
+        let orientation:String = kCGImagePropertyOrientation as String
+        var options:[String:Any] = [CIDetectorAccuracy:CIDetectorAccuracyHigh, CIDetectorImageOrientation:1]
+        if let imageOrientation:Any = ci.properties[orientation] {
+            options = [CIDetectorImageOrientation:imageOrientation]
+        }
+        if let detector:CIDetector = CIDetector(ofType:CIDetectorTypeQRCode, context:CIContext(), options:options) {
+            let features:[CIFeature] = detector.features(in:ci, options:options)
+            for feature:CIFeature in features {
+                guard
+                    let qr:CIQRCodeFeature = feature as? CIQRCodeFeature,
+                    let message:String = qr.messageString
+                    else { continue }
+                return message
+            }
+        }
+        return String()
+    }
+    
     private func generate(message:String) -> UIImage? {
         guard
             let filter:CIFilter = CIFilter(name:Constants.filter),

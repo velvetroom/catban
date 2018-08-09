@@ -4,14 +4,10 @@ import CleanArchitecture
 class ScanPresenter:Presenter {
     weak var interactor:LibraryInteractor!
     var viewModels:ViewModels!
+    private let qr:Qr
     
-    required init() { }
-    
-    @objc func library() {
-        let picker:UIImagePickerController = UIImagePickerController()
-        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
-        picker.allowsEditing = false
-        Application.router.present(picker, animated:true, completion:nil)
+    required init() {
+        self.qr = Qr()
     }
     
     func read(string:String) {
@@ -27,6 +23,10 @@ class ScanPresenter:Presenter {
         } else {
             self.show(message:NSLocalizedString("ScanPresenter.error", comment:String()), icon:#imageLiteral(resourceName: "assetError.pdf"))
         }
+    }
+    
+    func read(image:UIImage) {
+        self.read(string:qr.read(image:image))
     }
     
     func didLoad() {

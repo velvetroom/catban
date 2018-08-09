@@ -1,6 +1,6 @@
 import UIKit
 
-class LibraryCellView:UIButton {
+class LibraryCellView:UIControl {
     weak var name:UILabel!
     weak var border:UIView!
     var viewModel:LibraryItemViewModel! { didSet { self.name.text = self.viewModel.name } }
@@ -14,21 +14,25 @@ class LibraryCellView:UIButton {
     required init?(coder:NSCoder) { return nil }
     
     func highlight() {
-        self.backgroundColor = UIColor(white:0, alpha:0.1)
+        self.backgroundColor = Colors.navyBlue
+    }
+    
+    func unhighlight() {
+        self.backgroundColor = UIColor.clear
     }
     
     private func makeOutlets() {
         let name:UILabel = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
+        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
         name.textColor = UIColor.black
         self.name = name
         self.addSubview(name)
         
         let border:UIView = UIView()
         border.isUserInteractionEnabled = false
-        border.backgroundColor = UIColor(white:0, alpha:0.2)
+        border.backgroundColor = UIColor(white:0.0, alpha:0.15)
         border.translatesAutoresizingMaskIntoConstraints = false
         self.border = border
         self.addSubview(border)
@@ -48,7 +52,7 @@ class LibraryCellView:UIButton {
 }
 
 private struct Constants {
-    static let margin:CGFloat = 20
-    static let font:CGFloat = 16
+    static let margin:CGFloat = 20.0
+    static let font:CGFloat = 16.0
     static let border:CGFloat = 0.5
 }

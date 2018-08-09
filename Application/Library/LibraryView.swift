@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import CleanArchitecture
 
 class LibraryView:View<LibraryPresenter> {
@@ -9,6 +9,7 @@ class LibraryView:View<LibraryPresenter> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("LibraryView.title", comment:String())
+        self.view.backgroundColor = UIColor.white
         self.makeOutlets()
         self.layoutOutlets()
         self.configureViewModel()
@@ -31,7 +32,7 @@ class LibraryView:View<LibraryPresenter> {
         let message:UILabel = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
         message.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
-        message.textColor = UIColor(white:0, alpha:0.8)
+        message.textColor = UIColor(white:0.0, alpha:0.8)
         message.numberOfLines = 0
         message.isUserInteractionEnabled = false
         self.message = message
@@ -42,9 +43,11 @@ class LibraryView:View<LibraryPresenter> {
         self.loading = loading
         self.view.addSubview(loading)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem:UIBarButtonItem.SystemItem.add, target:self.presenter,
-            action:#selector(self.presenter.newBoard))
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.add, target:self.presenter,
+                            action:#selector(self.presenter.newBoard)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                            action:#selector(self.presenter.scan))]
     }
     
     private func layoutOutlets() {
@@ -53,12 +56,12 @@ class LibraryView:View<LibraryPresenter> {
         
         self.message.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:Constants.margin).isActive = true
         self.message.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:-Constants.margin).isActive = true
-        self.message.heightAnchor.constraint(greaterThanOrEqualToConstant:0)
         
         self.loading.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
         self.loading.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
             self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             self.message.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor,
@@ -73,6 +76,7 @@ class LibraryView:View<LibraryPresenter> {
     private func configureViewModel() {
         self.presenter.viewModels.observe { [weak self] (viewModel:LibraryViewModel) in
             self?.loading.isHidden = viewModel.loadingHidden
+            self?.navigationItem.rightBarButtonItem?.isEnabled = viewModel.addEnabled
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }
@@ -85,6 +89,12 @@ class LibraryView:View<LibraryPresenter> {
             cell.viewModel = item
             cell.addTarget(self.presenter, action:#selector(self.presenter.selected(cell:)),
                            for:UIControl.Event.touchUpInside)
+            cell.addTarget(self.presenter, action:#selector(self.presenter.highlight(cell:)),
+                           for:UIControl.Event(arrayLiteral:UIControl.Event.touchDown,
+                                               UIControl.Event.touchDragEnter))
+            cell.addTarget(self.presenter, action:#selector(self.presenter.unhighlight(cell:)),
+                           for:UIControl.Event(arrayLiteral:UIControl.Event.touchUpOutside,
+                                               UIControl.Event.touchDragExit, UIControl.Event.touchCancel))
             self.scroll.addSubview(cell)
         }
         self.layoutCells(size:self.view.bounds.size)
@@ -101,7 +111,7 @@ class LibraryView:View<LibraryPresenter> {
 }
 
 private struct Constants {
-    static let font:CGFloat = 16
-    static let margin:CGFloat = 20
-    static let cellHeight:CGFloat = 52
+    static let font:CGFloat = 16.0
+    static let margin:CGFloat = 20.0
+    static let cellHeight:CGFloat = 52.0
 }

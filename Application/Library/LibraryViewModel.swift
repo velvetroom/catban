@@ -5,10 +5,12 @@ struct LibraryViewModel:ViewModel {
     var items:[LibraryItemViewModel]
     var message:String
     var loadingHidden:Bool
+    var addEnabled:Bool
     
     init() {
         self.items = []
         self.message = String()
-        self.loadingHidden = true
+        self.loadingHidden = false
+        self.addEnabled = false
     }
 }

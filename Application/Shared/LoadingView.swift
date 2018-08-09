@@ -17,22 +17,22 @@ class LoadingView:UIView {
         self.backgroundColor = UIColor.clear
         
         let circle:CAShapeLayer = CAShapeLayer()
-        circle.lineWidth = 0
+        circle.lineWidth = 0.0
         circle.strokeColor = nil
         circle.backgroundColor = nil
         circle.fillColor = self.tintColor.cgColor
         circle.path = self.arch(radius:Constants.circleRadius)
-        circle.frame = CGRect(x:0, y:0, width:Constants.size, height:Constants.size)
+        circle.frame = CGRect(x:0.0, y:0.0, width:Constants.size, height:Constants.size)
         self.circle = circle
         self.layer.addSublayer(circle)
         
         let pulse:CAShapeLayer = CAShapeLayer()
-        pulse.lineWidth = 0
+        pulse.lineWidth = 0.0
         pulse.strokeColor = nil
         pulse.backgroundColor = nil
         pulse.fillColor = self.tintColor.cgColor
         pulse.path = self.arch(radius:Constants.circleRadius)
-        pulse.frame = CGRect(x:0, y:0, width:Constants.size, height:Constants.size)
+        pulse.frame = CGRect(x:0.0, y:0.0, width:Constants.size, height:Constants.size)
         self.pulse = pulse
         self.layer.addSublayer(pulse)
         
@@ -80,7 +80,7 @@ class LoadingView:UIView {
     private func arch(radius:CGFloat) -> CGPath {
         let path:UIBezierPath = UIBezierPath()
         path.addArc(withCenter:CGPoint(x:Constants.size / 2.0, y:Constants.size / 2.0), radius:radius,
-                    startAngle:0.0001, endAngle:0, clockwise:true)
+                    startAngle:0.0001, endAngle:0.0, clockwise:true)
         return path.cgPath
     }
 }
@@ -89,13 +89,13 @@ private struct Constants {
     static let radiusKey:String = "transform.scale"
     static let alphaKey:String = "opacity"
     static let animationKey:String = "animation"
-    static let size:CGFloat = 100
-    static let circleRadius:CGFloat = 15
-    static let pulseStartRadius:CGFloat = 1
+    static let size:CGFloat = 100.0
+    static let circleRadius:CGFloat = 15.0
+    static let pulseStartRadius:CGFloat = 1.0
     static let pulseMiddleRadius:CGFloat = 1.2
-    static let pulseEndRadius:CGFloat = 2
+    static let pulseEndRadius:CGFloat = 2.0
     static let pulseStartAlpha:CGFloat = 0.18
-    static let pulseEndAlpha:CGFloat = 0
+    static let pulseEndAlpha:CGFloat = 0.0
     static let animationPulse:TimeInterval = 0.3
     static let animationFade:TimeInterval = 1.2
     static let animationGroup:TimeInterval = 1.5

@@ -8,8 +8,29 @@ class LibraryPresenter:Presenter {
     
     required init() { }
     
-    func didAppear() {
-        self.showLoading()
+    @objc func newBoard() {
+        self.viewModels.update(viewModel:LibraryViewModel())
+        self.interactor.newBoard()
+    }
+    
+    @objc func scan() {
+        self.interactor.scan()
+    }
+    
+    @objc func selected(cell:LibraryCellView) {
+        self.interactor.select(identifier:cell.viewModel.board)
+    }
+    
+    @objc func highlight(cell:LibraryCellView) {
+        cell.highlight()
+    }
+    
+    @objc func unhighlight(cell:LibraryCellView) {
+        cell.unhighlight()
+    }
+    
+    func willAppear() {
+        self.viewModels.update(viewModel:LibraryViewModel())
         self.interactor.load()
     }
     
@@ -21,30 +42,19 @@ class LibraryPresenter:Presenter {
         }
     }
     
-    @objc func newBoard() {
-        self.showLoading()
-        self.interactor.newBoard()
-    }
-    
-    @objc func selected(cell:LibraryCellView) {
-        cell.highlight()
-    }
-    
-    private func showLoading() {
-        var viewModel:LibraryViewModel = LibraryViewModel()
-        viewModel.loadingHidden = false
-        self.viewModels.update(viewModel:viewModel)
-    }
-    
     private func showEmpty() {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
+        viewModel.loadingHidden = true
+        viewModel.addEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     
     private func showItems() {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.items = self.items
+        viewModel.loadingHidden = true
+        viewModel.addEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     
@@ -53,7 +63,7 @@ class LibraryPresenter:Presenter {
         self.interactor.library.boards.forEach { (key:String, board:BoardProtocol) in
             var item:LibraryItemViewModel = LibraryItemViewModel()
             item.board = key
-            item.name = key
+            item.name = board.text
             items.append(item)
         }
         return items.sorted { (left:LibraryItemViewModel, right:LibraryItemViewModel) -> Bool in

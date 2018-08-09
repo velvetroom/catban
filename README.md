@@ -1,30 +1,40 @@
 # Catban
-Human management.
+### Human management with Kanban.
 
-<img src="Design/logo.png" height="200" alt="Catban"/>
+<img src="Design/logo.png" height="400" alt="Catban"/>
 
-![iOS](https://img.shields.io/badge/iOS-11.0%2B-blue.svg)
-![Swift](https://img.shields.io/badge/Swift-4.1-blue.svg)
+![iOS](https://img.shields.io/badge/iOS-9.0%2B-blue.svg)
+![Swift](https://img.shields.io/badge/Swift-4.2-blue.svg)
 [![AppStore](https://img.shields.io/itunes/v/1363004864.svg)](https://itunes.apple.com/us/app/catban/id1363004864)
 [![Bitrise](https://app.bitrise.io/app/807a375d287b2f0b/status.svg?token=lutdvZqnAiBoLp3vkTwX8w)](https://app.bitrise.io/app/807a375d287b2f0b)
 
 
 ## Description
 
-Kanban board architected for mobile.
+Catban
+- Do more with less.
+- Focus on doing things and not in the details.
+- Minimalistic approach.
+- Human management architected for iOS.
+- Collaborate and work in projects simultaneously.
+- Easy to share projects.
 
-■ Organize anything, anywhere. Fast, easy, reliable.
+Manage and organise
+- Projects
+- Teams
+- Tasks
+- Events
+- Shopping lists
+- Your life
+- etc
 
-■ Get an overview of your current status.
+Catban steps
+- Create a board for each project
+- You have 3 columns: To do, In progress, Done; You can create more if needed.
+- Create cards for each task, the smaller the task the easier it is to track.
+- Move your cards around the board reflecting their current status.
+- Track your progress.
+- Have a clear understanding of what is missing in your project.
 
-■ Never again forget something you had to do.
-
-Every human is different so why not managing your tasks with a tool tailored just for you, by you?
-
-With Catban you define the tasks you need to do as Cards, create Columns to group those Cards accordingly to their current state and update your progress.
-
-Kanban was developed as a scheduling system last century to improve manufacturing efficency. The name comes from the cards that track the production within a factory.
-
-Catban is simple, clean, easy to use. You don't have to learn anything, just download the app and start managing your time.
-
-The interface is the cleanest possible, you can focus on doing things and not in the details.
+Kanban was developed as a scheduling and managing system to improve manufacturing efficiency.
+Name comes from Japanese, is the name of the cards that track the production within a factory.

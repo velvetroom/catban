@@ -1,15 +1,19 @@
 import Foundation
 
-public class Column:Codable {
+public class Column:Codable, TextProtocol {
     public var identifier:String
-    public var name:String
+    public var text:String
     public var created:Date
     public var cards:[Card]
     
-    public init() {
+    init() {
         self.identifier = String()
-        self.name = String()
+        self.text = String()
         self.created = Date()
         self.cards = []
+    }
+    
+    public func delete(card:Card) {
+        self.cards.removeAll { (item:Card) -> Bool in item === card }
     }
 }

@@ -3,49 +3,37 @@ import Domain
 import Firebase
 
 class DatabaseService:DatabaseServiceProtocol {
-    required init() { }
+    private let boards:CollectionReference
     
-    func loadRemote() {
-        //        Firestore.firestore().document(identifier).getDocument { [weak self] (snap:DocumentSnapshot?, fail:Error?) in
-        //            if let fail:Error = fail {
-        //                error(fail)
-        //            } else if let json:[String:Any] = snap?.data() {
-        //                self?.loaded(json:json, completion:board, error:error)
-        //            } else {
-        //                error(RepositoryError.boardNotFound)
-        //            }
-        //        }
+    required init() {
+        self.boards = Firestore.firestore().collection(Constants.boards)
     }
     
     func load<M>(identifier:String, board:@escaping((M) -> Void)) where M:Codable & BoardProtocol {
-        
-    }
-    
-    func create<M>(board:M, completion:@escaping((String) -> Void)) where M:Codable & BoardProtocol {
-//        Firestore.firestore().runTransaction( { (transaction:Transaction, errorPointer:NSErrorPointer) -> Any? in
-//            
-//        }, completion: { (any:Any?, error:Error?) in
-//            
-//        })
-        
-        
-        let document:DocumentReference = Firestore.firestore().collection(Constants.boards).addDocument(
-            data:self.json(model:board))
-        completion(document.documentID)
-    }
-    
-    private func loaded<Model:Decodable>(json:[String:Any], completion:@escaping((Model) -> Void),
-                                         error:@escaping((Error) -> Void)) {
-        do {
-            let data:Data = try JSONSerialization.data(withJSONObject:json, options:JSONSerialization.WritingOptions())
-            let model:Model = try JSONDecoder().decode(Model.self, from:data)
-            completion(model)
-        } catch let throwingError {
-            error(throwingError)
+        self.boards.document(identifier).getDocument { [weak self] (snapshot:DocumentSnapshot?, _:Error?) in
+            guard let json:[String:Any] = snapshot?.data() else { return }
+            self?.loaded(json:json, completion:board)
         }
     }
     
-    private func json<Model:Encodable>(model:Model) -> [String:Any] {
+    func create<M>(board:M) -> String where M:Codable & BoardProtocol {
+        let document:DocumentReference = self.boards.addDocument(data:self.json(model:board))
+        return document.documentID
+    }
+    
+    func save<M>(identifier:String, board:M) where M:Codable & BoardProtocol {
+        self.boards.document(identifier).setData(self.json(model:board))
+    }
+    
+    private func loaded<M:Codable>(json:[String:Any], completion:@escaping((M) -> Void)) {
+        do {
+            let data:Data = try JSONSerialization.data(withJSONObject:json, options:JSONSerialization.WritingOptions())
+            let model:M = try JSONDecoder().decode(M.self, from:data)
+            completion(model)
+        } catch { }
+    }
+    
+    private func json<M:Encodable>(model:M) -> [String:Any] {
         do {
             let data:Data = try JSONEncoder().encode(model)
             let json:Any = try JSONSerialization.jsonObject(with:data, options:JSONSerialization.ReadingOptions())

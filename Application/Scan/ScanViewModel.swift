@@ -1,14 +1,15 @@
-import Foundation
+import UIKit
 import CleanArchitecture
 
 struct ScanViewModel:ViewModel {
-    var cameraHidden:Bool
-    var successHidden:Bool
-    var failHidden:Bool
+    var alphaCamera:CGFloat
+    var alphaMessage:CGFloat
+    var icon:UIImage?
+    var text:String
     
     init() {
-        self.cameraHidden = true
-        self.successHidden = true
-        self.failHidden = true
+        self.alphaCamera = 0.0
+        self.alphaMessage = 0.0
+        self.text = String()
     }
 }

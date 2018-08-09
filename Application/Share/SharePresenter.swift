@@ -27,7 +27,7 @@ class SharePresenter:Presenter {
     }
     
     func didLoad() {
-        self.qr.generate(message:Constants.prefix + self.interactor.identifier) { [weak self] (image:UIImage) in
+        self.qr.generate(message:ShareConstants.prefix + self.interactor.identifier) { [weak self] (image:UIImage) in
             var viewModel:ShareViewModel = ShareViewModel()
             viewModel.image = image
             self?.viewModels.update(viewModel:viewModel)
@@ -35,6 +35,6 @@ class SharePresenter:Presenter {
     }
 }
 
-private struct Constants {
+struct ShareConstants {
     static let prefix:String = "iturbide.catban."
 }

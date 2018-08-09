@@ -6,8 +6,9 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
     weak var bar:UIToolbar!
     weak var name:UILabel!
     weak var camera:UIView!
-    weak var success:UIView!
-    weak var fail:UIView!
+    weak var message:UIView!
+    weak var icon:UIImageView!
+    weak var label:UILabel!
     private var session:AVCaptureSession?
     private var input:AVCaptureInput?
     private var output:AVCaptureMetadataOutput?
@@ -24,23 +25,23 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         else { return }
         self.cleanSession()
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        self.read(string:string)
+        self.presenter.read(string:string)
     }
     
     override func viewDidLoad() {
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.modalPresentationCapturesStatusBarAppearance = true
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black
-        self.startSession()
         self.makeOutlets()
         self.layoutOutlets()
+        self.configureViewModel()
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
     }
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        self.previewLayer?.frame = self.view.frame
+        self.startSession()
     }
     
     override func viewWillDisappear(_ animated:Bool) {
@@ -49,6 +50,36 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func makeOutlets() {
+        let camera:UIView = UIView()
+        camera.isUserInteractionEnabled = false
+        camera.translatesAutoresizingMaskIntoConstraints = false
+        camera.backgroundColor = UIColor.black
+        self.camera = camera
+        self.view.addSubview(camera)
+        
+        let message:UIView = UIView()
+        message.isUserInteractionEnabled = false
+        message.translatesAutoresizingMaskIntoConstraints = false
+        self.message = message
+        self.view.addSubview(message)
+        
+        let label:UILabel = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = false
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.systemFont(ofSize:Constants.message, weight:UIFont.Weight.light)
+        label.textColor = UIColor.black
+        self.label = label
+        self.message.addSubview(label)
+        
+        let icon:UIImageView = UIImageView()
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.clipsToBounds = true
+        icon.contentMode = UIView.ContentMode.center
+        icon.isUserInteractionEnabled = false
+        self.icon = icon
+        self.message.addSubview(icon)
+        
         let bar:UIToolbar = UIToolbar()
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.backgroundColor = UIColor.black
@@ -87,6 +118,35 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         self.name.bottomAnchor.constraint(equalTo:self.bar.bottomAnchor).isActive = true
         self.name.leftAnchor.constraint(equalTo:self.bar.leftAnchor).isActive = true
         self.name.rightAnchor.constraint(equalTo:self.bar.rightAnchor).isActive = true
+        
+        self.camera.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
+        self.camera.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
+        self.camera.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
+        self.camera.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        
+        self.message.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
+        self.message.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
+        self.message.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
+        self.message.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        
+        self.icon.widthAnchor.constraint(equalToConstant:Constants.image).isActive = true
+        self.icon.heightAnchor.constraint(equalToConstant:Constants.image).isActive = true
+        self.icon.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
+        self.icon.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true
+        
+        self.label.topAnchor.constraint(equalTo:self.icon.bottomAnchor).isActive = true
+        self.label.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
+    }
+    
+    private func configureViewModel() {
+        self.presenter.viewModels.observe { [weak self] (viewModel:ScanViewModel) in
+            self?.icon.image = viewModel.icon
+            self?.label.text = viewModel.text
+            UIView.animate(withDuration:Constants.animation) { [weak self] in
+                self?.camera.alpha = viewModel.alphaCamera
+                self?.message.alpha = viewModel.alphaMessage
+            }
+        }
     }
     
     private func startSession() {
@@ -94,11 +154,12 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
         session.sessionPreset = AVCaptureSession.Preset.hd1280x720
         let previewLayer:AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session:session)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        previewLayer.frame = self.camera.bounds
         self.previewLayer = previewLayer
         self.session = session
         self.startInput()
         self.startOutput()
-        self.view.layer.addSublayer(previewLayer)
+        self.camera.layer.addSublayer(previewLayer)
         session.startRunning()
     }
     
@@ -141,5 +202,8 @@ class ScanView:View<ScanPresenter>, AVCaptureMetadataOutputObjectsDelegate {
 
 private struct Constants {
     static let bar:CGFloat = 44.0
-    static let font:CGFloat = 14
+    static let font:CGFloat = 14.0
+    static let message:CGFloat = 16.0
+    static let animation:TimeInterval = 0.3
+    static let image:CGFloat = 80.0
 }

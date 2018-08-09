@@ -151,16 +151,17 @@ UINavigationControllerDelegate {
     }
     
     private func startInput() {
-        let device:AVCaptureDevice
+        let device:AVCaptureDevice?
         if #available(iOS 10.0, *) {
             device = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera,
                                              for:AVMediaType.video,
-                                             position:AVCaptureDevice.Position.back)!
+                                             position:AVCaptureDevice.Position.back)
         } else {
-            device = AVCaptureDevice.default(for:AVMediaType.video)!
+            device = AVCaptureDevice.default(for:AVMediaType.video)
         }
+        if device == nil { return }
         do {
-            let input:AVCaptureInput = try AVCaptureDeviceInput(device:device)
+            let input:AVCaptureInput = try AVCaptureDeviceInput(device:device!)
             self.session?.addInput(input)
             self.input = input
         } catch { return }

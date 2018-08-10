@@ -1,7 +1,7 @@
 import Foundation
 @testable import Domain
 
-class MockCacheServiceProtocol:CacheServiceProtocol {
+class MockCache:CacheService {
     var error:Error?
     var onSaveSession:(() -> Void)?
     var session:Session

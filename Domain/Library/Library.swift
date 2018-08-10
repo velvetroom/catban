@@ -8,7 +8,7 @@ class Library:LibraryProtocol {
     weak var state:LibraryStateProtocol!
     var session:Session
     var boards:[String:Board]
-    var cache:CacheServiceProtocol
+    var cache:CacheService
     var database:DatabaseServiceProtocol
     let queue:DispatchQueue
     

@@ -4,7 +4,7 @@ import XCTest
 class TestFactory:XCTestCase {
     override func setUp() {
         super.setUp()
-        Configuration.cacheService = MockCacheServiceProtocol.self
+        Configuration.cache = MockCache.self
         Configuration.databaseService = MockDatabaseServiceProtocol.self
     }
     

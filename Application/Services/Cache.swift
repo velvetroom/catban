@@ -2,7 +2,7 @@ import Foundation
 import Domain
 import CodableHero
 
-class CacheService:CacheServiceProtocol {
+class Cache:CacheService {
     private let codableHero:CodableHero
     
     required init() {

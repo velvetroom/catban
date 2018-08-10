@@ -3,7 +3,7 @@ import Domain
 
 class Injection {
     class func configure() {
-        Configuration.cacheService = CacheService.self
+        Configuration.cache = Cache.self
         Configuration.databaseService = DatabaseService.self
     }
     

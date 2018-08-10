@@ -28,8 +28,8 @@ public class Factory {
         return Session()
     }
     
-    class func makeCache() -> CacheServiceProtocol {
-        return Configuration.cacheService.init()
+    class func makeCache() -> CacheService {
+        return Configuration.cache.init()
     }
     
     class func makeDatabase() -> DatabaseServiceProtocol {

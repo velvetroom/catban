@@ -31,11 +31,11 @@
 		DA497C782112CEFB0022ADFD /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA497C772112CEFB0022ADFD /* Factory.swift */; };
 		DA511E60210B651800ABD604 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511E5F210B651800ABD604 /* Application.swift */; };
 		DA511E69210B655100ABD604 /* TestLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511E68210B655100ABD604 /* TestLibrary.swift */; };
-		DA52931D21102B0100C5B8A5 /* MockCacheServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA52931C21102B0100C5B8A5 /* MockCacheServiceProtocol.swift */; };
+		DA52931D21102B0100C5B8A5 /* MockCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA52931C21102B0100C5B8A5 /* MockCache.swift */; };
 		DA52931E21102C8500C5B8A5 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D1012210DB518005E323A /* Domain.framework */; };
 		DA52932321102F1A00C5B8A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA52932121102F1A00C5B8A5 /* Localizable.strings */; };
-		DA5C69D9210DDF8900A07619 /* CacheServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C69D8210DDF8900A07619 /* CacheServiceProtocol.swift */; };
-		DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C69DB210DE04C00A07619 /* CacheService.swift */; };
+		DA5C69D9210DDF8900A07619 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C69D8210DDF8900A07619 /* CacheService.swift */; };
+		DA5C69DC210DE04C00A07619 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C69DB210DE04C00A07619 /* Cache.swift */; };
 		DA5C69DE210DE0CF00A07619 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C69DD210DE0CF00A07619 /* Router.swift */; };
 		DA5C69E0210DE0FE00A07619 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C69DF210DE0FE00A07619 /* Injection.swift */; };
 		DA5D1019210DB518005E323A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D1012210DB518005E323A /* Domain.framework */; };
@@ -133,10 +133,10 @@
 		DA497C772112CEFB0022ADFD /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DA511E5F210B651800ABD604 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DA511E68210B655100ABD604 /* TestLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibrary.swift; sourceTree = "<group>"; };
-		DA52931C21102B0100C5B8A5 /* MockCacheServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCacheServiceProtocol.swift; sourceTree = "<group>"; };
+		DA52931C21102B0100C5B8A5 /* MockCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCache.swift; sourceTree = "<group>"; };
 		DA52932221102F1A00C5B8A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DA5C69D8210DDF8900A07619 /* CacheServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceProtocol.swift; sourceTree = "<group>"; };
-		DA5C69DB210DE04C00A07619 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		DA5C69D8210DDF8900A07619 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		DA5C69DB210DE04C00A07619 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DA5C69DD210DE0CF00A07619 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		DA5C69DF210DE0FE00A07619 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		DA5D1012210DB518005E323A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,7 +266,7 @@
 			children = (
 				DA511E68210B655100ABD604 /* TestLibrary.swift */,
 				DA1538F82114449A005C05EE /* TestFactory.swift */,
-				DA52931C21102B0100C5B8A5 /* MockCacheServiceProtocol.swift */,
+				DA52931C21102B0100C5B8A5 /* MockCache.swift */,
 				DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */,
 				DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */,
 			);
@@ -277,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				DA899B942113302C00A23696 /* Services.swift */,
-				DA5C69DB210DE04C00A07619 /* CacheService.swift */,
+				DA5C69DB210DE04C00A07619 /* Cache.swift */,
 				DAFD730921135176004718FE /* DatabaseService.swift */,
 			);
 			path = Services;
@@ -297,7 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5D1026210DB913005E323A /* Configuration.swift */,
-				DA5C69D8210DDF8900A07619 /* CacheServiceProtocol.swift */,
+				DA5C69D8210DDF8900A07619 /* CacheService.swift */,
 				DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */,
 				DA6E1D992111856F00FDB6DF /* DomainError.swift */,
 				DA497C772112CEFB0022ADFD /* Factory.swift */,
@@ -637,7 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA899B8B2113070E00A23696 /* LibraryStateDefault.swift in Sources */,
-				DA5C69D9210DDF8900A07619 /* CacheServiceProtocol.swift in Sources */,
+				DA5C69D9210DDF8900A07619 /* CacheService.swift in Sources */,
 				DA5D1027210DB913005E323A /* Configuration.swift in Sources */,
 				DA5D101F210DB545005E323A /* Board.swift in Sources */,
 				DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */,
@@ -688,7 +688,7 @@
 				DA36DEAE210EE217008409E8 /* LibraryPresenter.swift in Sources */,
 				DAD3F15621159FDD005D7BBB /* EditView.swift in Sources */,
 				DA36095F211B143700F66413 /* SharePresenter.swift in Sources */,
-				DA5C69DC210DE04C00A07619 /* CacheService.swift in Sources */,
+				DA5C69DC210DE04C00A07619 /* Cache.swift in Sources */,
 				DA96888921196E7400F0B240 /* TextStrategy.swift in Sources */,
 				DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */,
 				DA96888D21196F4A00F0B240 /* TextCreateColumn.swift in Sources */,
@@ -710,7 +710,7 @@
 				DA511E69210B655100ABD604 /* TestLibrary.swift in Sources */,
 				DAB5C24A21135CC5004611AC /* MockDatabaseServiceProtocol.swift in Sources */,
 				DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */,
-				DA52931D21102B0100C5B8A5 /* MockCacheServiceProtocol.swift in Sources */,
+				DA52931D21102B0100C5B8A5 /* MockCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

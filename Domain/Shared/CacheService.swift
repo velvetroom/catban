@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol CacheServiceProtocol {
+public protocol CacheService {
     func loadSession() throws -> Session
     func save(session:Session)
     init()

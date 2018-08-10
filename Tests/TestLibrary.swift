@@ -4,17 +4,17 @@ import XCTest
 class TestLibrary:XCTestCase {
     private var library:Library!
     private var delegate:MockLibraryDelegate!
-    private var cache:MockCacheServiceProtocol!
+    private var cache:MockCache!
     private var database:MockDatabaseServiceProtocol!
     
     override func setUp() {
         super.setUp()
-        Configuration.cacheService = MockCacheServiceProtocol.self
+        Configuration.cache = MockCache.self
         Configuration.databaseService = MockDatabaseServiceProtocol.self
         self.library = Library()
         self.delegate = MockLibraryDelegate()
         self.library.delegate = self.delegate
-        self.cache = self.library.cache as? MockCacheServiceProtocol
+        self.cache = self.library.cache as? MockCache
         self.database = self.library.database as? MockDatabaseServiceProtocol
         self.library.session = Factory.makeSession()
         self.library.state = Library.stateReady

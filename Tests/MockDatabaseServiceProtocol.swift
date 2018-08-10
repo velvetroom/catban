@@ -9,7 +9,7 @@ class MockDatabaseServiceProtocol:DatabaseServiceProtocol {
     var board:Board
     
     required init() {
-        self.board = Board()
+        self.board = Factory.makeBoard()
     }
     
     func load(identifier:String, board:@escaping((Board) -> Void)) {

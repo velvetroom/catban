@@ -1,13 +1,7 @@
 import Foundation
 
-public struct Configuration:ConfigurationProtocol {
-    typealias Session = Session_v1
-    
+public struct Configuration {
     public static var library:LibraryProtocol.Type = Library.self
     public static var cacheService:CacheServiceProtocol.Type!
     public static var databaseService:DatabaseServiceProtocol.Type!
-}
-
-private protocol ConfigurationProtocol {
-    associatedtype Session:SessionProtocol
 }

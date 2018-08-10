@@ -4,7 +4,7 @@ class LibraryStateDefault:LibraryStateProtocol {
     func loadSession(context:Library) throws {
         context.queue.async { [weak self] in
             do {
-                let session:Configuration.Session = try context.cache.loadSession()
+                let session:Session = try context.cache.loadSession()
                 context.loaded(session:session)
             } catch {
                 self?.createSession(context:context)
@@ -19,7 +19,7 @@ class LibraryStateDefault:LibraryStateProtocol {
     func delete(context:Library, board:Board) throws { throw DomainError.noSession }
     
     private func createSession(context:Library) {
-        let session:Configuration.Session = Configuration.Session()
+        let session:Session = Factory.makeSession()
         context.cache.save(session:session)
         context.loaded(session:session)
     }

@@ -6,7 +6,7 @@ class Library:LibraryProtocol {
     
     weak var delegate:LibraryDelegate?
     weak var state:LibraryStateProtocol!
-    var session:SessionProtocol
+    var session:Session
     var boards:[String:Board]
     var cache:CacheServiceProtocol
     var database:DatabaseServiceProtocol
@@ -48,14 +48,14 @@ class Library:LibraryProtocol {
         try self.state.delete(context:self, board:board)
     }
     
-    func loaded(session:SessionProtocol) {
+    func loaded(session:Session) {
         self.session = session
         self.state = Library.stateReady
         DispatchQueue.main.async { [weak self] in self?.delegate?.librarySessionLoaded() }
     }
     
     func saveSession() {
-        self.cache.save(session:self.session as! Configuration.Session)
+        self.cache.save(session:self.session)
     }
     
     func notifyBoards() {

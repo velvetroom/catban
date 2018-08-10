@@ -24,8 +24,8 @@ public class Factory {
         return card
     }
     
-    class func makeSession() -> SessionProtocol {
-        return Configuration.Session()
+    class func makeSession() -> Session {
+        return Session()
     }
     
     class func makeCache() -> CacheServiceProtocol {

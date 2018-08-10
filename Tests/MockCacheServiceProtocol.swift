@@ -4,23 +4,23 @@ import Foundation
 class MockCacheServiceProtocol:CacheServiceProtocol {
     var error:Error?
     var onSaveSession:(() -> Void)?
-    var session:Configuration.Session
+    var session:Session
     var board:Board
     
     required init() {
-        self.session = Configuration.Session()
-        self.board = Board()
+        self.session = Factory.makeSession()
+        self.board = Factory.makeBoard()
     }
     
-    func loadSession<M>() throws -> M where M:Codable & SessionProtocol {
+    func loadSession() throws -> Session {
         if let error:Error = self.error {
             throw error
         } else {
-            return self.session as! M
+            return self.session
         }
     }
     
-    func save<M>(session:M) where M:Codable & SessionProtocol {
+    func save(session:Session) {
         self.onSaveSession?()
     }
 }

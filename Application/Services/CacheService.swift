@@ -9,11 +9,11 @@ class CacheService:CacheServiceProtocol {
         self.codableHero = Factory.makeCodableHero()
     }
     
-    func loadSession<M>() throws -> M where M:Codable & SessionProtocol {
+    func loadSession() throws -> Session {
         return try self.codableHero.load(path:Constants.session)
     }
     
-    func save<M>(session:M) where M:Codable & SessionProtocol {
+    func save(session:Session) {
         do { try self.codableHero.save(model:session, path:Constants.session) } catch { }
     }
 }

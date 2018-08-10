@@ -19,8 +19,7 @@
 		DA3168B2211C2C2900515F97 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA3168B1211C2C2900515F97 /* brand.xcassets */; };
 		DA36095F211B143700F66413 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36095E211B143700F66413 /* SharePresenter.swift */; };
 		DA360961211B144800F66413 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA360960211B144800F66413 /* ShareView.swift */; };
-		DA36DEA3210EDE06008409E8 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */; };
-		DA36DEA5210EDE22008409E8 /* Session_v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA4210EDE22008409E8 /* Session_v1.swift */; };
+		DA36DEA5210EDE22008409E8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA4210EDE22008409E8 /* Session.swift */; };
 		DA36DEA7210EDE9C008409E8 /* LibraryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA6210EDE9C008409E8 /* LibraryProtocol.swift */; };
 		DA36DEA9210EDEAD008409E8 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEA8210EDEAD008409E8 /* Library.swift */; };
 		DA36DEAC210EE1FC008409E8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36DEAB210EE1FC008409E8 /* LibraryView.swift */; };
@@ -123,8 +122,7 @@
 		DA3168B1211C2C2900515F97 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
 		DA36095E211B143700F66413 /* SharePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA360960211B144800F66413 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
-		DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
-		DA36DEA4210EDE22008409E8 /* Session_v1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session_v1.swift; sourceTree = "<group>"; };
+		DA36DEA4210EDE22008409E8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DA36DEA6210EDE9C008409E8 /* LibraryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProtocol.swift; sourceTree = "<group>"; };
 		DA36DEA8210EDEAD008409E8 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		DA36DEAB210EE1FC008409E8 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -338,8 +336,7 @@
 		DA6E1D9821117DB000FDB6DF /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				DA36DEA2210EDE06008409E8 /* SessionProtocol.swift */,
-				DA36DEA4210EDE22008409E8 /* Session_v1.swift */,
+				DA36DEA4210EDE22008409E8 /* Session.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -656,10 +653,9 @@
 				DA5D101F210DB545005E323A /* Board.swift in Sources */,
 				DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */,
 				DA1984FE21134EE50061A234 /* DatabaseServiceProtocol.swift in Sources */,
-				DA36DEA3210EDE06008409E8 /* SessionProtocol.swift in Sources */,
 				DA899B89211306E700A23696 /* LibraryStateReady.swift in Sources */,
 				DA5D1023210DB7D9005E323A /* Card.swift in Sources */,
-				DA36DEA5210EDE22008409E8 /* Session_v1.swift in Sources */,
+				DA36DEA5210EDE22008409E8 /* Session.swift in Sources */,
 				DAD3F15C2115A2DF005D7BBB /* TextProtocol.swift in Sources */,
 				DA36DEA9210EDEAD008409E8 /* Library.swift in Sources */,
 				DA5D1021210DB7BF005E323A /* Column.swift in Sources */,

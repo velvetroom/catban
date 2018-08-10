@@ -9,7 +9,7 @@ class LibraryStateReady:LibraryStateProtocol {
     
     func newBoard(context:Library) throws {
         context.queue.async {
-            let board:Board = Board()
+            let board:Board = Factory.makeBoard()
             let identifier:String = context.database.create(board:board)
             context.boards[identifier] = board
             context.session.boards.append(identifier)

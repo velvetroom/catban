@@ -5,11 +5,11 @@ class MockCacheServiceProtocol:CacheServiceProtocol {
     var error:Error?
     var onSaveSession:(() -> Void)?
     var session:Configuration.Session
-    var board:Configuration.Board
+    var board:Board
     
     required init() {
         self.session = Configuration.Session()
-        self.board = Configuration.Board()
+        self.board = Board()
     }
     
     func loadSession<M>() throws -> M where M:Codable & SessionProtocol {

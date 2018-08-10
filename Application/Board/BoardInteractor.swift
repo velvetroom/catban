@@ -4,7 +4,7 @@ import Domain
 
 class BoardInteractor:Interactor {
     weak var delegate:InteractorDelegate?
-    var board:BoardProtocol!
+    var board:Board!
     var identifier:String
     private let library:LibraryProtocol
     

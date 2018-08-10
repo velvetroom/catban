@@ -8,6 +8,10 @@ public class Factory {
         return library
     }
     
+    public class func makeBoard() -> Board {
+        return Board()
+    }
+    
     public class func makeColumn() -> Column {
         let column:Column = Column()
         column.identifier = UUID().uuidString
@@ -22,10 +26,6 @@ public class Factory {
     
     class func makeSession() -> SessionProtocol {
         return Configuration.Session()
-    }
-    
-    class func makeBoard() -> BoardProtocol {
-        return Configuration.Board()
     }
     
     class func makeCache() -> CacheServiceProtocol {

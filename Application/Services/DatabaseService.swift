@@ -9,19 +9,19 @@ class DatabaseService:DatabaseServiceProtocol {
         self.boards = Firestore.firestore().collection(Constants.boards)
     }
     
-    func load<M>(identifier:String, board:@escaping((M) -> Void)) where M:Codable & BoardProtocol {
+    func load(identifier:String, board:@escaping((Board) -> Void)) {
         self.boards.document(identifier).getDocument { [weak self] (snapshot:DocumentSnapshot?, _:Error?) in
             guard let json:[String:Any] = snapshot?.data() else { return }
             self?.loaded(json:json, completion:board)
         }
     }
     
-    func create<M>(board:M) -> String where M:Codable & BoardProtocol {
+    func create(board:Board) -> String {
         let document:DocumentReference = self.boards.addDocument(data:self.json(model:board))
         return document.documentID
     }
     
-    func save<M>(identifier:String, board:M) where M:Codable & BoardProtocol {
+    func save(identifier:String, board:Board) {
         self.boards.document(identifier).setData(self.json(model:board))
     }
     

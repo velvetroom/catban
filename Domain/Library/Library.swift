@@ -7,7 +7,7 @@ class Library:LibraryProtocol {
     weak var delegate:LibraryDelegate?
     weak var state:LibraryStateProtocol!
     var session:SessionProtocol
-    var boards:[String:BoardProtocol]
+    var boards:[String:Board]
     var cache:CacheServiceProtocol
     var database:DatabaseServiceProtocol
     let queue:DispatchQueue
@@ -40,11 +40,11 @@ class Library:LibraryProtocol {
         try self.state.addBoard(context:self, identifier:identifier)
     }
     
-    func save(board:BoardProtocol) throws {
+    func save(board:Board) throws {
         try self.state.save(context:self, board:board)
     }
     
-    func delete(board:BoardProtocol) throws {
+    func delete(board:Board) throws {
         try self.state.delete(context:self, board:board)
     }
     

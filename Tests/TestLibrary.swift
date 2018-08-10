@@ -124,7 +124,7 @@ class TestLibrary:XCTestCase {
     }
     
     func testSaveBoardCallsDatabase() {
-        let board:BoardProtocol = Factory.makeBoard()
+        let board:Board = Factory.makeBoard()
         let originalSyncstamp:Date = board.syncstamp
         self.library.boards["a"] = board
         let expect:XCTestExpectation = self.expectation(description:"Not saved")
@@ -137,7 +137,7 @@ class TestLibrary:XCTestCase {
     }
     
     func testDeleteBoardCallsCache() {
-        let board:BoardProtocol = Factory.makeBoard()
+        let board:Board = Factory.makeBoard()
         let identifier:String = "a"
         self.library.session.boards.append(identifier)
         self.library.boards[identifier] = board

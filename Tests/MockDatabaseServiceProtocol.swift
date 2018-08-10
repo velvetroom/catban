@@ -6,27 +6,29 @@ class MockDatabaseServiceProtocol:DatabaseServiceProtocol {
     var onLoad:(() -> Void)?
     var onCreate:(() -> Void)?
     var onSave:(() -> Void)?
-    var board:Configuration.Board
+    var board:Board
     
     required init() {
-        self.board = Configuration.Board()
+        self.board = Board()
     }
     
-    func load<M>(identifier:String, board:@escaping((M) -> Void)) where M:Codable & BoardProtocol {
+    func load(identifier:String, board:@escaping((Board) -> Void)) {
         self.onLoad?()
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
             if self?.error == nil {
-                board(self?.board as! M)
+                if let item:Board = self?.board {
+                    board(item)
+                }
             }
         }
     }
     
-    func create<M>(board:M) -> String where M:Codable & BoardProtocol {
+    func create(board:Board) -> String {
         self.onCreate?()
         return String()
     }
     
-    func save<M>(identifier:String, board:M) where M:Codable & BoardProtocol {
+    func save(identifier:String, board:Board) {
         self.onSave?()
     }
 }

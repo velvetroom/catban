@@ -60,7 +60,7 @@ class LibraryPresenter:Presenter {
     
     private var items:[LibraryItemViewModel] { get {
         var items:[LibraryItemViewModel] = []
-        self.interactor.library.boards.forEach { (key:String, board:BoardProtocol) in
+        self.interactor.library.boards.forEach { (key:String, board:Board) in
             var item:LibraryItemViewModel = LibraryItemViewModel()
             item.board = key
             item.name = board.text

@@ -62,8 +62,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         }
     }
     
-    private func addTemplate(board:BoardProtocol) {
-        var board:BoardProtocol = board
+    private func addTemplate(board:Board) {
         let todo:Column = Factory.makeColumn()
         todo.text = NSLocalizedString("LibraryInteractor.column.todo", comment:String())
         let progress:Column = Factory.makeColumn()

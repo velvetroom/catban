@@ -7,14 +7,12 @@
 		<key>Catban.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>15</integer>
 		</dict>
 		<key>Domain.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>16</integer>
 		</dict>
 		<key>Tests.xcscheme</key>
 		<dict>
@@ -24,22 +22,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>DA5D1011210DB518005E323A</key>
+		<key>DAFB9769211D6DB20089F935</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAD7ABD7210B6183008BDF4F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DAD7ABF1210B61C5008BDF4F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DAD7AC02210B61D5008BDF4F</key>
+		<key>DAFB9782211D6DD20089F935</key>
 		<dict>
 			<key>primary</key>
 			<true/>

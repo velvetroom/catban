@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA5D1011210DB518005E323A"
-               BuildableName = "Domain.framework"
+               BlueprintIdentifier = "DAFB9782211D6DD20089F935"
+               BuildableName = "libDomain.a"
                BlueprintName = "Domain"
                ReferencedContainer = "container:Catban.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DAD7AC02210B61D5008BDF4F"
+               BlueprintIdentifier = "DAFB978D211D6E030089F935"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
                ReferencedContainer = "container:Catban.xcodeproj">
@@ -43,8 +43,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA5D1011210DB518005E323A"
-            BuildableName = "Domain.framework"
+            BlueprintIdentifier = "DAFB9782211D6DD20089F935"
+            BuildableName = "libDomain.a"
             BlueprintName = "Domain"
             ReferencedContainer = "container:Catban.xcodeproj">
          </BuildableReference>
@@ -65,8 +65,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA5D1011210DB518005E323A"
-            BuildableName = "Domain.framework"
+            BlueprintIdentifier = "DAFB9782211D6DD20089F935"
+            BuildableName = "libDomain.a"
             BlueprintName = "Domain"
             ReferencedContainer = "container:Catban.xcodeproj">
          </BuildableReference>
@@ -83,8 +83,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA5D1011210DB518005E323A"
-            BuildableName = "Domain.framework"
+            BlueprintIdentifier = "DAFB9782211D6DD20089F935"
+            BuildableName = "libDomain.a"
             BlueprintName = "Domain"
             ReferencedContainer = "container:Catban.xcodeproj">
          </BuildableReference>

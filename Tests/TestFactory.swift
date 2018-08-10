@@ -5,7 +5,7 @@ class TestFactory:XCTestCase {
     override func setUp() {
         super.setUp()
         Configuration.cache = MockCache.self
-        Configuration.databaseService = MockDatabaseServiceProtocol.self
+        Configuration.database = MockDatabase.self
     }
     
     func testAvoidMoreThanOneLibraries() {

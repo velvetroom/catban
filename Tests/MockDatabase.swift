@@ -1,7 +1,7 @@
 import Foundation
 @testable import Domain
 
-class MockDatabaseServiceProtocol:DatabaseServiceProtocol {
+class MockDatabase:DatabaseService {
     var error:Error?
     var onLoad:(() -> Void)?
     var onCreate:(() -> Void)?

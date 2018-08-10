@@ -9,7 +9,7 @@ class Library:LibraryProtocol {
     var session:Session
     var boards:[String:Board]
     var cache:CacheService
-    var database:DatabaseServiceProtocol
+    var database:DatabaseService
     let queue:DispatchQueue
     
     init() {

@@ -15,7 +15,7 @@
 		DA135C6F2112EF7300B536CB /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C6E2112EF7300B536CB /* LibraryCellView.swift */; };
 		DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */; };
 		DA1538F92114449A005C05EE /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1538F82114449A005C05EE /* TestFactory.swift */; };
-		DA1984FE21134EE50061A234 /* DatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */; };
+		DA1984FE21134EE50061A234 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1984FD21134EE50061A234 /* DatabaseService.swift */; };
 		DA3168B2211C2C2900515F97 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA3168B1211C2C2900515F97 /* brand.xcassets */; };
 		DA36095F211B143700F66413 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36095E211B143700F66413 /* SharePresenter.swift */; };
 		DA360961211B144800F66413 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA360960211B144800F66413 /* ShareView.swift */; };
@@ -62,7 +62,7 @@
 		DA96888921196E7400F0B240 /* TextStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888821196E7400F0B240 /* TextStrategy.swift */; };
 		DA96888B21196F0300F0B240 /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888A21196F0300F0B240 /* TextChange.swift */; };
 		DA96888D21196F4A00F0B240 /* TextCreateColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96888C21196F4A00F0B240 /* TextCreateColumn.swift */; };
-		DAB5C24A21135CC5004611AC /* MockDatabaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */; };
+		DAB5C24A21135CC5004611AC /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5C24921135CC5004611AC /* MockDatabase.swift */; };
 		DABBCFB12114690800C92463 /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB02114690800C92463 /* BoardInteractor.swift */; };
 		DABBCFB32114691200C92463 /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB22114691200C92463 /* BoardPresenter.swift */; };
 		DABBCFB52114691A00C92463 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABBCFB42114691A00C92463 /* BoardViewModel.swift */; };
@@ -77,7 +77,7 @@
 		DAE7938A211B2D0D00989DD0 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE79389211B2D0D00989DD0 /* ScanView.swift */; };
 		DAE7938C211B2D3300989DD0 /* ScanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */; };
 		DAE7938E211B36CC00989DD0 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE7938D211B36CC00989DD0 /* ScanViewModel.swift */; };
-		DAFD730A21135176004718FE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* DatabaseService.swift */; };
+		DAFD730A21135176004718FE /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD730921135176004718FE /* Database.swift */; };
 		E056B8DA688CD12DEF241F69 /* libPods-Catban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C732CED0D61E41E61BCF1 /* libPods-Catban.a */; };
 /* End PBXBuildFile section */
 
@@ -117,7 +117,7 @@
 		DA135C6E2112EF7300B536CB /* LibraryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
 		DA135C702112F0D100B536CB /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
 		DA1538F82114449A005C05EE /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
-		DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceProtocol.swift; sourceTree = "<group>"; };
+		DA1984FD21134EE50061A234 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		DA3168B1211C2C2900515F97 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
 		DA36095E211B143700F66413 /* SharePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA360960211B144800F66413 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		DA96888821196E7400F0B240 /* TextStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStrategy.swift; sourceTree = "<group>"; };
 		DA96888A21196F0300F0B240 /* TextChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
 		DA96888C21196F4A00F0B240 /* TextCreateColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateColumn.swift; sourceTree = "<group>"; };
-		DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseServiceProtocol.swift; sourceTree = "<group>"; };
+		DAB5C24921135CC5004611AC /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		DABBCFB02114690800C92463 /* BoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
 		DABBCFB22114691200C92463 /* BoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
 		DABBCFB42114691A00C92463 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		DAE79389211B2D0D00989DD0 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		DAE7938B211B2D3300989DD0 /* ScanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPresenter.swift; sourceTree = "<group>"; };
 		DAE7938D211B36CC00989DD0 /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
-		DAFD730921135176004718FE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		DAFD730921135176004718FE /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,7 +267,7 @@
 				DA511E68210B655100ABD604 /* TestLibrary.swift */,
 				DA1538F82114449A005C05EE /* TestFactory.swift */,
 				DA52931C21102B0100C5B8A5 /* MockCache.swift */,
-				DAB5C24921135CC5004611AC /* MockDatabaseServiceProtocol.swift */,
+				DAB5C24921135CC5004611AC /* MockDatabase.swift */,
 				DA6E1DA22111933000FDB6DF /* MockLibraryDelegate.swift */,
 			);
 			path = Tests;
@@ -278,7 +278,7 @@
 			children = (
 				DA899B942113302C00A23696 /* Services.swift */,
 				DA5C69DB210DE04C00A07619 /* Cache.swift */,
-				DAFD730921135176004718FE /* DatabaseService.swift */,
+				DAFD730921135176004718FE /* Database.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 			children = (
 				DA5D1026210DB913005E323A /* Configuration.swift */,
 				DA5C69D8210DDF8900A07619 /* CacheService.swift */,
-				DA1984FD21134EE50061A234 /* DatabaseServiceProtocol.swift */,
+				DA1984FD21134EE50061A234 /* DatabaseService.swift */,
 				DA6E1D992111856F00FDB6DF /* DomainError.swift */,
 				DA497C772112CEFB0022ADFD /* Factory.swift */,
 			);
@@ -641,7 +641,7 @@
 				DA5D1027210DB913005E323A /* Configuration.swift in Sources */,
 				DA5D101F210DB545005E323A /* Board.swift in Sources */,
 				DA6E1DA12111925F00FDB6DF /* LibraryDelegate.swift in Sources */,
-				DA1984FE21134EE50061A234 /* DatabaseServiceProtocol.swift in Sources */,
+				DA1984FE21134EE50061A234 /* DatabaseService.swift in Sources */,
 				DA899B89211306E700A23696 /* LibraryStateReady.swift in Sources */,
 				DA5D1023210DB7D9005E323A /* Card.swift in Sources */,
 				DA36DEA5210EDE22008409E8 /* Session.swift in Sources */,
@@ -680,7 +680,7 @@
 				DAE7938A211B2D0D00989DD0 /* ScanView.swift in Sources */,
 				DA5C69DE210DE0CF00A07619 /* Router.swift in Sources */,
 				DA135C712112F0D200B536CB /* LibraryItemViewModel.swift in Sources */,
-				DAFD730A21135176004718FE /* DatabaseService.swift in Sources */,
+				DAFD730A21135176004718FE /* Database.swift in Sources */,
 				DA36DEB0210EE22F008409E8 /* LibraryInteractor.swift in Sources */,
 				DAE7938E211B36CC00989DD0 /* ScanViewModel.swift in Sources */,
 				DA06A1CF2119ECA000371607 /* DeleteCard.swift in Sources */,
@@ -708,7 +708,7 @@
 			files = (
 				DA1538F92114449A005C05EE /* TestFactory.swift in Sources */,
 				DA511E69210B655100ABD604 /* TestLibrary.swift in Sources */,
-				DAB5C24A21135CC5004611AC /* MockDatabaseServiceProtocol.swift in Sources */,
+				DAB5C24A21135CC5004611AC /* MockDatabase.swift in Sources */,
 				DA6E1DA32111933000FDB6DF /* MockLibraryDelegate.swift in Sources */,
 				DA52931D21102B0100C5B8A5 /* MockCache.swift in Sources */,
 			);

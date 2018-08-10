@@ -2,7 +2,7 @@ import Foundation
 import Domain
 import Firebase
 
-class DatabaseService:DatabaseServiceProtocol {
+class Database:DatabaseService {
     private let boards:CollectionReference
     
     required init() {

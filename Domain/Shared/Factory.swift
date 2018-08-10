@@ -32,8 +32,8 @@ public class Factory {
         return Configuration.cache.init()
     }
     
-    class func makeDatabase() -> DatabaseServiceProtocol {
-        return Configuration.databaseService.init()
+    class func makeDatabase() -> DatabaseService {
+        return Configuration.database.init()
     }
     
     private init() { }

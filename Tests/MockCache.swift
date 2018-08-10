@@ -1,5 +1,5 @@
 import Foundation
-@testable import Domain
+@testable import Catban
 
 class MockCache:CacheService {
     var error:Error?

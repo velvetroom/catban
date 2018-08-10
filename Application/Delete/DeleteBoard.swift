@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class DeleteBoard:DeleteStrategy {
     let title:String

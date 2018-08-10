@@ -1,6 +1,6 @@
 import Foundation
 import CleanArchitecture
-import Domain
+import Catban
 import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate {

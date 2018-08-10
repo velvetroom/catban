@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class TextCreateColumn:TextStrategy {
     var text:String

@@ -1,5 +1,5 @@
 import UIKit
-import Domain
+import Catban
 
 class BoardItemView:UIControl {
     weak var halo:UIView!

@@ -1,6 +1,6 @@
 import Foundation
 import CleanArchitecture
-import Domain
+import Catban
 
 class BoardInteractor:Interactor {
     weak var delegate:InteractorDelegate?

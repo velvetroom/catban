@@ -1,5 +1,5 @@
 import UIKit
-import Domain
+import Catban
 
 class BoardDrawer {
     weak var view:BoardView!

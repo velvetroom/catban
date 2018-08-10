@@ -12,11 +12,11 @@ class LibraryStateDefault:LibraryStateProtocol {
         }
     }
     
-    func loadBoards(context:Library) throws { throw DomainError.noSession }
-    func newBoard(context:Library) throws { throw DomainError.noSession }
-    func addBoard(context:Library, identifier:String) throws { throw DomainError.noSession }
-    func save(context:Library, board:Board) throws { throw DomainError.noSession }
-    func delete(context:Library, board:Board) throws { throw DomainError.noSession }
+    func loadBoards(context:Library) throws { throw CatbanError.noSession }
+    func newBoard(context:Library) throws { throw CatbanError.noSession }
+    func addBoard(context:Library, identifier:String) throws { throw CatbanError.noSession }
+    func save(context:Library, board:Board) throws { throw CatbanError.noSession }
+    func delete(context:Library, board:Board) throws { throw CatbanError.noSession }
     
     private func createSession(context:Library) {
         let session:Session = Factory.makeSession()

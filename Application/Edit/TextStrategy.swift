@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 protocol TextStrategy {
     var text:String { get set }

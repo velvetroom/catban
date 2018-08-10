@@ -1,5 +1,5 @@
 import XCTest
-@testable import Domain
+@testable import Catban
 
 class TestFactory:XCTestCase {
     override func setUp() {

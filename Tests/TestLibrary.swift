@@ -1,5 +1,5 @@
 import XCTest
-@testable import Domain
+@testable import Catban
 
 class TestLibrary:XCTestCase {
     private var library:Library!

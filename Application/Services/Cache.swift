@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 import CodableHero
 
 class Cache:CacheService {

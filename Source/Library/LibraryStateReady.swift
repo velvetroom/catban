@@ -48,7 +48,7 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func loadSession(context:Library) throws { throw DomainError.sessionLoaded }
+    func loadSession(context:Library) throws { throw CatbanError.sessionLoaded }
     
     private func load(context:Library, identifiers:[String]) {
         var identifiers:[String] = identifiers

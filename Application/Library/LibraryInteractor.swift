@@ -16,7 +16,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         do {
             try self.library.loadBoards()
         } catch {
-            do { try self.library.loadSession() } catch { }
+            self.library.loadSession()
         }
     }
     
@@ -32,11 +32,11 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     }
     
     func newBoard() {
-        do { try self.library.newBoard() } catch { }
+        self.library.newBoard()
     }
     
     func addBoard(identifier:String) {
-        do { try self.library.addBoard(identifier:identifier) } catch { }
+        self.library.addBoard(identifier:identifier)
     }
     
     func select(identifier:String) {
@@ -71,7 +71,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         done.text = NSLocalizedString("LibraryInteractor.column.done", comment:String())
         board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
         board.columns = [todo, progress, done]
-        do { try self.library.save(board:board) } catch { }
+        self.library.save(board:board)
     }
 }
 

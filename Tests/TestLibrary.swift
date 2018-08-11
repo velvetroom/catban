@@ -31,7 +31,7 @@ class TestLibrary:XCTestCase {
             expect.fulfill()
         }
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            do { try self.library.loadSession() } catch {}
+            self.library.loadSession()
         }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
@@ -50,7 +50,7 @@ class TestLibrary:XCTestCase {
             expectLoad.fulfill()
         }
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            do { try self.library.loadSession() } catch {}
+            self.library.loadSession()
         }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
@@ -94,7 +94,7 @@ class TestLibrary:XCTestCase {
             expectLoad.fulfill()
         }
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            do { try self.library.newBoard() } catch {}
+            self.library.newBoard()
         }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
@@ -106,7 +106,7 @@ class TestLibrary:XCTestCase {
             expect.fulfill()
         }
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            do { try self.library.addBoard(identifier:String()) } catch {}
+            self.library.addBoard(identifier:String())
         }
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
@@ -119,7 +119,7 @@ class TestLibrary:XCTestCase {
             XCTAssertEqual(self.library.session.boards.count, 1, "Should be only 1 board")
             expect.fulfill()
         }
-        do { try self.library.addBoard(identifier:identifier) } catch { }
+        self.library.addBoard(identifier:identifier)
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
     
@@ -132,7 +132,7 @@ class TestLibrary:XCTestCase {
             XCTAssertNotEqual(originalSyncstamp, board.syncstamp, "Failed to update syncstamp")
             expect.fulfill()
         }
-        do { try self.library.save(board:board) } catch { }
+        self.library.save(board:board)
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
     
@@ -147,7 +147,7 @@ class TestLibrary:XCTestCase {
             XCTAssertTrue(self.library.boards.isEmpty, "Not removed boards")
             expect.fulfill()
         }
-        do { try self.library.delete(board:board) } catch { }
+        self.library.delete(board:board)
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
 }

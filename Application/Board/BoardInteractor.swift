@@ -78,7 +78,7 @@ class BoardInteractor:Interactor {
     }
     
     func save() {
-        do { try self.library.save(board:self.board) } catch { }
+        self.library.save(board:self.board)
     }
     
     private func edit(text:TextStrategy, delete:DeleteStrategy?) {

@@ -265,11 +265,11 @@
 		DA4C64DB211DD54100ECAD21 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64DC211DD54100ECAD21 /* Library.swift */,
-				DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */,
+				DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */,
 				DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */,
 				DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */,
-				DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */,
+				DA4C64DC211DD54100ECAD21 /* Library.swift */,
+				DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */,
 				DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */,
 			);
 			path = Library;

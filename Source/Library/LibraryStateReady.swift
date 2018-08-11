@@ -7,7 +7,7 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func newBoard(context:Library) throws {
+    func newBoard(context:Library) {
         context.queue.async {
             let board:Board = Factory.makeBoard()
             let identifier:String = context.database.create(board:board)
@@ -18,7 +18,7 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func addBoard(context:Library, identifier:String) throws {
+    func addBoard(context:Library, identifier:String) {
         context.queue.async {
             if !context.session.boards.contains(identifier) {
                 context.session.boards.append(identifier)
@@ -27,7 +27,7 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func save(context:Library, board:Board) throws {
+    func save(context:Library, board:Board) {
         context.queue.async { [weak self] in
             guard let identifier:String = self?.identifier(context:context, board:board) else { return }
             board.syncstamp = Date()
@@ -35,7 +35,7 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func delete(context:Library, board:Board) throws {
+    func delete(context:Library, board:Board) {
         context.queue.async { [weak self] in
             guard
                 let identifier:String = self?.identifier(context:context, board:board)
@@ -48,7 +48,7 @@ class LibraryStateReady:LibraryStateProtocol {
         }
     }
     
-    func loadSession(context:Library) throws { throw CatbanError.sessionLoaded }
+    func loadSession(context:Library) { }
     
     private func load(context:Library, identifiers:[String]) {
         var identifiers:[String] = identifiers

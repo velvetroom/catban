@@ -5,10 +5,10 @@ public protocol LibraryProtocol:AnyObject {
     var session:Session { get }
     var boards:[String:Board] { get }
     
-    func loadSession() throws
     func loadBoards() throws
-    func newBoard() throws
-    func addBoard(identifier:String) throws
-    func save(board:Board) throws
-    func delete(board:Board) throws
+    func loadSession()
+    func newBoard()
+    func addBoard(identifier:String)
+    func save(board:Board)
+    func delete(board:Board)
 }

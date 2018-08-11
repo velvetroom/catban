@@ -13,39 +13,39 @@ class Library:LibraryProtocol {
     let queue:DispatchQueue
     
     init() {
-        self.session = Factory.makeSession()
+        self.state = Library.stateDefault
         self.boards = [:]
+        self.session = Factory.makeSession()
         self.cache = Factory.makeCache()
         self.database = Factory.makeDatabase()
         self.queue = DispatchQueue(label:Constants.identifier, qos:DispatchQoS.background,
                                    attributes:DispatchQueue.Attributes(),
                                    autoreleaseFrequency:DispatchQueue.AutoreleaseFrequency.inherit,
                                    target:DispatchQueue.global(qos:DispatchQoS.QoSClass.background))
-        self.state = Library.stateDefault
-    }
-    
-    func loadSession() throws {
-        try self.state.loadSession(context:self)
     }
     
     func loadBoards() throws {
         try self.state.loadBoards(context:self)
     }
     
-    func newBoard() throws {
-        try self.state.newBoard(context:self)
+    func loadSession() {
+        self.state.loadSession(context:self)
     }
     
-    func addBoard(identifier:String) throws {
-        try self.state.addBoard(context:self, identifier:identifier)
+    func newBoard() {
+        self.state.newBoard(context:self)
     }
     
-    func save(board:Board) throws {
-        try self.state.save(context:self, board:board)
+    func addBoard(identifier:String) {
+        self.state.addBoard(context:self, identifier:identifier)
     }
     
-    func delete(board:Board) throws {
-        try self.state.delete(context:self, board:board)
+    func save(board:Board) {
+        self.state.save(context:self, board:board)
+    }
+    
+    func delete(board:Board) {
+        self.state.delete(context:self, board:board)
     }
     
     func loaded(session:Session) {

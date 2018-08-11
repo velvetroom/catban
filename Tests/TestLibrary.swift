@@ -23,7 +23,7 @@ class TestLibrary:XCTestCase {
     func testLoadUpdatesSession() {
         self.library.state = Library.stateDefault
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
-        self.library.session.boards.append(String())
+        self.library.session.add(board:String())
         self.delegate.onSessionLoaded = {
             XCTAssertTrue(self.library.session.boards.isEmpty, "Session not updated")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -42,7 +42,7 @@ class TestLibrary:XCTestCase {
         let expectSave:XCTestExpectation = self.expectation(description:"Not saved")
         self.cache.error = NSError()
         self.cache.onSaveSession = { expectSave.fulfill() }
-        self.library.session.boards.append(String())
+        self.library.session.add(board:String())
         self.delegate.onSessionLoaded = {
             XCTAssertTrue(self.library.session.boards.isEmpty, "Session not updated")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -69,7 +69,8 @@ class TestLibrary:XCTestCase {
     
     func testLoadUpdatesNonEmptyBoards() {
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
-        self.library.session.boards = ["a", "b"]
+        self.library.session.add(board:"a")
+        self.library.session.add(board:"b")
         self.delegate.onBoardsUpdated = {
             XCTAssertEqual(self.library.boards.count, self.library.session.boards.count, "Invalid amount")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -114,7 +115,7 @@ class TestLibrary:XCTestCase {
     func testAddBoardNotRepeating() {
         let expect:XCTestExpectation = self.expectation(description:"Session not saved")
         let identifier:String = "hello world"
-        self.library.session.boards.append(identifier)
+        self.library.session.add(board:identifier)
         self.cache.onSaveSession = {
             XCTAssertEqual(self.library.session.boards.count, 1, "Should be only 1 board")
             expect.fulfill()
@@ -139,7 +140,7 @@ class TestLibrary:XCTestCase {
     func testDeleteBoardCallsCache() {
         let board:Board = Factory.makeBoard()
         let identifier:String = "a"
-        self.library.session.boards.append(identifier)
+        self.library.session.add(board:identifier)
         self.library.boards[identifier] = board
         let expect:XCTestExpectation = self.expectation(description:"Not deleted")
         self.cache.onSaveSession = {

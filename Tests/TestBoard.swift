@@ -17,4 +17,14 @@ class TestBoard:XCTestCase {
             XCTAssertEqual(self.board.columns.first!.text, text, "Invalid text")
         }
     }
+    
+    func testDeletingColumn() {
+        let text:String = "hello world"
+        self.board.addColumn(text:text)
+        guard let column:Column = self.board.columns.first else { return }
+        self.board.addColumn(text:"Another column")
+        self.board.delete(column:column)
+        XCTAssertEqual(self.board.columns.count, 1, "Should have 1")
+        XCTAssertNotEqual(text, self.board.columns.first?.text, "Removed wrong column")
+    }
 }

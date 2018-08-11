@@ -17,4 +17,14 @@ class TestColumn:XCTestCase {
             XCTAssertEqual(self.column.cards.first!.text, text, "Invalid text")
         }
     }
+    
+    func testDeletingCard() {
+        let text:String = "hello world"
+        self.column.addCard(text:text)
+        guard let card:Card = self.column.cards.first else { return }
+        self.column.addCard(text:"Another one")
+        self.column.delete(card:card)
+        XCTAssertEqual(self.column.cards.count, 1, "Should have 1 card")
+        XCTAssertNotEqual(text, self.column.cards.first?.text, "Deleted wrong card")
+    }
 }

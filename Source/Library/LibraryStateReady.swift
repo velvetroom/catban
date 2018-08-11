@@ -12,7 +12,7 @@ class LibraryStateReady:LibraryStateProtocol {
             let board:Board = Factory.makeBoard()
             let identifier:String = context.database.create(board:board)
             context.boards[identifier] = board
-            context.session.boards.append(identifier)
+            context.session.add(board:identifier)
             context.saveSession()
             context.notifyCreated(board:identifier)
         }
@@ -20,9 +20,7 @@ class LibraryStateReady:LibraryStateProtocol {
     
     func addBoard(context:Library, identifier:String) {
         context.queue.async {
-            if !context.session.boards.contains(identifier) {
-                context.session.boards.append(identifier)
-            }
+            context.session.add(board:identifier)
             context.saveSession()
         }
     }
@@ -41,9 +39,7 @@ class LibraryStateReady:LibraryStateProtocol {
                 let identifier:String = self?.identifier(context:context, board:board)
             else { return }
             context.boards.removeValue(forKey:identifier)
-            context.session.boards.removeAll { (item:String) -> Bool in
-                item == identifier
-            }
+            context.session.remove(board:identifier)
             context.saveSession()
         }
     }

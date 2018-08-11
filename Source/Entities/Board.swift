@@ -2,9 +2,9 @@ import Foundation
 
 public class Board:TextProtocol, Codable {
     public var text:String
-    public var created:Date
-    public var syncstamp:Date
-    public var columns:[Column]
+    public private(set) var columns:[Column]
+    var syncstamp:Date
+    let created:Date
     
     init() {
         self.text = String()

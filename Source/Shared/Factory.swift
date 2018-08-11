@@ -13,15 +13,11 @@ public class Factory {
     }
     
     class func makeColumn() -> Column {
-        let column:Column = Column()
-        column.identifier = UUID().uuidString
-        return column
+        return Column()
     }
     
     class func makeCard() -> Card {
-        let card:Card = Card()
-        card.identifier = UUID().uuidString
-        return card
+        return Card()
     }
     
     class func makeSession() -> Session {

@@ -126,8 +126,8 @@ class TestLibrary:XCTestCase {
     
     func testSaveBoardCallsDatabase() {
         let board:Board = Factory.makeBoard()
+        self.library.session.update(identifier:"a", board:board)
         let originalSyncstamp:Date = board.syncstamp
-        self.library.boards["a"] = board
         let expect:XCTestExpectation = self.expectation(description:"Not saved")
         self.database.onSave = {
             XCTAssertNotEqual(originalSyncstamp, board.syncstamp, "Failed to update syncstamp")
@@ -139,9 +139,7 @@ class TestLibrary:XCTestCase {
     
     func testDeleteBoardCallsCache() {
         let board:Board = Factory.makeBoard()
-        let identifier:String = "a"
-        self.library.session.add(board:identifier)
-        self.library.boards[identifier] = board
+        self.library.session.update(identifier:"a", board:board)
         let expect:XCTestExpectation = self.expectation(description:"Not deleted")
         self.cache.onSaveSession = {
             XCTAssertTrue(self.library.session.boards.isEmpty, "Not removed from session")

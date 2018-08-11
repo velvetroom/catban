@@ -28,7 +28,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     }
     
     func duplicated(identifier:String) -> Bool {
-        return self.library.session.boards.contains(identifier)
+        return self.library.boards[identifier] != nil
     }
     
     func newBoard() {
@@ -57,7 +57,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     func libraryCreated(board:String) {
         self.addTemplate(board:self.library.boards[board]!)
         self.select(identifier:board)
-        if self.library.session.boards.count > Constants.minBoards {
+        if self.library.boards.count > Constants.minBoards {
             if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
         }
     }

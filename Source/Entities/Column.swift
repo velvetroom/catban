@@ -22,4 +22,17 @@ public class Column:Codable, TextProtocol {
     public func delete(card:Card) {
         self.cards.removeAll { (item:Card) -> Bool in item === card }
     }
+    
+    public func insert(card:Card, after:Card) {
+        for index:Int in 0 ..< self.cards.count {
+            if self.cards[index] === after {
+                self.cards.insert(card, at:index + 1)
+                break
+            }
+        }
+    }
+    
+    public func makeFirst(card:Card) {
+        self.cards.insert(card, at:0)
+    }
 }

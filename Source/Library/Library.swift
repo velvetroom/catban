@@ -7,14 +7,13 @@ class Library:LibraryProtocol {
     weak var delegate:LibraryDelegate?
     weak var state:LibraryStateProtocol!
     var session:Session
-    var boards:[String:Board]
     var cache:CacheService
     var database:DatabaseService
     let queue:DispatchQueue
+    var boards:[String:Board] { get { return self.session.boards } }
     
     init() {
         self.state = Library.stateDefault
-        self.boards = [:]
         self.session = Factory.makeSession()
         self.cache = Factory.makeCache()
         self.database = Factory.makeDatabase()

@@ -27,4 +27,25 @@ class TestColumn:XCTestCase {
         XCTAssertEqual(self.column.cards.count, 1, "Should have 1 card")
         XCTAssertNotEqual(text, self.column.cards.first?.text, "Deleted wrong card")
     }
+    
+    func testInsertingCardAfterAnother() {
+        let subject:Card = Factory.makeCard()
+        self.column.addCard(text:"Another")
+        self.column.addCard(text:"Other")
+        guard let another:Card = self.column.cards.first else { return }
+        self.column.insert(card:subject, after:another)
+        XCTAssertEqual(self.column.cards.count, 3, "Failed to insert")
+        if self.column.cards.count == 3 {
+            XCTAssertTrue(subject === self.column.cards[1], "Invalid position")
+        }
+    }
+    
+    func testMakeCardFirst() {
+        let subject:Card = Factory.makeCard()
+        self.column.addCard(text:"Another")
+        self.column.addCard(text:"Other")
+        self.column.makeFirst(card:subject)
+        XCTAssertEqual(self.column.cards.count, 3, "Failed to insert")
+        XCTAssertTrue(subject === self.column.cards.first, "Invalid position")
+    }
 }

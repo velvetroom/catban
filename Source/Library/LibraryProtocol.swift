@@ -2,7 +2,6 @@ import Foundation
 
 public protocol LibraryProtocol:AnyObject {
     var delegate:LibraryDelegate? { get set }
-    var session:Session { get }
     var boards:[String:Board] { get }
     
     func loadBoards() throws

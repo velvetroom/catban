@@ -19,14 +19,9 @@ class BoardInteractor:Interactor {
     
     func attach(card:Card, column:Column, after:Card?) {
         if let after:Card = after {
-            for index:Int in 0 ..< column.cards.count {
-                if column.cards[index] === after {
-                    column.cards.insert(card, at:index + 1)
-                    break
-                }
-            }
+            column.insert(card:card, after:after)
         } else {
-            column.cards.insert(card, at:0)
+            column.makeFirst(card:card)
         }
         self.save()
     }

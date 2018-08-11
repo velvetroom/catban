@@ -2,17 +2,14 @@ import Foundation
 
 class LibraryStateReady:LibraryStateProtocol {
     func loadBoards(context:Library) throws {
-        context.queue.async { [weak self] in
-            self?.load(context:context, identifiers:context.session.boards)
-        }
+        self.recursiveLoad(context:context, identifiers:Array(context.session.boards.keys))
     }
     
     func newBoard(context:Library) {
         context.queue.async {
             let board:Board = Factory.makeBoard()
             let identifier:String = context.database.create(board:board)
-            context.boards[identifier] = board
-            context.session.add(board:identifier)
+            context.session.update(identifier:identifier, board:board)
             context.saveSession()
             context.notifyCreated(board:identifier)
         }
@@ -38,7 +35,6 @@ class LibraryStateReady:LibraryStateProtocol {
             guard
                 let identifier:String = self?.identifier(context:context, board:board)
             else { return }
-            context.boards.removeValue(forKey:identifier)
             context.session.remove(board:identifier)
             context.saveSession()
         }
@@ -46,12 +42,18 @@ class LibraryStateReady:LibraryStateProtocol {
     
     func loadSession(context:Library) { }
     
+    private func recursiveLoad(context:Library, identifiers:[String]) {
+        context.queue.async { [weak self] in
+            self?.load(context:context, identifiers:identifiers)
+        }
+    }
+    
     private func load(context:Library, identifiers:[String]) {
         var identifiers:[String] = identifiers
         if let identifier:String = identifiers.popLast() {
             context.database.load(identifier:identifier) { [weak self] (board:Board) in
-                context.boards[identifier] = board
-                context.queue.async { [weak self] in self?.load(context:context, identifiers:identifiers)  }
+                context.session.update(identifier:identifier, board:board)
+                self?.recursiveLoad(context:context, identifiers:identifiers)
             }
         } else {
             context.notifyBoards()

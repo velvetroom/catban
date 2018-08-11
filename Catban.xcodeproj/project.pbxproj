@@ -55,7 +55,6 @@
 		DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */; };
 		DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */; };
 		DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */; };
-		DA4C655D211DD58A00ECAD21 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6531211DD58A00ECAD21 /* Injection.swift */; };
 		DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6532211DD58A00ECAD21 /* Router.swift */; };
 		DA4C655F211DD58A00ECAD21 /* Qr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6533211DD58A00ECAD21 /* Qr.swift */; };
 		DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6534211DD58A00ECAD21 /* Application.swift */; };
@@ -70,7 +69,6 @@
 		DA4C6569211DD58A00ECAD21 /* TextCreateColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */; };
 		DA4C656A211DD58A00ECAD21 /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6540211DD58A00ECAD21 /* TextChange.swift */; };
 		DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6541211DD58A00ECAD21 /* EditView.swift */; };
-		DA4C656C211DD58A00ECAD21 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6543211DD58A00ECAD21 /* Services.swift */; };
 		DA4C656D211DD58A00ECAD21 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6544211DD58A00ECAD21 /* Database.swift */; };
 		DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6545211DD58A00ECAD21 /* Cache.swift */; };
 		DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */; };
@@ -158,7 +156,6 @@
 		DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
 		DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryInteractor.swift; sourceTree = "<group>"; };
 		DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
-		DA4C6531211DD58A00ECAD21 /* Injection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		DA4C6532211DD58A00ECAD21 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		DA4C6533211DD58A00ECAD21 /* Qr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qr.swift; sourceTree = "<group>"; };
 		DA4C6534211DD58A00ECAD21 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -173,7 +170,6 @@
 		DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCreateColumn.swift; sourceTree = "<group>"; };
 		DA4C6540211DD58A00ECAD21 /* TextChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
 		DA4C6541211DD58A00ECAD21 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
-		DA4C6543211DD58A00ECAD21 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		DA4C6544211DD58A00ECAD21 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		DA4C6545211DD58A00ECAD21 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
@@ -390,7 +386,6 @@
 		DA4C6530211DD58A00ECAD21 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C6531211DD58A00ECAD21 /* Injection.swift */,
 				DA4C6532211DD58A00ECAD21 /* Router.swift */,
 				DA4C6533211DD58A00ECAD21 /* Qr.swift */,
 				DA4C6534211DD58A00ECAD21 /* Application.swift */,
@@ -426,7 +421,6 @@
 		DA4C6542211DD58A00ECAD21 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C6543211DD58A00ECAD21 /* Services.swift */,
 				DA4C6544211DD58A00ECAD21 /* Database.swift */,
 				DA4C6545211DD58A00ECAD21 /* Cache.swift */,
 			);
@@ -656,9 +650,7 @@
 				DA4C6550211DD58A00ECAD21 /* BoardView.swift in Sources */,
 				DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */,
 				DA4C6553211DD58A00ECAD21 /* BoardPresenter.swift in Sources */,
-				DA4C655D211DD58A00ECAD21 /* Injection.swift in Sources */,
 				DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */,
-				DA4C656C211DD58A00ECAD21 /* Services.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItemViewModel.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
 				DA4C6568211DD58A00ECAD21 /* TextStrategy.swift in Sources */,

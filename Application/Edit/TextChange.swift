@@ -12,6 +12,7 @@ class TextChange:TextStrategy {
     }
     
     func save(interactor:BoardInteractor, text:String) {
-        self.save(interactor:interactor, subject:self.subject, text:text)
+        self.subject.text = self.validate(text:text)
+        interactor.save()
     }
 }

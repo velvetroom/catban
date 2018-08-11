@@ -8,17 +8,17 @@ public class Factory {
         return library
     }
     
-    public class func makeBoard() -> Board {
+    class func makeBoard() -> Board {
         return Board()
     }
     
-    public class func makeColumn() -> Column {
+    class func makeColumn() -> Column {
         let column:Column = Column()
         column.identifier = UUID().uuidString
         return column
     }
     
-    public class func makeCard() -> Card {
+    class func makeCard() -> Card {
         let card:Card = Card()
         card.identifier = UUID().uuidString
         return card

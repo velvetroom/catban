@@ -77,6 +77,8 @@
 		DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6548211DD58A00ECAD21 /* ShareView.swift */; };
 		DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
+		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
+		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +178,8 @@
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
+		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		E1A186EED2CF0D527F6E84AD /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
 		EF2AD30BA7F2E2A002D78D36 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,8 +282,8 @@
 		DA4C64E2211DD54100ECAD21 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64E3211DD54100ECAD21 /* CacheService.swift */,
 				DA4C64E4211DD54100ECAD21 /* CatbanError.swift */,
+				DA4C64E3211DD54100ECAD21 /* CacheService.swift */,
 				DA4C64E5211DD54100ECAD21 /* DatabaseService.swift */,
 				DA4C64E6211DD54100ECAD21 /* Factory.swift */,
 				DA4C64E7211DD54100ECAD21 /* Configuration.swift */,
@@ -290,11 +294,11 @@
 		DA4C64E8211DD54100ECAD21 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64E9211DD54100ECAD21 /* Board.swift */,
-				DA4C64EA211DD54100ECAD21 /* Session.swift */,
-				DA4C64EB211DD54100ECAD21 /* Card.swift */,
-				DA4C64EC211DD54100ECAD21 /* Column.swift */,
 				DA4C64ED211DD54100ECAD21 /* TextProtocol.swift */,
+				DA4C64EA211DD54100ECAD21 /* Session.swift */,
+				DA4C64E9211DD54100ECAD21 /* Board.swift */,
+				DA4C64EC211DD54100ECAD21 /* Column.swift */,
+				DA4C64EB211DD54100ECAD21 /* Card.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -304,6 +308,8 @@
 			children = (
 				DA4C64FF211DD54900ECAD21 /* TestFactory.swift */,
 				DA4C6503211DD54900ECAD21 /* TestLibrary.swift */,
+				DABD57CC211EDA8700C72A7F /* TestBoard.swift */,
+				DABD57CA211ED98900C72A7F /* TestColumn.swift */,
 				DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */,
 				DA4C6501211DD54900ECAD21 /* MockDatabase.swift */,
 				DA4C6502211DD54900ECAD21 /* MockCache.swift */,
@@ -622,8 +628,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4C6507211DD54A00ECAD21 /* MockCache.swift in Sources */,
+				DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */,
 				DA4C6508211DD54A00ECAD21 /* TestLibrary.swift in Sources */,
 				DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */,
+				DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */,
 				DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */,
 				DA4C6504211DD54A00ECAD21 /* TestFactory.swift in Sources */,
 			);

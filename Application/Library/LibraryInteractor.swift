@@ -63,14 +63,10 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     }
     
     private func addTemplate(board:Board) {
-        let todo:Column = Factory.makeColumn()
-        todo.text = NSLocalizedString("LibraryInteractor.column.todo", comment:String())
-        let progress:Column = Factory.makeColumn()
-        progress.text = NSLocalizedString("LibraryInteractor.column.progress", comment:String())
-        let done:Column = Factory.makeColumn()
-        done.text = NSLocalizedString("LibraryInteractor.column.done", comment:String())
         board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
-        board.columns = [todo, progress, done]
+        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
+        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))
+        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.done", comment:String()))
         self.library.save(board:board)
     }
 }

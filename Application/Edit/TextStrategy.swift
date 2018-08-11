@@ -9,13 +9,11 @@ protocol TextStrategy {
 }
 
 extension TextStrategy {
-    func save(interactor:BoardInteractor, subject:TextProtocol, text:String) {
-        var subject:TextProtocol = subject
-        if text.isEmpty {
-            subject.text = "-"
-        } else {
-            subject.text = text
+    func validate(text:String) -> String {
+        var text:String = text
+        if text.isEmpty || text == " " {
+            text = "-"
         }
-        interactor.save()
+        return text
     }
 }

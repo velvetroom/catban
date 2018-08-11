@@ -12,8 +12,7 @@ class TextCreateCard:TextStrategy {
     }
     
     func save(interactor:BoardInteractor, text:String) {
-        let card:Card = Factory.makeCard()
-        self.column?.cards.append(card)
-        self.save(interactor:interactor, subject:card, text:text)
+        self.column?.addCard(text:self.validate(text:text))
+        interactor.save()
     }
 }

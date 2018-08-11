@@ -13,6 +13,12 @@ public class Column:Codable, TextProtocol {
         self.cards = []
     }
     
+    public func addCard(text:String) {
+        let card:Card = Factory.makeCard()
+        card.text = text
+        self.cards.append(card)
+    }
+    
     public func delete(card:Card) {
         self.cards.removeAll { (item:Card) -> Bool in item === card }
     }

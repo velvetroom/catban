@@ -14,7 +14,7 @@ class LibraryCellView:UIControl {
     required init?(coder:NSCoder) { return nil }
     
     func highlight() {
-        self.backgroundColor = Colors.navyBlue
+        self.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
     }
     
     func unhighlight() {

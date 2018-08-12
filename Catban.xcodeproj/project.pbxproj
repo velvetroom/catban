@@ -57,7 +57,6 @@
 		DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6532211DD58A00ECAD21 /* Router.swift */; };
 		DA4C655F211DD58A00ECAD21 /* Qr.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6533211DD58A00ECAD21 /* Qr.swift */; };
 		DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6534211DD58A00ECAD21 /* Application.swift */; };
-		DA4C6561211DD58A00ECAD21 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6535211DD58A00ECAD21 /* Colors.swift */; };
 		DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6536211DD58A00ECAD21 /* LoadingView.swift */; };
 		DA4C6563211DD58A00ECAD21 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6538211DD58A00ECAD21 /* ScanView.swift */; };
 		DA4C6564211DD58A00ECAD21 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6539211DD58A00ECAD21 /* ScanViewModel.swift */; };
@@ -157,7 +156,6 @@
 		DA4C6532211DD58A00ECAD21 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		DA4C6533211DD58A00ECAD21 /* Qr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qr.swift; sourceTree = "<group>"; };
 		DA4C6534211DD58A00ECAD21 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		DA4C6535211DD58A00ECAD21 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		DA4C6536211DD58A00ECAD21 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA4C6538211DD58A00ECAD21 /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		DA4C6539211DD58A00ECAD21 /* ScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
@@ -328,10 +326,10 @@
 		DA4C6519211DD58A00ECAD21 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C651A211DD58A00ECAD21 /* Delete */,
-				DA4C6521211DD58A00ECAD21 /* Board */,
-				DA4C6529211DD58A00ECAD21 /* Library */,
 				DA4C6530211DD58A00ECAD21 /* Shared */,
+				DA4C6529211DD58A00ECAD21 /* Library */,
+				DA4C6521211DD58A00ECAD21 /* Board */,
+				DA4C651A211DD58A00ECAD21 /* Delete */,
 				DA4C6537211DD58A00ECAD21 /* Scan */,
 				DA4C653B211DD58A00ECAD21 /* Edit */,
 				DA4C6542211DD58A00ECAD21 /* Services */,
@@ -383,10 +381,9 @@
 		DA4C6530211DD58A00ECAD21 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				DA4C6534211DD58A00ECAD21 /* Application.swift */,
 				DA4C6532211DD58A00ECAD21 /* Router.swift */,
 				DA4C6533211DD58A00ECAD21 /* Qr.swift */,
-				DA4C6534211DD58A00ECAD21 /* Application.swift */,
-				DA4C6535211DD58A00ECAD21 /* Colors.swift */,
 				DA4C6536211DD58A00ECAD21 /* LoadingView.swift */,
 			);
 			path = Shared;
@@ -636,7 +633,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
-				DA4C6561211DD58A00ECAD21 /* Colors.swift in Sources */,
 				DA4C6557211DD58A00ECAD21 /* LibraryViewModel.swift in Sources */,
 				DA4C6565211DD58A00ECAD21 /* ScanPresenter.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,

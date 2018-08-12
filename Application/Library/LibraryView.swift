@@ -39,7 +39,7 @@ class LibraryView:View<LibraryPresenter> {
         self.view.addSubview(message)
         
         let loading:LoadingView = LoadingView()
-        loading.tintColor = Colors.navyBlue
+        loading.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         self.loading = loading
         self.view.addSubview(loading)
         

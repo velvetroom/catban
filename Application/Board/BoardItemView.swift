@@ -56,7 +56,7 @@ class BoardItemView:UIControl {
         let halo:UIView = UIView()
         halo.isUserInteractionEnabled = false
         halo.translatesAutoresizingMaskIntoConstraints = false
-        halo.backgroundColor = Colors.navyBlue
+        halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         halo.layer.cornerRadius = Constants.radius
         halo.isHidden = true
         self.halo = halo

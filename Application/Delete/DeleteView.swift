@@ -53,8 +53,8 @@ class DeleteView:View<DeletePresenter> {
         let cancel:UIButton = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
         cancel.addTarget(self.presenter, action:#selector(self.presenter.cancel), for:UIControl.Event.touchUpInside)
-        cancel.setTitleColor(Colors.vanillaRed, for:UIControl.State.normal)
-        cancel.setTitleColor(Colors.vanillaRed.withAlphaComponent(0.2), for:UIControl.State.highlighted)
+        cancel.setTitleColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1), for:UIControl.State.normal)
+        cancel.setTitleColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1).withAlphaComponent(0.2), for:UIControl.State.highlighted)
         cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:UIControl.State())
         cancel.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
         self.cancel = cancel

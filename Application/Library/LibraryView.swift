@@ -5,6 +5,8 @@ class LibraryView:View<LibraryPresenter> {
     weak var loading:LoadingView!
     weak var scroll:UIScrollView!
     weak var message:UILabel!
+    weak var add:UIBarButtonItem!
+    weak var scan:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +45,13 @@ class LibraryView:View<LibraryPresenter> {
         self.loading = loading
         self.view.addSubview(loading)
         
-        self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.add, target:self.presenter,
-                            action:#selector(self.presenter.newBoard)),
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.scan))]
+        let add:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.add,
+                                                  target:self.presenter, action:#selector(self.presenter.newBoard))
+        self.add = add
+        let scan:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                                                   action:#selector(self.presenter.scan))
+        self.scan = scan
+        self.navigationItem.rightBarButtonItems = [add, scan]
     }
     
     private func layoutOutlets() {
@@ -76,7 +80,8 @@ class LibraryView:View<LibraryPresenter> {
     private func configureViewModel() {
         self.presenter.viewModels.observe { [weak self] (viewModel:LibraryViewModel) in
             self?.loading.isHidden = viewModel.loadingHidden
-            self?.navigationItem.rightBarButtonItem?.isEnabled = viewModel.addEnabled
+            self?.add.isEnabled = viewModel.actionsEnabled
+            self?.scan.isEnabled = viewModel.actionsEnabled
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }

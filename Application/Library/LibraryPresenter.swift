@@ -46,7 +46,7 @@ class LibraryPresenter:Presenter {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
         viewModel.loadingHidden = true
-        viewModel.addEnabled = true
+        viewModel.actionsEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     
@@ -54,7 +54,7 @@ class LibraryPresenter:Presenter {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.items = self.items
         viewModel.loadingHidden = true
-        viewModel.addEnabled = true
+        viewModel.actionsEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     

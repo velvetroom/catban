@@ -12,6 +12,7 @@
 		DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */; };
 		DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CF2120356C001C758E /* BoardCardView.swift */; };
 		DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7D121203BDF001C758E /* BoardButtonView.swift */; };
+		DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2FB7D321206172001C758E /* LaunchScreen.storyboard */; };
 		DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA4C64D8211DD4E400ECAD21 /* GoogleService-Info.plist */; };
 		DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DC211DD54100ECAD21 /* Library.swift */; };
 		DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */; };
@@ -35,7 +36,6 @@
 		DA4C6508211DD54A00ECAD21 /* TestLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6503211DD54900ECAD21 /* TestLibrary.swift */; };
 		DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA4C650A211DD57A00ECAD21 /* Localizable.strings */; };
 		DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */; };
-		DA4C6516211DD57A00ECAD21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4C6510211DD57A00ECAD21 /* LaunchScreen.storyboard */; };
 		DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4C6511211DD57A00ECAD21 /* assets.xcassets */; };
 		DA4C6518211DD57A00ECAD21 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4C6512211DD57A00ECAD21 /* brand.xcassets */; };
 		DA4C654A211DD58A00ECAD21 /* DeleteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C651B211DD58A00ECAD21 /* DeleteStrategy.swift */; };
@@ -109,6 +109,7 @@
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
+		DA2FB7D321206172001C758E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA4C64D1211DD40300ECAD21 /* libCatban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatban.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D2211DD40300ECAD21 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D3211DD40300ECAD21 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +138,6 @@
 		DA4C6503211DD54900ECAD21 /* TestLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibrary.swift; sourceTree = "<group>"; };
 		DA4C650B211DD57A00ECAD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DA4C650D211DD57A00ECAD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DA4C6510211DD57A00ECAD21 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA4C6511211DD57A00ECAD21 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DA4C6512211DD57A00ECAD21 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
 		DA4C651B211DD58A00ECAD21 /* DeleteStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStrategy.swift; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 				DA4C6512211DD57A00ECAD21 /* brand.xcassets */,
 				DA4C650A211DD57A00ECAD21 /* Localizable.strings */,
 				DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */,
-				DA4C6510211DD57A00ECAD21 /* LaunchScreen.storyboard */,
+				DA2FB7D321206172001C758E /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -377,12 +377,12 @@
 		DA4C6529211DD58A00ECAD21 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */,
+				DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */,
 				DA4C652A211DD58A00ECAD21 /* LibraryViewModel.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652C211DD58A00ECAD21 /* LibraryItemViewModel.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
-				DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */,
-				DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -552,8 +552,8 @@
 				DA4C6518211DD57A00ECAD21 /* brand.xcassets in Resources */,
 				DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */,
 				DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */,
+				DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */,
 				DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */,
-				DA4C6516211DD57A00ECAD21 /* LaunchScreen.storyboard in Resources */,
 				DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

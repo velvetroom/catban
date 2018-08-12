@@ -1,6 +1,9 @@
 import Foundation
 
 public class Factory {
+    public static var cache:CacheService.Type!
+    public static var database:DatabaseService.Type!
+    
     public class func makeLibrary() -> LibraryProtocol {
         if library == nil {
             library = Library()
@@ -9,11 +12,11 @@ public class Factory {
     }
     
     class func makeCache() -> CacheService {
-        return Configuration.cache.init()
+        return cache.init()
     }
     
     class func makeDatabase() -> DatabaseService {
-        return Configuration.database.init()
+        return database.init()
     }
     
     private init() { }

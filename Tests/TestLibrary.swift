@@ -9,8 +9,8 @@ class TestLibrary:XCTestCase {
     
     override func setUp() {
         super.setUp()
-        Configuration.cache = MockCache.self
-        Configuration.database = MockDatabase.self
+        Factory.cache = MockCache.self
+        Factory.database = MockDatabase.self
         self.library = Library()
         self.delegate = MockLibraryDelegate()
         self.library.delegate = self.delegate

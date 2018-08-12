@@ -4,8 +4,8 @@ import XCTest
 class TestFactory:XCTestCase {
     override func setUp() {
         super.setUp()
-        Configuration.cache = MockCache.self
-        Configuration.database = MockDatabase.self
+        Factory.cache = MockCache.self
+        Factory.database = MockDatabase.self
     }
     
     func testAvoidMoreThanOneLibraries() {

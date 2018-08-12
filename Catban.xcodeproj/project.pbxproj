@@ -20,7 +20,6 @@
 		DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E4211DD54100ECAD21 /* CatbanError.swift */; };
 		DA4C64F6211DD54100ECAD21 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E5211DD54100ECAD21 /* DatabaseService.swift */; };
 		DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E6211DD54100ECAD21 /* Factory.swift */; };
-		DA4C64F8211DD54100ECAD21 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E7211DD54100ECAD21 /* Configuration.swift */; };
 		DA4C64F9211DD54100ECAD21 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E9211DD54100ECAD21 /* Board.swift */; };
 		DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EA211DD54100ECAD21 /* Session.swift */; };
 		DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EB211DD54100ECAD21 /* Card.swift */; };
@@ -121,7 +120,6 @@
 		DA4C64E4211DD54100ECAD21 /* CatbanError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatbanError.swift; sourceTree = "<group>"; };
 		DA4C64E5211DD54100ECAD21 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		DA4C64E6211DD54100ECAD21 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
-		DA4C64E7211DD54100ECAD21 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		DA4C64E9211DD54100ECAD21 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		DA4C64EA211DD54100ECAD21 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DA4C64EB211DD54100ECAD21 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -284,7 +282,6 @@
 				DA4C64E3211DD54100ECAD21 /* CacheService.swift */,
 				DA4C64E5211DD54100ECAD21 /* DatabaseService.swift */,
 				DA4C64E6211DD54100ECAD21 /* Factory.swift */,
-				DA4C64E7211DD54100ECAD21 /* Configuration.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -616,7 +613,6 @@
 				DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */,
 				DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */,
 				DA4C64F3211DD54100ECAD21 /* LibraryStateReady.swift in Sources */,
-				DA4C64F8211DD54100ECAD21 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

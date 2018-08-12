@@ -14,8 +14,8 @@ import Firebase
     }
     
     private func injection() {
-        Configuration.cache = Cache.self
-        Configuration.database = Database.self
+        Factory.cache = Cache.self
+        Factory.database = Database.self
     }
     
     private func services() {

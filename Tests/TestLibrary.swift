@@ -16,7 +16,7 @@ class TestLibrary:XCTestCase {
         self.library.delegate = self.delegate
         self.cache = self.library.cache as? MockCache
         self.database = self.library.database as? MockDatabase
-        self.library.session = Factory.makeSession()
+        self.library.session = Session()
         self.library.state = Library.stateReady
     }
     
@@ -125,7 +125,7 @@ class TestLibrary:XCTestCase {
     }
     
     func testSaveBoardCallsDatabase() {
-        let board:Board = Factory.makeBoard()
+        let board:Board = Board()
         self.library.session.update(identifier:"a", board:board)
         let originalSyncstamp:Date = board.syncstamp
         let expect:XCTestExpectation = self.expectation(description:"Not saved")
@@ -138,7 +138,7 @@ class TestLibrary:XCTestCase {
     }
     
     func testDeleteBoardCallsCache() {
-        let board:Board = Factory.makeBoard()
+        let board:Board = Board()
         self.library.session.update(identifier:"a", board:board)
         let expect:XCTestExpectation = self.expectation(description:"Not deleted")
         self.cache.onSaveSession = {

@@ -6,7 +6,7 @@ class TestSession:XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.session = Factory.makeSession()
+        self.session = Session()
     }
     
     func testAddBoard() {
@@ -18,7 +18,7 @@ class TestSession:XCTestCase {
     
     func testUpdatingBoard() {
         let identifier:String = "hello world"
-        self.session.update(identifier:identifier, board:Factory.makeBoard())
+        self.session.update(identifier:identifier, board:Board())
         XCTAssertEqual(self.session.boards.count, 1, "Not added")
         XCTAssertNotNil(self.session.boards[identifier], "Invalid board")
     }

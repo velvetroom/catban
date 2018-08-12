@@ -14,7 +14,7 @@ public class Column:Codable, TextProtocol {
     }
     
     public func addCard(text:String) {
-        let card:Card = Factory.makeCard()
+        let card:Card = Card()
         card.text = text
         self.cards.append(card)
     }

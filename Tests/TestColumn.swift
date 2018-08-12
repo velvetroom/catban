@@ -29,7 +29,7 @@ class TestColumn:XCTestCase {
     }
     
     func testInsertingCardAfterAnother() {
-        let subject:Card = Factory.makeCard()
+        let subject:Card = Card()
         self.column.addCard(text:"Another")
         self.column.addCard(text:"Other")
         guard let another:Card = self.column.cards.first else { return }
@@ -41,7 +41,7 @@ class TestColumn:XCTestCase {
     }
     
     func testMakeCardFirst() {
-        let subject:Card = Factory.makeCard()
+        let subject:Card = Card()
         self.column.addCard(text:"Another")
         self.column.addCard(text:"Other")
         self.column.makeFirst(card:subject)

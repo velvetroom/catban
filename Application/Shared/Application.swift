@@ -3,7 +3,7 @@ import Catban
 import Firebase
 
 @UIApplicationMain class Application:UIResponder, UIApplicationDelegate {
-    static private(set) var router:Router = Router()
+    static let router:Router = Router()
     var window:UIWindow?
     
     func application(_:UIApplication, didFinishLaunchingWithOptions:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {

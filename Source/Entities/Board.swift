@@ -14,7 +14,7 @@ public class Board:TextProtocol, Codable {
     }
     
     public func addColumn(text:String) {
-        let column:Column = Factory.makeColumn()
+        let column:Column = Column()
         column.text = text
         self.columns.append(column)
     }

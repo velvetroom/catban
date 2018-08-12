@@ -15,10 +15,10 @@ class TestFactory:XCTestCase {
     }
     
     func testAddIdentifierToCard() {
-        XCTAssertFalse(Factory.makeCard().identifier.isEmpty, "No identifier")
+        XCTAssertFalse(Card().identifier.isEmpty, "No identifier")
     }
     
     func testAddIdentifierToColumn() {
-        XCTAssertFalse(Factory.makeColumn().identifier.isEmpty, "No identifier")
+        XCTAssertFalse(Column().identifier.isEmpty, "No identifier")
     }
 }

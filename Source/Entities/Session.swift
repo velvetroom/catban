@@ -8,7 +8,7 @@ public class Session:Codable {
         let keys:[String] = try values.decode([String].self, forKey:CodingKeys.boards)
         self.boards = [:]
         keys.forEach { (key:String) in
-            self.boards[key] = Factory.makeBoard()
+            self.boards[key] = Board()
         }
     }
     
@@ -23,7 +23,7 @@ public class Session:Codable {
     
     func add(board:String) {
         if self.boards[board] == nil {
-            self.update(identifier:board, board:Factory.makeBoard())
+            self.update(identifier:board, board:Board())
         }
     }
     

@@ -14,7 +14,7 @@ class Library:LibraryProtocol {
     
     init() {
         self.state = Library.stateDefault
-        self.session = Factory.makeSession()
+        self.session = Session()
         self.cache = Factory.makeCache()
         self.database = Factory.makeDatabase()
         self.queue = DispatchQueue(label:Constants.identifier, qos:DispatchQoS.background,

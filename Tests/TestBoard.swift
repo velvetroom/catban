@@ -6,7 +6,7 @@ class TestBoard:XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.board = Factory.makeBoard()
+        self.board = Board()
     }
     
     func testAddingColumn() {

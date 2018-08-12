@@ -19,7 +19,7 @@ class LibraryStateDefault:LibraryStateProtocol {
     func delete(context:Library, board:Board) { }
     
     private func createSession(context:Library) {
-        let session:Session = Factory.makeSession()
+        let session:Session = Session()
         context.cache.save(session:session)
         context.loaded(session:session)
     }

@@ -8,8 +8,8 @@ class MockCache:CacheService {
     var board:Board
     
     required init() {
-        self.session = Factory.makeSession()
-        self.board = Factory.makeBoard()
+        self.session = Session()
+        self.board = Board()
     }
     
     func loadSession() throws -> Session {

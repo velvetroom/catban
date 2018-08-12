@@ -9,7 +9,7 @@ class MockDatabase:DatabaseService {
     var board:Board
     
     required init() {
-        self.board = Factory.makeBoard()
+        self.board = Board()
     }
     
     func load(identifier:String, board:@escaping((Board) -> Void)) {

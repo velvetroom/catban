@@ -392,9 +392,9 @@
 		DA4C6537211DD58A00ECAD21 /* Scan */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C6538211DD58A00ECAD21 /* ScanView.swift */,
-				DA4C6539211DD58A00ECAD21 /* ScanViewModel.swift */,
 				DA4C653A211DD58A00ECAD21 /* ScanPresenter.swift */,
+				DA4C6539211DD58A00ECAD21 /* ScanViewModel.swift */,
+				DA4C6538211DD58A00ECAD21 /* ScanView.swift */,
 			);
 			path = Scan;
 			sourceTree = "<group>";

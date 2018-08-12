@@ -36,7 +36,7 @@ class ShareView:View<SharePresenter> {
         let base:UIView = UIView()
         base.isUserInteractionEnabled = false
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.backgroundColor = UIColor(white:1.0, alpha:0.6)
+        base.backgroundColor = UIColor(white:1.0, alpha:0.9)
         base.layer.cornerRadius = Constants.radius
         base.clipsToBounds = true
         self.base = base
@@ -63,7 +63,7 @@ class ShareView:View<SharePresenter> {
         let done:UIButton = UIButton()
         done.translatesAutoresizingMaskIntoConstraints = false
         done.addTarget(self.presenter, action:#selector(self.presenter.done), for:UIControl.Event.touchUpInside)
-        done.setTitleColor(UIColor(white:0.0, alpha:0.4), for:UIControl.State.normal)
+        done.setTitleColor(UIColor.black, for:UIControl.State.normal)
         done.setTitleColor(UIColor(white:0.0, alpha:0.2), for:UIControl.State.highlighted)
         done.setTitle(NSLocalizedString("ShareView.done", comment:String()), for:UIControl.State())
         done.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
@@ -73,8 +73,8 @@ class ShareView:View<SharePresenter> {
         let send:UIButton = UIButton()
         send.translatesAutoresizingMaskIntoConstraints = false
         send.addTarget(self, action:#selector(self.sendImage), for:UIControl.Event.touchUpInside)
-        send.setTitleColor(UIColor.black, for:UIControl.State.normal)
-        send.setTitleColor(UIColor(white:0.0, alpha:0.2), for:UIControl.State.highlighted)
+        send.setTitleColor(#colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1), for:UIControl.State.normal)
+        send.setTitleColor(#colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.2), for:UIControl.State.highlighted)
         send.setTitle(NSLocalizedString("ShareView.send", comment:String()), for:UIControl.State())
         send.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
         self.send = send
@@ -132,7 +132,7 @@ class ShareView:View<SharePresenter> {
 private struct Constants {
     static let radius:CGFloat = 6.0
     static let width:CGFloat = 300.0
-    static let height:CGFloat = 440.0
+    static let height:CGFloat = 420.0
     static let font:CGFloat = 16.0
     static let margin:CGFloat = 20.0
     static let buttonHeight:CGFloat = 50.0

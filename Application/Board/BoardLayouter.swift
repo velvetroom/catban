@@ -8,13 +8,14 @@ class BoardLayouter {
         var maxY:CGFloat = 0
         var column:BoardItemView? = self.view.drawer.firstColumn
         while let currentColumn:BoardItemView = column {
-            var top:CGFloat = Constants.top
+            var top:CGFloat = 0.0
             var item:BoardItemView? = currentColumn
             while let currentItem:BoardItemView = item {
+                top += Constants.vertical
                 item?.top.constant = top
                 item?.left.constant = left
                 item = currentItem.down
-                top += currentItem.height.constant + Constants.vertical
+                top += currentItem.height.constant
                 maxY = max(maxY, top)
             }
             column = currentColumn.right
@@ -23,14 +24,14 @@ class BoardLayouter {
         self.update(width:left, height:maxY)
     }
     
-    func detach(item:BoardItemView) {
+    func detach(item:BoardCardView) {
         item.up?.down = item.down
         item.down?.up = item.up
         self.layout()
         self.view.presenter.detach(item:item)
     }
     
-    func attach(item:BoardItemView) {
+    func attach(item:BoardCardView) {
         var column:BoardItemView = self.view.drawer.firstColumn!
         while column.frame.maxX < item.frame.midX {
             if column.right?.right != nil {
@@ -40,8 +41,8 @@ class BoardLayouter {
             }
         }
         var parent:BoardItemView = column
-        while let child:BoardItemView = parent.down {
-            if child.top.constant > item.top.constant || child.down == nil {
+        while let child:BoardCardView = parent.down as? BoardCardView {
+            if child.top.constant > item.top.constant {
                 break
             }
             parent = child
@@ -61,9 +62,8 @@ class BoardLayouter {
 }
 
 private struct Constants {
-    static let top:CGFloat = 12.0
     static let left:CGFloat = 17.0
-    static let horizontal:CGFloat = 5.0
-    static let vertical:CGFloat = 10.0
-    static let bottom:CGFloat = 20.0
+    static let horizontal:CGFloat = 30.0
+    static let vertical:CGFloat = 24.0
+    static let bottom:CGFloat = 50.0
 }

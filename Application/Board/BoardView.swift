@@ -18,7 +18,7 @@ class BoardView:View<BoardPresenter> {
     required init?(coder:NSCoder) { return nil }
     
     @objc func dragCard(pan:UIPanGestureRecognizer) {
-        let view:BoardItemView = pan.view as! BoardItemView
+        let view:BoardCardView = pan.view as! BoardCardView
         switch pan.state {
         case UIGestureRecognizer.State.began:
             view.dragStart()
@@ -53,7 +53,6 @@ class BoardView:View<BoardPresenter> {
         scroll.alwaysBounceVertical = true
         scroll.alwaysBounceHorizontal = true
         scroll.decelerationRate = UIScrollView.DecelerationRate.fast
-        scroll.canCancelContentTouches = false
         self.scroll = scroll
         self.view.addSubview(scroll)
         

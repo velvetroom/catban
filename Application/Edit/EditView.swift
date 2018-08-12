@@ -37,7 +37,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = UIColor.clear
         text.textColor = UIColor.black
-        text.tintColor = UIColor.black
+        text.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         text.alwaysBounceVertical = true
         text.showsHorizontalScrollIndicator = false
         text.returnKeyType = UIReturnKeyType.default
@@ -122,6 +122,6 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
 }
 
 private struct Constants {
-    static let font:CGFloat = 30.0
-    static let insets:CGFloat = 10.0
+    static let font:CGFloat = 28.0
+    static let insets:CGFloat = 12.0
 }

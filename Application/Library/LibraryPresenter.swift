@@ -31,7 +31,7 @@ class LibraryPresenter:Presenter {
     
     func willAppear() {
         self.viewModels.update(viewModel:LibraryViewModel())
-//        self.interactor.load()
+        self.interactor.load()
     }
     
     func shouldUpdate() {

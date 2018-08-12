@@ -7,12 +7,12 @@ class BoardPresenter:Presenter {
     
     required init() { }
     
-    func detach(item:BoardItemView) {
+    func detach(item:BoardCardView) {
         self.interactor.detach(card:item.card, column:item.column)
         item.column = nil
     }
     
-    func attach(item:BoardItemView, after:BoardItemView) {
+    func attach(item:BoardCardView, after:BoardItemView) {
         self.interactor.attach(card:item.card, column:after.column, after:after.card)
         item.column = after.column
     }
@@ -37,7 +37,7 @@ class BoardPresenter:Presenter {
         self.interactor.newCard(column:view.column!)
     }
     
-    @objc func editCard(view:BoardItemView) {
+    @objc func editCard(view:BoardCardView) {
         self.interactor.editCard(column:view.column!, card:view.card!)
     }
     

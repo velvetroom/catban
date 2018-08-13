@@ -79,6 +79,12 @@
 		DA817F7C212163F400732944 /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7B212163F400732944 /* ReportProtocol.swift */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
 		DA817F802121646600732944 /* ReportStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7F2121646600732944 /* ReportStats.swift */; };
+		DA817F82212165E000732944 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F81212165E000732944 /* TestReport.swift */; };
+		DA817F84212167B000732944 /* ReportVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F83212167B000732944 /* ReportVisitor.swift */; };
+		DA817F862121680900732944 /* ReportColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F852121680900732944 /* ReportColumns.swift */; };
+		DA817F882121686400732944 /* ReportProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F872121686400732944 /* ReportProgress.swift */; };
+		DA817F8A2121688700732944 /* ReportCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F892121688700732944 /* ReportCards.swift */; };
+		DA817F8C2121689F00732944 /* ReportLongerColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F8B2121689F00732944 /* ReportLongerColumn.swift */; };
 		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
@@ -183,6 +189,12 @@
 		DA817F7B212163F400732944 /* ReportProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProtocol.swift; sourceTree = "<group>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
+		DA817F81212165E000732944 /* TestReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReport.swift; sourceTree = "<group>"; };
+		DA817F83212167B000732944 /* ReportVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVisitor.swift; sourceTree = "<group>"; };
+		DA817F852121680900732944 /* ReportColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportColumns.swift; sourceTree = "<group>"; };
+		DA817F872121686400732944 /* ReportProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProgress.swift; sourceTree = "<group>"; };
+		DA817F892121688700732944 /* ReportCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCards.swift; sourceTree = "<group>"; };
+		DA817F8B2121689F00732944 /* ReportLongerColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportLongerColumn.swift; sourceTree = "<group>"; };
 		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
@@ -313,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4C64FF211DD54900ECAD21 /* TestFactory.swift */,
+				DA817F81212165E000732944 /* TestReport.swift */,
 				DA4C6503211DD54900ECAD21 /* TestLibrary.swift */,
 				DABD57CC211EDA8700C72A7F /* TestBoard.swift */,
 				DABD57CA211ED98900C72A7F /* TestColumn.swift */,
@@ -453,6 +466,11 @@
 				DA817F7B212163F400732944 /* ReportProtocol.swift */,
 				DA817F7D2121640700732944 /* Report.swift */,
 				DA817F7F2121646600732944 /* ReportStats.swift */,
+				DA817F83212167B000732944 /* ReportVisitor.swift */,
+				DA817F852121680900732944 /* ReportColumns.swift */,
+				DA817F872121686400732944 /* ReportProgress.swift */,
+				DA817F892121688700732944 /* ReportCards.swift */,
+				DA817F8B2121689F00732944 /* ReportLongerColumn.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -622,18 +640,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA817F7E2121640700732944 /* Report.swift in Sources */,
+				DA817F8C2121689F00732944 /* ReportLongerColumn.swift in Sources */,
 				DA4C64F6211DD54100ECAD21 /* DatabaseService.swift in Sources */,
 				DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */,
 				DA4C64F9211DD54100ECAD21 /* Board.swift in Sources */,
 				DA4C64F1211DD54100ECAD21 /* LibraryStateProtocol.swift in Sources */,
 				DA4C64FD211DD54100ECAD21 /* TextProtocol.swift in Sources */,
 				DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */,
+				DA817F8A2121688700732944 /* ReportCards.swift in Sources */,
+				DA817F862121680900732944 /* ReportColumns.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
 				DA4C64F2211DD54100ECAD21 /* LibraryProtocol.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
 				DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */,
 				DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */,
 				DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */,
+				DA817F84212167B000732944 /* ReportVisitor.swift in Sources */,
+				DA817F882121686400732944 /* ReportProgress.swift in Sources */,
 				DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */,
 				DA817F7C212163F400732944 /* ReportProtocol.swift in Sources */,
 				DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */,
@@ -648,6 +671,7 @@
 			files = (
 				DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */,
 				DA4C6507211DD54A00ECAD21 /* MockCache.swift in Sources */,
+				DA817F82212165E000732944 /* TestReport.swift in Sources */,
 				DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */,
 				DA4C6508211DD54A00ECAD21 /* TestLibrary.swift in Sources */,
 				DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */,

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ReportStats {
+public class ReportStats {
     public internal(set) var columns:[Int]
     public internal(set) var progress:Float
     public internal(set) var cards:Int

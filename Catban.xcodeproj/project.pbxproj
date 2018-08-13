@@ -13,6 +13,7 @@
 		DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CF2120356C001C758E /* BoardCardView.swift */; };
 		DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7D121203BDF001C758E /* BoardButtonView.swift */; };
 		DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2FB7D321206172001C758E /* LaunchScreen.storyboard */; };
+		DA32C2522121DC5A0018BBC3 /* BoardProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */; };
 		DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA4C64D8211DD4E400ECAD21 /* GoogleService-Info.plist */; };
 		DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DC211DD54100ECAD21 /* Library.swift */; };
 		DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */; };
@@ -119,6 +120,7 @@
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
 		DA2FB7D321206172001C758E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProgressViewModel.swift; sourceTree = "<group>"; };
 		DA4C64D1211DD40300ECAD21 /* libCatban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatban.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D2211DD40300ECAD21 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D3211DD40300ECAD21 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +385,7 @@
 				DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */,
 				DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */,
 				DA4C6526211DD58A00ECAD21 /* BoardViewModel.swift */,
+				DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */,
 				DA4C6522211DD58A00ECAD21 /* BoardView.swift */,
 				DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */,
 				DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */,
@@ -710,6 +713,7 @@
 				DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */,
 				DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */,
 				DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */,
+				DA32C2522121DC5A0018BBC3 /* BoardProgressViewModel.swift in Sources */,
 				DA4C655F211DD58A00ECAD21 /* Qr.swift in Sources */,
 				DA4C654E211DD58A00ECAD21 /* DeleteView.swift in Sources */,
 				DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */,

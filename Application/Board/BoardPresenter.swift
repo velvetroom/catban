@@ -1,5 +1,6 @@
 import Foundation
 import CleanArchitecture
+import Catban
 
 class BoardPresenter:Presenter {
     var interactor:BoardInteractor!
@@ -41,8 +42,18 @@ class BoardPresenter:Presenter {
         self.interactor.editCard(column:view.column!, card:view.card!)
     }
     
+    func updateProgress() {
+        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
+            guard let stats:ReportStats = self?.interactor.makeStats() else { return }
+            var viewModel:BoardProgressViewModel = BoardProgressViewModel()
+            viewModel.progress = CGFloat(stats.progress)
+            self?.viewModels.update(viewModel:viewModel)
+        }
+    }
+    
     func didAppear() {
         self.updateViewModel()
+        self.updateProgress()
     }
     
     private func updateViewModel() {

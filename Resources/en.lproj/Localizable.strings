@@ -6,6 +6,7 @@ LibraryInteractor.column.progress="In progress";
 LibraryInteractor.column.done="Done";
 BoardInteractor.boardTitle="Edit board";
 BoardInteractor.columnTitle="Edit column";
+BoardView.progressTitle="Progress";
 TextCreateColumn.title="New column";
 TextCreateCard.title="New card";
 EditView.delete="Delete";

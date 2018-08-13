@@ -7,9 +7,11 @@ class BoardInteractor:Interactor {
     var board:Board!
     var identifier:String
     private let library:LibraryProtocol
+    private let report:ReportProtocol
     
     required init() {
         self.library = Factory.makeLibrary()
+        self.report = Factory.makeReport()
         self.identifier = String()
     }
     
@@ -74,6 +76,10 @@ class BoardInteractor:Interactor {
     
     func save() {
         self.library.save(board:self.board)
+    }
+    
+    func makeStats() -> ReportStats {
+        return self.report.makeStats(board:self.board)
     }
     
     private func edit(text:TextStrategy, delete:DeleteStrategy?) {

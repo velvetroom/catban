@@ -8,10 +8,13 @@ class BoardView:View<BoardPresenter> {
     weak var border:UIView!
     weak var handle:UIView!
     weak var progress:UIProgressView!
+    weak var layoutReportTop:NSLayoutConstraint!
     let drawer:BoardDrawer
     let layouter:BoardLayouter
+    private var reportY:CGFloat
     
     required init() {
+        self.reportY = 0
         self.drawer = BoardDrawer()
         self.layouter = BoardLayouter()
         super.init()
@@ -36,6 +39,28 @@ class BoardView:View<BoardPresenter> {
             self.layouter.attach(item:view)
             self.animate()
             self.presenter.updateProgress()
+        }
+    }
+    
+    @objc func dragReport(pan:UIPanGestureRecognizer) {
+        switch pan.state {
+        case UIGestureRecognizer.State.began:
+            self.reportY = self.layoutReportTop.constant
+            break
+        case UIGestureRecognizer.State.possible, UIGestureRecognizer.State.changed:
+            var newY:CGFloat = self.reportY + pan.translation(in:self.view).y
+            if newY < -Constants.reportHeight {
+                newY = -Constants.reportHeight
+            }
+            self.layoutReportTop.constant = newY
+            break
+        case UIGestureRecognizer.State.cancelled, UIGestureRecognizer.State.ended, UIGestureRecognizer.State.failed:
+            if self.layoutReportTop.constant < -(Constants.reportHeight - Constants.reportThreshold) {
+                self.showReport()
+            } else {
+                self.hideReport()
+            }
+            break
         }
     }
     
@@ -68,7 +93,7 @@ class BoardView:View<BoardPresenter> {
         border.layer.shadowRadius = 2.0
         border.layer.shadowOffset = CGSize(width:0.0, height:-0.5)
         border.layer.shadowColor = UIColor.black.cgColor
-        border.layer.shadowOpacity = 0.2
+        border.layer.shadowOpacity = 0.3
         self.border = border
         self.view.addSubview(border)
         
@@ -76,6 +101,7 @@ class BoardView:View<BoardPresenter> {
         report.translatesAutoresizingMaskIntoConstraints = false
         report.backgroundColor = UIColor.white
         report.clipsToBounds = true
+        report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(self.dragReport(pan:))))
         self.report = report
         self.view.addSubview(report)
         
@@ -112,11 +138,12 @@ class BoardView:View<BoardPresenter> {
         self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
         
-        self.report.topAnchor.constraint(equalTo:self.view.bottomAnchor,
-                                         constant:Constants.reportMinTop).isActive = true
         self.report.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.report.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
         self.report.heightAnchor.constraint(equalToConstant:Constants.reportHeight).isActive = true
+        self.layoutReportTop = self.report.topAnchor.constraint(equalTo:self.view.bottomAnchor,
+                                                                constant:Constants.reportTop)
+        self.layoutReportTop.isActive = true
 
         self.handle.topAnchor.constraint(equalTo:self.report.topAnchor, constant:Constants.handleTop).isActive = true
         self.handle.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
@@ -160,12 +187,27 @@ class BoardView:View<BoardPresenter> {
             self?.content?.layoutIfNeeded()
         }
     }
+    
+    private func hideReport() {
+        self.layoutReportTop.constant = Constants.reportTop
+        UIView.animate(withDuration:Constants.animation) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    private func showReport() {
+        self.layoutReportTop.constant = -Constants.reportHeight
+        UIView.animate(withDuration:Constants.animation) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
 }
 
 private struct Constants {
     static let animation:TimeInterval = 0.3
     static let reportHeight:CGFloat = 250.0
-    static let reportMinTop:CGFloat = -50.0
+    static let reportTop:CGFloat = -50.0
+    static let reportThreshold:CGFloat = 150.0
     static let border:CGFloat = 1.0
     static let progressTop:CGFloat = 22.0
     static let progressWidth:CGFloat = 150.0

@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class MockLibraryDelegate:LibraryDelegate {
     var onSessionLoaded:(() -> Void)?

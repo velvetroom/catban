@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class TextCreateColumn:TextStrategy {
     var text:String
@@ -11,8 +11,7 @@ class TextCreateColumn:TextStrategy {
     }
     
     func save(interactor:BoardInteractor, text:String) {
-        let column:Column = Factory.makeColumn()
-        interactor.board.columns.append(column)
-        self.save(interactor:interactor, subject:column, text:text)
+        interactor.board.addColumn(text:self.validate(text:text))
+        interactor.save()
     }
 }

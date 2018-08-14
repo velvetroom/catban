@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class DeleteBoard:DeleteStrategy {
     let title:String
@@ -9,7 +9,7 @@ class DeleteBoard:DeleteStrategy {
     }
     
     func delete(interactor:BoardInteractor) {
-        do { try Factory.makeLibrary().delete(board:interactor.board) } catch { }
+        Factory.makeLibrary().delete(board:interactor.board)
         Application.router.popViewController(animated:false)
     }
 }

@@ -1,11 +1,11 @@
 import XCTest
-@testable import Domain
+@testable import Catban
 
 class TestFactory:XCTestCase {
     override func setUp() {
         super.setUp()
-        Configuration.cacheService = MockCacheServiceProtocol.self
-        Configuration.databaseService = MockDatabaseServiceProtocol.self
+        Factory.cache = MockCache.self
+        Factory.database = MockDatabase.self
     }
     
     func testAvoidMoreThanOneLibraries() {
@@ -15,10 +15,10 @@ class TestFactory:XCTestCase {
     }
     
     func testAddIdentifierToCard() {
-        XCTAssertFalse(Factory.makeCard().identifier.isEmpty, "No identifier")
+        XCTAssertFalse(Card().identifier.isEmpty, "No identifier")
     }
     
     func testAddIdentifierToColumn() {
-        XCTAssertFalse(Factory.makeColumn().identifier.isEmpty, "No identifier")
+        XCTAssertFalse(Column().identifier.isEmpty, "No identifier")
     }
 }

@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 protocol DeleteStrategy {
     var title:String { get }

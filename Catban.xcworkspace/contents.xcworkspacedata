@@ -8,13 +8,19 @@
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Design">
+   </FileRef>
+   <FileRef
       location = "group:Podfile">
    </FileRef>
    <FileRef
-      location = "group:README.md">
+      location = "group:Podfile.lock">
    </FileRef>
    <FileRef
       location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
    </FileRef>
    <FileRef
       location = "group:.gitignore">

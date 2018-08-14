@@ -6,7 +6,7 @@ class LoadingView:UIView {
     weak var outer:CAShapeLayer!
     override var tintColor:UIColor! { didSet {
         self.circle.fillColor = self.tintColor.cgColor
-        self.pulse.fillColor = self.tintColor.cgColor
+        self.pulse.strokeColor = self.tintColor.cgColor
         } }
     
     init() {
@@ -27,10 +27,10 @@ class LoadingView:UIView {
         self.layer.addSublayer(circle)
         
         let pulse:CAShapeLayer = CAShapeLayer()
-        pulse.lineWidth = 0.0
-        pulse.strokeColor = nil
+        pulse.lineWidth = 1.0
+        pulse.strokeColor = self.tintColor.cgColor
         pulse.backgroundColor = nil
-        pulse.fillColor = self.tintColor.cgColor
+        pulse.fillColor = nil
         pulse.path = self.arch(radius:Constants.circleRadius)
         pulse.frame = CGRect(x:0.0, y:0.0, width:Constants.size, height:Constants.size)
         self.pulse = pulse
@@ -89,14 +89,14 @@ private struct Constants {
     static let radiusKey:String = "transform.scale"
     static let alphaKey:String = "opacity"
     static let animationKey:String = "animation"
-    static let size:CGFloat = 100.0
-    static let circleRadius:CGFloat = 15.0
+    static let size:CGFloat = 52.0
+    static let circleRadius:CGFloat = 10.0
     static let pulseStartRadius:CGFloat = 1.0
-    static let pulseMiddleRadius:CGFloat = 1.2
-    static let pulseEndRadius:CGFloat = 2.0
-    static let pulseStartAlpha:CGFloat = 0.18
+    static let pulseMiddleRadius:CGFloat = 1.4
+    static let pulseEndRadius:CGFloat = 2.4
+    static let pulseStartAlpha:CGFloat = 0.8
     static let pulseEndAlpha:CGFloat = 0.0
-    static let animationPulse:TimeInterval = 0.3
-    static let animationFade:TimeInterval = 1.2
-    static let animationGroup:TimeInterval = 1.5
+    static let animationPulse:TimeInterval = 0.2
+    static let animationFade:TimeInterval = 0.7
+    static let animationGroup:TimeInterval = 1.0
 }

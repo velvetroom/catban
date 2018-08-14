@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class TextChange:TextStrategy {
     var text:String
@@ -12,6 +12,7 @@ class TextChange:TextStrategy {
     }
     
     func save(interactor:BoardInteractor, text:String) {
-        self.save(interactor:interactor, subject:self.subject, text:text)
+        self.subject.text = self.validate(text:text)
+        interactor.save()
     }
 }

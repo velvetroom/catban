@@ -1,15 +1,17 @@
 import Foundation
 import CleanArchitecture
-import Domain
+import Catban
 
 class BoardInteractor:Interactor {
     weak var delegate:InteractorDelegate?
-    var board:BoardProtocol!
+    var board:Board!
     var identifier:String
     private let library:LibraryProtocol
+    private let report:ReportProtocol
     
     required init() {
         self.library = Factory.makeLibrary()
+        self.report = Factory.makeReport()
         self.identifier = String()
     }
     
@@ -19,14 +21,9 @@ class BoardInteractor:Interactor {
     
     func attach(card:Card, column:Column, after:Card?) {
         if let after:Card = after {
-            for index:Int in 0 ..< column.cards.count {
-                if column.cards[index] === after {
-                    column.cards.insert(card, at:index + 1)
-                    break
-                }
-            }
+            column.insert(card:card, after:after)
         } else {
-            column.cards.insert(card, at:0)
+            column.makeFirst(card:card)
         }
         self.save()
     }
@@ -78,7 +75,11 @@ class BoardInteractor:Interactor {
     }
     
     func save() {
-        do { try self.library.save(board:self.board) } catch { }
+        self.library.save(board:self.board)
+    }
+    
+    func makeStats() -> ReportStats {
+        return self.report.makeStats(board:self.board)
     }
     
     private func edit(text:TextStrategy, delete:DeleteStrategy?) {

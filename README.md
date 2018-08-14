@@ -1,7 +1,7 @@
 # Catban
 ### Human management with Kanban.
 
-<img src="Design/logo.png" height="400" alt="Catban"/>
+<img src="Design/logo.png" height="250" alt="Catban"/>
 
 ![iOS](https://img.shields.io/badge/iOS-9.0%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/Swift-4.2-blue.svg)

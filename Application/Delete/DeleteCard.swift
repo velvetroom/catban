@@ -1,5 +1,5 @@
 import Foundation
-import Domain
+import Catban
 
 class DeleteCard:DeleteStrategy {
     var column:Column!

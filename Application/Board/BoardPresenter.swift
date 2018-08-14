@@ -1,5 +1,6 @@
 import Foundation
 import CleanArchitecture
+import Catban
 
 class BoardPresenter:Presenter {
     var interactor:BoardInteractor!
@@ -7,12 +8,12 @@ class BoardPresenter:Presenter {
     
     required init() { }
     
-    func detach(item:BoardItemView) {
+    func detach(item:BoardCardView) {
         self.interactor.detach(card:item.card, column:item.column)
         item.column = nil
     }
     
-    func attach(item:BoardItemView, after:BoardItemView) {
+    func attach(item:BoardCardView, after:BoardItemView) {
         self.interactor.attach(card:item.card, column:after.column, after:after.card)
         item.column = after.column
     }
@@ -37,12 +38,23 @@ class BoardPresenter:Presenter {
         self.interactor.newCard(column:view.column!)
     }
     
-    @objc func editCard(view:BoardItemView) {
+    @objc func editCard(view:BoardCardView) {
         self.interactor.editCard(column:view.column!, card:view.card!)
+    }
+    
+    func updateProgress() {
+        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
+            guard let stats:ReportStats = self?.interactor.makeStats() else { return }
+            var viewModel:BoardProgressViewModel = BoardProgressViewModel()
+            viewModel.progress = stats.progress
+            viewModel.columns = stats.columns
+            self?.viewModels.update(viewModel:viewModel)
+        }
     }
     
     func didAppear() {
         self.updateViewModel()
+        self.updateProgress()
     }
     
     private func updateViewModel() {

@@ -1,21 +1,18 @@
 import UIKit
-import Domain
+import Catban
 
 class BoardDrawer {
     weak var view:BoardView!
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
     private weak var nextItem:BoardItemView?
-    private let header:[NSAttributedString.Key:AnyObject]
     private let card:[NSAttributedString.Key:AnyObject]
     private let options:NSStringDrawingOptions
     private let size:CGSize
     
     init() {
-        self.header = [NSAttributedString.Key.font:
-            UIFont.systemFont(ofSize:Constants.headerFont, weight:UIFont.Weight.bold)]
         self.card = [NSAttributedString.Key.font:
-            UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.light)]
+            UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.ultraLight)]
         self.options = NSStringDrawingOptions([NSStringDrawingOptions.usesFontLeading,
                                                NSStringDrawingOptions.usesLineFragmentOrigin])
         self.size = CGSize(width:Constants.columnWidth, height:Constants.max)
@@ -39,54 +36,50 @@ class BoardDrawer {
     }
     
     private func makeHeader(column:Column) {
-        let item:BoardItemView = BoardItemView()
+        let item:BoardHeaderView = BoardHeaderView()
         item.column = column
-        item.label.attributedText = NSAttributedString(string:column.text, attributes:self.header)
-        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editColumn(view:)),
-                       for:UIControl.Event.touchUpInside)
+        item.label.text = column.text
+        item.add(target:self.view.presenter, selector:#selector(self.view.presenter.editColumn(view:)))
         self.addColumn(item:item)
-        self.layout(item:item, height:Constants.headerHeight)
+        self.layout(item:item, height:Constants.headerHeight, width:Constants.columnWidth)
     }
     
     private func makeNewColumn() {
-        let item:BoardItemView = BoardItemView()
-        item.image.image = #imageLiteral(resourceName: "assetNewColumn.pdf")
-        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newColumn),
-                       for:UIControl.Event.touchUpInside)
+        let item:BoardButtonView = BoardButtonView()
+        item.image.image = #imageLiteral(resourceName: "assetNew.pdf")
+        item.add(target:self.view.presenter, selector:#selector(self.view.presenter.newColumn))
         self.addColumn(item:item)
-        self.layout(item:item, height:Constants.headerHeight)
+        self.layout(item:item, height:Constants.new, width:Constants.new)
     }
     
     private func makeCard(column:Column, card:Card) {
-        let item:BoardItemView = BoardItemView()
-        item.column = column
-        item.card = card
         let text:NSAttributedString = NSAttributedString(string:card.text, attributes:self.card)
         let textHeight:CGFloat = ceil(text.boundingRect(with:self.size, options:self.options, context:nil).size.height)
+        let item:BoardCardView = BoardCardView()
+        item.column = column
+        item.card = card
         item.label.attributedText = text
-        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.editCard(view:)),
-                       for:UIControl.Event.touchUpInside)
-        item.addGestureRecognizer(UIPanGestureRecognizer(target:self.view, action:#selector(self.view.dragCard(pan:))))
+        item.add(target:self.view.presenter, selector:#selector(self.view.presenter.editCard(view:)))
+        item.gesture.addTarget(self.view, action:#selector(self.view.dragCard(pan:)))
         self.addItem(item:item)
-        self.layout(item:item, height:max(Constants.min, ceil(textHeight)))
+        self.layout(item:item, height:textHeight, width:Constants.columnWidth)
     }
     
     private func makeNewCard(column:Column) {
-        let item:BoardItemView = BoardItemView()
+        let item:BoardButtonView = BoardButtonView()
         item.column = column
-        item.image.image = #imageLiteral(resourceName: "assetNewCard.pdf")
-        item.addTarget(self.view.presenter, action:#selector(self.view.presenter.newCard(view:)),
-                       for:UIControl.Event.touchUpInside)
+        item.image.image = #imageLiteral(resourceName: "assetNew.pdf")
+        item.add(target:self.view.presenter, selector:#selector(self.view.presenter.newCard(view:)))
         self.addItem(item:item)
-        self.layout(item:item, height:Constants.newCard)
+        self.layout(item:item, height:Constants.new, width:Constants.new)
     }
     
-    private func layout(item:BoardItemView, height:CGFloat) {
+    private func layout(item:BoardItemView, height:CGFloat, width:CGFloat) {
         self.nextItem = item
         self.view.content.addSubview(item)
         item.top = item.topAnchor.constraint(equalTo:self.view.content.topAnchor)
         item.left = item.leftAnchor.constraint(equalTo:self.view.content.leftAnchor)
-        item.width = item.widthAnchor.constraint(equalToConstant:Constants.columnWidth)
+        item.width = item.widthAnchor.constraint(equalToConstant:width)
         item.height = item.heightAnchor.constraint(equalToConstant:height)
         item.top.isActive = true
         item.left.isActive = true
@@ -109,11 +102,9 @@ class BoardDrawer {
 }
 
 private struct Constants {
-    static let columnWidth:CGFloat = 200.0
+    static let columnWidth:CGFloat = 130.0
     static let cardFont:CGFloat = 14.0
-    static let headerFont:CGFloat = 18.0
-    static let headerHeight:CGFloat = 25.0
-    static let newCard:CGFloat = 60.0
+    static let headerHeight:CGFloat = 24.0
+    static let new:CGFloat = 30.0
     static let max:CGFloat = 10000.0
-    static let min:CGFloat = 45.0
 }

@@ -8,6 +8,6 @@ def podlist
     pod 'Firebase/Firestore'
 end
 
-target 'Catban' do
+target 'Application' do
     podlist
 end

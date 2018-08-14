@@ -1,6 +1,6 @@
 import Foundation
 import CleanArchitecture
-import Domain
+import Catban
 
 class LibraryPresenter:Presenter {
     var interactor:LibraryInteractor!
@@ -46,7 +46,7 @@ class LibraryPresenter:Presenter {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
         viewModel.loadingHidden = true
-        viewModel.addEnabled = true
+        viewModel.actionsEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     
@@ -54,13 +54,13 @@ class LibraryPresenter:Presenter {
         var viewModel:LibraryViewModel = LibraryViewModel()
         viewModel.items = self.items
         viewModel.loadingHidden = true
-        viewModel.addEnabled = true
+        viewModel.actionsEnabled = true
         self.viewModels.update(viewModel:viewModel)
     }
     
     private var items:[LibraryItemViewModel] { get {
         var items:[LibraryItemViewModel] = []
-        self.interactor.library.boards.forEach { (key:String, board:BoardProtocol) in
+        self.interactor.library.boards.forEach { (key:String, board:Board) in
             var item:LibraryItemViewModel = LibraryItemViewModel()
             item.board = key
             item.name = board.text

@@ -109,7 +109,7 @@ class BoardView:View<BoardPresenter> {
         self.navigationItem.rightBarButtonItems = [
             UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.action, target:self.presenter,
                             action:#selector(self.presenter.share)),
-            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.edit, target:self.presenter,
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.edit))]
     }
     

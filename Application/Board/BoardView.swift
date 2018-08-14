@@ -5,11 +5,9 @@ class BoardView:View<BoardPresenter> {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var report:UIView!
-    weak var blur:UIVisualEffectView!
-    weak var progressTrack:UIView!
-    weak var progressBar:UIView!
-    weak var progressTitle:UILabel!
-    weak var layoutBarWidth:NSLayoutConstraint!
+    weak var border:UIView!
+    weak var handle:UIView!
+    weak var progress:UIProgressView!
     let drawer:BoardDrawer
     let layouter:BoardLayouter
     
@@ -63,43 +61,40 @@ class BoardView:View<BoardPresenter> {
         self.scroll = scroll
         self.view.addSubview(scroll)
         
+        let border:UIView = UIView()
+        border.isUserInteractionEnabled = false
+        border.translatesAutoresizingMaskIntoConstraints = false
+        border.backgroundColor = UIColor.white
+        border.layer.shadowRadius = 2.0
+        border.layer.shadowOffset = CGSize(width:0.0, height:-0.5)
+        border.layer.shadowColor = UIColor.black.cgColor
+        border.layer.shadowOpacity = 0.2
+        self.border = border
+        self.view.addSubview(border)
+        
         let report:UIView = UIView()
         report.translatesAutoresizingMaskIntoConstraints = false
-        report.layer.borderWidth = Constants.reportBorder
-        report.layer.borderColor = UIColor(white:0.0, alpha:0.1).cgColor
+        report.backgroundColor = UIColor.white
         report.clipsToBounds = true
         self.report = report
         self.view.addSubview(report)
         
-        let blur:UIVisualEffectView = UIVisualEffectView(effect:UIBlurEffect(style:UIBlurEffect.Style.light))
-        blur.translatesAutoresizingMaskIntoConstraints = false
-        blur.isUserInteractionEnabled = false
-        blur.alpha = Constants.blurAlpha
-        self.blur = blur
-        self.report.addSubview(blur)
+        let handle:UIView = UIView()
+        handle.isUserInteractionEnabled = false
+        handle.translatesAutoresizingMaskIntoConstraints = false
+        handle.clipsToBounds = true
+        handle.backgroundColor = UIColor(white:0.0, alpha:0.06)
+        handle.layer.cornerRadius = Constants.handleHeight / 2.0
+        self.handle = handle
+        self.report.addSubview(handle)
         
-        let progressTrack:UIView = UIView()
-        progressTrack.isUserInteractionEnabled = false
-        progressTrack.translatesAutoresizingMaskIntoConstraints = false
-        progressTrack.backgroundColor = UIColor(white:0.0, alpha:0.1)
-        self.progressTrack = progressTrack
-        self.report.addSubview(progressTrack)
-        
-        let progressBar:UIView = UIView()
-        progressBar.isUserInteractionEnabled = false
-        progressBar.translatesAutoresizingMaskIntoConstraints = false
-        progressBar.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        self.progressBar = progressBar
-        self.progressTrack.addSubview(progressBar)
-        
-        let progressTitle:UILabel = UILabel()
-        progressTitle.isUserInteractionEnabled = false
-        progressTitle.translatesAutoresizingMaskIntoConstraints = false
-        progressTitle.font = UIFont.systemFont(ofSize:Constants.reportFont, weight:UIFont.Weight.bold)
-        progressTitle.textColor = UIColor(white:0.0, alpha:0.4)
-        progressTitle.text = NSLocalizedString("BoardView.progressTitle", comment:String())
-        self.progressTitle = progressTitle
-        self.report.addSubview(progressTitle)
+        let progress:UIProgressView = UIProgressView()
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        progress.isUserInteractionEnabled = false
+        progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        progress.trackTintColor = UIColor(white:0.95, alpha:1.0)
+        self.progress = progress
+        self.report.addSubview(progress)
         
         let content:UIView = UIView()
         content.clipsToBounds = false
@@ -122,28 +117,21 @@ class BoardView:View<BoardPresenter> {
         self.report.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.report.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
         self.report.heightAnchor.constraint(equalToConstant:Constants.reportHeight).isActive = true
+
+        self.handle.topAnchor.constraint(equalTo:self.report.topAnchor, constant:Constants.handleTop).isActive = true
+        self.handle.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
+        self.handle.widthAnchor.constraint(equalToConstant:Constants.handleWidth).isActive = true
+        self.handle.heightAnchor.constraint(equalToConstant:Constants.handleHeight).isActive = true
         
-        self.blur.topAnchor.constraint(equalTo:self.report.topAnchor).isActive = true
-        self.blur.bottomAnchor.constraint(equalTo:self.report.bottomAnchor).isActive = true
-        self.blur.leftAnchor.constraint(equalTo:self.report.leftAnchor).isActive = true
-        self.blur.rightAnchor.constraint(equalTo:self.report.rightAnchor).isActive = true
+        self.border.topAnchor.constraint(equalTo:self.report.topAnchor).isActive = true
+        self.border.leftAnchor.constraint(equalTo:self.report.leftAnchor).isActive = true
+        self.border.rightAnchor.constraint(equalTo:self.report.rightAnchor).isActive = true
+        self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
         
-        self.progressTrack.leftAnchor.constraint(equalTo:self.report.leftAnchor).isActive = true
-        self.progressTrack.rightAnchor.constraint(equalTo:self.report.rightAnchor).isActive = true
-        self.progressTrack.topAnchor.constraint(equalTo:self.report.topAnchor, constant:
-            -(Constants.reportMinTop + Constants.progressHeight)).isActive = true
-        self.progressTrack.heightAnchor.constraint(equalToConstant:Constants.progressHeight).isActive = true
-        
-        self.progressBar.leftAnchor.constraint(equalTo:self.progressTrack.leftAnchor).isActive = true
-        self.progressBar.topAnchor.constraint(equalTo:self.progressTrack.topAnchor).isActive = true
-        self.progressBar.bottomAnchor.constraint(equalTo:self.progressTrack.bottomAnchor).isActive = true
-        self.layoutBarWidth = self.progressBar.widthAnchor.constraint(equalToConstant:0.0)
-        self.layoutBarWidth.isActive = true
-        
-        self.progressTitle.topAnchor.constraint(equalTo:self.report.topAnchor,
-                                                constant:Constants.reportMargin).isActive = true
-        self.progressTitle.leftAnchor.constraint(equalTo:self.report.leftAnchor,
-                                                constant:Constants.reportMargin).isActive = true
+        self.progress.widthAnchor.constraint(equalToConstant:Constants.progressWidth).isActive = true
+        self.progress.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
+        self.progress.topAnchor.constraint(equalTo:self.handle.bottomAnchor,
+                                           constant:Constants.progressTop).isActive = true
         
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
@@ -163,11 +151,7 @@ class BoardView:View<BoardPresenter> {
         }
         
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardProgressViewModel) in
-            guard let width:CGFloat = self?.progressTrack.bounds.width else { return }
-            self?.layoutBarWidth?.constant = viewModel.progress * width
-            UIView.animate(withDuration:Constants.animation) { [weak self] in
-                self?.progressTrack.layoutIfNeeded()
-            }
+            self?.progress.setProgress(viewModel.progress, animated:true)
         }
     }
     
@@ -182,9 +166,10 @@ private struct Constants {
     static let animation:TimeInterval = 0.3
     static let reportHeight:CGFloat = 250.0
     static let reportMinTop:CGFloat = -50.0
-    static let reportBorder:CGFloat = 1.0
-    static let blurAlpha:CGFloat = 0.95
-    static let progressHeight:CGFloat = 10.0
-    static let reportFont:CGFloat = 12.0
-    static let reportMargin:CGFloat = 12.0
+    static let border:CGFloat = 1.0
+    static let progressTop:CGFloat = 22.0
+    static let progressWidth:CGFloat = 150.0
+    static let handleWidth:CGFloat = 28.0
+    static let handleHeight:CGFloat = 3.0
+    static let handleTop:CGFloat = 10.0
 }

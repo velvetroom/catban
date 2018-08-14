@@ -46,7 +46,7 @@ class BoardPresenter:Presenter {
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
             guard let stats:ReportStats = self?.interactor.makeStats() else { return }
             var viewModel:BoardProgressViewModel = BoardProgressViewModel()
-            viewModel.progress = CGFloat(stats.progress)
+            viewModel.progress = stats.progress
             self?.viewModels.update(viewModel:viewModel)
         }
     }

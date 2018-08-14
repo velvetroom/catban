@@ -1,8 +1,8 @@
-import UIKit
+import Foundation
 import CleanArchitecture
 
 struct BoardProgressViewModel:ViewModel {
-    var progress:CGFloat
+    var progress:Float
     
     init() {
         self.progress = 0.0

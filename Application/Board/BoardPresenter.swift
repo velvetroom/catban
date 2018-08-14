@@ -47,6 +47,7 @@ class BoardPresenter:Presenter {
             guard let stats:ReportStats = self?.interactor.makeStats() else { return }
             var viewModel:BoardProgressViewModel = BoardProgressViewModel()
             viewModel.progress = stats.progress
+            viewModel.columns = stats.columns
             self?.viewModels.update(viewModel:viewModel)
         }
     }

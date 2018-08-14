@@ -76,6 +76,7 @@
 		DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */; };
 		DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6548211DD58A00ECAD21 /* ShareView.swift */; };
 		DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */; };
+		DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55AF202122C5A600B50D9C /* BoardStackView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA817F7C212163F400732944 /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7B212163F400732944 /* ReportProtocol.swift */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
@@ -188,6 +189,7 @@
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		DA55AF202122C5A600B50D9C /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
 		DA817F7B212163F400732944 /* ReportProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProtocol.swift; sourceTree = "<group>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */,
 				DA2FB7CF2120356C001C758E /* BoardCardView.swift */,
 				DA2FB7D121203BDF001C758E /* BoardButtonView.swift */,
+				DA55AF202122C5A600B50D9C /* BoardStackView.swift */,
 				DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */,
 				DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */,
 			);
@@ -708,6 +711,7 @@
 				DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */,
 				DA4C654D211DD58A00ECAD21 /* DeleteCard.swift in Sources */,
 				DA4C654A211DD58A00ECAD21 /* DeleteStrategy.swift in Sources */,
+				DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */,
 				DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */,
 				DA4C6567211DD58A00ECAD21 /* TextCreateCard.swift in Sources */,
 				DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */,

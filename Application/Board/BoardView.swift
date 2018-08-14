@@ -8,6 +8,7 @@ class BoardView:View<BoardPresenter> {
     weak var border:UIView!
     weak var handle:UIView!
     weak var progress:UIProgressView!
+    weak var stack:BoardStackView!
     weak var layoutReportTop:NSLayoutConstraint!
     let drawer:BoardDrawer
     let layouter:BoardLayouter
@@ -93,7 +94,7 @@ class BoardView:View<BoardPresenter> {
         border.layer.shadowRadius = 2.0
         border.layer.shadowOffset = CGSize(width:0.0, height:-0.5)
         border.layer.shadowColor = UIColor.black.cgColor
-        border.layer.shadowOpacity = 0.3
+        border.layer.shadowOpacity = 0.4
         self.border = border
         self.view.addSubview(border)
         
@@ -121,6 +122,10 @@ class BoardView:View<BoardPresenter> {
         progress.trackTintColor = UIColor(white:0.95, alpha:1.0)
         self.progress = progress
         self.report.addSubview(progress)
+        
+        let stack:BoardStackView = BoardStackView()
+        self.stack = stack
+        self.report.addSubview(stack)
         
         let content:UIView = UIView()
         content.clipsToBounds = false
@@ -160,6 +165,10 @@ class BoardView:View<BoardPresenter> {
         self.progress.topAnchor.constraint(equalTo:self.handle.bottomAnchor,
                                            constant:Constants.progressTop).isActive = true
         
+        self.stack.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
+        self.stack.topAnchor.constraint(equalTo:self.progress.bottomAnchor,
+                                        constant:Constants.progressTop).isActive = true
+        
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -179,6 +188,7 @@ class BoardView:View<BoardPresenter> {
         
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardProgressViewModel) in
             self?.progress.setProgress(viewModel.progress, animated:true)
+            self?.stack.update(progress:viewModel)
         }
     }
     
@@ -205,9 +215,9 @@ class BoardView:View<BoardPresenter> {
 
 private struct Constants {
     static let animation:TimeInterval = 0.3
-    static let reportHeight:CGFloat = 250.0
+    static let reportHeight:CGFloat = 180.0
     static let reportTop:CGFloat = -50.0
-    static let reportThreshold:CGFloat = 150.0
+    static let reportThreshold:CGFloat = 50.0
     static let border:CGFloat = 1.0
     static let progressTop:CGFloat = 22.0
     static let progressWidth:CGFloat = 150.0

@@ -6,9 +6,11 @@ import StoreKit
 class LibraryInteractor:Interactor, LibraryDelegate {
     weak var delegate:InteractorDelegate?
     let library:LibraryProtocol
+    private let report:ReportProtocol
     
     required init() {
         self.library = Factory.makeLibrary()
+        self.report = Factory.makeReport()
         self.library.delegate = self
     }
     
@@ -60,6 +62,10 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         if self.library.boards.count > Constants.minBoards {
             if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
         }
+    }
+    
+    func makeStats(board:Board) -> ReportStats {
+        return self.report.makeStats(board:board)
     }
     
     private func addTemplate(board:Board) {

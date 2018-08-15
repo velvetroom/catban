@@ -38,7 +38,7 @@ class LibraryPresenter:Presenter {
         if self.interactor.library.boards.isEmpty {
             self.showEmpty()
         } else {
-            self.showItems()
+            DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in self?.showItems() }
         }
     }
     
@@ -64,6 +64,7 @@ class LibraryPresenter:Presenter {
             var item:LibraryItemViewModel = LibraryItemViewModel()
             item.board = key
             item.name = board.text
+            item.progress = self.interactor.makeStats(board:board).progress
             items.append(item)
         }
         return items.sorted { (left:LibraryItemViewModel, right:LibraryItemViewModel) -> Bool in

@@ -118,5 +118,5 @@ class LibraryView:View<LibraryPresenter> {
 private struct Constants {
     static let font:CGFloat = 16.0
     static let margin:CGFloat = 20.0
-    static let cellHeight:CGFloat = 56.0
+    static let cellHeight:CGFloat = 60.0
 }

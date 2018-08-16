@@ -57,7 +57,7 @@ class BoardStackView:UIView {
 }
 
 private struct Constants {
-    static let itemWidth:CGFloat = 25.0
-    static let itemHeight:CGFloat = 2.0
-    static let itemSpacing:CGFloat = 6.0
+    static let itemWidth:CGFloat = 35.0
+    static let itemHeight:CGFloat = 3.0
+    static let itemSpacing:CGFloat = 10.0
 }

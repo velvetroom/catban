@@ -29,7 +29,7 @@ class LibraryCellView:UIControl {
         let name:UILabel = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
+        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
         name.textColor = UIColor.black
         self.name = name
         self.addSubview(name)
@@ -38,7 +38,7 @@ class LibraryCellView:UIControl {
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.isUserInteractionEnabled = false
         progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        progress.trackTintColor = UIColor(white:0.99, alpha:1.0)
+        progress.trackTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.1)
         self.progress = progress
         self.addSubview(progress)
     }
@@ -57,5 +57,5 @@ class LibraryCellView:UIControl {
 private struct Constants {
     static let left:CGFloat = 20.0
     static let font:CGFloat = 14.0
-    static let progress:CGFloat = 4.0
+    static let progress:CGFloat = 5.0
 }

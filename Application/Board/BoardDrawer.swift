@@ -1,18 +1,19 @@
 import UIKit
 import Catban
+import MarkdownHero
 
 class BoardDrawer {
     weak var view:BoardView!
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
     private weak var nextItem:BoardItemView?
-    private let card:[NSAttributedString.Key:AnyObject]
+    private var parser:Parser
     private let options:NSStringDrawingOptions
     private let size:CGSize
     
     init() {
-        self.card = [NSAttributedString.Key.font:
-            UIFont.systemFont(ofSize:Constants.cardFont, weight:UIFont.Weight.ultraLight)]
+        self.parser = Parser()
+        self.parser.font = UIFont.systemFont(ofSize:Constants.card, weight:UIFont.Weight.ultraLight)
         self.options = NSStringDrawingOptions([NSStringDrawingOptions.usesFontLeading,
                                                NSStringDrawingOptions.usesLineFragmentOrigin])
         self.size = CGSize(width:Constants.columnWidth, height:Constants.max)
@@ -53,7 +54,7 @@ class BoardDrawer {
     }
     
     private func makeCard(column:Column, card:Card) {
-        let text:NSAttributedString = NSAttributedString(string:card.text, attributes:self.card)
+        let text:NSAttributedString = self.parser.parse(string:card.text)
         let textHeight:CGFloat = ceil(text.boundingRect(with:self.size, options:self.options, context:nil).size.height)
         let item:BoardCardView = BoardCardView()
         item.column = column
@@ -103,7 +104,7 @@ class BoardDrawer {
 
 private struct Constants {
     static let columnWidth:CGFloat = 130.0
-    static let cardFont:CGFloat = 14.0
+    static let card:CGFloat = 14.0
     static let headerHeight:CGFloat = 24.0
     static let new:CGFloat = 30.0
     static let max:CGFloat = 10000.0

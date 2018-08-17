@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2A8F15B97B8245C5B2232546 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */; };
+		DA254AFF2126D1BA00D1E3C8 /* InfoCardEdit.md in Resources */ = {isa = PBXBuildFile; fileRef = DA254AFD2126D1BA00D1E3C8 /* InfoCardEdit.md */; };
+		DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */; };
 		DA2E4B3D211DD97400861576 /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */; };
 		DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CF2120356C001C758E /* BoardCardView.swift */; };
@@ -120,6 +122,8 @@
 /* Begin PBXFileReference section */
 		3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA254AFE2126D1BA00D1E3C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = en.lproj/InfoCardEdit.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 				DA4C650A211DD57A00ECAD21 /* Localizable.strings */,
 				DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */,
 				DA2FB7D321206172001C758E /* LaunchScreen.storyboard */,
+				DA254AFD2126D1BA00D1E3C8 /* InfoCardEdit.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 			children = (
 				DA759E232126ABB100E92FD9 /* InfoInteractor.swift */,
 				DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */,
+				DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */,
 				DA759E212126AB9C00E92FD9 /* InfoView.swift */,
 			);
 			path = Info;
@@ -611,6 +617,7 @@
 				DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */,
 				DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */,
 				DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */,
+				DA254AFF2126D1BA00D1E3C8 /* InfoCardEdit.md in Resources */,
 				DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */,
 				DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */,
 			);
@@ -748,6 +755,7 @@
 				DA4C6554211DD58A00ECAD21 /* BoardViewModel.swift in Sources */,
 				DA4C656A211DD58A00ECAD21 /* TextChange.swift in Sources */,
 				DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */,
+				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
 				DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */,
 				DA4C6566211DD58A00ECAD21 /* EditPresenter.swift in Sources */,
@@ -767,6 +775,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DA254AFD2126D1BA00D1E3C8 /* InfoCardEdit.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA254AFE2126D1BA00D1E3C8 /* en */,
+			);
+			name = InfoCardEdit.md;
+			sourceTree = "<group>";
+		};
 		DA4C650A211DD57A00ECAD21 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

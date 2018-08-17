@@ -28,6 +28,7 @@ class EditPresenter:Presenter {
     @objc func info() {
         let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
         view.presenter.interactor = self.interactor
+        view.presenter.source = "InfoCardEdit"
         Application.router.present(view, animated:true, completion:nil)
     }
 }

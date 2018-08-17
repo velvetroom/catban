@@ -92,6 +92,7 @@
 		DA817F882121686400732944 /* ReportProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F872121686400732944 /* ReportProgress.swift */; };
 		DA817F8A2121688700732944 /* ReportCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F892121688700732944 /* ReportCards.swift */; };
 		DA817F8C2121689F00732944 /* ReportLongerColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F8B2121689F00732944 /* ReportLongerColumn.swift */; };
+		DAA05539212705E8004A1CEF /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DAA05537212705E8004A1CEF /* InfoBoard.md */; };
 		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
@@ -209,6 +210,7 @@
 		DA817F872121686400732944 /* ReportProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProgress.swift; sourceTree = "<group>"; };
 		DA817F892121688700732944 /* ReportCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCards.swift; sourceTree = "<group>"; };
 		DA817F8B2121689F00732944 /* ReportLongerColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportLongerColumn.swift; sourceTree = "<group>"; };
+		DAA05538212705E8004A1CEF /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = en.lproj/InfoBoard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */,
 				DA2FB7D321206172001C758E /* LaunchScreen.storyboard */,
 				DA254AFD2126D1BA00D1E3C8 /* InfoCard.md */,
+				DAA05537212705E8004A1CEF /* InfoBoard.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */,
 				DA254AFF2126D1BA00D1E3C8 /* InfoCard.md in Resources */,
 				DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */,
+				DAA05539212705E8004A1CEF /* InfoBoard.md in Resources */,
 				DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,6 +809,14 @@
 				DA4C650D211DD57A00ECAD21 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DAA05537212705E8004A1CEF /* InfoBoard.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAA05538212705E8004A1CEF /* en */,
+			);
+			name = InfoBoard.md;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

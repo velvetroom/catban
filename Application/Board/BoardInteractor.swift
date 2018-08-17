@@ -42,6 +42,13 @@ class BoardInteractor:Interactor, InfoInteractor {
         self.edit(text:text, delete:DeleteBoard(), infoSource:nil)
     }
     
+    func info() {
+        let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        view.presenter.interactor = self
+        view.presenter.source = Constants.infoBoard
+        Application.router.present(view, animated:true, completion:nil)
+    }
+    
     func newColumn() {
         self.edit(text:TextCreateColumn(), delete:nil, infoSource:nil)
     }
@@ -93,4 +100,5 @@ class BoardInteractor:Interactor, InfoInteractor {
 
 private struct Constants {
     static let infoCard:String = "InfoCard"
+    static let infoBoard:String = "InfoBoard"
 }

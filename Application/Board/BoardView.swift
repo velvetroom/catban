@@ -132,7 +132,9 @@ class BoardView:View<BoardPresenter> {
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.edit))]
+                            action:#selector(self.presenter.edit)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                            action:#selector(self.presenter.info))]
     }
     
     private func layoutOutlets() {

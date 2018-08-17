@@ -1,11 +1,9 @@
 # Cards
 
 ## About
-
 Cards help you separate your projects in concrete tasks; the smaller and conciser this tasks the easiest is going to be able to measure your progress.
 
 ## Format
-
 You can add format to the content of yours cards easily with _Markdown_.
 
 ### Emphasis
@@ -16,12 +14,10 @@ You can add format to the content of yours cards easily with _Markdown_.
 - ```- Minus```: add a listed element.
 
 ## Example
-
 Consider a project for a barbecue.
 You could have cards for doing specific tasks and cards for ingredients and groceries to get from the supermarket.
 
 ### Cards
-
 **Ingredient**
 10 avocados
 

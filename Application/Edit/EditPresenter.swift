@@ -6,6 +6,7 @@ class EditPresenter:Presenter {
     var viewModels:ViewModels!
     var strategyText:TextStrategy!
     var strategyDelete:DeleteStrategy?
+    var infoSource:String?
     
     required init() { }
     
@@ -19,10 +20,16 @@ class EditPresenter:Presenter {
     }
     
     @objc func delete() {
-        let presenter:DeletePresenter = DeletePresenter()
-        let view:DeleteView = DeleteView(presenter:presenter)
-        presenter.interactor = self.interactor
-        presenter.strategy = self.strategyDelete
+        let view:DeleteView = DeleteView(presenter:DeletePresenter())
+        view.presenter.interactor = self.interactor
+        view.presenter.strategy = self.strategyDelete
+        Application.router.present(view, animated:true, completion:nil)
+    }
+    
+    @objc func info() {
+        let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        view.presenter.interactor = self.interactor
+        view.presenter.source = self.infoSource!
         Application.router.present(view, animated:true, completion:nil)
     }
 }

@@ -18,7 +18,7 @@ class ScanPresenter:Presenter {
                 self.show(message:NSLocalizedString("ScanPresenter.duplicate", comment:String()), icon:#imageLiteral(resourceName: "assetError.pdf"))
             } else {
                 self.interactor.addBoard(identifier:identifier)
-                self.show(message:NSLocalizedString("ScanPresenter.success", comment:String()), icon:#imageLiteral(resourceName: "assetValid.pdf"))
+                self.show(message:NSLocalizedString("ScanPresenter.success", comment:String()), icon:#imageLiteral(resourceName: "assetSuccess.pdf"))
             }
         } else {
             self.show(message:NSLocalizedString("ScanPresenter.error", comment:String()), icon:#imageLiteral(resourceName: "assetError.pdf"))

@@ -22,6 +22,10 @@ class BoardPresenter:Presenter {
         self.interactor.edit()
     }
     
+    @objc func info() {
+        self.interactor.info()
+    }
+    
     @objc func share() {
         self.interactor.share()
     }

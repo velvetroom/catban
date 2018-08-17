@@ -65,5 +65,5 @@ private struct Constants {
     static let left:CGFloat = 17.0
     static let horizontal:CGFloat = 30.0
     static let vertical:CGFloat = 24.0
-    static let bottom:CGFloat = 80.0
+    static let bottom:CGFloat = 120.0
 }

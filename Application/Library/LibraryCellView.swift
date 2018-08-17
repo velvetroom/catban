@@ -2,8 +2,12 @@ import UIKit
 
 class LibraryCellView:UIControl {
     weak var name:UILabel!
-    weak var border:UIView!
-    var viewModel:LibraryItemViewModel! { didSet { self.name.text = self.viewModel.name } }
+    weak var progress:UIProgressView!
+    var viewModel:LibraryItemViewModel! { didSet {
+        self.name.text = self.viewModel.name
+        let progress:Float = self.viewModel.progress
+        DispatchQueue.main.async { [weak self] in self?.progress.setProgress(progress, animated:true) }
+    } }
     
     init() {
         super.init(frame:CGRect.zero)
@@ -25,34 +29,33 @@ class LibraryCellView:UIControl {
         let name:UILabel = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
+        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
         name.textColor = UIColor.black
         self.name = name
         self.addSubview(name)
         
-        let border:UIView = UIView()
-        border.isUserInteractionEnabled = false
-        border.backgroundColor = UIColor(white:0.0, alpha:0.15)
-        border.translatesAutoresizingMaskIntoConstraints = false
-        self.border = border
-        self.addSubview(border)
+        let progress:UIProgressView = UIProgressView()
+        progress.translatesAutoresizingMaskIntoConstraints = false
+        progress.isUserInteractionEnabled = false
+        progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        progress.trackTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.1)
+        self.progress = progress
+        self.addSubview(progress)
     }
     
     private func layoutOutlets() {
-        self.name.topAnchor.constraint(equalTo:self.topAnchor).isActive = true
-        self.name.bottomAnchor.constraint(equalTo:self.bottomAnchor).isActive = true
-        self.name.leftAnchor.constraint(equalTo:self.leftAnchor, constant:Constants.margin).isActive = true
-        self.name.rightAnchor.constraint(equalTo:self.rightAnchor, constant:-Constants.margin).isActive = true
+        self.name.centerYAnchor.constraint(equalTo:self.centerYAnchor).isActive = true
+        self.name.leftAnchor.constraint(equalTo:self.leftAnchor, constant:Constants.left).isActive = true
         
-        self.border.bottomAnchor.constraint(equalTo:self.bottomAnchor).isActive = true
-        self.border.leftAnchor.constraint(equalTo:self.leftAnchor).isActive = true
-        self.border.rightAnchor.constraint(equalTo:self.rightAnchor).isActive = true
-        self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
+        self.progress.bottomAnchor.constraint(equalTo:self.bottomAnchor).isActive = true
+        self.progress.leftAnchor.constraint(equalTo:self.leftAnchor).isActive = true
+        self.progress.rightAnchor.constraint(equalTo:self.rightAnchor).isActive = true
+        self.progress.heightAnchor.constraint(equalToConstant:Constants.progress).isActive = true
     }
 }
 
 private struct Constants {
-    static let margin:CGFloat = 20.0
-    static let font:CGFloat = 16.0
-    static let border:CGFloat = 0.5
+    static let left:CGFloat = 20.0
+    static let font:CGFloat = 13.0
+    static let progress:CGFloat = 5.0
 }

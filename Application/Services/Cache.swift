@@ -6,7 +6,7 @@ class Cache:CacheService {
     private let codableHero:CodableHero
     
     required init() {
-        self.codableHero = Factory.makeCodableHero()
+        self.codableHero = CodableHero()
     }
     
     func loadSession() throws -> Session {

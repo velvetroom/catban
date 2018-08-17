@@ -1,5 +1,4 @@
 # Catban
-### Human management with Kanban.
 
 <img src="Design/logo.png" height="250" alt="Catban"/>
 
@@ -9,32 +8,34 @@
 [![Bitrise](https://app.bitrise.io/app/807a375d287b2f0b/status.svg?token=lutdvZqnAiBoLp3vkTwX8w)](https://app.bitrise.io/app/807a375d287b2f0b)
 
 
-## Description
+### Do more with less
+Kanban board architected for iOS
+Human management at its best
 
-Catban
-- Do more with less.
-- Focus on doing things and not in the details.
-- Minimalistic approach.
-- Human management architected for iOS.
-- Collaborate and work in projects simultaneously.
-- Easy to share projects.
+- With a minimalistic interface Catban helps you focusing on getting things done.
+- Add format to your Cards with Markdown.
+- Collaborate and work in projects simultaneously, sharing projects is easily handled with QR codes.
 
-Manage and organise
-- Projects
-- Teams
+A board for every one of yours projects
+- Your day job
+- A thesis
 - Tasks
 - Events
-- Shopping lists
+- Dinner
+- Shopping list
+- A party
 - Your life
 - etc
 
-Catban steps
+Basic steps
 - Create a board for each project
-- You have 3 columns: To do, In progress, Done; You can create more if needed.
-- Create cards for each task, the smaller the task the easier it is to track.
+- You have 3 columns: To do, In progress, Done; Create more if needed.
+- Add cards for each task, the smaller the task the easier it is to track.
 - Move your cards around the board reflecting their current status.
 - Track your progress.
 - Have a clear understanding of what is missing in your project.
 
 Kanban was developed as a scheduling and managing system to improve manufacturing efficiency.
+
 Name comes from Japanese, is the name of the cards that track the production within a factory.
+

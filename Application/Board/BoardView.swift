@@ -90,11 +90,7 @@ class BoardView:View<BoardPresenter> {
         let border:UIView = UIView()
         border.isUserInteractionEnabled = false
         border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor.white
-        border.layer.shadowRadius = 2.0
-        border.layer.shadowOffset = CGSize(width:0.0, height:-0.5)
-        border.layer.shadowColor = UIColor.black.cgColor
-        border.layer.shadowOpacity = 0.4
+        border.backgroundColor = UIColor(white:0.0, alpha:0.03)
         self.border = border
         self.view.addSubview(border)
         
@@ -110,7 +106,7 @@ class BoardView:View<BoardPresenter> {
         handle.isUserInteractionEnabled = false
         handle.translatesAutoresizingMaskIntoConstraints = false
         handle.clipsToBounds = true
-        handle.backgroundColor = UIColor(white:0.0, alpha:0.06)
+        handle.backgroundColor = UIColor(white:0.9, alpha:1.0)
         handle.layer.cornerRadius = Constants.handleHeight / 2.0
         self.handle = handle
         self.report.addSubview(handle)
@@ -133,10 +129,12 @@ class BoardView:View<BoardPresenter> {
         self.scroll.addSubview(content)
         
         self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.action, target:self.presenter,
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.edit))]
+                            action:#selector(self.presenter.edit)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                            action:#selector(self.presenter.info))]
     }
     
     private func layoutOutlets() {
@@ -155,19 +153,20 @@ class BoardView:View<BoardPresenter> {
         self.handle.widthAnchor.constraint(equalToConstant:Constants.handleWidth).isActive = true
         self.handle.heightAnchor.constraint(equalToConstant:Constants.handleHeight).isActive = true
         
-        self.border.topAnchor.constraint(equalTo:self.report.topAnchor).isActive = true
+        self.border.bottomAnchor.constraint(equalTo:self.report.topAnchor).isActive = true
         self.border.leftAnchor.constraint(equalTo:self.report.leftAnchor).isActive = true
         self.border.rightAnchor.constraint(equalTo:self.report.rightAnchor).isActive = true
         self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
         
         self.progress.widthAnchor.constraint(equalToConstant:Constants.progressWidth).isActive = true
+        self.progress.heightAnchor.constraint(equalToConstant:Constants.progressHeight).isActive = true
         self.progress.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
         self.progress.topAnchor.constraint(equalTo:self.handle.bottomAnchor,
                                            constant:Constants.progressTop).isActive = true
         
         self.stack.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
         self.stack.topAnchor.constraint(equalTo:self.progress.bottomAnchor,
-                                        constant:Constants.progressTop).isActive = true
+                                        constant:Constants.stackTop).isActive = true
         
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
@@ -215,13 +214,15 @@ class BoardView:View<BoardPresenter> {
 
 private struct Constants {
     static let animation:TimeInterval = 0.3
-    static let reportHeight:CGFloat = 180.0
-    static let reportTop:CGFloat = -50.0
+    static let reportHeight:CGFloat = 380.0
+    static let reportTop:CGFloat = -75.0
     static let reportThreshold:CGFloat = 50.0
-    static let border:CGFloat = 1.0
-    static let progressTop:CGFloat = 22.0
-    static let progressWidth:CGFloat = 150.0
-    static let handleWidth:CGFloat = 28.0
+    static let border:CGFloat = 3.0
+    static let stackTop:CGFloat = 35.0
+    static let progressTop:CGFloat = 25.0
+    static let progressWidth:CGFloat = 250.0
+    static let progressHeight:CGFloat = 4.0
+    static let handleWidth:CGFloat = 30.0
     static let handleHeight:CGFloat = 3.0
-    static let handleTop:CGFloat = 10.0
+    static let handleTop:CGFloat = 14.0
 }

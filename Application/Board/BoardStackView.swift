@@ -27,12 +27,14 @@ class BoardStackView:UIView {
         self.itemX = 0.0
         progress.columns.forEach { (items:Int) in
             self.itemY = 0.0
+            if !self.subviews.isEmpty {
+                self.itemX += Constants.itemSpacing
+            }
             self.addItem(color:#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1))
             for _:Int in 0 ..< items {
                 self.addItem(color:#colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1))
             }
             self.itemX += Constants.itemWidth
-            self.itemX += Constants.itemSpacing
             self.height = max(self.height, self.itemY)
         }
         self.width = self.itemX
@@ -55,7 +57,7 @@ class BoardStackView:UIView {
 }
 
 private struct Constants {
-    static let itemWidth:CGFloat = 25.0
-    static let itemHeight:CGFloat = 2.0
-    static let itemSpacing:CGFloat = 6.0
+    static let itemWidth:CGFloat = 35.0
+    static let itemHeight:CGFloat = 3.0
+    static let itemSpacing:CGFloat = 10.0
 }

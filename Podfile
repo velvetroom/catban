@@ -4,6 +4,7 @@ use_modular_headers!
 def podlist
     pod 'CleanArchitecture'
     pod 'CodableHero'
+    pod 'MarkdownHero'
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
 end

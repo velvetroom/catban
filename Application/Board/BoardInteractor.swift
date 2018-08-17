@@ -2,7 +2,7 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class BoardInteractor:Interactor {
+class BoardInteractor:Interactor, InfoInteractor {    
     weak var delegate:InteractorDelegate?
     var board:Board!
     var identifier:String
@@ -29,9 +29,8 @@ class BoardInteractor:Interactor {
     }
     
     func share() {
-        let presenter:SharePresenter = SharePresenter()
-        let view:ShareView = ShareView(presenter:presenter)
-        presenter.interactor = self
+        let view:ShareView = ShareView(presenter:SharePresenter())
+        view.presenter.interactor = self
         Application.router.present(view, animated:true, completion:nil)
     }
     
@@ -40,11 +39,18 @@ class BoardInteractor:Interactor {
         text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
         text.text = self.board.text
         text.subject = self.board
-        self.edit(text:text, delete:DeleteBoard())
+        self.edit(text:text, delete:DeleteBoard(), infoSource:nil)
+    }
+    
+    func info() {
+        let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        view.presenter.interactor = self
+        view.presenter.source = Constants.infoBoard
+        Application.router.present(view, animated:true, completion:nil)
     }
     
     func newColumn() {
-        self.edit(text:TextCreateColumn(), delete:nil)
+        self.edit(text:TextCreateColumn(), delete:nil, infoSource:nil)
     }
     
     func editColumn(column:Column) {
@@ -54,13 +60,13 @@ class BoardInteractor:Interactor {
         text.subject = column
         let delete:DeleteColumn = DeleteColumn()
         delete.column = column
-        self.edit(text:text, delete:delete)
+        self.edit(text:text, delete:delete, infoSource:nil)
     }
     
     func newCard(column:Column) {
         let text:TextCreateCard = TextCreateCard()
         text.column = column
-        self.edit(text:text, delete:nil)
+        self.edit(text:text, delete:nil, infoSource:Constants.infoCard)
     }
     
     func editCard(column:Column, card:Card) {
@@ -71,7 +77,7 @@ class BoardInteractor:Interactor {
         let delete:DeleteCard = DeleteCard()
         delete.column = column
         delete.card = card
-        self.edit(text:text, delete:delete)
+        self.edit(text:text, delete:delete, infoSource:Constants.infoCard)
     }
     
     func save() {
@@ -82,12 +88,17 @@ class BoardInteractor:Interactor {
         return self.report.makeStats(board:self.board)
     }
     
-    private func edit(text:TextStrategy, delete:DeleteStrategy?) {
-        let presenter:EditPresenter = EditPresenter()
-        let view:EditView = EditView(presenter:presenter)
-        presenter.strategyText = text
-        presenter.strategyDelete = delete
-        presenter.interactor = self
+    private func edit(text:TextStrategy, delete:DeleteStrategy?, infoSource:String?) {
+        let view:EditView = EditView(presenter:EditPresenter())
+        view.presenter.strategyText = text
+        view.presenter.strategyDelete = delete
+        view.presenter.interactor = self
+        view.presenter.infoSource = infoSource
         Application.router.pushViewController(view, animated:true)
     }
+}
+
+private struct Constants {
+    static let infoCard:String = "InfoCard"
+    static let infoBoard:String = "InfoBoard"
 }

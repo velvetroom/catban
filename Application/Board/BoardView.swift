@@ -90,7 +90,7 @@ class BoardView:View<BoardPresenter> {
         let border:UIView = UIView()
         border.isUserInteractionEnabled = false
         border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0.0, alpha:0.04)
+        border.backgroundColor = UIColor(white:0.0, alpha:0.03)
         self.border = border
         self.view.addSubview(border)
         

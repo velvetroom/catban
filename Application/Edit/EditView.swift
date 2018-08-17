@@ -55,8 +55,8 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         self.view.addSubview(text)
         
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem(
-            barButtonSystemItem:UIBarButtonItem.SystemItem.done, target:self,
-            action:#selector(self.save))]
+            barButtonSystemItem:UIBarButtonItem.SystemItem.done, target:self, action:#selector(self.save)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:nil, action:nil)]
         
         if self.presenter.strategyDelete == nil {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(

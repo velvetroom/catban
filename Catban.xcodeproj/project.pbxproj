@@ -438,11 +438,11 @@
 			isa = PBXGroup;
 			children = (
 				DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */,
+				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
 				DA4C653D211DD58A00ECAD21 /* TextCreateCard.swift */,
 				DA4C653E211DD58A00ECAD21 /* TextStrategy.swift */,
 				DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */,
 				DA4C6540211DD58A00ECAD21 /* TextChange.swift */,
-				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";

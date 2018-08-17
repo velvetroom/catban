@@ -9,7 +9,9 @@
 
 
 ### Do more with less
+
 Kanban board architected for iOS
+
 Human management at its best
 
 - With a minimalistic interface Catban helps you focusing on getting things done.

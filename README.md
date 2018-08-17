@@ -9,15 +9,15 @@
 [![Bitrise](https://app.bitrise.io/app/807a375d287b2f0b/status.svg?token=lutdvZqnAiBoLp3vkTwX8w)](https://app.bitrise.io/app/807a375d287b2f0b)
 
 
-## Description
-
 Catban
 - Do more with less.
-- Focus on doing things and not in the details.
+- Focus on gettings things done and not in the details.
 - Minimalistic approach.
-- Human management architected for iOS.
+- Markdown support
+- Human management architected exclusively for iOS.
 - Collaborate and work in projects simultaneously.
 - Easy to share projects.
+- Lightweight and fast.
 
 Manage and organise
 - Projects
@@ -25,13 +25,13 @@ Manage and organise
 - Tasks
 - Events
 - Shopping lists
+- A party
 - Your life
-- etc
 
-Catban steps
+Steps
 - Create a board for each project
-- You have 3 columns: To do, In progress, Done; You can create more if needed.
-- Create cards for each task, the smaller the task the easier it is to track.
+- You have 3 columns: To do, In progress, Done; Create more if needed.
+- Add cards for each task, the smaller the task the easier it is to track.
 - Move your cards around the board reflecting their current status.
 - Track your progress.
 - Have a clear understanding of what is missing in your project.

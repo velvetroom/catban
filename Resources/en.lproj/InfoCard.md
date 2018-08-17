@@ -6,6 +6,11 @@ Cards help you separate your projects in concrete tasks; the smaller and concise
 ## Format
 You can add format to the content of yours cards easily with _Markdown_.
 
+### Headings
+- ```# for top heading```
+- ```## for secondary heading```
+- ```### for small heading```
+
 ### Emphasis
 - ```**Double asterisks**```: **bold**.
 - ```_Underscore_```: _italics_.

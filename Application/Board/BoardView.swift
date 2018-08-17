@@ -90,7 +90,7 @@ class BoardView:View<BoardPresenter> {
         let border:UIView = UIView()
         border.isUserInteractionEnabled = false
         border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0.0, alpha:0.2)
+        border.backgroundColor = UIColor(white:0.0, alpha:0.04)
         self.border = border
         self.view.addSubview(border)
         
@@ -129,7 +129,7 @@ class BoardView:View<BoardPresenter> {
         self.scroll.addSubview(content)
         
         self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.action, target:self.presenter,
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.edit))]
@@ -215,7 +215,7 @@ private struct Constants {
     static let reportHeight:CGFloat = 380.0
     static let reportTop:CGFloat = -75.0
     static let reportThreshold:CGFloat = 50.0
-    static let border:CGFloat = 2.0
+    static let border:CGFloat = 3.0
     static let stackTop:CGFloat = 35.0
     static let progressTop:CGFloat = 25.0
     static let progressWidth:CGFloat = 250.0

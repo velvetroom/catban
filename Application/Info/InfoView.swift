@@ -87,11 +87,10 @@ class InfoView<I:InfoInteractor>:View<InfoPresenter<I>> {
         self.dismiss.heightAnchor.constraint(equalToConstant:Constants.buttonHeight).isActive = true
         self.dismiss.widthAnchor.constraint(equalToConstant:Constants.buttonWidth).isActive = true
         
-        self.text.topAnchor.constraint(equalTo:self.base.topAnchor, constant:Constants.textMargin).isActive = true
-        self.text.bottomAnchor.constraint(equalTo:self.base.bottomAnchor,
-                                          constant:-Constants.textMargin).isActive = true
-        self.text.leftAnchor.constraint(equalTo:self.base.leftAnchor, constant:Constants.textMargin).isActive = true
-        self.text.rightAnchor.constraint(equalTo:self.base.rightAnchor, constant:-Constants.textMargin).isActive = true
+        self.text.topAnchor.constraint(equalTo:self.base.topAnchor).isActive = true
+        self.text.bottomAnchor.constraint(equalTo:self.base.bottomAnchor).isActive = true
+        self.text.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
+        self.text.rightAnchor.constraint(equalTo:self.base.rightAnchor).isActive = true
     }
     
     private func configureViewModel() {
@@ -108,6 +107,5 @@ private struct Constants {
     static let font:CGFloat = 14.0
     static let buttonHeight:CGFloat = 50.0
     static let buttonWidth:CGFloat = 150.0
-    static let textMargin:CGFloat = 4.0
     static let insets:CGFloat = 12.0
 }

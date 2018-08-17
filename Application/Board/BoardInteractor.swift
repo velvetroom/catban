@@ -39,11 +39,11 @@ class BoardInteractor:Interactor, InfoInteractor {
         text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
         text.text = self.board.text
         text.subject = self.board
-        self.edit(text:text, delete:DeleteBoard())
+        self.edit(text:text, delete:DeleteBoard(), infoSource:nil)
     }
     
     func newColumn() {
-        self.edit(text:TextCreateColumn(), delete:nil)
+        self.edit(text:TextCreateColumn(), delete:nil, infoSource:nil)
     }
     
     func editColumn(column:Column) {
@@ -53,13 +53,13 @@ class BoardInteractor:Interactor, InfoInteractor {
         text.subject = column
         let delete:DeleteColumn = DeleteColumn()
         delete.column = column
-        self.edit(text:text, delete:delete)
+        self.edit(text:text, delete:delete, infoSource:nil)
     }
     
     func newCard(column:Column) {
         let text:TextCreateCard = TextCreateCard()
         text.column = column
-        self.edit(text:text, delete:nil)
+        self.edit(text:text, delete:nil, infoSource:Constants.infoCard)
     }
     
     func editCard(column:Column, card:Card) {
@@ -70,7 +70,7 @@ class BoardInteractor:Interactor, InfoInteractor {
         let delete:DeleteCard = DeleteCard()
         delete.column = column
         delete.card = card
-        self.edit(text:text, delete:delete)
+        self.edit(text:text, delete:delete, infoSource:Constants.infoCard)
     }
     
     func save() {
@@ -81,11 +81,16 @@ class BoardInteractor:Interactor, InfoInteractor {
         return self.report.makeStats(board:self.board)
     }
     
-    private func edit(text:TextStrategy, delete:DeleteStrategy?) {
+    private func edit(text:TextStrategy, delete:DeleteStrategy?, infoSource:String?) {
         let view:EditView = EditView(presenter:EditPresenter())
         view.presenter.strategyText = text
         view.presenter.strategyDelete = delete
         view.presenter.interactor = self
+        view.presenter.infoSource = infoSource
         Application.router.pushViewController(view, animated:true)
     }
+}
+
+private struct Constants {
+    static let infoCard:String = "InfoCard"
 }

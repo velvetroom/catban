@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A8F15B97B8245C5B2232546 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */; };
-		DA254AFF2126D1BA00D1E3C8 /* InfoCardEdit.md in Resources */ = {isa = PBXBuildFile; fileRef = DA254AFD2126D1BA00D1E3C8 /* InfoCardEdit.md */; };
+		DA254AFF2126D1BA00D1E3C8 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA254AFD2126D1BA00D1E3C8 /* InfoCard.md */; };
 		DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */; };
 		DA2E4B3D211DD97400861576 /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */; };
@@ -122,7 +122,7 @@
 /* Begin PBXFileReference section */
 		3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA254AFE2126D1BA00D1E3C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = en.lproj/InfoCardEdit.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		DA254AFE2126D1BA00D1E3C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = en.lproj/InfoCard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
@@ -278,6 +278,17 @@
 			);
 			sourceTree = "<group>";
 		};
+		DA2617742126DED8003A2DE7 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				DA4C653E211DD58A00ECAD21 /* TextStrategy.swift */,
+				DA4C653D211DD58A00ECAD21 /* TextCreateCard.swift */,
+				DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */,
+				DA4C6540211DD58A00ECAD21 /* TextChange.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		DA4C64D5211DD4E400ECAD21 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +370,7 @@
 				DA4C650A211DD57A00ECAD21 /* Localizable.strings */,
 				DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */,
 				DA2FB7D321206172001C758E /* LaunchScreen.storyboard */,
-				DA254AFD2126D1BA00D1E3C8 /* InfoCardEdit.md */,
+				DA254AFD2126D1BA00D1E3C8 /* InfoCard.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -373,6 +384,7 @@
 				DA759E1E2126AB7700E92FD9 /* Info */,
 				DA4C651A211DD58A00ECAD21 /* Delete */,
 				DA4C6537211DD58A00ECAD21 /* Scan */,
+				DA2617742126DED8003A2DE7 /* Text */,
 				DA4C653B211DD58A00ECAD21 /* Edit */,
 				DA4C6542211DD58A00ECAD21 /* Services */,
 				DA4C6546211DD58A00ECAD21 /* Share */,
@@ -451,10 +463,6 @@
 			children = (
 				DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */,
 				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
-				DA4C653D211DD58A00ECAD21 /* TextCreateCard.swift */,
-				DA4C653E211DD58A00ECAD21 /* TextStrategy.swift */,
-				DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */,
-				DA4C6540211DD58A00ECAD21 /* TextChange.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -617,7 +625,7 @@
 				DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */,
 				DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */,
 				DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */,
-				DA254AFF2126D1BA00D1E3C8 /* InfoCardEdit.md in Resources */,
+				DA254AFF2126D1BA00D1E3C8 /* InfoCard.md in Resources */,
 				DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */,
 				DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */,
 			);
@@ -775,12 +783,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DA254AFD2126D1BA00D1E3C8 /* InfoCardEdit.md */ = {
+		DA254AFD2126D1BA00D1E3C8 /* InfoCard.md */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DA254AFE2126D1BA00D1E3C8 /* en */,
 			);
-			name = InfoCardEdit.md;
+			name = InfoCard.md;
 			sourceTree = "<group>";
 		};
 		DA4C650A211DD57A00ECAD21 /* Localizable.strings */ = {

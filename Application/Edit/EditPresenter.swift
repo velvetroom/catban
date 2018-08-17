@@ -19,10 +19,15 @@ class EditPresenter:Presenter {
     }
     
     @objc func delete() {
-        let presenter:DeletePresenter = DeletePresenter()
-        let view:DeleteView = DeleteView(presenter:presenter)
-        presenter.interactor = self.interactor
-        presenter.strategy = self.strategyDelete
+        let view:DeleteView = DeleteView(presenter:DeletePresenter())
+        view.presenter.interactor = self.interactor
+        view.presenter.strategy = self.strategyDelete
+        Application.router.present(view, animated:true, completion:nil)
+    }
+    
+    @objc func info() {
+        let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        view.presenter.interactor = self.interactor
         Application.router.present(view, animated:true, completion:nil)
     }
 }

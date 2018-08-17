@@ -2,7 +2,7 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class BoardInteractor:Interactor {
+class BoardInteractor:Interactor, InfoInteractor {    
     weak var delegate:InteractorDelegate?
     var board:Board!
     var identifier:String
@@ -29,9 +29,8 @@ class BoardInteractor:Interactor {
     }
     
     func share() {
-        let presenter:SharePresenter = SharePresenter()
-        let view:ShareView = ShareView(presenter:presenter)
-        presenter.interactor = self
+        let view:ShareView = ShareView(presenter:SharePresenter())
+        view.presenter.interactor = self
         Application.router.present(view, animated:true, completion:nil)
     }
     
@@ -83,11 +82,10 @@ class BoardInteractor:Interactor {
     }
     
     private func edit(text:TextStrategy, delete:DeleteStrategy?) {
-        let presenter:EditPresenter = EditPresenter()
-        let view:EditView = EditView(presenter:presenter)
-        presenter.strategyText = text
-        presenter.strategyDelete = delete
-        presenter.interactor = self
+        let view:EditView = EditView(presenter:EditPresenter())
+        view.presenter.strategyText = text
+        view.presenter.strategyDelete = delete
+        view.presenter.interactor = self
         Application.router.pushViewController(view, animated:true)
     }
 }

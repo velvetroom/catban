@@ -78,6 +78,9 @@
 		DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */; };
 		DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55AF202122C5A600B50D9C /* BoardStackView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
+		DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */; };
+		DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E212126AB9C00E92FD9 /* InfoView.swift */; };
+		DA759E242126ABB100E92FD9 /* InfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E232126ABB100E92FD9 /* InfoInteractor.swift */; };
 		DA817F7C212163F400732944 /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7B212163F400732944 /* ReportProtocol.swift */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
 		DA817F802121646600732944 /* ReportStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7F2121646600732944 /* ReportStats.swift */; };
@@ -190,6 +193,9 @@
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		DA55AF202122C5A600B50D9C /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
+		DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
+		DA759E212126AB9C00E92FD9 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		DA759E232126ABB100E92FD9 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
 		DA817F7B212163F400732944 /* ReportProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProtocol.swift; sourceTree = "<group>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
@@ -359,6 +365,7 @@
 				DA4C6530211DD58A00ECAD21 /* Shared */,
 				DA4C6529211DD58A00ECAD21 /* Library */,
 				DA4C6521211DD58A00ECAD21 /* Board */,
+				DA759E1E2126AB7700E92FD9 /* Info */,
 				DA4C651A211DD58A00ECAD21 /* Delete */,
 				DA4C6537211DD58A00ECAD21 /* Scan */,
 				DA4C653B211DD58A00ECAD21 /* Edit */,
@@ -464,6 +471,16 @@
 				DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */,
 			);
 			path = Share;
+			sourceTree = "<group>";
+		};
+		DA759E1E2126AB7700E92FD9 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				DA759E232126ABB100E92FD9 /* InfoInteractor.swift */,
+				DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */,
+				DA759E212126AB9C00E92FD9 /* InfoView.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		DA817F7A212163DF00732944 /* Report */ = {
@@ -694,6 +711,7 @@
 				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
 				DA4C6557211DD58A00ECAD21 /* LibraryViewModel.swift in Sources */,
 				DA4C6565211DD58A00ECAD21 /* ScanPresenter.swift in Sources */,
+				DA759E242126ABB100E92FD9 /* InfoInteractor.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,
 				DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */,
 				DA4C6564211DD58A00ECAD21 /* ScanViewModel.swift in Sources */,
@@ -703,6 +721,7 @@
 				DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */,
 				DA4C6553211DD58A00ECAD21 /* BoardPresenter.swift in Sources */,
 				DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */,
+				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItemViewModel.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
 				DA4C6568211DD58A00ECAD21 /* TextStrategy.swift in Sources */,
@@ -722,6 +741,7 @@
 				DA4C654E211DD58A00ECAD21 /* DeleteView.swift in Sources */,
 				DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */,
 				DA4C6563211DD58A00ECAD21 /* ScanView.swift in Sources */,
+				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
 				DA4C6569211DD58A00ECAD21 /* TextCreateColumn.swift in Sources */,
 				DA4C654C211DD58A00ECAD21 /* DeleteBoard.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,

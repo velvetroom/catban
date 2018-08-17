@@ -56,6 +56,6 @@ class LibraryCellView:UIControl {
 
 private struct Constants {
     static let left:CGFloat = 20.0
-    static let font:CGFloat = 14.0
+    static let font:CGFloat = 13.0
     static let progress:CGFloat = 5.0
 }

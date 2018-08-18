@@ -45,11 +45,18 @@ class DeleteView:View<DeletePresenter> {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.black
-        label.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
+        label.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
         label.text = self.presenter.strategy.title
         label.textAlignment = NSTextAlignment.center
         self.label = label
         self.view.addSubview(label)
+        
+        let border:UIView = UIView()
+        border.translatesAutoresizingMaskIntoConstraints = false
+        border.backgroundColor = UIColor(white:0.0, alpha:0.1)
+        border.isUserInteractionEnabled = false
+        self.border = border
+        self.view.addSubview(border)
         
         let cancel:UIButton = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +64,7 @@ class DeleteView:View<DeletePresenter> {
         cancel.setTitleColor(UIColor.black, for:UIControl.State.normal)
         cancel.setTitleColor(UIColor(white:0.0, alpha:0.2), for:UIControl.State.highlighted)
         cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:UIControl.State())
-        cancel.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
+        cancel.titleLabel!.font = UIFont.systemFont(ofSize:Constants.buttons, weight:UIFont.Weight.medium)
         self.cancel = cancel
         self.view.addSubview(cancel)
         
@@ -67,16 +74,9 @@ class DeleteView:View<DeletePresenter> {
         delete.setTitleColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1), for:UIControl.State.normal)
         delete.setTitleColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1).withAlphaComponent(0.2), for:UIControl.State.highlighted)
         delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:UIControl.State())
-        delete.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
+        delete.titleLabel!.font = UIFont.systemFont(ofSize:Constants.buttons, weight:UIFont.Weight.medium)
         self.delete = delete
         self.view.addSubview(delete)
-        
-        let border:UIView = UIView()
-        border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0.0, alpha:0.2)
-        border.isUserInteractionEnabled = false
-        self.border = border
-        self.view.addSubview(border)
     }
     
     private func layoutOutlets() {
@@ -110,17 +110,17 @@ class DeleteView:View<DeletePresenter> {
         
         self.border.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
         self.border.rightAnchor.constraint(equalTo:self.base.rightAnchor).isActive = true
-        self.border.bottomAnchor.constraint(equalTo:self.cancel.topAnchor).isActive = true
-        self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
+        self.border.bottomAnchor.constraint(equalTo:self.base.bottomAnchor).isActive = true
+        self.border.topAnchor.constraint(equalTo:self.cancel.topAnchor).isActive = true
     }
 }
 
 private struct Constants {
-    static let border:CGFloat = 1.0
     static let radius:CGFloat = 4.0
     static let width:CGFloat = 260.0
     static let height:CGFloat = 130.0
     static let font:CGFloat = 16.0
+    static let buttons:CGFloat = 14.0
     static let top:CGFloat = 35.0
     static let buttonHeight:CGFloat = 45.0
 }

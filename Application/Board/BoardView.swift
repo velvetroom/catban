@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class BoardView:View<BoardPresenter> {
+class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var report:UIView!
@@ -74,6 +74,10 @@ class BoardView:View<BoardPresenter> {
         self.title = self.presenter.interactor.board.text
     }
     
+    func updateSearchResults(for search:UISearchController) {
+        
+    }
+    
     private func makeOutlets() {
         let scroll:UIScrollView = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -129,10 +133,10 @@ class BoardView:View<BoardPresenter> {
         self.scroll.addSubview(content)
         
         self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.edit)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                            action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.info))]
     }
@@ -169,6 +173,11 @@ class BoardView:View<BoardPresenter> {
                                         constant:Constants.stackTop).isActive = true
         
         if #available(iOS 11.0, *) {
+            let search:UISearchController = UISearchController(searchResultsController:nil)
+            search.searchResultsUpdater = self
+            search.isActive = true
+            search.obscuresBackgroundDuringPresentation = false
+            self.navigationItem.searchController = search
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
             self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true

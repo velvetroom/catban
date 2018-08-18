@@ -1,4 +1,4 @@
-LibraryView.title="Library";
+LibraryView.title="Boards";
 LibraryPresenter.empty="Empty library.\nUse the options on the top to create a new board or load one from a QR Code.";
 LibraryInteractor.board="Catban board";
 LibraryInteractor.column.todo="To do";

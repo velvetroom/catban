@@ -28,6 +28,11 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         Application.router.pushViewController(view, animated:true)
     }
     
+    func settings() {
+        let view:SettingsView = SettingsView()
+        Application.router.pushViewController(view, animated:true)
+    }
+    
     func duplicated(identifier:String) -> Bool {
         return self.library.boards[identifier] != nil
     }

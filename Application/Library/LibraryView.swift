@@ -7,6 +7,7 @@ class LibraryView:View<LibraryPresenter> {
     weak var message:UILabel!
     weak var add:UIBarButtonItem!
     weak var scan:UIBarButtonItem!
+    weak var settings:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,10 @@ class LibraryView:View<LibraryPresenter> {
         let scan:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                                                    action:#selector(self.presenter.scan))
         self.scan = scan
-        self.navigationItem.rightBarButtonItems = [add, scan]
+        let settings:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain,
+                                                       target:self.presenter, action:#selector(self.presenter.settings))
+        self.settings = settings
+        self.navigationItem.rightBarButtonItems = [add, scan, settings]
     }
     
     private func layoutOutlets() {
@@ -82,6 +86,7 @@ class LibraryView:View<LibraryPresenter> {
             self?.loading.isHidden = viewModel.loadingHidden
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled
+            self?.settings.isEnabled = viewModel.actionsEnabled
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }

@@ -23,3 +23,4 @@ ScanPresenter.error="Unable to read QR Code";
 ScanPresenter.success="Board loaded successfully";
 ScanPresenter.duplicate="Board already on your library";
 InfoView.dismiss="Dismiss";
+SettingsView.title="Settings";

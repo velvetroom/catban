@@ -16,6 +16,9 @@
 		DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7D121203BDF001C758E /* BoardButtonView.swift */; };
 		DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2FB7D321206172001C758E /* LaunchScreen.storyboard */; };
 		DA32C2522121DC5A0018BBC3 /* BoardProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */; };
+		DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7E82129945800A54E65 /* BoardState.swift */; };
+		DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */; };
+		DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */; };
 		DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA4C64D8211DD4E400ECAD21 /* GoogleService-Info.plist */; };
 		DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DC211DD54100ECAD21 /* Library.swift */; };
 		DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */; };
@@ -133,6 +136,9 @@
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
 		DA2FB7D321206172001C758E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProgressViewModel.swift; sourceTree = "<group>"; };
+		DA4BE7E82129945800A54E65 /* BoardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardState.swift; sourceTree = "<group>"; };
+		DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateDefault.swift; sourceTree = "<group>"; };
+		DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateSearch.swift; sourceTree = "<group>"; };
 		DA4C64D1211DD40300ECAD21 /* libCatban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatban.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D2211DD40300ECAD21 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D3211DD40300ECAD21 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,6 +436,9 @@
 				DA55AF202122C5A600B50D9C /* BoardStackView.swift */,
 				DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */,
 				DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */,
+				DA4BE7E82129945800A54E65 /* BoardState.swift */,
+				DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */,
+				DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -788,10 +797,13 @@
 				DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */,
 				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
+				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,
 				DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */,
 				DA4C6566211DD58A00ECAD21 /* EditPresenter.swift in Sources */,
 				DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */,
 				DA4C654B211DD58A00ECAD21 /* DeletePresenter.swift in Sources */,
+				DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */,
+				DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */,
 				DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

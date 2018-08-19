@@ -75,7 +75,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for search:UISearchController) {
-        
+        guard
+            let text:String = search.searchBar.text,
+            !text.isEmpty
+        else {
+            self.presenter.clearSearch()
+            return
+        }
+        self.presenter.search(text:text)
     }
     
     private func makeOutlets() {
@@ -193,7 +200,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
             self?.drawer.draw()
             self?.layouter.layout()
         }
-        
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardProgressViewModel) in
             self?.progress.setProgress(viewModel.progress, animated:true)
             self?.stack.update(progress:viewModel)

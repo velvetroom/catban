@@ -5,8 +5,11 @@ import Catban
 class BoardPresenter:Presenter {
     var interactor:BoardInteractor!
     var viewModels:ViewModels!
+    private(set) var state:BoardState
     
-    required init() { }
+    required init() {
+        self.state = BoardStateDefault()
+    }
     
     func detach(item:BoardCardView) {
         self.interactor.detach(card:item.card, column:item.column)
@@ -44,6 +47,16 @@ class BoardPresenter:Presenter {
     
     @objc func editCard(view:BoardCardView) {
         self.interactor.editCard(column:view.column!, card:view.card!)
+    }
+    
+    func search(text:String) {
+        self.state = BoardStateSearch(text:text)
+        self.updateViewModel()
+    }
+    
+    func clearSearch() {
+        self.state = BoardStateDefault()
+        self.updateViewModel()
     }
     
     func updateProgress() {

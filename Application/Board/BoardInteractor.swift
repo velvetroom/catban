@@ -6,7 +6,7 @@ class BoardInteractor:Interactor, InfoInteractor {
     weak var delegate:InteractorDelegate?
     var board:Board!
     var identifier:String
-    private let library:LibraryProtocol
+    private let library:Library
     private let report:Report
     
     required init() {

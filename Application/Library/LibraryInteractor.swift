@@ -5,7 +5,7 @@ import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate {
     weak var delegate:InteractorDelegate?
-    let library:LibraryProtocol
+    let library:Library
     private let report:Report
     
     required init() {

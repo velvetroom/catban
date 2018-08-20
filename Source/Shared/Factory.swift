@@ -4,7 +4,7 @@ public class Factory {
     public static var cache:CacheService.Type!
     public static var database:DatabaseService.Type!
     
-    public class func makeLibrary() -> LibraryProtocol {
+    public class func makeLibrary() -> Library {
         if library == nil {
             library = Library()
         }
@@ -21,5 +21,5 @@ public class Factory {
     
     private init() { }
     
-    private static var library:LibraryProtocol!
+    private static var library:Library!
 }

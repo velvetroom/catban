@@ -24,7 +24,6 @@
 		DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */; };
 		DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */; };
 		DA4C64F1211DD54100ECAD21 /* LibraryStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */; };
-		DA4C64F2211DD54100ECAD21 /* LibraryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */; };
 		DA4C64F3211DD54100ECAD21 /* LibraryStateReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */; };
 		DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E3211DD54100ECAD21 /* CacheService.swift */; };
 		DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E4211DD54100ECAD21 /* CatbanError.swift */; };
@@ -148,7 +147,6 @@
 		DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateDefault.swift; sourceTree = "<group>"; };
 		DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
 		DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateProtocol.swift; sourceTree = "<group>"; };
-		DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryProtocol.swift; sourceTree = "<group>"; };
 		DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateReady.swift; sourceTree = "<group>"; };
 		DA4C64E3211DD54100ECAD21 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		DA4C64E4211DD54100ECAD21 /* CatbanError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatbanError.swift; sourceTree = "<group>"; };
@@ -325,7 +323,6 @@
 		DA4C64DB211DD54100ECAD21 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */,
 				DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */,
 				DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */,
 				DA4C64DC211DD54100ECAD21 /* Library.swift */,
@@ -715,7 +712,6 @@
 				DA817F8A2121688700732944 /* ReportCards.swift in Sources */,
 				DA817F862121680900732944 /* ReportColumns.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
-				DA4C64F2211DD54100ECAD21 /* LibraryProtocol.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
 				DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */,
 				DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */,

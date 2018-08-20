@@ -7,11 +7,11 @@ class BoardInteractor:Interactor, InfoInteractor {
     var board:Board!
     var identifier:String
     private let library:LibraryProtocol
-    private let report:ReportProtocol
+    private let report:Report
     
     required init() {
         self.library = Factory.makeLibrary()
-        self.report = Factory.makeReport()
+        self.report = Report()
         self.identifier = String()
     }
     

@@ -11,10 +11,6 @@ public class Factory {
         return library
     }
     
-    public class func makeReport() -> ReportProtocol {
-        return Report()
-    }
-    
     class func makeCache() -> CacheService {
         return cache.init()
     }

@@ -6,11 +6,11 @@ import StoreKit
 class LibraryInteractor:Interactor, LibraryDelegate {
     weak var delegate:InteractorDelegate?
     let library:LibraryProtocol
-    private let report:ReportProtocol
+    private let report:Report
     
     required init() {
         self.library = Factory.makeLibrary()
-        self.report = Factory.makeReport()
+        self.report = Report()
         self.library.delegate = self
     }
     

@@ -8,8 +8,9 @@
 [![Bitrise](https://app.bitrise.io/app/807a375d287b2f0b/status.svg?token=lutdvZqnAiBoLp3vkTwX8w)](https://app.bitrise.io/app/807a375d287b2f0b)
 
 
-### Do more with less
+# Do more with less
 Kanban board architected for iOS
+
 Human management at its best
 
 - With a minimalistic interface Catban helps you focusing on getting things done.
@@ -35,7 +36,14 @@ Basic steps
 - Track your progress.
 - Have a clear understanding of what is missing in your project.
 
+Format yours cards
+- # for top heading
+- ## for secondary heading
+- ### for small heading
+- **bold**
+- _italics_
+- Use minus (-) to add list elements
+
 Kanban was developed as a scheduling and managing system to improve manufacturing efficiency.
 
 Name comes from Japanese, is the name of the cards that track the production within a factory.
-

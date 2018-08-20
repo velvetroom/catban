@@ -20,9 +20,6 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W4c-uN-wKp">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="8TZ-Xh-rUl" kind="relationship" relationship="rootViewController" id="F9a-Jn-JyX"/>
                     </connections>
@@ -31,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-681" y="27"/>
         </scene>
-        <!--Library-->
+        <!--Boards-->
         <scene sceneID="hF0-bQ-qHQ">
             <objects>
                 <viewController id="8TZ-Xh-rUl" sceneMemberID="viewController">
@@ -42,13 +39,16 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XIC-y4-by0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Library" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="hhH-K0-yxn">
+                    <navigationItem key="navigationItem" title="Boards" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="hhH-K0-yxn">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="sb4-i0-ZWt">
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
                             <barButtonItem image="assetQr" id="2r1-aj-wsi">
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem image="assetEdit" id="cvQ-3Y-9e9">
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -59,6 +59,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="assetQr" width="18" height="18"/>
+        <image name="assetEdit" width="21" height="21"/>
+        <image name="assetQr" width="17" height="17"/>
     </resources>
 </document>

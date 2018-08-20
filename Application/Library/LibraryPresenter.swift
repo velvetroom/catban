@@ -17,6 +17,10 @@ class LibraryPresenter:Presenter {
         self.interactor.scan()
     }
     
+    @objc func settings() {
+        self.interactor.settings()
+    }
+    
     @objc func selected(cell:LibraryCellView) {
         self.interactor.select(identifier:cell.viewModel.board)
     }

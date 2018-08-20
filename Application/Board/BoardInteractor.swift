@@ -6,12 +6,13 @@ class BoardInteractor:Interactor, InfoInteractor {
     weak var delegate:InteractorDelegate?
     var board:Board!
     var identifier:String
-    private let library:LibraryProtocol
-    private let report:ReportProtocol
+    var cardsFont:Int { get { return self.library.cardsFont } }
+    private let library:Library
+    private let report:Report
     
     required init() {
         self.library = Factory.makeLibrary()
-        self.report = Factory.makeReport()
+        self.report = Report()
         self.identifier = String()
     }
     

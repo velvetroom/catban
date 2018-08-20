@@ -1,13 +1,13 @@
 import Foundation
 
-class Report:ReportProtocol {
+public class Report {
     let visitors:[ReportVisitor]
     
-    init() {
+    public init() {
         self.visitors = [ReportColumns(), ReportProgress(), ReportCards(), ReportLongerColumn()]
     }
     
-    func makeStats(board:Board) -> ReportStats {
+    public func makeStats(board:Board) -> ReportStats {
         let stats:ReportStats = ReportStats()
         self.visitors.forEach { (visitor:ReportVisitor) in
             visitor.visit(board:board, stats:stats)

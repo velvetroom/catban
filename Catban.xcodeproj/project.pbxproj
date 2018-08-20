@@ -16,12 +16,17 @@
 		DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7D121203BDF001C758E /* BoardButtonView.swift */; };
 		DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2FB7D321206172001C758E /* LaunchScreen.storyboard */; };
 		DA32C2522121DC5A0018BBC3 /* BoardProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */; };
+		DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */; };
+		DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */; };
+		DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */; };
+		DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7E82129945800A54E65 /* BoardState.swift */; };
+		DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */; };
+		DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */; };
 		DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA4C64D8211DD4E400ECAD21 /* GoogleService-Info.plist */; };
 		DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DC211DD54100ECAD21 /* Library.swift */; };
 		DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */; };
 		DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */; };
 		DA4C64F1211DD54100ECAD21 /* LibraryStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */; };
-		DA4C64F2211DD54100ECAD21 /* LibraryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */; };
 		DA4C64F3211DD54100ECAD21 /* LibraryStateReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */; };
 		DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E3211DD54100ECAD21 /* CacheService.swift */; };
 		DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E4211DD54100ECAD21 /* CatbanError.swift */; };
@@ -80,10 +85,12 @@
 		DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */; };
 		DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55AF202122C5A600B50D9C /* BoardStackView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
+		DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */; };
+		DA69DCF621282AF900FE7C90 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */; };
+		DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF721282B1A00FE7C90 /* SettingsView.swift */; };
 		DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */; };
 		DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E212126AB9C00E92FD9 /* InfoView.swift */; };
 		DA759E242126ABB100E92FD9 /* InfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E232126ABB100E92FD9 /* InfoInteractor.swift */; };
-		DA817F7C212163F400732944 /* ReportProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7B212163F400732944 /* ReportProtocol.swift */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
 		DA817F802121646600732944 /* ReportStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7F2121646600732944 /* ReportStats.swift */; };
 		DA817F82212165E000732944 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F81212165E000732944 /* TestReport.swift */; };
@@ -130,6 +137,12 @@
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
 		DA2FB7D321206172001C758E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProgressViewModel.swift; sourceTree = "<group>"; };
+		DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Boards.swift; sourceTree = "<group>"; };
+		DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Properties.swift; sourceTree = "<group>"; };
+		DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		DA4BE7E82129945800A54E65 /* BoardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardState.swift; sourceTree = "<group>"; };
+		DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateDefault.swift; sourceTree = "<group>"; };
+		DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateSearch.swift; sourceTree = "<group>"; };
 		DA4C64D1211DD40300ECAD21 /* libCatban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCatban.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D2211DD40300ECAD21 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4C64D3211DD40300ECAD21 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +153,6 @@
 		DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateDefault.swift; sourceTree = "<group>"; };
 		DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
 		DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateProtocol.swift; sourceTree = "<group>"; };
-		DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryProtocol.swift; sourceTree = "<group>"; };
 		DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateReady.swift; sourceTree = "<group>"; };
 		DA4C64E3211DD54100ECAD21 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		DA4C64E4211DD54100ECAD21 /* CatbanError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatbanError.swift; sourceTree = "<group>"; };
@@ -198,10 +210,12 @@
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		DA55AF202122C5A600B50D9C /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
+		DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		DA69DCF721282B1A00FE7C90 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		DA759E212126AB9C00E92FD9 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DA759E232126ABB100E92FD9 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
-		DA817F7B212163F400732944 /* ReportProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProtocol.swift; sourceTree = "<group>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
 		DA817F81212165E000732944 /* TestReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReport.swift; sourceTree = "<group>"; };
@@ -315,7 +329,6 @@
 		DA4C64DB211DD54100ECAD21 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64E0211DD54100ECAD21 /* LibraryProtocol.swift */,
 				DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */,
 				DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */,
 				DA4C64DC211DD54100ECAD21 /* Library.swift */,
@@ -354,6 +367,8 @@
 				DA4C64FF211DD54900ECAD21 /* TestFactory.swift */,
 				DA817F81212165E000732944 /* TestReport.swift */,
 				DA4C6503211DD54900ECAD21 /* TestLibrary.swift */,
+				DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */,
+				DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */,
 				DABD57CC211EDA8700C72A7F /* TestBoard.swift */,
 				DABD57CA211ED98900C72A7F /* TestColumn.swift */,
 				DABD57CE211EF0AE00C72A7F /* TestSession.swift */,
@@ -384,6 +399,7 @@
 				DA4C6530211DD58A00ECAD21 /* Shared */,
 				DA4C6529211DD58A00ECAD21 /* Library */,
 				DA4C6521211DD58A00ECAD21 /* Board */,
+				DA69DCF2212828AD00FE7C90 /* Settings */,
 				DA759E1E2126AB7700E92FD9 /* Info */,
 				DA4C651A211DD58A00ECAD21 /* Delete */,
 				DA4C6537211DD58A00ECAD21 /* Scan */,
@@ -423,6 +439,9 @@
 				DA55AF202122C5A600B50D9C /* BoardStackView.swift */,
 				DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */,
 				DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */,
+				DA4BE7E82129945800A54E65 /* BoardState.swift */,
+				DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */,
+				DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -489,6 +508,17 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		DA69DCF2212828AD00FE7C90 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */,
+				DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */,
+				DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */,
+				DA69DCF721282B1A00FE7C90 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		DA759E1E2126AB7700E92FD9 /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,7 +533,6 @@
 		DA817F7A212163DF00732944 /* Report */ = {
 			isa = PBXGroup;
 			children = (
-				DA817F7B212163F400732944 /* ReportProtocol.swift */,
 				DA817F7D2121640700732944 /* Report.swift */,
 				DA817F7F2121646600732944 /* ReportStats.swift */,
 				DA817F83212167B000732944 /* ReportVisitor.swift */,
@@ -692,7 +721,6 @@
 				DA817F8A2121688700732944 /* ReportCards.swift in Sources */,
 				DA817F862121680900732944 /* ReportColumns.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
-				DA4C64F2211DD54100ECAD21 /* LibraryProtocol.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
 				DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */,
 				DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */,
@@ -700,7 +728,6 @@
 				DA817F84212167B000732944 /* ReportVisitor.swift in Sources */,
 				DA817F882121686400732944 /* ReportProgress.swift in Sources */,
 				DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */,
-				DA817F7C212163F400732944 /* ReportProtocol.swift in Sources */,
 				DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */,
 				DA817F802121646600732944 /* ReportStats.swift in Sources */,
 				DA4C64F3211DD54100ECAD21 /* LibraryStateReady.swift in Sources */,
@@ -717,8 +744,10 @@
 				DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */,
 				DA4C6508211DD54A00ECAD21 /* TestLibrary.swift in Sources */,
 				DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */,
+				DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */,
 				DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */,
 				DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */,
+				DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */,
 				DA4C6504211DD54A00ECAD21 /* TestFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,8 +767,10 @@
 				DA4C656D211DD58A00ECAD21 /* Database.swift in Sources */,
 				DA4C6550211DD58A00ECAD21 /* BoardView.swift in Sources */,
 				DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */,
+				DA69DCF621282AF900FE7C90 /* SettingsPresenter.swift in Sources */,
 				DA4C6553211DD58A00ECAD21 /* BoardPresenter.swift in Sources */,
 				DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */,
+				DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */,
 				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItemViewModel.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
@@ -763,16 +794,21 @@
 				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
 				DA4C6569211DD58A00ECAD21 /* TextCreateColumn.swift in Sources */,
 				DA4C654C211DD58A00ECAD21 /* DeleteBoard.swift in Sources */,
+				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA4C6554211DD58A00ECAD21 /* BoardViewModel.swift in Sources */,
 				DA4C656A211DD58A00ECAD21 /* TextChange.swift in Sources */,
 				DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */,
 				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
+				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,
 				DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */,
 				DA4C6566211DD58A00ECAD21 /* EditPresenter.swift in Sources */,
 				DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */,
 				DA4C654B211DD58A00ECAD21 /* DeletePresenter.swift in Sources */,
+				DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */,
+				DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */,
+				DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

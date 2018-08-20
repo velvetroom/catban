@@ -5,12 +5,12 @@ import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate {
     weak var delegate:InteractorDelegate?
-    let library:LibraryProtocol
-    private let report:ReportProtocol
+    let library:Library
+    private let report:Report
     
     required init() {
         self.library = Factory.makeLibrary()
-        self.report = Factory.makeReport()
+        self.report = Report()
         self.library.delegate = self
     }
     
@@ -25,6 +25,11 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     func scan() {
         let view:ScanView = ScanView(presenter:ScanPresenter())
         view.presenter.interactor = self
+        Application.router.pushViewController(view, animated:true)
+    }
+    
+    func settings() {
+        let view:SettingsView = SettingsView()
         Application.router.pushViewController(view, animated:true)
     }
     
@@ -58,9 +63,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     func libraryCreated(board:String) {
         self.addTemplate(board:self.library.boards[board]!)
         self.select(identifier:board)
-        if self.library.boards.count > Constants.minBoards {
-            if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
-        }
+        self.rate()
     }
     
     func makeStats(board:Board) -> ReportStats {
@@ -69,10 +72,18 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     
     private func addTemplate(board:Board) {
         board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
-        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
-        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))
-        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.done", comment:String()))
+        if self.library.defaultColumns {
+            board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
+            board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))
+            board.addColumn(text:NSLocalizedString("LibraryInteractor.column.done", comment:String()))
+        }
         self.library.save(board:board)
+    }
+    
+    private func rate() {
+        if self.library.boards.count > Constants.minBoards {
+            if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
+        }
     }
 }
 

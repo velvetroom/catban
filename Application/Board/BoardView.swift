@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class BoardView:View<BoardPresenter> {
+class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var report:UIView!
@@ -74,6 +74,17 @@ class BoardView:View<BoardPresenter> {
         self.title = self.presenter.interactor.board.text
     }
     
+    func updateSearchResults(for search:UISearchController) {
+        guard
+            let text:String = search.searchBar.text,
+            !text.isEmpty
+        else {
+            self.presenter.clearSearch()
+            return
+        }
+        self.presenter.search(text:text)
+    }
+    
     private func makeOutlets() {
         let scroll:UIScrollView = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -129,10 +140,10 @@ class BoardView:View<BoardPresenter> {
         self.scroll.addSubview(content)
         
         self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.edit)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
+                            action:#selector(self.presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                             action:#selector(self.presenter.info))]
     }
@@ -140,6 +151,7 @@ class BoardView:View<BoardPresenter> {
     private func layoutOutlets() {
         self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
         
         self.report.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.report.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
@@ -169,12 +181,15 @@ class BoardView:View<BoardPresenter> {
                                         constant:Constants.stackTop).isActive = true
         
         if #available(iOS 11.0, *) {
+            let search:UISearchController = UISearchController(searchResultsController:nil)
+            search.searchResultsUpdater = self
+            search.isActive = true
+            search.obscuresBackgroundDuringPresentation = false
+            self.navigationItem.searchController = search
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         } else {
             self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
         }
     }
     
@@ -184,7 +199,6 @@ class BoardView:View<BoardPresenter> {
             self?.drawer.draw()
             self?.layouter.layout()
         }
-        
         self.presenter.viewModels.observe { [weak self] (viewModel:BoardProgressViewModel) in
             self?.progress.setProgress(viewModel.progress, animated:true)
             self?.stack.update(progress:viewModel)

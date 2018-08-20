@@ -7,6 +7,7 @@ class LibraryView:View<LibraryPresenter> {
     weak var message:UILabel!
     weak var add:UIBarButtonItem!
     weak var scan:UIBarButtonItem!
+    weak var settings:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +52,16 @@ class LibraryView:View<LibraryPresenter> {
         let scan:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
                                                    action:#selector(self.presenter.scan))
         self.scan = scan
-        self.navigationItem.rightBarButtonItems = [add, scan]
+        let settings:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain,
+                                                       target:self.presenter, action:#selector(self.presenter.settings))
+        self.settings = settings
+        self.navigationItem.rightBarButtonItems = [add, scan, settings]
     }
     
     private func layoutOutlets() {
         self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
         
         self.message.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:Constants.margin).isActive = true
         self.message.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:-Constants.margin).isActive = true
@@ -67,12 +72,10 @@ class LibraryView:View<LibraryPresenter> {
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             self.message.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor,
                                               constant:Constants.margin).isActive = true
         } else {
             self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
             self.message.topAnchor.constraint(equalTo:self.view.topAnchor, constant:Constants.margin).isActive = true
         }
     }
@@ -82,6 +85,7 @@ class LibraryView:View<LibraryPresenter> {
             self?.loading.isHidden = viewModel.loadingHidden
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled
+            self?.settings.isEnabled = viewModel.actionsEnabled
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }

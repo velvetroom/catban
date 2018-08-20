@@ -36,9 +36,9 @@ class Qr {
             else { return nil }
         filter.setValue(Constants.value, forKey:Constants.key)
         filter.setValue(data, forKey:Constants.content)
-        let transform = CGAffineTransform(scaleX:Constants.scale, y:Constants.scale)
         guard
-            let ci:CIImage = filter.outputImage?.transformed(by:transform),
+            let ci:CIImage = filter.outputImage?.transformed(
+                by:CGAffineTransform(scaleX:Constants.scale, y:Constants.scale)),
             let cg:CGImage = CIContext().createCGImage(ci, from:ci.extent)
         else { return nil }
         return UIImage(cgImage:cg, scale:Constants.saveScale, orientation:UIImage.Orientation.up)

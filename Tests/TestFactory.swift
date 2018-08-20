@@ -9,8 +9,8 @@ class TestFactory:XCTestCase {
     }
     
     func testAvoidMoreThanOneLibraries() {
-        let libraryA:LibraryProtocol = Factory.makeLibrary()
-        let libraryB:LibraryProtocol = Factory.makeLibrary()
+        let libraryA:Library = Factory.makeLibrary()
+        let libraryB:Library = Factory.makeLibrary()
         XCTAssertTrue(libraryA === libraryB, "Different instances")
     }
     

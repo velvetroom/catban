@@ -1,16 +1,30 @@
 import Foundation
 
-class Library:LibraryProtocol {
+public class Library {
     static let stateDefault:LibraryStateProtocol = LibraryStateDefault()
     static let stateReady:LibraryStateProtocol = LibraryStateReady()
     
-    weak var delegate:LibraryDelegate?
+    public weak var delegate:LibraryDelegate?
+    public var boards:[String:Board] { get { return self.session.boards } }
+    public var cardsFont:Int { get {
+        return self.session.cardsFont
+    } set(newValue) {
+        self.session.cardsFont = newValue
+        self.saveSession()
+    } }
+    public var defaultColumns:Bool { get {
+        return self.session.defaultColumns
+    } set(newValue) {
+        self.session.defaultColumns = newValue
+        self.saveSession()
+    } }
+    
+    
     weak var state:LibraryStateProtocol!
     var session:Session
     var cache:CacheService
     var database:DatabaseService
     let queue:DispatchQueue
-    var boards:[String:Board] { get { return self.session.boards } }
     
     init() {
         self.state = Library.stateDefault
@@ -23,27 +37,27 @@ class Library:LibraryProtocol {
                                    target:DispatchQueue.global(qos:DispatchQoS.QoSClass.background))
     }
     
-    func loadBoards() throws {
+    public func loadBoards() throws {
         try self.state.loadBoards(context:self)
     }
     
-    func loadSession() {
+    public func loadSession() {
         self.state.loadSession(context:self)
     }
     
-    func newBoard() {
+    public func newBoard() {
         self.state.newBoard(context:self)
     }
     
-    func addBoard(identifier:String) {
+    public func addBoard(identifier:String) {
         self.state.addBoard(context:self, identifier:identifier)
     }
     
-    func save(board:Board) {
+    public func save(board:Board) {
         self.state.save(context:self, board:board)
     }
     
-    func delete(board:Board) {
+    public func delete(board:Board) {
         self.state.delete(context:self, board:board)
     }
     

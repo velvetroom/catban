@@ -6,6 +6,20 @@ public class Library {
     
     public weak var delegate:LibraryDelegate?
     public var boards:[String:Board] { get { return self.session.boards } }
+    public var cardsFont:Int { get {
+        return self.session.cardsFont
+    } set(newValue) {
+        self.session.cardsFont = newValue
+        self.saveSession()
+    } }
+    public var defaultColumns:Bool { get {
+        return self.session.defaultColumns
+    } set(newValue) {
+        self.session.defaultColumns = newValue
+        self.saveSession()
+    } }
+    
+    
     weak var state:LibraryStateProtocol!
     var session:Session
     var cache:CacheService

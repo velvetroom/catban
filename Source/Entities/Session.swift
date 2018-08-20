@@ -9,25 +9,29 @@ public class Session:Codable {
     
     public private(set) var boards:[String:Board]
     public var cardsFont:Int
-//    public private(set) var defaultColumns:Bool
+    public var defaultColumns:Bool
     
     public required init(from decoder:Decoder) throws {
         let values:KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy:CodingKeys.self)
         self.boards = [:]
         self.cardsFont = 0
+        self.defaultColumns = true
         self.decodeBoards(values:values)
         self.decodeCardsFont(values:values)
+        self.decodeDefaultColumns(values:values)
     }
     
     public func encode(to encoder:Encoder) throws {
         var container:KeyedEncodingContainer<CodingKeys> = encoder.container(keyedBy:CodingKeys.self)
         try container.encode(Array(self.boards.keys), forKey:CodingKeys.boards)
         try container.encode(self.cardsFont, forKey:CodingKeys.cardsFont)
+        try container.encode(self.defaultColumns, forKey:CodingKeys.defaultColumns)
     }
     
     init() {
         self.boards = [:]
         self.cardsFont = CardsFont.original
+        self.defaultColumns = true
     }
     
     func add(board:String) {
@@ -58,6 +62,10 @@ public class Session:Codable {
         } catch {
             self.cardsFont = CardsFont.original
         }
+    }
+    
+    private func decodeDefaultColumns(values:KeyedDecodingContainer<CodingKeys>) {
+        do { try self.defaultColumns = values.decode(Bool.self, forKey:CodingKeys.defaultColumns) } catch { }
     }
     
     private enum CodingKeys:CodingKey {

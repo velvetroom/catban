@@ -65,7 +65,7 @@ class TestSession:XCTestCase {
             XCTFail("Failed type")
             return
         }
-        XCTAssertEqual(newSession.cardsFont, session.cardsFont, "Invalid amount")
+        XCTAssertEqual(newSession.cardsFont, session.cardsFont, "Invalid font")
     }
     
     func testCodingNoPreviousCardsFont() {
@@ -82,7 +82,24 @@ class TestSession:XCTestCase {
         XCTAssertEqual(session.cardsFont, Session.CardsFont.original, "Should have default cards font")
     }
     
+    func testCodingDefaultColumns() {
+        let session:Session = Session()
+        session.defaultColumns = false
+        let data:Data
+        do { try data = JSONEncoder().encode(session) } catch { return }
+        let newSession:Session
+        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch {
+            XCTFail("Failed type")
+            return
+        }
+        XCTAssertEqual(newSession.defaultColumns, session.defaultColumns, "Invalid default columns")
+    }
+    
     func testNewSessionHasDefaultCardsFont() {
         XCTAssertEqual(Session().cardsFont, Session.CardsFont.original, "Should have default cards font")
+    }
+    
+    func testNewSessionHasDefaultColumns() {
+        XCTAssertTrue(Session().defaultColumns, "Should have default columns")
     }
 }

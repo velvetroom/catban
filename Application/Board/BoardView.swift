@@ -151,6 +151,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     private func layoutOutlets() {
         self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
         
         self.report.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.report.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
@@ -187,10 +188,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
             self.navigationItem.searchController = search
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         } else {
             self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
         }
     }
     

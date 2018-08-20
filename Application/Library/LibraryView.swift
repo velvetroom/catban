@@ -61,6 +61,7 @@ class LibraryView:View<LibraryPresenter> {
     private func layoutOutlets() {
         self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
         self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
         
         self.message.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:Constants.margin).isActive = true
         self.message.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:-Constants.margin).isActive = true
@@ -71,12 +72,10 @@ class LibraryView:View<LibraryPresenter> {
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
             self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
             self.message.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor,
                                               constant:Constants.margin).isActive = true
         } else {
             self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-            self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
             self.message.topAnchor.constraint(equalTo:self.view.topAnchor, constant:Constants.margin).isActive = true
         }
     }

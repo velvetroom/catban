@@ -78,6 +78,7 @@ class SettingsView:View<SettingsPresenter> {
         let columnsSwitch:UISwitch = UISwitch()
         columnsSwitch.translatesAutoresizingMaskIntoConstraints = false
         columnsSwitch.onTintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
+        columnsSwitch.addTarget(self, action:#selector(self.updateColumns), for:UIControl.Event.valueChanged)
         self.columnsSwitch = columnsSwitch
         self.columns.addSubview(columnsSwitch)
         
@@ -170,7 +171,11 @@ class SettingsView:View<SettingsPresenter> {
     }
     
     private func configureViewModel() {
-        
+        self.presenter.viewModels.observe { [weak self] (viewModel:SettingsViewModel) in
+            self?.updateDisplay(size:viewModel.cardsFont)
+            self?.fontSlider.setValue(Float(viewModel.cardsFont), animated:false)
+            self?.columnsSwitch.isOn = viewModel.defaultColumns
+        }
     }
     
     private func update(width:CGFloat) {
@@ -181,7 +186,12 @@ class SettingsView:View<SettingsPresenter> {
     
     @objc private func updateFont() {
         let size:Int = Int(self.fontSlider.value)
+        self.presenter.update(cardsFont:size)
         self.updateDisplay(size:size)
+    }
+    
+    @objc private func updateColumns() {
+        self.presenter.update(defaultColumns:self.columnsSwitch.isOn)
     }
     
     private func updateDisplay(size:Int) {

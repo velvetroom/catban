@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import CleanArchitecture
 import Catban
 

@@ -3,9 +3,11 @@ import Catban
 import MarkdownHero
 
 class BoardDrawer {
-    weak var view:BoardView!
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
+    weak var view:BoardView! { didSet { self.parser.font = UIFont.systemFont(
+        ofSize:CGFloat(self.view.presenter.interactor.cardsFont), weight:UIFont.Weight.ultraLight) } }
+    
     private weak var nextItem:BoardItemView?
     private var parser:Parser
     private let options:NSStringDrawingOptions
@@ -13,7 +15,6 @@ class BoardDrawer {
     
     init() {
         self.parser = Parser()
-        self.parser.font = UIFont.systemFont(ofSize:Constants.card, weight:UIFont.Weight.ultraLight)
         self.options = NSStringDrawingOptions([NSStringDrawingOptions.usesFontLeading,
                                                NSStringDrawingOptions.usesLineFragmentOrigin])
         self.size = CGSize(width:Constants.columnWidth, height:Constants.max)
@@ -104,7 +105,6 @@ class BoardDrawer {
 
 private struct Constants {
     static let columnWidth:CGFloat = 130.0
-    static let card:CGFloat = 14.0
     static let headerHeight:CGFloat = 24.0
     static let new:CGFloat = 30.0
     static let max:CGFloat = 10000.0

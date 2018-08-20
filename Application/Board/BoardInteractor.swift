@@ -6,6 +6,7 @@ class BoardInteractor:Interactor, InfoInteractor {
     weak var delegate:InteractorDelegate?
     var board:Board!
     var identifier:String
+    var cardsFont:Int { get { return self.library.cardsFont } }
     private let library:Library
     private let report:Report
     

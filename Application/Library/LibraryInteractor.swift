@@ -63,9 +63,7 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     func libraryCreated(board:String) {
         self.addTemplate(board:self.library.boards[board]!)
         self.select(identifier:board)
-        if self.library.boards.count > Constants.minBoards {
-            if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
-        }
+        self.rate()
     }
     
     func makeStats(board:Board) -> ReportStats {
@@ -74,10 +72,18 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     
     private func addTemplate(board:Board) {
         board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
-        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
-        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))
-        board.addColumn(text:NSLocalizedString("LibraryInteractor.column.done", comment:String()))
+        if self.library.defaultColumns {
+            board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
+            board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))
+            board.addColumn(text:NSLocalizedString("LibraryInteractor.column.done", comment:String()))
+        }
         self.library.save(board:board)
+    }
+    
+    private func rate() {
+        if self.library.boards.count > Constants.minBoards {
+            if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
+        }
     }
 }
 

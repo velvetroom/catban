@@ -22,7 +22,7 @@ class InfoPresenter<I:InfoInteractor>:Presenter {
     }
     
     private func loadInfo() {
-        let url:URL = Bundle(for:InfoPresenter.self).url(forResource:self.source, withExtension:Constants.file)!
+        let url:URL = Bundle.main.url(forResource:self.source, withExtension:Constants.file)!
         let string:String
         do { try string = String(contentsOf:url, encoding:String.Encoding.utf8) } catch { return }
         var viewModel:InfoViewModel = InfoViewModel()

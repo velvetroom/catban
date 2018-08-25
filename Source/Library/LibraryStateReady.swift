@@ -9,7 +9,7 @@ class LibraryStateReady:LibraryStateProtocol {
         context.queue.async {
             let board:Board = Board()
             let identifier:String = context.database.create(board:board)
-            context.session.update(identifier:identifier, board:board)
+            context.session.boards[identifier] = board
             context.saveSession()
             context.notifyCreated(board:identifier)
         }
@@ -18,8 +18,8 @@ class LibraryStateReady:LibraryStateProtocol {
     func addBoard(context:Library, url:String) throws {
         let identifier = try identifierFrom(url:url)
         try validate(context:context, identifier:identifier)
+        context.session.boards[identifier] = Board()
         context.queue.async {
-            context.session.add(board:identifier)
             context.saveSession()
         }
     }
@@ -37,7 +37,7 @@ class LibraryStateReady:LibraryStateProtocol {
             guard
                 let identifier:String = self?.identifier(context:context, board:board)
             else { return }
-            context.session.remove(board:identifier)
+            context.session.boards.removeValue(forKey:identifier)
             context.saveSession()
         }
     }
@@ -52,7 +52,7 @@ class LibraryStateReady:LibraryStateProtocol {
         var identifiers:[String] = identifiers
         if let identifier:String = identifiers.popLast() {
             context.database.load(identifier:identifier, board: { [weak self] (board:Board) in
-                context.session.update(identifier:identifier, board:board)
+                context.session.boards[identifier] = board
                 self?.recursiveLoad(context:context, identifiers:identifiers)
             }) { [weak self] in
                 self?.recursiveLoad(context:context, identifiers:identifiers)

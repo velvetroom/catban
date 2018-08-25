@@ -7,7 +7,7 @@ public class Session:Codable {
         public static let max:Int = 30
     }
     
-    public private(set) var boards:[String:Board]
+    public internal(set) var boards:[String:Board]
     public var cardsFont:Int
     public var defaultColumns:Bool
     
@@ -32,20 +32,6 @@ public class Session:Codable {
         self.boards = [:]
         self.cardsFont = CardsFont.original
         self.defaultColumns = true
-    }
-    
-    func add(board:String) {
-        if self.boards[board] == nil {
-            self.update(identifier:board, board:Board())
-        }
-    }
-    
-    func update(identifier:String, board:Board) {
-        self.boards[identifier] = board
-    }
-    
-    func remove(board:String) {
-        self.boards.removeValue(forKey:board)
     }
     
     private func decodeBoards(values:KeyedDecodingContainer<CodingKeys>) {

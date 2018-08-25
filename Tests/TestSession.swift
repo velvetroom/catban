@@ -9,35 +9,11 @@ class TestSession:XCTestCase {
         self.session = Session()
     }
     
-    func testAddBoard() {
-        let identifier:String = "hello world"
-        self.session.add(board:identifier)
-        XCTAssertEqual(self.session.boards.count, 1, "Not added")
-        XCTAssertNotNil(self.session.boards[identifier], "Invalid board")
-    }
-    
-    func testUpdatingBoard() {
-        let identifier:String = "hello world"
-        self.session.update(identifier:identifier, board:Board())
-        XCTAssertEqual(self.session.boards.count, 1, "Not added")
-        XCTAssertNotNil(self.session.boards[identifier], "Invalid board")
-    }
-    
-    func testRemoveBoard() {
-        let identifier:String = "lorem ipsum"
-        self.session.add(board:"First")
-        self.session.add(board:identifier)
-        self.session.add(board:"Another")
-        self.session.remove(board:identifier)
-        XCTAssertEqual(self.session.boards.count, 2, "Should have 2")
-        XCTAssertNil(self.session.boards[identifier], "Removed wrong board")
-    }
-    
     func testCodingBoards() {
         let identifierA:String = "hello world"
         let identifierB:String = "lorem ipsum"
-        self.session.add(board:identifierA)
-        self.session.add(board:identifierB)
+        self.session.boards[identifierA] = Board()
+        self.session.boards[identifierB] = Board()
         let data:Data
         do { try data = JSONEncoder().encode(self.session) }
         catch {

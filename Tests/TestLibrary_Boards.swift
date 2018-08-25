@@ -32,8 +32,7 @@ class TestLibrary_Boards:XCTestCase {
     }
     
     func testThrowsOnDuplicated() {
-        let identifier:String = "hello world"
-        self.library.session.add(board:identifier)
+        self.library.session.boards["hello world"] = Board()
         XCTAssertThrowsError(try self.library.addBoard(url:"iturbide.catban.hello world"), "No exception raised")
     }
     
@@ -43,7 +42,7 @@ class TestLibrary_Boards:XCTestCase {
     
     func testSaveBoardCallsDatabase() {
         let board:Board = Board()
-        self.library.session.update(identifier:"a", board:board)
+        self.library.session.boards["a"] = board
         let originalSyncstamp:Date = board.syncstamp
         let expect:XCTestExpectation = self.expectation(description:"Not saved")
         self.database.onSave = {
@@ -56,7 +55,7 @@ class TestLibrary_Boards:XCTestCase {
     
     func testDeleteBoardCallsCache() {
         let board:Board = Board()
-        self.library.session.update(identifier:"a", board:board)
+        self.library.session.boards["a"] = board
         let expect:XCTestExpectation = self.expectation(description:"Not deleted")
         self.cache.onSaveSession = {
             XCTAssertTrue(self.library.session.boards.isEmpty, "Not removed from session")

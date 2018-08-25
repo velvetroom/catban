@@ -23,7 +23,7 @@ class TestLibrary:XCTestCase {
     func testLoadUpdatesSession() {
         self.library.state = Library.stateDefault
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
-        self.library.session.add(board:String())
+        self.library.session.boards[String()] = Board()
         self.delegate.onSessionLoaded = {
             XCTAssertTrue(self.library.session.boards.isEmpty, "Session not updated")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -42,7 +42,7 @@ class TestLibrary:XCTestCase {
         let expectSave:XCTestExpectation = self.expectation(description:"Not saved")
         self.cache.error = NSError()
         self.cache.onSaveSession = { expectSave.fulfill() }
-        self.library.session.add(board:String())
+        self.library.session.boards[String()] = Board()
         self.delegate.onSessionLoaded = {
             XCTAssertTrue(self.library.session.boards.isEmpty, "Session not updated")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -69,8 +69,8 @@ class TestLibrary:XCTestCase {
     
     func testLoadUpdatesNonEmptyBoards() {
         let expect:XCTestExpectation = self.expectation(description:"Not loaded")
-        self.library.session.add(board:"a")
-        self.library.session.add(board:"b")
+        self.library.session.boards["a"] = Board()
+        self.library.session.boards["b"] = Board()
         self.delegate.onBoardsUpdated = {
             XCTAssertEqual(self.library.boards.count, self.library.session.boards.count, "Invalid amount")
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")

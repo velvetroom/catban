@@ -3,13 +3,9 @@ import Foundation
 public class Column:Codable, TextProtocol {
     public var text:String
     public private(set) var cards:[Card]
-    let identifier:String
-    let created:Date
     
     init() {
-        self.identifier = UUID().uuidString
         self.text = String()
-        self.created = Date()
         self.cards = []
     }
     

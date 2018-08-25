@@ -3,6 +3,7 @@ import Foundation
 public class Library {
     static let stateDefault:LibraryStateProtocol = LibraryStateDefault()
     static let stateReady:LibraryStateProtocol = LibraryStateReady()
+    static let prefix:String = "iturbide.catban."
     
     public weak var delegate:LibraryDelegate?
     public var boards:[String:Board] { get { return self.session.boards } }
@@ -18,7 +19,6 @@ public class Library {
         self.session.defaultColumns = newValue
         self.saveSession()
     } }
-    
     
     weak var state:LibraryStateProtocol!
     var session:Session
@@ -49,8 +49,8 @@ public class Library {
         self.state.newBoard(context:self)
     }
     
-    public func addBoard(identifier:String) {
-        self.state.addBoard(context:self, identifier:identifier)
+    public func addBoard(url:String) throws {
+        try self.state.addBoard(context:self, url:url)
     }
     
     public func save(board:Board) {

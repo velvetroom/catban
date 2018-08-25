@@ -24,24 +24,21 @@ class TestLibrary_Boards:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Session not saved")
         self.cache.onSaveSession = {
             XCTAssertFalse(self.library.session.boards.isEmpty, "Failed to add board")
+            XCTAssertEqual("dsakaknaknfkj", self.library.session.boards.keys.first, "Invalid id")
             expect.fulfill()
         }
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            self.library.addBoard(identifier:String())
-        }
+        XCTAssertNoThrow(try self.library.addBoard(url:"iturbide.catban.dsakaknaknfkj"), "Failed to add")
         self.waitForExpectations(timeout:0.3, handler:nil)
     }
     
-    func testAddBoardNotRepeating() {
-        let expect:XCTestExpectation = self.expectation(description:"Session not saved")
+    func testThrowsOnDuplicated() {
         let identifier:String = "hello world"
         self.library.session.add(board:identifier)
-        self.cache.onSaveSession = {
-            XCTAssertEqual(self.library.session.boards.count, 1, "Should be only 1 board")
-            expect.fulfill()
-        }
-        self.library.addBoard(identifier:identifier)
-        self.waitForExpectations(timeout:0.3, handler:nil)
+        XCTAssertThrowsError(try self.library.addBoard(url:"iturbide.catban.hello world"), "No exception raised")
+    }
+    
+    func testThrowsOnInvalid() {
+        XCTAssertThrowsError(try self.library.addBoard(url:"hello world"), "No exception raised")
     }
     
     func testSaveBoardCallsDatabase() {

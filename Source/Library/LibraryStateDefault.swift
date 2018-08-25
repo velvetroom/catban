@@ -13,10 +13,6 @@ class LibraryStateDefault:LibraryStateProtocol {
     }
     
     func loadBoards(context:Library) throws { throw CatbanError.noSession }
-    func newBoard(context:Library) { }
-    func addBoard(context:Library, identifier:String) { }
-    func save(context:Library, board:Board) { }
-    func delete(context:Library, board:Board) { }
     
     private func createSession(context:Library) {
         let session:Session = Session()

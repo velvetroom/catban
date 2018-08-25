@@ -3,7 +3,7 @@ import Foundation
 public class Library {
     static let stateDefault:LibraryStateProtocol = LibraryStateDefault()
     static let stateReady:LibraryStateProtocol = LibraryStateReady()
-    static let prefix:String = "iturbide.catban."
+    private static let prefix:String = "iturbide.catban."
     
     public weak var delegate:LibraryDelegate?
     public var boards:[String:Board] { get { return self.session.boards } }
@@ -46,37 +46,68 @@ public class Library {
     }
     
     public func newBoard() {
-        self.state.newBoard(context:self)
+        queue.async {
+            let board = Board()
+            let identifier = self.database.create(board:board)
+            self.session.boards[identifier] = board
+            self.saveSession()
+            DispatchQueue.main.async { self.delegate?.libraryCreated(board:identifier) }
+        }
     }
     
     public func addBoard(url:String) throws {
-        try self.state.addBoard(context:self, url:url)
+        let identifier = try identifierFrom(url:url)
+        try validate(identifier:identifier)
+        session.boards[identifier] = Board()
+        queue.async {
+            self.saveSession()
+        }
     }
     
     public func save(board:Board) {
-        self.state.save(context:self, board:board)
+        queue.async {
+            guard let identifier = self.identifier(board:board) else { return }
+            board.syncstamp = Date()
+            self.database.save(identifier:identifier, board:board)
+        }
     }
     
     public func delete(board:Board) {
-        self.state.delete(context:self, board:board)
+        queue.async {
+            guard
+                let identifier = self.identifier(board:board) else { return }
+            self.session.boards.removeValue(forKey:identifier)
+            self.saveSession()
+        }
     }
     
-    func loaded(session:Session) {
-        self.session = session
-        self.state = Library.stateReady
-        DispatchQueue.main.async { [weak self] in self?.delegate?.librarySessionLoaded() }
+    public func url(identifier:String) -> String {
+        return Library.prefix.appending(identifier)
     }
     
-    func saveSession() {
+    private func saveSession() {
         self.cache.save(session:self.session)
     }
     
-    func notifyBoards() {
-        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryBoardsUpdated() }
+    private func identifier(board:Board) -> String? {
+        return boards.first(where: { (_:String, value:Board) -> Bool in
+            return board === value
+        })?.key
     }
     
-    func notifyCreated(board:String) {
-        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryCreated(board:board) }
+    private func identifierFrom(url:String) throws -> String {
+        let components = url.components(separatedBy:Library.prefix)
+        if components.count == 2 && !components[1].isEmpty {
+            return components[1]
+        } else {
+            throw CatbanError.invalidBoardUrl
+        }
+    }
+    
+    private func validate(identifier:String) throws {
+        if boards[identifier] != nil {
+            throw CatbanError.boardAlreadyLoaded
+        }
     }
 }
 

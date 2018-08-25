@@ -14,10 +14,6 @@ class TestFactory:XCTestCase {
         XCTAssertTrue(libraryA === libraryB, "Different instances")
     }
     
-    func testAddIdentifierToCard() {
-        XCTAssertFalse(Card().identifier.isEmpty, "No identifier")
-    }
-    
     func testAddIdentifierToColumn() {
         XCTAssertFalse(Column().identifier.isEmpty, "No identifier")
     }

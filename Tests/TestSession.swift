@@ -55,7 +55,7 @@ class TestSession:XCTestCase {
             return
         }
         XCTAssertEqual(session.boards.count, 0, "Should have 0 boards")
-        XCTAssertEqual(session.cardsFont, Session.CardsFont.original, "Should have default cards font")
+        XCTAssertEqual(session.cardsFont, Session.cardsFont, "Should have default cards font")
     }
     
     func testCodingDefaultColumns() {
@@ -72,7 +72,7 @@ class TestSession:XCTestCase {
     }
     
     func testNewSessionHasDefaultCardsFont() {
-        XCTAssertEqual(Session().cardsFont, Session.CardsFont.original, "Should have default cards font")
+        XCTAssertEqual(Session().cardsFont, Session.cardsFont, "Should have default cards font")
     }
     
     func testNewSessionHasDefaultColumns() {

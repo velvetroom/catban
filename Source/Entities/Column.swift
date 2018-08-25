@@ -5,30 +5,30 @@ public class Column:Codable, TextProtocol {
     public private(set) var cards:[Card]
     
     init() {
-        self.text = String()
-        self.cards = []
+        text = String()
+        cards = []
     }
     
     public func addCard(text:String) {
-        let card:Card = Card()
+        let card = Card()
         card.text = text
-        self.cards.append(card)
+        cards.append(card)
     }
     
     public func delete(card:Card) {
-        self.cards.removeAll { (item:Card) -> Bool in item === card }
+        cards.removeAll { (item) -> Bool in item === card }
     }
     
     public func insert(card:Card, after:Card) {
-        for index:Int in 0 ..< self.cards.count {
-            if self.cards[index] === after {
-                self.cards.insert(card, at:index + 1)
+        for index in 0 ..< cards.count {
+            if cards[index] === after {
+                cards.insert(card, at:index + 1)
                 break
             }
         }
     }
     
     public func makeFirst(card:Card) {
-        self.cards.insert(card, at:0)
+        cards.insert(card, at:0)
     }
 }

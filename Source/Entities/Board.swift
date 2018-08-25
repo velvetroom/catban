@@ -6,18 +6,18 @@ public class Board:TextProtocol, Codable {
     var syncstamp:Date
     
     init() {
-        self.text = String()
-        self.syncstamp = Date()
-        self.columns = []
+        text = String()
+        syncstamp = Date()
+        columns = []
     }
     
     public func addColumn(text:String) {
-        let column:Column = Column()
+        let column = Column()
         column.text = text
-        self.columns.append(column)
+        columns.append(column)
     }
     
     public func delete(column:Column) {
-        self.columns.removeAll { (item:Column) -> Bool in item === column }
+        columns.removeAll { (item) -> Bool in item === column }
     }
 }

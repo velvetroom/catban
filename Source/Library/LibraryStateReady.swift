@@ -51,8 +51,10 @@ class LibraryStateReady:LibraryStateProtocol {
     private func load(context:Library, identifiers:[String]) {
         var identifiers:[String] = identifiers
         if let identifier:String = identifiers.popLast() {
-            context.database.load(identifier:identifier) { [weak self] (board:Board) in
+            context.database.load(identifier:identifier, board: { [weak self] (board:Board) in
                 context.session.update(identifier:identifier, board:board)
+                self?.recursiveLoad(context:context, identifiers:identifiers)
+            }) { [weak self] in
                 self?.recursiveLoad(context:context, identifiers:identifiers)
             }
         } else {

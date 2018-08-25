@@ -12,7 +12,7 @@ class MockDatabase:DatabaseService {
         self.board = Board()
     }
     
-    func load(identifier:String, board:@escaping((Board) -> Void)) {
+    func load(identifier:String, board:@escaping((Board) -> Void), error:@escaping(() -> Void)) {
         self.onLoad?()
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
             if self?.error == nil {

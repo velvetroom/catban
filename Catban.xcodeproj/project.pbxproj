@@ -89,11 +89,6 @@
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
 		DA817F802121646600732944 /* ReportStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7F2121646600732944 /* ReportStats.swift */; };
 		DA817F82212165E000732944 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F81212165E000732944 /* TestReport.swift */; };
-		DA817F84212167B000732944 /* ReportVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F83212167B000732944 /* ReportVisitor.swift */; };
-		DA817F862121680900732944 /* ReportColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F852121680900732944 /* ReportColumns.swift */; };
-		DA817F882121686400732944 /* ReportProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F872121686400732944 /* ReportProgress.swift */; };
-		DA817F8A2121688700732944 /* ReportCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F892121688700732944 /* ReportCards.swift */; };
-		DA817F8C2121689F00732944 /* ReportLongerColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F8B2121689F00732944 /* ReportLongerColumn.swift */; };
 		DA8D12942131579E0019B2C2 /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12922131579D0019B2C2 /* InfoBoard.md */; };
 		DA8D12952131579E0019B2C2 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12932131579E0019B2C2 /* InfoCard.md */; };
 		DA8D1297213161800019B2C2 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D1296213161800019B2C2 /* Popup.swift */; };
@@ -211,11 +206,6 @@
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
 		DA817F81212165E000732944 /* TestReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReport.swift; sourceTree = "<group>"; };
-		DA817F83212167B000732944 /* ReportVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVisitor.swift; sourceTree = "<group>"; };
-		DA817F852121680900732944 /* ReportColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportColumns.swift; sourceTree = "<group>"; };
-		DA817F872121686400732944 /* ReportProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProgress.swift; sourceTree = "<group>"; };
-		DA817F892121688700732944 /* ReportCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCards.swift; sourceTree = "<group>"; };
-		DA817F8B2121689F00732944 /* ReportLongerColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportLongerColumn.swift; sourceTree = "<group>"; };
 		DA8D12922131579D0019B2C2 /* InfoBoard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoBoard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA8D12932131579E0019B2C2 /* InfoCard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoCard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA8D1296213161800019B2C2 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
@@ -518,11 +508,6 @@
 			children = (
 				DA817F7D2121640700732944 /* Report.swift */,
 				DA817F7F2121646600732944 /* ReportStats.swift */,
-				DA817F83212167B000732944 /* ReportVisitor.swift */,
-				DA817F852121680900732944 /* ReportColumns.swift */,
-				DA817F872121686400732944 /* ReportProgress.swift */,
-				DA817F892121688700732944 /* ReportCards.swift */,
-				DA817F8B2121689F00732944 /* ReportLongerColumn.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -694,22 +679,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA817F7E2121640700732944 /* Report.swift in Sources */,
-				DA817F8C2121689F00732944 /* ReportLongerColumn.swift in Sources */,
 				DA4C64F6211DD54100ECAD21 /* DatabaseService.swift in Sources */,
 				DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */,
 				DA4C64F9211DD54100ECAD21 /* Board.swift in Sources */,
 				DA4C64F1211DD54100ECAD21 /* LibraryStateProtocol.swift in Sources */,
 				DA4C64FD211DD54100ECAD21 /* TextProtocol.swift in Sources */,
 				DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */,
-				DA817F8A2121688700732944 /* ReportCards.swift in Sources */,
-				DA817F862121680900732944 /* ReportColumns.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
 				DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */,
 				DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */,
 				DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */,
-				DA817F84212167B000732944 /* ReportVisitor.swift in Sources */,
-				DA817F882121686400732944 /* ReportProgress.swift in Sources */,
 				DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */,
 				DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */,
 				DA817F802121646600732944 /* ReportStats.swift in Sources */,

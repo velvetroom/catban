@@ -90,8 +90,6 @@
 		DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */; };
 		DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E212126AB9C00E92FD9 /* InfoView.swift */; };
 		DA759E242126ABB100E92FD9 /* InfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E232126ABB100E92FD9 /* InfoInteractor.swift */; };
-		DA7BCBE4212EE24000AA6BE3 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA7BCBE0212EE24000AA6BE3 /* InfoCard.md */; };
-		DA7BCBE5212EE24000AA6BE3 /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA7BCBE2212EE24000AA6BE3 /* InfoBoard.md */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
 		DA817F802121646600732944 /* ReportStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7F2121646600732944 /* ReportStats.swift */; };
 		DA817F82212165E000732944 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F81212165E000732944 /* TestReport.swift */; };
@@ -100,6 +98,8 @@
 		DA817F882121686400732944 /* ReportProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F872121686400732944 /* ReportProgress.swift */; };
 		DA817F8A2121688700732944 /* ReportCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F892121688700732944 /* ReportCards.swift */; };
 		DA817F8C2121689F00732944 /* ReportLongerColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F8B2121689F00732944 /* ReportLongerColumn.swift */; };
+		DA8D12942131579E0019B2C2 /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12922131579D0019B2C2 /* InfoBoard.md */; };
+		DA8D12952131579E0019B2C2 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12932131579E0019B2C2 /* InfoCard.md */; };
 		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
@@ -215,8 +215,6 @@
 		DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		DA759E212126AB9C00E92FD9 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DA759E232126ABB100E92FD9 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
-		DA7BCBE1212EE24000AA6BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = en.lproj/InfoCard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
-		DA7BCBE3212EE24000AA6BE3 /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = en.lproj/InfoBoard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
 		DA817F81212165E000732944 /* TestReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReport.swift; sourceTree = "<group>"; };
@@ -225,6 +223,8 @@
 		DA817F872121686400732944 /* ReportProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportProgress.swift; sourceTree = "<group>"; };
 		DA817F892121688700732944 /* ReportCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCards.swift; sourceTree = "<group>"; };
 		DA817F8B2121689F00732944 /* ReportLongerColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportLongerColumn.swift; sourceTree = "<group>"; };
+		DA8D12922131579D0019B2C2 /* InfoBoard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoBoard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
+		DA8D12932131579E0019B2C2 /* InfoCard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoCard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
@@ -382,8 +382,8 @@
 		DA4C6509211DD57A00ECAD21 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DA7BCBE2212EE24000AA6BE3 /* InfoBoard.md */,
-				DA7BCBE0212EE24000AA6BE3 /* InfoCard.md */,
+				DA8D12922131579D0019B2C2 /* InfoBoard.md */,
+				DA8D12932131579E0019B2C2 /* InfoCard.md */,
 				DA4C6511211DD57A00ECAD21 /* assets.xcassets */,
 				DA4C6512211DD57A00ECAD21 /* brand.xcassets */,
 				DA4C650A211DD57A00ECAD21 /* Localizable.strings */,
@@ -653,14 +653,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8D12952131579E0019B2C2 /* InfoCard.md in Resources */,
 				DA4C6518211DD57A00ECAD21 /* brand.xcassets in Resources */,
 				DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */,
+				DA8D12942131579E0019B2C2 /* InfoBoard.md in Resources */,
 				DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */,
 				DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */,
 				DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */,
-				DA7BCBE4212EE24000AA6BE3 /* InfoCard.md in Resources */,
 				DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */,
-				DA7BCBE5212EE24000AA6BE3 /* InfoBoard.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,22 +837,6 @@
 				DA4C650D211DD57A00ECAD21 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DA7BCBE0212EE24000AA6BE3 /* InfoCard.md */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA7BCBE1212EE24000AA6BE3 /* en */,
-			);
-			name = InfoCard.md;
-			sourceTree = "<group>";
-		};
-		DA7BCBE2212EE24000AA6BE3 /* InfoBoard.md */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA7BCBE3212EE24000AA6BE3 /* en */,
-			);
-			name = InfoBoard.md;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

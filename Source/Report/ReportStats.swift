@@ -7,9 +7,9 @@ public class ReportStats {
     public internal(set) var longerColumn:Int
     
     init() {
-        self.columns = []
-        self.progress = 0.0
-        self.cards = 0
-        self.longerColumn = 0
+        columns = []
+        progress = 0
+        cards = 0
+        longerColumn = 0
     }
 }

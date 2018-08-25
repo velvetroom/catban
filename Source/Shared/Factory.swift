@@ -20,6 +20,5 @@ public class Factory {
     }
     
     private init() { }
-    
     private static var library:Library!
 }

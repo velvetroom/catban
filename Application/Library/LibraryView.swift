@@ -35,7 +35,7 @@ class LibraryView:View<LibraryPresenter> {
         let message:UILabel = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
         message.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
-        message.textColor = UIColor(white:0.0, alpha:0.8)
+        message.textColor = UIColor(white:0.0, alpha:0.7)
         message.numberOfLines = 0
         message.isUserInteractionEnabled = false
         self.message = message
@@ -121,6 +121,6 @@ class LibraryView:View<LibraryPresenter> {
 
 private struct Constants {
     static let font:CGFloat = 16.0
-    static let margin:CGFloat = 20.0
+    static let margin:CGFloat = 17.0
     static let cellHeight:CGFloat = 60.0
 }

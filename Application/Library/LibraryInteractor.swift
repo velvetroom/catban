@@ -2,8 +2,9 @@ import Foundation
 import CleanArchitecture
 import Catban
 import StoreKit
+import QRhero
 
-class LibraryInteractor:Interactor, LibraryDelegate {
+class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     weak var delegate:InteractorDelegate?
     let library:Library
     private let report:Report
@@ -23,9 +24,10 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     }
     
     func scan() {
-        let view:ScanView = ScanView(presenter:ScanPresenter())
-        view.presenter.interactor = self
-        Application.router.pushViewController(view, animated:true)
+        let view = QRView()
+        view.delegate = self
+        view.title = NSLocalizedString("LibraryInteractor.qrView", comment:String())
+        Application.router.present(view, animated:true)
     }
     
     func settings() {
@@ -33,16 +35,8 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         Application.router.pushViewController(view, animated:true)
     }
     
-    func duplicated(identifier:String) -> Bool {
-        return self.library.boards[identifier] != nil
-    }
-    
     func newBoard() {
         self.library.newBoard()
-    }
-    
-    func addBoard(identifier:String) {
-        self.library.addBoard(identifier:identifier)
     }
     
     func select(identifier:String) {
@@ -70,6 +64,25 @@ class LibraryInteractor:Interactor, LibraryDelegate {
         return self.report.makeStats(board:board)
     }
     
+    func qrRead(content:String) {
+        do {
+            try self.library.addBoard(url:content)
+            DispatchQueue.main.async { [weak self] in self?.popupSuccess()  }
+        } catch CatbanError.boardAlreadyLoaded {
+            self.popup(error:NSLocalizedString("LibraryInteractor.boardDuplicated", comment:String()))
+        } catch CatbanError.invalidBoardUrl {
+            self.popup(error:NSLocalizedString("LibraryInteractor.invalidQRCode", comment:String()))
+        } catch { }
+    }
+    
+    func qrCancelled() {
+        Application.router.dismiss(animated:true)
+    }
+    
+    func qrError(error:QRheroError) {
+        self.popup(error:NSLocalizedString("LibraryInteractor.scanError", comment:String()))
+    }
+    
     private func addTemplate(board:Board) {
         board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
         if self.library.defaultColumns {
@@ -83,6 +96,22 @@ class LibraryInteractor:Interactor, LibraryDelegate {
     private func rate() {
         if self.library.boards.count > Constants.minBoards {
             if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
+        }
+    }
+    
+    private func popup(error:String) {
+        Application.router.dismiss(animated:true) {
+            let popup = Popup()
+            popup.image = #imageLiteral(resourceName: "assetError.pdf")
+            popup.title = error
+        }
+    }
+    
+    private func popupSuccess() {
+        Application.router.dismiss(animated:true) {
+            let popup = Popup()
+            popup.image = #imageLiteral(resourceName: "assetDone.pdf")
+            popup.title = NSLocalizedString("LibraryInteractor.boardAdded", comment:String())
         }
     }
 }

@@ -9,9 +9,9 @@ class Database:DatabaseService {
         self.boards = Firestore.firestore().collection(Constants.boards)
     }
     
-    func load(identifier:String, board:@escaping((Board) -> Void)) {
+    func load(identifier:String, board:@escaping((Board) -> Void), error:@escaping(() -> Void)) {
         self.boards.document(identifier).getDocument { [weak self] (snapshot:DocumentSnapshot?, _:Error?) in
-            guard let json:[String:Any] = snapshot?.data() else { return }
+            guard let json:[String:Any] = snapshot?.data() else { return error() }
             self?.loaded(json:json, completion:board)
         }
     }

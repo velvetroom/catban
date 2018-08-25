@@ -7,6 +7,8 @@ class BoardInteractor:Interactor, InfoInteractor {
     var board:Board!
     var identifier:String
     var cardsFont:Int { get { return self.library.cardsFont } }
+    var boardName:String { return board.text }
+    var boardUrl:String { return library.url(identifier:identifier) }
     private let library:Library
     private let report:Report
     

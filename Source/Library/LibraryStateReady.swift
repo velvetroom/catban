@@ -2,7 +2,7 @@ import Foundation
 
 class LibraryStateReady:LibraryStateProtocol {
     func loadBoards(context:Library) throws {
-        self.recursiveLoad(context:context, identifiers:Array(context.session.boards.keys))
+        recursiveLoad(context:context, identifiers:Array(context.session.boards.keys))
     }
     
     private func recursiveLoad(context:Library, identifiers:[String]) {
@@ -12,9 +12,9 @@ class LibraryStateReady:LibraryStateProtocol {
     }
     
     private func load(context:Library, identifiers:[String]) {
-        var identifiers:[String] = identifiers
-        if let identifier:String = identifiers.popLast() {
-            context.database.load(identifier:identifier, board: { [weak self] (board:Board) in
+        var identifiers = identifiers
+        if let identifier = identifiers.popLast() {
+            context.database.load(identifier:identifier, board: { [weak self] (board) in
                 context.session.boards[identifier] = board
                 self?.recursiveLoad(context:context, identifiers:identifiers)
             }) { [weak self] in

@@ -1,24 +1,24 @@
 import Foundation
 
 public class Library {
-    static let stateDefault:LibraryStateProtocol = LibraryStateDefault()
-    static let stateReady:LibraryStateProtocol = LibraryStateReady()
-    private static let prefix:String = "iturbide.catban."
-    
     public weak var delegate:LibraryDelegate?
-    public var boards:[String:Board] { get { return self.session.boards } }
+    public var boards:[String:Board] { return session.boards }
     public var cardsFont:Int { get {
-        return self.session.cardsFont
+        return session.cardsFont
     } set(newValue) {
-        self.session.cardsFont = newValue
-        self.saveSession()
+        session.cardsFont = newValue
+        saveSession()
     } }
     public var defaultColumns:Bool { get {
-        return self.session.defaultColumns
+        return session.defaultColumns
     } set(newValue) {
-        self.session.defaultColumns = newValue
-        self.saveSession()
+        session.defaultColumns = newValue
+        saveSession()
     } }
+    static let stateDefault = LibraryStateDefault()
+    static let stateReady = LibraryStateReady()
+    private static let prefix = "iturbide.catban."
+    private static let identifier = "iturbide.catban.library"
     
     weak var state:LibraryStateProtocol!
     var session:Session
@@ -27,22 +27,20 @@ public class Library {
     let queue:DispatchQueue
     
     init() {
-        self.state = Library.stateDefault
-        self.session = Session()
-        self.cache = Factory.makeCache()
-        self.database = Factory.makeDatabase()
-        self.queue = DispatchQueue(label:Constants.identifier, qos:DispatchQoS.background,
-                                   attributes:DispatchQueue.Attributes(),
-                                   autoreleaseFrequency:DispatchQueue.AutoreleaseFrequency.inherit,
-                                   target:DispatchQueue.global(qos:DispatchQoS.QoSClass.background))
+        state = Library.stateDefault
+        session = Session()
+        cache = Factory.makeCache()
+        database = Factory.makeDatabase()
+        queue = DispatchQueue(label:Library.identifier, qos:.background, attributes:[], autoreleaseFrequency:.inherit,
+                              target:.global(qos:.background))
     }
     
     public func loadBoards() throws {
-        try self.state.loadBoards(context:self)
+        try state.loadBoards(context:self)
     }
     
     public func loadSession() {
-        self.state.loadSession(context:self)
+        state.loadSession(context:self)
     }
     
     public func newBoard() {
@@ -74,8 +72,7 @@ public class Library {
     
     public func delete(board:Board) {
         queue.async {
-            guard
-                let identifier = self.identifier(board:board) else { return }
+            guard let identifier = self.identifier(board:board) else { return }
             self.session.boards.removeValue(forKey:identifier)
             self.saveSession()
         }
@@ -85,14 +82,12 @@ public class Library {
         return Library.prefix.appending(identifier)
     }
     
-    private func saveSession() {
-        self.cache.save(session:self.session)
+    func saveSession() {
+        cache.save(session:session)
     }
     
     private func identifier(board:Board) -> String? {
-        return boards.first(where: { (_:String, value:Board) -> Bool in
-            return board === value
-        })?.key
+        return boards.first(where: { (_, value) -> Bool in return board === value } )?.key
     }
     
     private func identifierFrom(url:String) throws -> String {
@@ -109,8 +104,4 @@ public class Library {
             throw CatbanError.boardAlreadyLoaded
         }
     }
-}
-
-private struct Constants {
-    static let identifier:String = "iturbide.catban.library"
 }

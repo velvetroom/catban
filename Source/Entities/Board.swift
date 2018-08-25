@@ -4,11 +4,9 @@ public class Board:TextProtocol, Codable {
     public var text:String
     public private(set) var columns:[Column]
     var syncstamp:Date
-    let created:Date
     
     init() {
         self.text = String()
-        self.created = Date()
         self.syncstamp = Date()
         self.columns = []
     }

@@ -62,7 +62,7 @@ class LibraryPresenter:Presenter {
         viewModels.update(viewModel:viewModel)
     }
     
-    private var items:[LibraryItemViewModel] { get {
+    private var items:[LibraryItemViewModel] {
         var items:[LibraryItemViewModel] = []
         interactor.library.boards.forEach { (key, board) in
             var item = LibraryItemViewModel()
@@ -74,5 +74,5 @@ class LibraryPresenter:Presenter {
         return items.sorted { (left, right) -> Bool in
             return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
         }
-    } }
+    } 
 }

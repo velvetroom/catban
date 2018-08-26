@@ -9,14 +9,14 @@ class MockDatabase:DatabaseService {
     var board:Board
     
     required init() {
-        self.board = Board()
+        board = Board()
     }
     
     func load(identifier:String, board:@escaping((Board) -> Void), error:@escaping(() -> Void)) {
-        self.onLoad?()
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
+        onLoad?()
+        DispatchQueue.global(qos:.background).async { [weak self] in
             if self?.error == nil {
-                if let item:Board = self?.board {
+                if let item = self?.board {
                     board(item)
                 }
             }
@@ -24,11 +24,11 @@ class MockDatabase:DatabaseService {
     }
     
     func create(board:Board) -> String {
-        self.onCreate?()
+        onCreate?()
         return String()
     }
     
     func save(identifier:String, board:Board) {
-        self.onSave?()
+        onSave?()
     }
 }

@@ -5,77 +5,55 @@ class TestSession:XCTestCase {
     private var session:Session!
     
     override func setUp() {
-        super.setUp()
-        self.session = Session()
+        session = Session()
     }
     
     func testCodingBoards() {
-        let identifierA:String = "hello world"
-        let identifierB:String = "lorem ipsum"
-        self.session.boards[identifierA] = Board()
-        self.session.boards[identifierB] = Board()
+        session.boards["lorem ipsum"] = Board()
+        session.boards["hello world"] = Board()
         let data:Data
-        do { try data = JSONEncoder().encode(self.session) }
-        catch {
-            XCTFail("Not encoding")
-            return
-        }
+        do { try data = JSONEncoder().encode(session) } catch { return XCTFail() }
         let newSession:Session
-        do { try newSession = JSONDecoder().decode(Session.self, from:data) }
-        catch {
-            XCTFail("Failed type")
-            return
-        }
-        XCTAssertEqual(newSession.boards.keys.count, 2, "Invalid amount")
-        XCTAssertTrue(newSession.boards.keys.contains(identifierA), "Invalid identifier")
-        XCTAssertTrue(newSession.boards.keys.contains(identifierB), "Invalid identifier")
+        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        XCTAssertEqual(2, newSession.boards.keys.count)
+        XCTAssertTrue(newSession.boards.keys.contains("lorem ipsum"))
+        XCTAssertTrue(newSession.boards.keys.contains("hello world"))
     }
     
     func testCodingCardsFont() {
-        let session:Session = Session()
+        let session = Session()
         session.cardsFont = 55
         let data:Data
-        do { try data = JSONEncoder().encode(session) } catch { return }
+        do { try data = JSONEncoder().encode(session) } catch { return XCTFail() }
         let newSession:Session
-        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch {
-            XCTFail("Failed type")
-            return
-        }
-        XCTAssertEqual(newSession.cardsFont, session.cardsFont, "Invalid font")
+        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        XCTAssertEqual(newSession.cardsFont, session.cardsFont)
     }
     
     func testCodingNoPreviousCardsFont() {
-        let dictionary:[String:[String]] = ["boards":[]]
         let data:Data
-        do { try data = JSONEncoder().encode(dictionary) } catch { return }
+        do { try data = JSONEncoder().encode(["boards":[]] as! [String:[String]]) } catch { return XCTFail() }
         let session:Session
-        do { try session = JSONDecoder().decode(Session.self, from:data) }
-        catch {
-            XCTFail("Failed to decode")
-            return
-        }
-        XCTAssertEqual(session.boards.count, 0, "Should have 0 boards")
-        XCTAssertEqual(session.cardsFont, Session.cardsFont, "Should have default cards font")
+        do { try session = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        XCTAssertEqual(0, session.boards.count)
+        XCTAssertEqual(session.cardsFont, Session.cardsFont)
     }
     
     func testCodingDefaultColumns() {
-        let session:Session = Session()
+        let session = Session()
         session.defaultColumns = false
         let data:Data
-        do { try data = JSONEncoder().encode(session) } catch { return }
+        do { try data = JSONEncoder().encode(session) } catch { return XCTFail() }
         let newSession:Session
-        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch {
-            XCTFail("Failed type")
-            return
-        }
-        XCTAssertEqual(newSession.defaultColumns, session.defaultColumns, "Invalid default columns")
+        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        XCTAssertEqual(newSession.defaultColumns, session.defaultColumns)
     }
     
     func testNewSessionHasDefaultCardsFont() {
-        XCTAssertEqual(Session().cardsFont, Session.cardsFont, "Should have default cards font")
+        XCTAssertEqual(Session.cardsFont, Session().cardsFont)
     }
     
     func testNewSessionHasDefaultColumns() {
-        XCTAssertTrue(Session().defaultColumns, "Should have default columns")
+        XCTAssertTrue(Session().defaultColumns)
     }
 }

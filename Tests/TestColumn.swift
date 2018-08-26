@@ -5,47 +5,39 @@ class TestColumn:XCTestCase {
     private var column:Column!
     
     override func setUp() {
-        super.setUp()
-        self.column = Column()
+        column = Column()
     }
     
     func testAddingCard() {
-        let text:String = "lorem ipsum"
-        self.column.addCard(text:text)
-        XCTAssertEqual(self.column.cards.count, 1, "Not added")
-        if self.column.cards.count == 1 {
-            XCTAssertEqual(self.column.cards.first!.text, text, "Invalid text")
-        }
+        column.addCard(text:"lorem ipsum")
+        XCTAssertEqual(1, column.cards.count)
+        XCTAssertEqual("lorem ipsum", column.cards.first?.text)
     }
     
     func testDeletingCard() {
-        let text:String = "hello world"
-        self.column.addCard(text:text)
-        guard let card:Card = self.column.cards.first else { return }
-        self.column.addCard(text:"Another one")
-        self.column.delete(card:card)
-        XCTAssertEqual(self.column.cards.count, 1, "Should have 1 card")
-        XCTAssertNotEqual(text, self.column.cards.first?.text, "Deleted wrong card")
+        let text = "hello world"
+        column.addCard(text:text)
+        column.addCard(text:"Another one")
+        column.delete(card:column.cards.first!)
+        XCTAssertEqual(1, column.cards.count)
+        XCTAssertNotEqual(text, column.cards.first?.text)
     }
     
     func testInsertingCardAfterAnother() {
-        let subject:Card = Card()
-        self.column.addCard(text:"Another")
-        self.column.addCard(text:"Other")
-        guard let another:Card = self.column.cards.first else { return }
-        self.column.insert(card:subject, after:another)
-        XCTAssertEqual(self.column.cards.count, 3, "Failed to insert")
-        if self.column.cards.count == 3 {
-            XCTAssertTrue(subject === self.column.cards[1], "Invalid position")
-        }
+        let subject = Card()
+        column.addCard(text:"Another")
+        column.addCard(text:"Other")
+        column.insert(card:subject, after:column.cards.first!)
+        XCTAssertEqual(3, column.cards.count)
+        XCTAssertTrue(subject === column.cards[1])
     }
     
     func testMakeCardFirst() {
-        let subject:Card = Card()
-        self.column.addCard(text:"Another")
-        self.column.addCard(text:"Other")
-        self.column.makeFirst(card:subject)
-        XCTAssertEqual(self.column.cards.count, 3, "Failed to insert")
-        XCTAssertTrue(subject === self.column.cards.first, "Invalid position")
+        let subject = Card()
+        column.addCard(text:"Another")
+        column.addCard(text:"Other")
+        column.makeFirst(card:subject)
+        XCTAssertEqual(3, column.cards.count)
+        XCTAssertTrue(subject === column.cards.first)
     }
 }

@@ -3,41 +3,32 @@ import XCTest
 
 class TestLibrary_Properties:XCTestCase {
     private var library:Library!
-    private var delegate:MockLibraryDelegate!
     private var cache:MockCache!
-    private var database:MockDatabase!
     
     override func setUp() {
-        super.setUp()
         Factory.cache = MockCache.self
         Factory.database = MockDatabase.self
-        self.library = Library()
-        self.delegate = MockLibraryDelegate()
-        self.library.delegate = self.delegate
-        self.cache = self.library.cache as? MockCache
-        self.database = self.library.database as? MockDatabase
-        self.library.session = Session()
-        self.library.state = Library.stateReady
+        library = Library()
+        cache = library.cache as? MockCache
     }
     
     func testUpdateCardsFontSavesSession() {
-        let font:Int = 99
-        let expect:XCTestExpectation = self.expectation(description:"Session not saved")
-        self.cache.onSaveSession = {
-            XCTAssertEqual(self.library.session.cardsFont, font, "Not updated")
+        let expect = expectation(description:String())
+        cache.onSaveSession = {
+            XCTAssertEqual(99, self.library.session.cardsFont)
             expect.fulfill()
         }
-        self.library.cardsFont = font
-        self.waitForExpectations(timeout:0.3, handler:nil)
+        library.cardsFont = 99
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testUpdateDefaultColumnsSavesSession() {
-        let expect:XCTestExpectation = self.expectation(description:"Session not saved")
-        self.cache.onSaveSession = {
-            XCTAssertFalse(self.library.session.defaultColumns, "Not updated")
+        let expect = expectation(description:String())
+        cache.onSaveSession = {
+            XCTAssertFalse(self.library.session.defaultColumns)
             expect.fulfill()
         }
-        self.library.defaultColumns = false
-        self.waitForExpectations(timeout:0.3, handler:nil)
+        library.defaultColumns = false
+        waitForExpectations(timeout:1, handler:nil)
     }
 }

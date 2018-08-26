@@ -8,19 +8,19 @@ class MockCache:CacheService {
     var board:Board
     
     required init() {
-        self.session = Session()
-        self.board = Board()
+        session = Session()
+        board = Board()
     }
     
     func loadSession() throws -> Session {
-        if let error:Error = self.error {
+        if let error = self.error {
             throw error
         } else {
-            return self.session
+            return session
         }
     }
     
     func save(session:Session) {
-        self.onSaveSession?()
+        onSaveSession?()
     }
 }

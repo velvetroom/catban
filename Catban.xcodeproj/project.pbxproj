@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A8F15B97B8245C5B2232546 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */; };
+		DA1602FB2132AD2C004F6D44 /* TestLibrary_Ready.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */; };
 		DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */; };
 		DA2E4B3D211DD97400861576 /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */; };
@@ -40,7 +41,7 @@
 		DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */; };
 		DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6501211DD54900ECAD21 /* MockDatabase.swift */; };
 		DA4C6507211DD54A00ECAD21 /* MockCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6502211DD54900ECAD21 /* MockCache.swift */; };
-		DA4C6508211DD54A00ECAD21 /* TestLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6503211DD54900ECAD21 /* TestLibrary.swift */; };
+		DA4C6508211DD54A00ECAD21 /* TestLibrary_Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6503211DD54900ECAD21 /* TestLibrary_Default.swift */; };
 		DA4C6513211DD57A00ECAD21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA4C650A211DD57A00ECAD21 /* Localizable.strings */; };
 		DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */; };
 		DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4C6511211DD57A00ECAD21 /* assets.xcassets */; };
@@ -122,6 +123,7 @@
 /* Begin PBXFileReference section */
 		3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Ready.swift; sourceTree = "<group>"; };
 		DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 		DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
 		DA4C6501211DD54900ECAD21 /* MockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		DA4C6502211DD54900ECAD21 /* MockCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCache.swift; sourceTree = "<group>"; };
-		DA4C6503211DD54900ECAD21 /* TestLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibrary.swift; sourceTree = "<group>"; };
+		DA4C6503211DD54900ECAD21 /* TestLibrary_Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLibrary_Default.swift; sourceTree = "<group>"; };
 		DA4C650B211DD57A00ECAD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DA4C650D211DD57A00ECAD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA4C6511211DD57A00ECAD21 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
@@ -350,7 +352,8 @@
 			children = (
 				DA4C64FF211DD54900ECAD21 /* TestFactory.swift */,
 				DA817F81212165E000732944 /* TestReport.swift */,
-				DA4C6503211DD54900ECAD21 /* TestLibrary.swift */,
+				DA4C6503211DD54900ECAD21 /* TestLibrary_Default.swift */,
+				DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */,
 				DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */,
 				DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */,
 				DABD57CC211EDA8700C72A7F /* TestBoard.swift */,
@@ -705,9 +708,10 @@
 				DA4C6507211DD54A00ECAD21 /* MockCache.swift in Sources */,
 				DA817F82212165E000732944 /* TestReport.swift in Sources */,
 				DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */,
-				DA4C6508211DD54A00ECAD21 /* TestLibrary.swift in Sources */,
+				DA4C6508211DD54A00ECAD21 /* TestLibrary_Default.swift in Sources */,
 				DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */,
 				DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */,
+				DA1602FB2132AD2C004F6D44 /* TestLibrary_Ready.swift in Sources */,
 				DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */,
 				DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */,
 				DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */,

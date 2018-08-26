@@ -7,13 +7,10 @@ class Popup:UIViewController {
     private weak var base:UIView!
     private weak var icon:UIImageView!
     private weak var label:UILabel!
-    private static let time:TimeInterval = 5
     private static let top:CGFloat = 20
     private static let horizontal:CGFloat = 12
     private static let margin:CGFloat = 5
-    private static let radius:CGFloat = 4
     private static let height:CGFloat = 60
-    private static let font:CGFloat = 14
     
     init() {
         super.init(nibName:nil, bundle:nil)
@@ -29,7 +26,7 @@ class Popup:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         timer = Timer.scheduledTimer(
-            timeInterval:Popup.time, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:5, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
         layoutOutlets()
     }
@@ -44,7 +41,7 @@ class Popup:UIViewController {
         base.isUserInteractionEnabled = false
         base.backgroundColor = UIColor(white:0.96, alpha:0.99)
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.layer.cornerRadius = Popup.radius
+        base.layer.cornerRadius = 4
         base.clipsToBounds = true
         base.layer.borderColor = UIColor(white:0.94, alpha:2).cgColor
         base.layer.borderWidth = 1
@@ -55,7 +52,7 @@ class Popup:UIViewController {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
-        label.font = UIFont.systemFont(ofSize:Popup.font, weight:.light)
+        label.font = UIFont.systemFont(ofSize:14, weight:.light)
         label.textColor = .black
         label.numberOfLines = 0
         view.addSubview(label)

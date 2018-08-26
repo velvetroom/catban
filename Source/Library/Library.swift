@@ -18,7 +18,6 @@ public class Library {
     static let stateDefault = LibraryStateDefault()
     static let stateReady = LibraryStateReady()
     private static let prefix = "iturbide.catban."
-    private static let identifier = "iturbide.catban.library"
     
     weak var state:LibraryStateProtocol!
     var session:Session
@@ -31,7 +30,7 @@ public class Library {
         session = Session()
         cache = Factory.makeCache()
         database = Factory.makeDatabase()
-        queue = DispatchQueue(label:Library.identifier, qos:.background, attributes:[], autoreleaseFrequency:.inherit,
+        queue = DispatchQueue(label:Library.prefix, qos:.background, attributes:[], autoreleaseFrequency:.inherit,
                               target:.global(qos:.background))
     }
     

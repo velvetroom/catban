@@ -8,9 +8,9 @@ struct LibraryViewModel:ViewModel {
     var actionsEnabled:Bool
     
     init() {
-        self.items = []
-        self.message = String()
-        self.loadingHidden = false
-        self.actionsEnabled = false
+        items = []
+        message = String()
+        loadingHidden = false
+        actionsEnabled = false
     }
 }

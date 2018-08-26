@@ -1,8 +1,8 @@
 import Foundation
 import CleanArchitecture
 import Catban
-import StoreKit
 import QRhero
+import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     weak var delegate:InteractorDelegate?
@@ -10,16 +10,16 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     private let report:Report
     
     required init() {
-        self.library = Factory.makeLibrary()
-        self.report = Report()
-        self.library.delegate = self
+        library = Factory.makeLibrary()
+        report = Report()
+        library.delegate = self
     }
     
     func load() {
         do {
-            try self.library.loadBoards()
+            try library.loadBoards()
         } catch {
-            self.library.loadSession()
+            library.loadSession()
         }
     }
     
@@ -31,47 +31,46 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func settings() {
-        let view:SettingsView = SettingsView()
-        Application.router.pushViewController(view, animated:true)
+        Application.router.pushViewController(SettingsView(), animated:true)
     }
     
     func newBoard() {
-        self.library.newBoard()
+        library.newBoard()
     }
     
     func select(identifier:String) {
-        let view:BoardView = BoardView()
+        let view = BoardView()
         view.presenter.interactor.identifier = identifier
-        view.presenter.interactor.board = self.library.boards[identifier]
+        view.presenter.interactor.board = library.boards[identifier]
         Application.router.pushViewController(view, animated:true)
     }
     
     func librarySessionLoaded() {
-        self.load()
+        load()
     }
     
     func libraryBoardsUpdated() {
-        self.delegate?.shouldUpdate()
+        delegate?.shouldUpdate()
     }
     
     func libraryCreated(board:String) {
-        self.addTemplate(board:self.library.boards[board]!)
-        self.select(identifier:board)
-        self.rate()
+        addTemplate(board:library.boards[board]!)
+        select(identifier:board)
+        rate()
     }
     
     func makeStats(board:Board) -> ReportStats {
-        return self.report.makeStats(board:board)
+        return report.makeStats(board:board)
     }
     
     func qrRead(content:String) {
         do {
-            try self.library.addBoard(url:content)
+            try library.addBoard(url:content)
             DispatchQueue.main.async { [weak self] in self?.popupSuccess()  }
         } catch CatbanError.boardAlreadyLoaded {
-            self.popup(error:NSLocalizedString("LibraryInteractor.boardDuplicated", comment:String()))
+            popup(error:NSLocalizedString("LibraryInteractor.boardDuplicated", comment:String()))
         } catch CatbanError.invalidBoardUrl {
-            self.popup(error:NSLocalizedString("LibraryInteractor.invalidQRCode", comment:String()))
+            popup(error:NSLocalizedString("LibraryInteractor.invalidQRCode", comment:String()))
         } catch { }
     }
     
@@ -80,21 +79,21 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func qrError(error:QRheroError) {
-        self.popup(error:NSLocalizedString("LibraryInteractor.scanError", comment:String()))
+        popup(error:NSLocalizedString("LibraryInteractor.scanError", comment:String()))
     }
     
     private func addTemplate(board:Board) {
         board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
-        if self.library.defaultColumns {
+        if library.defaultColumns {
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.done", comment:String()))
         }
-        self.library.save(board:board)
+        library.save(board:board)
     }
     
     private func rate() {
-        if self.library.boards.count > Constants.minBoards {
+        if library.boards.count > 2 {
             if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() }
         }
     }
@@ -114,8 +113,4 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
             popup.title = NSLocalizedString("LibraryInteractor.boardAdded", comment:String())
         }
     }
-}
-
-private struct Constants {
-    static let minBoards:Int = 2
 }

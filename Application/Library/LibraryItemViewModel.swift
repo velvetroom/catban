@@ -7,8 +7,8 @@ struct LibraryItemViewModel:ViewModel {
     var progress:Float
     
     init() {
-        self.board = String()
-        self.name = String()
-        self.progress = 0.0
+        board = String()
+        name = String()
+        progress = 0
     }
 }

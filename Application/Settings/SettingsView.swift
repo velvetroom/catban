@@ -13,165 +13,156 @@ class SettingsView:View<SettingsPresenter> {
     weak var columnsSwitch:UISwitch!
     weak var fontSlider:UISlider!
     private let parser:Parser
+    private static let columnsHeight:CGFloat = 115
+    private static let fontHeight:CGFloat = 120
+    private static let spacing:CGFloat = 1
+    private static let margin:CGFloat = 17
     
     required init() {
-        self.parser = Parser()
+        parser = Parser()
         super.init()
     }
     
     required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {
-        self.makeOutlets()
-        self.layoutOutlets()
-        self.configureViewModel()
+        makeOutlets()
+        layoutOutlets()
+        configureViewModel()
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(white:0.94, alpha:1.0)
-        self.title = NSLocalizedString("SettingsView.title", comment:String())
+        view.backgroundColor = UIColor(white:0.94, alpha:1)
+        title = NSLocalizedString("SettingsView.title", comment:String())
     }
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        self.update(width:self.view.bounds.width)
+        update(width:view.bounds.width)
     }
     
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to:size, with:coordinator)
-        self.update(width:size.width)
+        update(width:size.width)
     }
     
     private func makeOutlets() {
-        let scroll:UIScrollView = UIScrollView()
+        let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.backgroundColor = UIColor.clear
+        scroll.backgroundColor = .clear
         scroll.showsVerticalScrollIndicator = true
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
+        view.addSubview(scroll)
         self.scroll = scroll
-        self.view.addSubview(scroll)
         
-        let content:UIView = UIView()
+        let content = UIView()
         content.clipsToBounds = false
+        scroll.addSubview(content)
         self.content = content
-        self.scroll.addSubview(content)
         
-        let columns:UIView = UIView()
-        columns.backgroundColor = UIColor.white
+        let columns = UIView()
+        columns.backgroundColor = .white
         columns.translatesAutoresizingMaskIntoConstraints = false
+        content.addSubview(columns)
         self.columns = columns
-        self.content.addSubview(columns)
         
-        let font:UIView = UIView()
-        font.backgroundColor = UIColor.white
+        let font = UIView()
+        font.backgroundColor = .white
         font.translatesAutoresizingMaskIntoConstraints = false
+        content.addSubview(font)
         self.font = font
-        self.content.addSubview(font)
         
-        let labelColumns:UILabel = UILabel()
+        let labelColumns = UILabel()
         labelColumns.translatesAutoresizingMaskIntoConstraints = false
         labelColumns.isUserInteractionEnabled = false
-        labelColumns.textColor = UIColor.black
+        labelColumns.textColor = .black
         labelColumns.numberOfLines = 0
+        columns.addSubview(labelColumns)
         self.labelColumns = labelColumns
-        self.columns.addSubview(labelColumns)
         
-        let columnsSwitch:UISwitch = UISwitch()
+        let columnsSwitch = UISwitch()
         columnsSwitch.translatesAutoresizingMaskIntoConstraints = false
         columnsSwitch.onTintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
-        columnsSwitch.addTarget(self, action:#selector(self.updateColumns), for:UIControl.Event.valueChanged)
+        columnsSwitch.addTarget(self, action:#selector(updateColumns), for:.valueChanged)
+        columns.addSubview(columnsSwitch)
         self.columnsSwitch = columnsSwitch
-        self.columns.addSubview(columnsSwitch)
         
-        let labelFont:UILabel = UILabel()
+        let labelFont = UILabel()
         labelFont.translatesAutoresizingMaskIntoConstraints = false
         labelFont.isUserInteractionEnabled = false
-        labelFont.textColor = UIColor.black
+        labelFont.textColor = .black
         labelFont.numberOfLines = 0
+        font.addSubview(labelFont)
         self.labelFont = labelFont
-        self.font.addSubview(labelFont)
         
-        let fontSlider:UISlider = UISlider()
+        let fontSlider = UISlider()
         fontSlider.tintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
         fontSlider.translatesAutoresizingMaskIntoConstraints = false
-        fontSlider.minimumValue = Constants.minFont
-        fontSlider.maximumValue = Constants.maxFont
-        fontSlider.addTarget(self, action:#selector(self.updateFont), for:UIControl.Event.valueChanged)
+        fontSlider.minimumValue = 8
+        fontSlider.maximumValue = 30
+        fontSlider.addTarget(self, action:#selector(updateFont), for:.valueChanged)
+        font.addSubview(fontSlider)
         self.fontSlider = fontSlider
-        self.font.addSubview(fontSlider)
         
-        let displayFont:UILabel = UILabel()
+        let displayFont = UILabel()
         displayFont.translatesAutoresizingMaskIntoConstraints = false
-        displayFont.textColor = UIColor.black
+        displayFont.textColor = .black
         displayFont.isUserInteractionEnabled = false
-        displayFont.textAlignment = NSTextAlignment.right
+        displayFont.textAlignment = .right
+        font.addSubview(displayFont)
         self.displayFont = displayFont
-        self.font.addSubview(displayFont)
 
-        self.parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String()))
-        { [weak self] (result:NSAttributedString) in
+        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { [weak self] (result) in
             self?.labelColumns.attributedText = result
         }
-        
-        self.parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String()))
-        { [weak self] (result:NSAttributedString) in
+        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { [weak self] (result) in
             self?.labelFont.attributedText = result
         }
     }
     
     private func layoutOutlets() {
-        self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
+        scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
-        self.columns.topAnchor.constraint(equalTo:self.content.topAnchor).isActive = true
-        self.columns.heightAnchor.constraint(equalToConstant:Constants.columnsHeight).isActive = true
-        self.columns.leftAnchor.constraint(equalTo:self.content.leftAnchor).isActive = true
-        self.columns.rightAnchor.constraint(equalTo:self.content.rightAnchor).isActive = true
+        columns.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
+        columns.heightAnchor.constraint(equalToConstant:SettingsView.columnsHeight).isActive = true
+        columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
+        columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        self.font.topAnchor.constraint(equalTo:self.columns.bottomAnchor, constant:Constants.spacing).isActive = true
-        self.font.heightAnchor.constraint(equalToConstant:Constants.fontHeight).isActive = true
-        self.font.leftAnchor.constraint(equalTo:self.content.leftAnchor).isActive = true
-        self.font.rightAnchor.constraint(equalTo:self.content.rightAnchor).isActive = true
+        font.topAnchor.constraint(equalTo:columns.bottomAnchor, constant:SettingsView.spacing).isActive = true
+        font.heightAnchor.constraint(equalToConstant:SettingsView.fontHeight).isActive = true
+        font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
+        font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        self.labelColumns.topAnchor.constraint(equalTo:self.columns.topAnchor,
-                                               constant:Constants.margin).isActive = true
-        self.labelColumns.leftAnchor.constraint(equalTo:self.columns.leftAnchor,
-                                                constant:Constants.margin).isActive = true
-        self.labelColumns.rightAnchor.constraint(equalTo:self.columnsSwitch.leftAnchor,
-                                                 constant:-Constants.margin).isActive = true
+        labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:SettingsView.margin).isActive = true
+        labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:SettingsView.margin).isActive = true
+        labelColumns.rightAnchor.constraint(equalTo:columnsSwitch.leftAnchor,
+                                            constant:-SettingsView.margin).isActive = true
         
-        self.columnsSwitch.topAnchor.constraint(equalTo:self.columns.topAnchor,
-                                                constant:Constants.margin).isActive = true
-        self.columnsSwitch.rightAnchor.constraint(equalTo:self.columns.rightAnchor,
-                                                constant:-Constants.margin).isActive = true
-        self.columnsSwitch.widthAnchor.constraint(equalToConstant:Constants.switchWidth).isActive = true
+        columnsSwitch.topAnchor.constraint(equalTo:columns.topAnchor, constant:SettingsView.margin).isActive = true
+        columnsSwitch.rightAnchor.constraint(equalTo:columns.rightAnchor, constant:-SettingsView.margin).isActive = true
+        columnsSwitch.widthAnchor.constraint(equalToConstant:50).isActive = true
         
-        self.labelFont.topAnchor.constraint(equalTo:self.font.topAnchor,
-                                               constant:Constants.margin).isActive = true
-        self.labelFont.leftAnchor.constraint(equalTo:self.font.leftAnchor,
-                                                constant:Constants.margin).isActive = true
+        labelFont.topAnchor.constraint(equalTo:font.topAnchor, constant:SettingsView.margin).isActive = true
+        labelFont.leftAnchor.constraint(equalTo:font.leftAnchor, constant:SettingsView.margin).isActive = true
         
-        self.fontSlider.bottomAnchor.constraint(equalTo:self.font.bottomAnchor,
-                                                constant:-Constants.margin).isActive = true
-        self.fontSlider.leftAnchor.constraint(equalTo:self.font.leftAnchor,
-                                              constant:Constants.margin).isActive = true
-        self.fontSlider.rightAnchor.constraint(equalTo:self.font.rightAnchor,
-                                               constant:-Constants.margin).isActive = true
+        fontSlider.bottomAnchor.constraint(equalTo:font.bottomAnchor, constant:-SettingsView.margin).isActive = true
+        fontSlider.leftAnchor.constraint(equalTo:font.leftAnchor, constant:SettingsView.margin).isActive = true
+        fontSlider.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-SettingsView.margin).isActive = true
         
-        self.displayFont.topAnchor.constraint(equalTo:self.font.topAnchor, constant:Constants.margin).isActive = true
-        self.displayFont.rightAnchor.constraint(equalTo:self.font.rightAnchor,
-                                                constant:-Constants.margin).isActive = true
+        displayFont.topAnchor.constraint(equalTo:font.topAnchor, constant:SettingsView.margin).isActive = true
+        displayFont.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-SettingsView.margin).isActive = true
         
         if #available(iOS 11.0, *) {
-            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
-            self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+            navigationItem.largeTitleDisplayMode = .always
+            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
-            self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
+            scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
     
     private func configureViewModel() {
-        self.presenter.viewModels.observe { [weak self] (viewModel:SettingsViewModel) in
+        presenter.viewModels.observe { [weak self] (viewModel:SettingsViewModel) in
             self?.updateDisplay(size:viewModel.cardsFont)
             self?.fontSlider.setValue(Float(viewModel.cardsFont), animated:false)
             self?.columnsSwitch.isOn = viewModel.defaultColumns
@@ -179,33 +170,23 @@ class SettingsView:View<SettingsPresenter> {
     }
     
     private func update(width:CGFloat) {
-        self.scroll.contentSize = CGSize(width:width, height:Constants.columnsHeight + Constants.spacing +
-            Constants.fontHeight)
-        self.content.frame = CGRect(origin:CGPoint.zero, size:self.scroll.contentSize)
+        scroll.contentSize = CGSize(width:width, height:SettingsView.columnsHeight + SettingsView.spacing +
+            SettingsView.fontHeight)
+        content.frame = CGRect(origin:.zero, size:scroll.contentSize)
     }
     
     @objc private func updateFont() {
-        let size:Int = Int(self.fontSlider.value)
-        self.presenter.update(cardsFont:size)
-        self.updateDisplay(size:size)
+        let size = Int(fontSlider.value)
+        presenter.update(cardsFont:size)
+        updateDisplay(size:size)
     }
     
     @objc private func updateColumns() {
-        self.presenter.update(defaultColumns:self.columnsSwitch.isOn)
+        presenter.update(defaultColumns:columnsSwitch.isOn)
     }
     
     private func updateDisplay(size:Int) {
-        self.displayFont.font = UIFont.systemFont(ofSize:CGFloat(size), weight:UIFont.Weight.bold)
-        self.displayFont.text = String(size)
+        displayFont.font = UIFont.systemFont(ofSize:CGFloat(size), weight:.bold)
+        displayFont.text = String(size)
     }
-}
-
-private struct Constants {
-    static let columnsHeight:CGFloat = 115.0
-    static let fontHeight:CGFloat = 120.0
-    static let spacing:CGFloat = 1.0
-    static let margin:CGFloat = 17.0
-    static let switchWidth:CGFloat = 50.0
-    static let minFont:Float = 8.0
-    static let maxFont:Float = 30.0
 }

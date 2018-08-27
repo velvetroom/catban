@@ -8,17 +8,17 @@ class SettingsPresenter:Presenter {
     required init() { }
     
     func update(cardsFont:Int) {
-        self.interactor.library.cardsFont = cardsFont
+        interactor.library.cardsFont = cardsFont
     }
     
     func update(defaultColumns:Bool) {
-        self.interactor.library.defaultColumns = defaultColumns
+        interactor.library.defaultColumns = defaultColumns
     }
     
     func didLoad() {
-        var viewModel:SettingsViewModel = SettingsViewModel()
-        viewModel.cardsFont = self.interactor.library.cardsFont
-        viewModel.defaultColumns = self.interactor.library.defaultColumns
-        self.viewModels.update(viewModel:viewModel)
+        var viewModel = SettingsViewModel()
+        viewModel.cardsFont = interactor.library.cardsFont
+        viewModel.defaultColumns = interactor.library.defaultColumns
+        viewModels.update(viewModel:viewModel)
     }
 }

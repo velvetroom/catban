@@ -6,7 +6,7 @@ struct SettingsViewModel:ViewModel {
     var defaultColumns:Bool
     
     init() {
-        self.cardsFont = 0
-        self.defaultColumns = false
+        cardsFont = 0
+        defaultColumns = false
     }
 }

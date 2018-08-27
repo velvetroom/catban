@@ -5,6 +5,6 @@ struct InfoViewModel:ViewModel {
     var text:NSAttributedString
     
     init() {
-        self.text = NSAttributedString()
+        text = NSAttributedString()
     }
 }

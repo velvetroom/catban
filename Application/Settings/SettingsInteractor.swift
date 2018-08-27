@@ -7,6 +7,6 @@ class SettingsInteractor:Interactor {
     let library:Library
     
     required init() {
-        self.library = Factory.makeLibrary()
+        library = Factory.makeLibrary()
     }
 }

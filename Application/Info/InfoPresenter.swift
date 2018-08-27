@@ -2,7 +2,7 @@ import Foundation
 import CleanArchitecture
 import MarkdownHero
 
-class InfoPresenter<I:InfoInteractor>:Presenter {
+class InfoPresenter<I:Interactor>:Presenter {
     var interactor:I!
     var viewModels:ViewModels!
     var source = String()
@@ -11,7 +11,7 @@ class InfoPresenter<I:InfoInteractor>:Presenter {
     required init() { }
     
     @objc func dismiss() {
-        interactor.dismiss()
+        Application.router.dismiss(animated:true)
     }
     
     func didLoad() {

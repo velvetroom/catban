@@ -2,7 +2,7 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class BoardInteractor:Interactor, InfoInteractor {    
+class BoardInteractor:Interactor {    
     weak var delegate:InteractorDelegate?
     var board:Board!
     var identifier = String()

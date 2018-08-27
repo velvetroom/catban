@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class InfoView<I:InfoInteractor>:View<InfoPresenter<I>> {
+class InfoView<I:Interactor>:View<InfoPresenter<I>> {
     weak var blur:UIVisualEffectView!
     weak var back:UIControl!
     weak var base:UIView!

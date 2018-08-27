@@ -15,7 +15,7 @@
 		DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CF2120356C001C758E /* BoardCardView.swift */; };
 		DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7D121203BDF001C758E /* BoardButtonView.swift */; };
 		DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2FB7D321206172001C758E /* LaunchScreen.storyboard */; };
-		DA32C2522121DC5A0018BBC3 /* BoardProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */; };
+		DA32C2522121DC5A0018BBC3 /* BoardProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32C2512121DC5A0018BBC3 /* BoardProgress.swift */; };
 		DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */; };
 		DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */; };
 		DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */; };
@@ -56,12 +56,12 @@
 		DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */; };
 		DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */; };
 		DA4C6553211DD58A00ECAD21 /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */; };
-		DA4C6554211DD58A00ECAD21 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6526211DD58A00ECAD21 /* BoardViewModel.swift */; };
+		DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6526211DD58A00ECAD21 /* BoardTitle.swift */; };
 		DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */; };
 		DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */; };
-		DA4C6557211DD58A00ECAD21 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652A211DD58A00ECAD21 /* LibraryViewModel.swift */; };
+		DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */; };
 		DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652B211DD58A00ECAD21 /* LibraryView.swift */; };
-		DA4C6559211DD58A00ECAD21 /* LibraryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652C211DD58A00ECAD21 /* LibraryItemViewModel.swift */; };
+		DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */; };
 		DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */; };
 		DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */; };
 		DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */; };
@@ -129,7 +129,7 @@
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
 		DA2FB7D321206172001C758E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProgressViewModel.swift; sourceTree = "<group>"; };
+		DA32C2512121DC5A0018BBC3 /* BoardProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProgress.swift; sourceTree = "<group>"; };
 		DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Boards.swift; sourceTree = "<group>"; };
 		DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Properties.swift; sourceTree = "<group>"; };
 		DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -175,12 +175,12 @@
 		DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDrawer.swift; sourceTree = "<group>"; };
 		DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
 		DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
-		DA4C6526211DD58A00ECAD21 /* BoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		DA4C6526211DD58A00ECAD21 /* BoardTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTitle.swift; sourceTree = "<group>"; };
 		DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
 		DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLayouter.swift; sourceTree = "<group>"; };
-		DA4C652A211DD58A00ECAD21 /* LibraryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
+		DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItems.swift; sourceTree = "<group>"; };
 		DA4C652B211DD58A00ECAD21 /* LibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		DA4C652C211DD58A00ECAD21 /* LibraryItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItemViewModel.swift; sourceTree = "<group>"; };
+		DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItem.swift; sourceTree = "<group>"; };
 		DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
 		DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryInteractor.swift; sourceTree = "<group>"; };
 		DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
@@ -415,8 +415,8 @@
 			children = (
 				DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */,
 				DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */,
-				DA4C6526211DD58A00ECAD21 /* BoardViewModel.swift */,
-				DA32C2512121DC5A0018BBC3 /* BoardProgressViewModel.swift */,
+				DA4C6526211DD58A00ECAD21 /* BoardTitle.swift */,
+				DA32C2512121DC5A0018BBC3 /* BoardProgress.swift */,
 				DA4C6522211DD58A00ECAD21 /* BoardView.swift */,
 				DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */,
 				DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */,
@@ -437,9 +437,9 @@
 			children = (
 				DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */,
 				DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */,
-				DA4C652A211DD58A00ECAD21 /* LibraryViewModel.swift */,
+				DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */,
+				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
-				DA4C652C211DD58A00ECAD21 /* LibraryItemViewModel.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
 			);
 			path = Library;
@@ -724,7 +724,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
-				DA4C6557211DD58A00ECAD21 /* LibraryViewModel.swift in Sources */,
+				DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */,
 				DA759E242126ABB100E92FD9 /* InfoInteractor.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,
 				DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */,
@@ -737,7 +737,7 @@
 				DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */,
 				DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */,
 				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
-				DA4C6559211DD58A00ECAD21 /* LibraryItemViewModel.swift in Sources */,
+				DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
 				DA4C6568211DD58A00ECAD21 /* TextStrategy.swift in Sources */,
 				DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */,
@@ -751,7 +751,7 @@
 				DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */,
 				DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */,
 				DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */,
-				DA32C2522121DC5A0018BBC3 /* BoardProgressViewModel.swift in Sources */,
+				DA32C2522121DC5A0018BBC3 /* BoardProgress.swift in Sources */,
 				DA4C654E211DD58A00ECAD21 /* DeleteView.swift in Sources */,
 				DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */,
 				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
@@ -760,7 +760,7 @@
 				DA4C654C211DD58A00ECAD21 /* DeleteBoard.swift in Sources */,
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
-				DA4C6554211DD58A00ECAD21 /* BoardViewModel.swift in Sources */,
+				DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */,
 				DA4C656A211DD58A00ECAD21 /* TextChange.swift in Sources */,
 				DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */,
 				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,

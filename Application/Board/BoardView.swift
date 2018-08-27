@@ -13,230 +13,206 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     let drawer:BoardDrawer
     let layouter:BoardLayouter
     private var reportY:CGFloat
+    private static let reportHeight:CGFloat = 380
+    private static let reportTop:CGFloat = -75
+    private static let handleHeight:CGFloat = 3
     
     required init() {
-        self.reportY = 0
-        self.drawer = BoardDrawer()
-        self.layouter = BoardLayouter()
+        reportY = 0
+        drawer = BoardDrawer()
+        layouter = BoardLayouter()
         super.init()
-        self.drawer.view = self
-        self.layouter.view = self
+        drawer.view = self
+        layouter.view = self
     }
     
     required init?(coder:NSCoder) { return nil }
     
     @objc func dragCard(pan:UIPanGestureRecognizer) {
-        let view:BoardCardView = pan.view as! BoardCardView
+        let view = pan.view as! BoardCardView
         switch pan.state {
-        case UIGestureRecognizer.State.began:
+        case .began:
             view.dragStart()
-            self.content.bringSubviewToFront(view)
-            self.layouter.detach(item:view)
-            self.animate()
-        case UIGestureRecognizer.State.possible, UIGestureRecognizer.State.changed:
-            view.drag(point:pan.translation(in:self.content))
-        case UIGestureRecognizer.State.cancelled, UIGestureRecognizer.State.ended, UIGestureRecognizer.State.failed:
+            content.bringSubviewToFront(view)
+            layouter.detach(item:view)
+            animate()
+        case .cancelled, .ended, .failed:
             view.dragEnd()
-            self.layouter.attach(item:view)
-            self.animate()
-            self.presenter.updateProgress()
+            layouter.attach(item:view)
+            animate()
+            presenter.updateProgress()
+        case .possible, .changed: view.drag(point:pan.translation(in:content))
         }
     }
     
     @objc func dragReport(pan:UIPanGestureRecognizer) {
         switch pan.state {
-        case UIGestureRecognizer.State.began:
-            self.reportY = self.layoutReportTop.constant
-            break
-        case UIGestureRecognizer.State.possible, UIGestureRecognizer.State.changed:
-            var newY:CGFloat = self.reportY + pan.translation(in:self.view).y
-            if newY < -Constants.reportHeight {
-                newY = -Constants.reportHeight
+        case .began: reportY = layoutReportTop.constant
+        case .possible, .changed:
+            layoutReportTop.constant = reportY + pan.translation(in:view).y
+            if layoutReportTop.constant < -BoardView.reportHeight {
+                layoutReportTop.constant = -BoardView.reportHeight
             }
-            self.layoutReportTop.constant = newY
-            break
-        case UIGestureRecognizer.State.cancelled, UIGestureRecognizer.State.ended, UIGestureRecognizer.State.failed:
-            if self.layoutReportTop.constant < -(Constants.reportHeight - Constants.reportThreshold) {
-                self.showReport()
+        case .cancelled, .ended, .failed:
+            if layoutReportTop.constant < -(BoardView.reportHeight - 50) {
+                showReport()
             } else {
-                self.hideReport()
+                hideReport()
             }
-            break
         }
     }
     
     override func viewDidLoad() {
-        self.makeOutlets()
-        self.layoutOutlets()
-        self.configureViewModel()
+        makeOutlets()
+        layoutOutlets()
+        configureViewModel()
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.title = self.presenter.interactor.board.text
+        view.backgroundColor = .white
+        title = presenter.interactor.board.text
     }
     
     func updateSearchResults(for search:UISearchController) {
         guard
-            let text:String = search.searchBar.text,
+            let text = search.searchBar.text,
             !text.isEmpty
         else {
-            self.presenter.clearSearch()
+            presenter.clearSearch()
             return
         }
-        self.presenter.search(text:text)
+        presenter.search(text:text)
     }
     
     private func makeOutlets() {
-        let scroll:UIScrollView = UIScrollView()
+        let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.clipsToBounds = true
-        scroll.backgroundColor = UIColor.clear
+        scroll.backgroundColor = .clear
         scroll.showsVerticalScrollIndicator = false
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
         scroll.alwaysBounceHorizontal = true
-        scroll.decelerationRate = UIScrollView.DecelerationRate.fast
+        scroll.decelerationRate = .fast
+        view.addSubview(scroll)
         self.scroll = scroll
-        self.view.addSubview(scroll)
         
-        let border:UIView = UIView()
+        let border = UIView()
         border.isUserInteractionEnabled = false
         border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0.0, alpha:0.03)
+        border.backgroundColor = UIColor(white:0, alpha:0.03)
+        view.addSubview(border)
         self.border = border
-        self.view.addSubview(border)
         
-        let report:UIView = UIView()
+        let report = UIView()
         report.translatesAutoresizingMaskIntoConstraints = false
-        report.backgroundColor = UIColor.white
+        report.backgroundColor = .white
         report.clipsToBounds = true
-        report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(self.dragReport(pan:))))
+        report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
+        view.addSubview(report)
         self.report = report
-        self.view.addSubview(report)
         
-        let handle:UIView = UIView()
+        let handle = UIView()
         handle.isUserInteractionEnabled = false
         handle.translatesAutoresizingMaskIntoConstraints = false
         handle.clipsToBounds = true
-        handle.backgroundColor = UIColor(white:0.9, alpha:1.0)
-        handle.layer.cornerRadius = Constants.handleHeight / 2.0
+        handle.backgroundColor = UIColor(white:0.9, alpha:1)
+        handle.layer.cornerRadius = BoardView.handleHeight / 2
+        report.addSubview(handle)
         self.handle = handle
-        self.report.addSubview(handle)
         
-        let progress:UIProgressView = UIProgressView()
+        let progress = UIProgressView()
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.isUserInteractionEnabled = false
         progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        progress.trackTintColor = UIColor(white:0.95, alpha:1.0)
+        progress.trackTintColor = UIColor(white:0.95, alpha:1)
+        report.addSubview(progress)
         self.progress = progress
-        self.report.addSubview(progress)
         
-        let stack:BoardStackView = BoardStackView()
+        let stack = BoardStackView()
+        report.addSubview(stack)
         self.stack = stack
-        self.report.addSubview(stack)
         
-        let content:UIView = UIView()
+        let content = UIView()
         content.clipsToBounds = false
+        scroll.addSubview(content)
         self.content = content
-        self.scroll.addSubview(content)
         
-        self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.edit)),
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.share)),
-            UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                            action:#selector(self.presenter.info))]
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:.plain, target:presenter, action:#selector(presenter.edit)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:.plain, target:presenter, action:#selector(presenter.share)),
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:.plain, target:presenter, action:#selector(presenter.info))]
     }
     
     private func layoutOutlets() {
-        self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
+        scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
-        self.report.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.report.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        self.report.heightAnchor.constraint(equalToConstant:Constants.reportHeight).isActive = true
-        self.layoutReportTop = self.report.topAnchor.constraint(equalTo:self.view.bottomAnchor,
-                                                                constant:Constants.reportTop)
-        self.layoutReportTop.isActive = true
+        report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        report.heightAnchor.constraint(equalToConstant:BoardView.reportHeight).isActive = true
+        layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:BoardView.reportTop)
+        layoutReportTop.isActive = true
 
-        self.handle.topAnchor.constraint(equalTo:self.report.topAnchor, constant:Constants.handleTop).isActive = true
-        self.handle.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
-        self.handle.widthAnchor.constraint(equalToConstant:Constants.handleWidth).isActive = true
-        self.handle.heightAnchor.constraint(equalToConstant:Constants.handleHeight).isActive = true
+        handle.topAnchor.constraint(equalTo:report.topAnchor, constant:14).isActive = true
+        handle.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
+        handle.widthAnchor.constraint(equalToConstant:30).isActive = true
+        handle.heightAnchor.constraint(equalToConstant:BoardView.handleHeight).isActive = true
         
-        self.border.bottomAnchor.constraint(equalTo:self.report.topAnchor).isActive = true
-        self.border.leftAnchor.constraint(equalTo:self.report.leftAnchor).isActive = true
-        self.border.rightAnchor.constraint(equalTo:self.report.rightAnchor).isActive = true
-        self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
+        border.bottomAnchor.constraint(equalTo:report.topAnchor).isActive = true
+        border.leftAnchor.constraint(equalTo:report.leftAnchor).isActive = true
+        border.rightAnchor.constraint(equalTo:report.rightAnchor).isActive = true
+        border.heightAnchor.constraint(equalToConstant:3).isActive = true
         
-        self.progress.widthAnchor.constraint(equalToConstant:Constants.progressWidth).isActive = true
-        self.progress.heightAnchor.constraint(equalToConstant:Constants.progressHeight).isActive = true
-        self.progress.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
-        self.progress.topAnchor.constraint(equalTo:self.handle.bottomAnchor,
-                                           constant:Constants.progressTop).isActive = true
+        progress.widthAnchor.constraint(equalToConstant:250).isActive = true
+        progress.heightAnchor.constraint(equalToConstant:4).isActive = true
+        progress.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
+        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:25).isActive = true
         
-        self.stack.centerXAnchor.constraint(equalTo:self.report.centerXAnchor).isActive = true
-        self.stack.topAnchor.constraint(equalTo:self.progress.bottomAnchor,
-                                        constant:Constants.stackTop).isActive = true
+        stack.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
+        stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:35).isActive = true
         
         if #available(iOS 11.0, *) {
-            let search:UISearchController = UISearchController(searchResultsController:nil)
+            let search = UISearchController(searchResultsController:nil)
             search.searchResultsUpdater = self
             search.isActive = true
             search.obscuresBackgroundDuringPresentation = false
-            self.navigationItem.searchController = search
-            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
-            self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+            navigationItem.searchController = search
+            navigationItem.largeTitleDisplayMode = .always
+            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
-            self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
+            scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
     
     private func configureViewModel() {
-        self.presenter.viewModels.observe { [weak self] (viewModel:BoardViewModel) in
+        presenter.viewModels.observe { [weak self] (viewModel:BoardTitle) in
             self?.title = viewModel.title
             self?.drawer.draw()
             self?.layouter.layout()
         }
-        self.presenter.viewModels.observe { [weak self] (viewModel:BoardProgressViewModel) in
+        presenter.viewModels.observe { [weak self] (viewModel:BoardProgress) in
             self?.progress.setProgress(viewModel.progress, animated:true)
             self?.stack.update(progress:viewModel)
         }
     }
     
     private func animate() {
-        UIView.animate(withDuration:Constants.animation) { [weak self] in
+        UIView.animate(withDuration:0.3) { [weak self] in
             self?.content?.layoutIfNeeded()
         }
     }
     
     private func hideReport() {
-        self.layoutReportTop.constant = Constants.reportTop
-        UIView.animate(withDuration:Constants.animation) { [weak self] in
+        layoutReportTop.constant = BoardView.reportTop
+        UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }
     }
     
     private func showReport() {
-        self.layoutReportTop.constant = -Constants.reportHeight
-        UIView.animate(withDuration:Constants.animation) { [weak self] in
+        layoutReportTop.constant = -BoardView.reportHeight
+        UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }
     }
-}
-
-private struct Constants {
-    static let animation:TimeInterval = 0.3
-    static let reportHeight:CGFloat = 380.0
-    static let reportTop:CGFloat = -75.0
-    static let reportThreshold:CGFloat = 50.0
-    static let border:CGFloat = 3.0
-    static let stackTop:CGFloat = 35.0
-    static let progressTop:CGFloat = 25.0
-    static let progressWidth:CGFloat = 250.0
-    static let progressHeight:CGFloat = 4.0
-    static let handleWidth:CGFloat = 30.0
-    static let handleHeight:CGFloat = 3.0
-    static let handleTop:CGFloat = 14.0
 }

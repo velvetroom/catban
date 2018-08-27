@@ -79,7 +79,7 @@ class LibraryView:View<LibraryPresenter> {
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:LibraryViewModel) in
+        presenter.viewModels.observe { [weak self] (viewModel:LibraryItems) in
             self?.loading.isHidden = viewModel.loadingHidden
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled
@@ -89,7 +89,7 @@ class LibraryView:View<LibraryPresenter> {
         }
     }
     
-    private func update(items:[LibraryItemViewModel]) {
+    private func update(items:[LibraryItem]) {
         scroll.subviews.forEach { (view) in view.removeFromSuperview() }
         items.forEach { (item) in
             let cell = LibraryCellView()

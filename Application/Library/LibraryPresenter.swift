@@ -9,7 +9,7 @@ class LibraryPresenter:Presenter {
     required init() { }
     
     @objc func newBoard() {
-        viewModels.update(viewModel:LibraryViewModel())
+        viewModels.update(viewModel:LibraryItems())
         interactor.newBoard()
     }
     
@@ -34,7 +34,7 @@ class LibraryPresenter:Presenter {
     }
     
     func willAppear() {
-        viewModels.update(viewModel:LibraryViewModel())
+        viewModels.update(viewModel:LibraryItems())
         interactor.load()
     }
     
@@ -47,7 +47,7 @@ class LibraryPresenter:Presenter {
     }
     
     private func showEmpty() {
-        var viewModel = LibraryViewModel()
+        var viewModel = LibraryItems()
         viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
@@ -55,17 +55,17 @@ class LibraryPresenter:Presenter {
     }
     
     private func showItems() {
-        var viewModel = LibraryViewModel()
+        var viewModel = LibraryItems()
         viewModel.items = self.items
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         viewModels.update(viewModel:viewModel)
     }
     
-    private var items:[LibraryItemViewModel] {
-        var items:[LibraryItemViewModel] = []
+    private var items:[LibraryItem] {
+        var items:[LibraryItem] = []
         interactor.library.boards.forEach { (key, board) in
-            var item = LibraryItemViewModel()
+            var item = LibraryItem()
             item.board = key
             item.name = board.text
             item.progress = interactor.makeStats(board:board).progress

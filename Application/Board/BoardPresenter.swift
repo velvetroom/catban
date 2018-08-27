@@ -62,7 +62,7 @@ class BoardPresenter:Presenter {
     func updateProgress() {
         DispatchQueue.global(qos:.background).async { [weak self] in
             guard let stats = self?.interactor.makeStats() else { return }
-            var viewModel = BoardProgressViewModel()
+            var viewModel = BoardProgress()
             viewModel.progress = stats.progress
             viewModel.columns = stats.columns
             self?.viewModels.update(viewModel:viewModel)
@@ -75,7 +75,7 @@ class BoardPresenter:Presenter {
     }
     
     private func updateViewModel() {
-        var viewModel = BoardViewModel()
+        var viewModel = BoardTitle()
         viewModel.title = interactor.board.text
         viewModels.update(viewModel:viewModel)
     }

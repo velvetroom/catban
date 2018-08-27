@@ -1,12 +1,12 @@
 import Foundation
 import CleanArchitecture
 
-struct BoardProgressViewModel:ViewModel {
+struct BoardProgress:ViewModel {
     var progress:Float
     var columns:[Int]
     
     init() {
-        self.progress = 0.0
-        self.columns = []
+        progress = 0
+        columns = []
     }
 }

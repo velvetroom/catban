@@ -1,10 +1,10 @@
 import Foundation
 import CleanArchitecture
 
-struct BoardViewModel:ViewModel {
+struct BoardTitle:ViewModel {
     var title:String
     
     init() {
-        self.title = String()
+        title = String()
     }
 }

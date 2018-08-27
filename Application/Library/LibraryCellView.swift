@@ -3,7 +3,7 @@ import UIKit
 class LibraryCellView:UIControl {
     weak var name:UILabel!
     weak var progress:UIProgressView!
-    var viewModel:LibraryItemViewModel! { didSet {
+    var viewModel:LibraryItem! { didSet {
         name.text = viewModel.name
         let progress = viewModel.progress
         DispatchQueue.main.async { [weak self] in self?.progress.setProgress(progress, animated:true) }

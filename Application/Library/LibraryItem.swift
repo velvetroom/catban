@@ -1,7 +1,7 @@
 import Foundation
 import CleanArchitecture
 
-struct LibraryItemViewModel:ViewModel {
+struct LibraryItem:ViewModel {
     var board:String
     var name:String
     var progress:Float

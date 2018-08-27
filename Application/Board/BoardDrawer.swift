@@ -6,7 +6,7 @@ class BoardDrawer {
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
     weak var view:BoardView! { didSet { parser.font = UIFont.systemFont(
-        ofSize:CGFloat(view.presenter.interactor.cardsFont), weight:.ultraLight) } }
+        ofSize:CGFloat(view.presenter.interactor.cardsFont), weight:.light) } }
     
     private weak var nextItem:BoardItemView?
     private var parser = Parser()
@@ -57,11 +57,6 @@ class BoardDrawer {
         layout(item:item, height:BoardDrawer.new, width:BoardDrawer.new)
     }
     
-    private func clearContent() {
-        firstColumn = nil
-        view.content.subviews.forEach { (view) in view.removeFromSuperview() }
-    }
-    
     private func makeHeader(column:Column) {
         let item = BoardHeaderView()
         item.column = column
@@ -69,6 +64,11 @@ class BoardDrawer {
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
         layout(item:item, height:24, width:BoardDrawer.columnWidth)
+    }
+    
+    private func clearContent() {
+        firstColumn = nil
+        view.content.subviews.forEach { (view) in view.removeFromSuperview() }
     }
     
     private func layout(item:BoardItemView, height:CGFloat, width:CGFloat) {

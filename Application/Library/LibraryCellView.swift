@@ -29,8 +29,8 @@ class LibraryCellView:UIControl {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:13, weight:.light)
-        name.textColor = .black
+        name.font = UIFont.systemFont(ofSize:12, weight:.medium)
+        name.textColor = UIColor.black
         addSubview(name)
         self.name = name
         
@@ -50,6 +50,6 @@ class LibraryCellView:UIControl {
         progress.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
         progress.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
         progress.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
-        progress.heightAnchor.constraint(equalToConstant:5).isActive = true
+        progress.heightAnchor.constraint(equalToConstant:10).isActive = true
     }
 }

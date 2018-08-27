@@ -5,9 +5,9 @@ class BoardStackView:UIView {
     private var itemY:CGFloat = 0
     private var width:CGFloat = 0
     private var height:CGFloat = 0
-    private static let width:CGFloat = 35
-    private static let height:CGFloat = 3
-    private static let spacing:CGFloat = 10
+    private static let width:CGFloat = 15
+    private static let height:CGFloat = 15
+    private static let spacing:CGFloat = 2
     
     init() {
         super.init(frame:.zero)
@@ -24,14 +24,20 @@ class BoardStackView:UIView {
         width = 0
         height = 0
         itemX = 0
-        progress.columns.forEach { (items) in
+        for index in 0 ..< progress.columns.count {
             itemY = 0
-            if !subviews.isEmpty {
+            if index != 0 {
                 itemX += BoardStackView.spacing
             }
-            addItem(color:#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1))
-            for _ in 0 ..< items {
-                addItem(color:#colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1))
+            var color:UIColor
+            if index == progress.columns.count - 1 {
+                color = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+            } else {
+                color = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+            }
+            addItem(color:#colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.2))
+            for _ in 0 ..< progress.columns[index] {
+                addItem(color:color)
             }
             itemX += BoardStackView.width
             height = max(height, itemY)

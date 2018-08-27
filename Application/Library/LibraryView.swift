@@ -106,7 +106,7 @@ class LibraryView:View<LibraryPresenter> {
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
         scroll.subviews.forEach { (view) in
-            view.frame = CGRect(x:0, y:y, width:size.width, height:60)
+            view.frame = CGRect(x:0, y:y, width:size.width, height:70)
             y += view.bounds.height
         }
         scroll.contentSize = CGSize(width:size.width, height:y)

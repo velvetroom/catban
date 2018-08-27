@@ -134,7 +134,7 @@ class SettingsView:View<SettingsPresenter> {
         
         columnsSwitch.topAnchor.constraint(equalTo:columns.topAnchor, constant:SettingsView.margin).isActive = true
         columnsSwitch.rightAnchor.constraint(equalTo:columns.rightAnchor, constant:-SettingsView.margin).isActive = true
-        columnsSwitch.widthAnchor.constraint(equalToConstant:50).isActive = true
+        columnsSwitch.widthAnchor.constraint(equalToConstant:44).isActive = true
         
         labelFont.topAnchor.constraint(equalTo:font.topAnchor, constant:SettingsView.margin).isActive = true
         labelFont.leftAnchor.constraint(equalTo:font.leftAnchor, constant:SettingsView.margin).isActive = true

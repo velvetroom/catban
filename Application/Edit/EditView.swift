@@ -10,99 +10,93 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     }
     
     override func viewDidLoad() {
-        self.makeOutlets()
-        self.layoutOutlets()
+        makeOutlets()
+        layoutOutlets()
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.title = self.presenter.strategyText.title
-        NotificationCenter.default.addObserver(forName:UIResponder.keyboardWillChangeFrameNotification, object:nil,
-                                               queue:OperationQueue.main) { [weak self] (notification:Notification) in
-            self?.keyboardChanged(notification:notification)
-        }
+        view.backgroundColor = .white
+        title = presenter.strategyText.title
+        NotificationCenter.default.addObserver(forName:UIResponder.keyboardWillChangeFrameNotification, object:
+            nil, queue:.main) { [weak self] (notification) in self?.keyboardChanged(notification:notification) }
     }
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        self.text.becomeFirstResponder()
+        text.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        self.text.resignFirstResponder()
+        text.resignFirstResponder()
     }
     
     private func makeOutlets() {
-        let text:UITextView = UITextView()
+        let text = UITextView()
         text.clipsToBounds = true
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.backgroundColor = UIColor.clear
-        text.textColor = UIColor.black
+        text.backgroundColor = .clear
+        text.textColor = .black
         text.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         text.alwaysBounceVertical = true
         text.showsHorizontalScrollIndicator = false
-        text.returnKeyType = UIReturnKeyType.default
-        text.keyboardAppearance = UIKeyboardAppearance.light
-        text.autocorrectionType = UITextAutocorrectionType.yes
-        text.spellCheckingType = UITextSpellCheckingType.yes
-        text.autocapitalizationType = UITextAutocapitalizationType.sentences
-        text.keyboardType = UIKeyboardType.alphabet
-        text.contentInset = UIEdgeInsets.zero
-        text.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
-        text.textContainerInset = UIEdgeInsets(top:Constants.insets, left:Constants.insets, bottom:Constants.insets,
-                                               right:Constants.insets)
-        text.text = self.presenter.strategyText.text
+        text.returnKeyType = .default
+        text.keyboardAppearance = .light
+        text.autocorrectionType = .yes
+        text.spellCheckingType = .yes
+        text.autocapitalizationType = .sentences
+        text.keyboardType = .alphabet
+        text.contentInset = .zero
+        text.font = UIFont.systemFont(ofSize:28, weight:.light)
+        text.textContainerInset = UIEdgeInsets(top:12, left:12, bottom:12, right:12)
+        text.text = presenter.strategyText.text
+        view.addSubview(text)
         self.text = text
-        self.view.addSubview(text)
         
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image:#imageLiteral(resourceName: "assetDone.pdf"), style:UIBarButtonItem.Style.plain,
-                                                                   target:self, action:#selector(self.save))]
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image:#imageLiteral(resourceName: "assetDone.pdf"), style:.plain, target:self, action:#selector(save))]
         
-        if self.presenter.infoSource != nil {
-            self.navigationItem.rightBarButtonItems!.append(
-                UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                                action:#selector(self.presenter.info)))
+        if presenter.infoSource != nil {
+            navigationItem.rightBarButtonItems!.append(
+                UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:.plain, target:presenter, action:#selector(presenter.info)))
         }
         
-        if self.presenter.strategyDelete == nil {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem:UIBarButtonItem.SystemItem.cancel, target:self.presenter,
-                action:#selector(self.presenter.cancel))
+        if presenter.strategyDelete == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem:.cancel, target:presenter, action:#selector(presenter.cancel))
         } else {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem:UIBarButtonItem.SystemItem.stop, target:self.presenter,
-                action:#selector(self.presenter.delete))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem:.stop, target:presenter, action:#selector(presenter.delete))
         }
     }
     
     private func layoutOutlets() {
         if #available(iOS 11.0, *) {
-            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
-            self.text.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
-            self.text.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-            self.layoutBottom = self.text.bottomAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.bottomAnchor)
+            navigationItem.largeTitleDisplayMode = .always
+            text.contentInsetAdjustmentBehavior = .never
+            text.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
+            layoutBottom = text.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor)
         } else {
-            self.text.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-            self.layoutBottom = self.text.bottomAnchor.constraint(equalTo:self.view.bottomAnchor)
+            text.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+            layoutBottom = text.bottomAnchor.constraint(equalTo:view.bottomAnchor)
         }
-        self.text.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.text.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        self.layoutBottom.isActive = true
+        text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        layoutBottom.isActive = true
     }
     
     @objc private func save() {
-        self.presenter.save(text:self.text.text)
+        presenter.save(text:text.text)
     }
     
     private func keyboardChanged(notification:Notification) {
-        self.layoutBottom?.constant = self.keyboardHeightFrom(notification:notification)
-        UIView.animate(withDuration:self.animationDurationFrom(notification:notification)) { [weak self] in
+        layoutBottom?.constant = keyboardHeightFrom(notification:notification)
+        UIView.animate(withDuration:animationDurationFrom(notification:notification)) { [weak self] in
             self?.view.layoutIfNeeded()
         }
     }
     
     private func keyboardHeightFrom(notification:Notification) -> CGFloat {
-        let rect:CGRect = self.keyboardRectFrom(notification:notification)
-        let height:CGFloat = self.view.bounds.height
+        let rect = keyboardRectFrom(notification:notification)
+        let height = view.bounds.height
         if rect.minY < height {
             return -rect.height
         }
@@ -111,22 +105,17 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     
     private func keyboardRectFrom(notification:Notification) -> CGRect {
         guard
-            let userInfo:[AnyHashable:Any] = notification.userInfo,
-            let frameValue:NSValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        else { return CGRect.zero }
+            let userInfo = notification.userInfo,
+            let frameValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        else { return .zero }
         return frameValue.cgRectValue
     }
     
     private func animationDurationFrom(notification:Notification) -> TimeInterval {
         guard
-            let userInfo:[AnyHashable:Any] = notification.userInfo,
-            let duration:NSNumber = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
+            let userInfo = notification.userInfo,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
         else { return 0 }
         return duration.doubleValue
     }
-}
-
-private struct Constants {
-    static let font:CGFloat = 28.0
-    static let insets:CGFloat = 12.0
 }

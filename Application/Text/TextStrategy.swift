@@ -10,7 +10,7 @@ protocol TextStrategy {
 
 extension TextStrategy {
     func validate(text:String) -> String {
-        var text:String = text
+        var text = text
         if text.isEmpty || text == " " {
             text = "-"
         }

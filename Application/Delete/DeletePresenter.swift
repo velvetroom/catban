@@ -9,7 +9,7 @@ class DeletePresenter:Presenter {
     required init() { }
     
     @objc func cancel() {
-        Application.router.dismiss(animated:true, completion:nil)
+        Application.router.dismiss(animated:true)
     }
     
     @objc func delete() {

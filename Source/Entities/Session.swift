@@ -1,16 +1,13 @@
 import Foundation
 
 public class Session:Codable {
-    public internal(set) var boards:[String:Board]
-    public var cardsFont:Int
-    public var defaultColumns:Bool
+    public internal(set) var boards:[String:Board] = [:]
+    public var cardsFont:Int = Session.cardsFont
+    public var defaultColumns = true
     static let cardsFont:Int = 14
     
     public required init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy:CodingKeys.self)
-        boards = [:]
-        cardsFont = 0
-        defaultColumns = true
         decodeBoards(values:values)
         decodeCardsFont(values:values)
         decodeDefaultColumns(values:values)
@@ -23,11 +20,7 @@ public class Session:Codable {
         try container.encode(defaultColumns, forKey:.defaultColumns)
     }
     
-    init() {
-        boards = [:]
-        cardsFont = Session.cardsFont
-        defaultColumns = true
-    }
+    init() { }
     
     private func decodeBoards(values:KeyedDecodingContainer<CodingKeys>) {
         let keys:[String]

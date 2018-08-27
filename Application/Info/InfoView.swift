@@ -50,7 +50,7 @@ class InfoView<I:InfoInteractor>:View<InfoPresenter<I>> {
         text.showsHorizontalScrollIndicator = false
         text.isEditable = false
         text.contentInset = .zero
-        text.textContainerInset = UIEdgeInsets(top:12, left:12, bottom:12, right:12)
+        text.textContainerInset = UIEdgeInsets(top:24, left:12, bottom:24, right:12)
         view.addSubview(text)
         self.text = text
         
@@ -71,10 +71,10 @@ class InfoView<I:InfoInteractor>:View<InfoPresenter<I>> {
         blur.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         blur.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
-        self.back.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-        self.back.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
-        self.back.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        self.back.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        back.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+        back.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        back.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        back.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
         base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:15).isActive = true
         base.rightAnchor.constraint(equalTo:view.rightAnchor,constant:-15).isActive = true

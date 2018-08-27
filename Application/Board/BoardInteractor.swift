@@ -5,18 +5,14 @@ import Catban
 class BoardInteractor:Interactor, InfoInteractor {    
     weak var delegate:InteractorDelegate?
     var board:Board!
-    var identifier:String
+    var identifier = String()
     var cardsFont:Int { return library.cardsFont }
     var boardName:String { return board.text }
     var boardUrl:String { return library.url(identifier:identifier) }
-    private let library:Library
-    private let report:Report
+    private let library = Factory.makeLibrary()
+    private let report = Report()
     
-    required init() {
-        library = Factory.makeLibrary()
-        report = Report()
-        identifier = String()
-    }
+    required init() { }
     
     func detach(card:Card, column:Column) {
         column.delete(card:card)

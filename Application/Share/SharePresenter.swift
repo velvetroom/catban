@@ -5,32 +5,34 @@ import QRhero
 class SharePresenter:Presenter {
     weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
-    private let qrHero:QRhero
+    private let qrHero = QRhero()
+    private static let top:CGFloat = 125
+    private static let margin:CGFloat = 45
+    private static let logo:CGFloat = 50
+    private static let logoMargin:CGFloat = 20
     
-    required init() {
-        self.qrHero = QRhero()
-    }
+    required init() { }
     
     @objc func done() {
-        Application.router.dismiss(animated:true, completion:nil)
+        Application.router.dismiss(animated:true)
     }
     
     func send(image:UIImage) {
-        guard let url:URL = self.prepare(image:image) else { return }
-        let view:UIActivityViewController = UIActivityViewController(activityItems:[url], applicationActivities:nil)
-        if let popover:UIPopoverPresentationController = view.popoverPresentationController {
+        guard let url = prepare(image:image) else { return }
+        let view = UIActivityViewController(activityItems:[url], applicationActivities:nil)
+        if let popover = view.popoverPresentationController {
             popover.sourceView = Application.router.view
-            popover.sourceRect = CGRect.zero
-            popover.permittedArrowDirections = UIPopoverArrowDirection.any
+            popover.sourceRect = .zero
+            popover.permittedArrowDirections = .any
         }
         Application.router.dismiss(animated:true) {
-            Application.router.present(view, animated:true, completion:nil)
+            Application.router.present(view, animated:true)
         }
     }
     
     func didLoad() {
-        qrHero.write(content:self.interactor.boardUrl) { [weak self] (image) in
-            var viewModel:ShareViewModel = ShareViewModel()
+        qrHero.write(content:interactor.boardUrl) { [weak self] (image) in
+            var viewModel = ShareViewModel()
             viewModel.image = image
             self?.viewModels.update(viewModel:viewModel)
         }
@@ -38,61 +40,47 @@ class SharePresenter:Presenter {
     
     private func prepare(image:UIImage) -> URL? {
         guard
-            let cg:CGImage = image.cgImage,
-            let image:UIImage = self.decorate(code:cg)
+            let cg = image.cgImage,
+            let image = decorate(code:cg)
         else { return nil }
-        return self.temporalUrl(image:image)
+        return temporalUrl(image:image)
     }
     
     private func decorate(code:CGImage) -> UIImage? {
-        let size:CGSize = CGSize(
-            width:CGFloat(code.width) + Constants.margin + Constants.margin,
-            height:CGFloat(code.height) + Constants.top + Constants.margin)
+        let size = CGSize(width:CGFloat(code.width) + SharePresenter.margin + SharePresenter.margin,
+                          height:CGFloat(code.height) + SharePresenter.top + SharePresenter.margin)
         UIGraphicsBeginImageContext(size)
-        var image:UIImage?
-        if let context:CGContext = UIGraphicsGetCurrentContext() {
-            NSAttributedString(string:self.interactor.board.text, attributes:[
-                NSAttributedString.Key.font:UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light),
-                NSAttributedString.Key.foregroundColor:UIColor.black]).draw(in:
-                CGRect(x:Constants.margin + Constants.logo + Constants.logoMargin,
-                       y:size.height - Constants.logo - Constants.logoMargin,
-                       width:CGFloat(code.width), height:Constants.logo))
-            context.translateBy(x:0.0, y:size.height)
-            context.scaleBy(x:1.0, y:-1.0)
-            context.draw(#imageLiteral(resourceName: "assetLogoSmall.pdf").cgImage!, in:
-                CGRect(x:Constants.margin + 6.0, y:Constants.margin, width:Constants.logo, height:Constants.logo))
-            context.draw(code, in:CGRect(x:Constants.margin, y:Constants.top,
-                                         width:CGFloat(code.width), height:CGFloat(code.height)))
-            if let cg:CGImage = context.makeImage() {
-                image = UIImage(cgImage:cg)
-            }
-        }
+        writeName(code:code, size:size)
+        UIGraphicsGetCurrentContext()!.translateBy(x:0, y:size.height)
+        UIGraphicsGetCurrentContext()!.scaleBy(x:1, y:-1)
+        drawLogo()
+        draw(code:code)
         UIGraphicsEndImageContext()
-        return image
+        return UIImage(cgImage:UIGraphicsGetCurrentContext()!.makeImage()!)
+    }
+    
+    private func writeName(code:CGImage, size:CGSize) {
+        let rect = CGRect(x:SharePresenter.margin + SharePresenter.logo + SharePresenter.logoMargin, y:size.height -
+            SharePresenter.logo - SharePresenter.logoMargin, width:CGFloat(code.width), height:SharePresenter.logo)
+        NSAttributedString(string:interactor.board.text, attributes:[.font:UIFont.systemFont(ofSize:20, weight:.light),
+                                                                     .foregroundColor:UIColor.black]).draw(in:rect)
+    }
+    
+    private func drawLogo() {
+        let rect = CGRect(x:SharePresenter.margin + 6.0, y:SharePresenter.margin, width:SharePresenter.logo,
+                          height:SharePresenter.logo)
+        UIGraphicsGetCurrentContext()!.draw(#imageLiteral(resourceName: "assetLogoSmall.pdf").cgImage!, in:rect)
+    }
+    
+    private func draw(code:CGImage) {
+        let rect = CGRect(x:SharePresenter.margin, y:SharePresenter.top, width:CGFloat(code.width),
+                          height:CGFloat(code.height))
+        UIGraphicsGetCurrentContext()!.draw(code, in:rect)
     }
     
     func temporalUrl(image:UIImage) -> URL? {
-        let url:URL = URL(fileURLWithPath:NSTemporaryDirectory()).appendingPathComponent(Constants.name)
-        if let data:Data = image.jpegData(compressionQuality:Constants.compression) {
-            do {
-                try data.write(to:url, options:Data.WritingOptions.atomicWrite)
-                return url
-            } catch { }
-        }
-        return nil
+        let url = URL(fileURLWithPath:NSTemporaryDirectory()).appendingPathComponent("Catban.jpeg")
+        do { try image.jpegData(compressionQuality:1)!.write(to:url, options:.atomicWrite) } catch { }
+        return url
     }
-}
-
-private struct Constants {
-    static let name:String = "Catban.jpeg"
-    static let top:CGFloat = 125.0
-    static let margin:CGFloat = 45.0
-    static let compression:CGFloat = 1.0
-    static let logo:CGFloat = 50.0
-    static let logoMargin:CGFloat = 20.0
-    static let font:CGFloat = 20.0
-}
-
-struct ShareConstants {
-    static let prefix:String = "iturbide.catban."
 }

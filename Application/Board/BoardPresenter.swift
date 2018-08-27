@@ -5,11 +5,9 @@ import Catban
 class BoardPresenter:Presenter {
     var interactor:BoardInteractor!
     var viewModels:ViewModels!
-    private(set) var state:BoardState
+    private(set) var state:BoardState = BoardStateDefault()
     
-    required init() {
-        state = BoardStateDefault()
-    }
+    required init() { }
     
     func detach(item:BoardCardView) {
         interactor.detach(card:item.card, column:item.column)

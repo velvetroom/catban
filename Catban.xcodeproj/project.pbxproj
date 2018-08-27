@@ -478,8 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */,
-				DA4C6548211DD58A00ECAD21 /* ShareView.swift */,
 				DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */,
+				DA4C6548211DD58A00ECAD21 /* ShareView.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";

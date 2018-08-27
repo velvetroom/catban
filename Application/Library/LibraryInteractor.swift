@@ -6,12 +6,10 @@ import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     weak var delegate:InteractorDelegate?
-    let library:Library
-    private let report:Report
+    let library = Factory.makeLibrary()
+    private let report = Report()
     
     required init() {
-        library = Factory.makeLibrary()
-        report = Report()
         library.delegate = self
     }
     

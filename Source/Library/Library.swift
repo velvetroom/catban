@@ -15,24 +15,14 @@ public class Library {
         session.defaultColumns = newValue
         saveSession()
     } }
+    var session = Session()
+    var cache = Factory.makeCache()
+    var database = Factory.makeDatabase()
+    var state:LibraryStateProtocol = Library.stateDefault
+    let queue = DispatchQueue(label:Library.prefix, qos:.background, target:.global(qos:.background))
     static let stateDefault = LibraryStateDefault()
     static let stateReady = LibraryStateReady()
     private static let prefix = "iturbide.catban."
-    
-    weak var state:LibraryStateProtocol!
-    var session:Session
-    var cache:CacheService
-    var database:DatabaseService
-    let queue:DispatchQueue
-    
-    init() {
-        state = Library.stateDefault
-        session = Session()
-        cache = Factory.makeCache()
-        database = Factory.makeDatabase()
-        queue = DispatchQueue(label:Library.prefix, qos:.background, attributes:[], autoreleaseFrequency:.inherit,
-                              target:.global(qos:.background))
-    }
     
     public func loadBoards() throws {
         try state.loadBoards(context:self)

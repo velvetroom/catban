@@ -8,9 +8,6 @@ class LoadingView:UIView {
         circle.fillColor = tintColor.cgColor
         pulse.strokeColor = tintColor.cgColor
     } }
-    private static let radiusKey = "transform.scale"
-    private static let alphaKey = "opacity"
-    private static let animationKey = "animation"
     private static let size:CGFloat = 52
     private static let circleRadius:CGFloat = 10
     private static let pulseMiddleRadius:CGFloat = 1.4
@@ -50,14 +47,14 @@ class LoadingView:UIView {
         groupAnimation.repeatCount = .infinity
         groupAnimation.isRemovedOnCompletion = false
         groupAnimation.fillMode = .forwards
-        pulse.add(groupAnimation, forKey:LoadingView.animationKey)
+        pulse.add(groupAnimation, forKey:"animation")
     }
     
     required init?(coder:NSCoder) { return nil }
     override var intrinsicContentSize:CGSize { return CGSize(width:LoadingView.size, height:LoadingView.size) }
     
     private func animateRadiusPulse() -> CAAnimation {
-        let animation = CABasicAnimation(keyPath:LoadingView.radiusKey)
+        let animation = CABasicAnimation(keyPath:"transform.scale")
         animation.duration = LoadingView.animationPulse
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 1
@@ -66,7 +63,7 @@ class LoadingView:UIView {
     }
     
     private func animateRadiusFade() -> CAAnimation {
-        let animation = CABasicAnimation(keyPath:LoadingView.radiusKey)
+        let animation = CABasicAnimation(keyPath:"transform.scale")
         animation.duration = LoadingView.animationFade
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = LoadingView.pulseMiddleRadius
@@ -76,7 +73,7 @@ class LoadingView:UIView {
     }
     
     private func animateAlpha() -> CAAnimation {
-        let animation = CABasicAnimation(keyPath:LoadingView.alphaKey)
+        let animation = CABasicAnimation(keyPath:"opacity")
         animation.duration = LoadingView.animationFade
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 0.8

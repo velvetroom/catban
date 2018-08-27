@@ -10,23 +10,12 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     weak var progress:UIProgressView!
     weak var stack:BoardStackView!
     weak var layoutReportTop:NSLayoutConstraint!
-    let drawer:BoardDrawer
-    let layouter:BoardLayouter
-    private var reportY:CGFloat
+    let drawer = BoardDrawer()
+    let layouter = BoardLayouter()
+    private var reportY:CGFloat = 0
     private static let reportHeight:CGFloat = 380
     private static let reportTop:CGFloat = -75
     private static let handleHeight:CGFloat = 3
-    
-    required init() {
-        reportY = 0
-        drawer = BoardDrawer()
-        layouter = BoardLayouter()
-        super.init()
-        drawer.view = self
-        layouter.view = self
-    }
-    
-    required init?(coder:NSCoder) { return nil }
     
     @objc func dragCard(pan:UIPanGestureRecognizer) {
         let view = pan.view as! BoardCardView
@@ -63,6 +52,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
     }
     
     override func viewDidLoad() {
+        drawer.view = self
+        layouter.view = self
         makeOutlets()
         layoutOutlets()
         configureViewModel()

@@ -1,19 +1,15 @@
 import UIKit
 
 class BoardStackView:UIView {
-    private var itemX:CGFloat
-    private var itemY:CGFloat
-    private var width:CGFloat
+    private var itemX:CGFloat = 0
+    private var itemY:CGFloat = 0
+    private var width:CGFloat = 0
     private var height:CGFloat = 0
     private static let width:CGFloat = 35
     private static let height:CGFloat = 3
     private static let spacing:CGFloat = 10
     
     init() {
-        itemX = 0
-        itemY = 0
-        width = 0
-        height = 0
         super.init(frame:.zero)
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false

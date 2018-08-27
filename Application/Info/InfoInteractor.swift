@@ -7,6 +7,6 @@ protocol InfoInteractor:Interactor {
 
 extension InfoInteractor {
     func dismiss() {
-        Application.router.dismiss(animated:true, completion:nil)
+        Application.router.dismiss(animated:true)
     }
 }

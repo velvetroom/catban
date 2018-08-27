@@ -5,13 +5,10 @@ import MarkdownHero
 class InfoPresenter<I:InfoInteractor>:Presenter {
     var interactor:I!
     var viewModels:ViewModels!
-    var source:String
-    private var parser:Parser
+    var source = String()
+    private var parser = Parser()
     
-    required init() {
-        source = String()
-        parser = Parser()
-    }
+    required init() { }
     
     @objc func dismiss() {
         interactor.dismiss()

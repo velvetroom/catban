@@ -11,7 +11,7 @@ class EditPresenter:Presenter {
     required init() { }
     
     func save(text:String) {
-        self.strategyText.save(interactor:self.interactor, text:text)
+        strategyText.save(interactor:interactor, text:text)
         DispatchQueue.main.async { Application.router.popViewController(animated:true) }
     }
     
@@ -20,16 +20,16 @@ class EditPresenter:Presenter {
     }
     
     @objc func delete() {
-        let view:DeleteView = DeleteView(presenter:DeletePresenter())
-        view.presenter.interactor = self.interactor
-        view.presenter.strategy = self.strategyDelete
-        Application.router.present(view, animated:true, completion:nil)
+        let view = DeleteView(presenter:DeletePresenter())
+        view.presenter.interactor = interactor
+        view.presenter.strategy = strategyDelete
+        Application.router.present(view, animated:true)
     }
     
     @objc func info() {
-        let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
-        view.presenter.interactor = self.interactor
-        view.presenter.source = self.infoSource!
-        Application.router.present(view, animated:true, completion:nil)
+        let view = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        view.presenter.interactor = interactor
+        view.presenter.source = infoSource!
+        Application.router.present(view, animated:true)
     }
 }

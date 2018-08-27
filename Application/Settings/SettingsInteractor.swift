@@ -4,9 +4,7 @@ import Catban
 
 class SettingsInteractor:Interactor {
     weak var delegate:InteractorDelegate?
-    let library:Library
+    let library = Factory.makeLibrary()
     
-    required init() {
-        library = Factory.makeLibrary()
-    }
+    required init() { }
 }

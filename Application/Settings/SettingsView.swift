@@ -12,18 +12,11 @@ class SettingsView:View<SettingsPresenter> {
     weak var displayFont:UILabel!
     weak var columnsSwitch:UISwitch!
     weak var fontSlider:UISlider!
-    private let parser:Parser
+    private let parser = Parser()
     private static let columnsHeight:CGFloat = 115
     private static let fontHeight:CGFloat = 120
     private static let spacing:CGFloat = 1
     private static let margin:CGFloat = 17
-    
-    required init() {
-        parser = Parser()
-        super.init()
-    }
-    
-    required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {
         makeOutlets()

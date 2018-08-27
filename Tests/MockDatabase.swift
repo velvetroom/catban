@@ -6,11 +6,9 @@ class MockDatabase:DatabaseService {
     var onLoad:(() -> Void)?
     var onCreate:(() -> Void)?
     var onSave:(() -> Void)?
-    var board:Board
+    var board = Board()
     
-    required init() {
-        board = Board()
-    }
+    required init() { }
     
     func load(identifier:String, board:@escaping((Board) -> Void), error:@escaping(() -> Void)) {
         onLoad?()

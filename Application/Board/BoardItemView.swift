@@ -11,10 +11,9 @@ class BoardItemView:UIControl {
     weak var right:BoardItemView?
     var column:Column!
     var card:Card!
-    var point:CGPoint
+    var point = CGPoint.zero
     
     init() {
-        point = .zero
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         makeOutlets()

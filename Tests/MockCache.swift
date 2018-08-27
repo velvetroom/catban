@@ -4,13 +4,10 @@ import Foundation
 class MockCache:CacheService {
     var error:Error?
     var onSaveSession:(() -> Void)?
-    var session:Session
-    var board:Board
+    var session = Session()
+    var board = Board()
     
-    required init() {
-        session = Session()
-        board = Board()
-    }
+    required init() { }
     
     func loadSession() throws -> Session {
         if let error = self.error {

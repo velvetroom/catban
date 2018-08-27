@@ -9,17 +9,11 @@ class BoardDrawer {
         ofSize:CGFloat(view.presenter.interactor.cardsFont), weight:.ultraLight) } }
     
     private weak var nextItem:BoardItemView?
-    private var parser:Parser
-    private let options:NSStringDrawingOptions
-    private let size:CGSize
+    private var parser = Parser()
+    private let options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
+    private let size = CGSize(width:BoardDrawer.columnWidth, height:10000)
     private static let columnWidth:CGFloat = 130
     private static let new:CGFloat = 30
-    
-    init() {
-        parser = Parser()
-        options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
-        size = CGSize(width:BoardDrawer.columnWidth, height:10000)
-    }
     
     func draw() {
         clearContent()

@@ -1,15 +1,9 @@
 import Foundation
 
 public class Board:TextProtocol, Codable {
-    public var text:String
-    public private(set) var columns:[Column]
-    var syncstamp:Date
-    
-    init() {
-        text = String()
-        syncstamp = Date()
-        columns = []
-    }
+    public var text = String()
+    public private(set) var columns:[Column] = []
+    var syncstamp = Date()
     
     public func addColumn(text:String) {
         let column = Column()

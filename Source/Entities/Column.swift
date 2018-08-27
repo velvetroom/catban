@@ -1,13 +1,8 @@
 import Foundation
 
 public class Column:Codable, TextProtocol {
-    public var text:String
-    public private(set) var cards:[Card]
-    
-    init() {
-        text = String()
-        cards = []
-    }
+    public var text = String()
+    public private(set) var cards:[Card] = []
     
     public func addCard(text:String) {
         let card = Card()

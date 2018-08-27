@@ -1,9 +1,5 @@
 import Foundation
 
 public class Card:Codable, TextProtocol {
-    public var text:String
-    
-    init() {
-        text = String()
-    }
+    public var text = String()
 }

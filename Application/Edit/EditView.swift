@@ -57,7 +57,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
                 UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:.plain, target:presenter, action:#selector(presenter.info)))
         }
         
-        if presenter.strategyDelete == nil {
+        if presenter.editDelete == nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(
                 barButtonSystemItem:.cancel, target:presenter, action:#selector(presenter.cancel))
         } else {

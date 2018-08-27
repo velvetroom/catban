@@ -46,12 +46,8 @@
 		DA4C6514211DD57A00ECAD21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA4C650C211DD57A00ECAD21 /* InfoPlist.strings */; };
 		DA4C6517211DD57A00ECAD21 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4C6511211DD57A00ECAD21 /* assets.xcassets */; };
 		DA4C6518211DD57A00ECAD21 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA4C6512211DD57A00ECAD21 /* brand.xcassets */; };
-		DA4C654A211DD58A00ECAD21 /* DeleteStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C651B211DD58A00ECAD21 /* DeleteStrategy.swift */; };
 		DA4C654B211DD58A00ECAD21 /* DeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C651C211DD58A00ECAD21 /* DeletePresenter.swift */; };
-		DA4C654C211DD58A00ECAD21 /* DeleteBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C651D211DD58A00ECAD21 /* DeleteBoard.swift */; };
-		DA4C654D211DD58A00ECAD21 /* DeleteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C651E211DD58A00ECAD21 /* DeleteCard.swift */; };
 		DA4C654E211DD58A00ECAD21 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C651F211DD58A00ECAD21 /* DeleteView.swift */; };
-		DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6520211DD58A00ECAD21 /* DeleteColumn.swift */; };
 		DA4C6550211DD58A00ECAD21 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6522211DD58A00ECAD21 /* BoardView.swift */; };
 		DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */; };
 		DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */; };
@@ -93,6 +89,7 @@
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
 		DAC3670D21342A05009DD113 /* EditText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670C21342A05009DD113 /* EditText.swift */; };
+		DAC3670F2134316F009DD113 /* EditDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670E2134316F009DD113 /* EditDelete.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,12 +159,8 @@
 		DA4C650D211DD57A00ECAD21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA4C6511211DD57A00ECAD21 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DA4C6512211DD57A00ECAD21 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
-		DA4C651B211DD58A00ECAD21 /* DeleteStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStrategy.swift; sourceTree = "<group>"; };
 		DA4C651C211DD58A00ECAD21 /* DeletePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePresenter.swift; sourceTree = "<group>"; };
-		DA4C651D211DD58A00ECAD21 /* DeleteBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteBoard.swift; sourceTree = "<group>"; };
-		DA4C651E211DD58A00ECAD21 /* DeleteCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCard.swift; sourceTree = "<group>"; };
 		DA4C651F211DD58A00ECAD21 /* DeleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
-		DA4C6520211DD58A00ECAD21 /* DeleteColumn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteColumn.swift; sourceTree = "<group>"; };
 		DA4C6522211DD58A00ECAD21 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDrawer.swift; sourceTree = "<group>"; };
 		DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
@@ -208,6 +201,7 @@
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		DAC3670C21342A05009DD113 /* EditText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditText.swift; sourceTree = "<group>"; };
+		DAC3670E2134316F009DD113 /* EditDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDelete.swift; sourceTree = "<group>"; };
 		E1A186EED2CF0D527F6E84AD /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
 		EF2AD30BA7F2E2A002D78D36 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -382,11 +376,7 @@
 		DA4C651A211DD58A00ECAD21 /* Delete */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C651B211DD58A00ECAD21 /* DeleteStrategy.swift */,
 				DA4C651C211DD58A00ECAD21 /* DeletePresenter.swift */,
-				DA4C651D211DD58A00ECAD21 /* DeleteBoard.swift */,
-				DA4C651E211DD58A00ECAD21 /* DeleteCard.swift */,
-				DA4C6520211DD58A00ECAD21 /* DeleteColumn.swift */,
 				DA4C651F211DD58A00ECAD21 /* DeleteView.swift */,
 			);
 			path = Delete;
@@ -444,6 +434,7 @@
 				DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */,
 				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
 				DAC3670C21342A05009DD113 /* EditText.swift */,
+				DAC3670E2134316F009DD113 /* EditDelete.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -725,8 +716,7 @@
 				DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */,
 				DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */,
 				DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */,
-				DA4C654D211DD58A00ECAD21 /* DeleteCard.swift in Sources */,
-				DA4C654A211DD58A00ECAD21 /* DeleteStrategy.swift in Sources */,
+				DAC3670F2134316F009DD113 /* EditDelete.swift in Sources */,
 				DAC3670D21342A05009DD113 /* EditText.swift in Sources */,
 				DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */,
 				DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */,
@@ -738,11 +728,9 @@
 				DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */,
 				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
 				DA8D1297213161800019B2C2 /* Popup.swift in Sources */,
-				DA4C654C211DD58A00ECAD21 /* DeleteBoard.swift in Sources */,
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */,
-				DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */,
 				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
 				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,

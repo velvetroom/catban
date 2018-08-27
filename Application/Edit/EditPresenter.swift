@@ -5,9 +5,9 @@ import Catban
 class EditPresenter:Presenter {
     weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
-    var strategyDelete:DeleteStrategy?
-    var infoSource:String?
     var editText:EditText!
+    var editDelete:EditDelete?
+    var infoSource:String?
     
     required init() { }
     
@@ -36,7 +36,7 @@ class EditPresenter:Presenter {
     @objc func delete() {
         let view = DeleteView(presenter:DeletePresenter())
         view.presenter.interactor = interactor
-        view.presenter.strategy = strategyDelete
+        view.presenter.edit = editDelete
         Application.router.present(view, animated:true)
     }
     

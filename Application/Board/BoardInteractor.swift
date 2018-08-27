@@ -45,7 +45,10 @@ class BoardInteractor:Interactor, InfoInteractor {
         text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
         text.subject = board
         text.save = EditPresenter.saveTextChange
-        edit(text:text, delete:DeleteBoard())
+        var delete = EditDelete()
+        delete.title = NSLocalizedString("BoardInteractor.deleteBoard", comment:String())
+        delete.confirm = DeletePresenter.confirmBoard
+        edit(text:text, delete:delete)
     }
     
     func newColumn() {
@@ -60,8 +63,10 @@ class BoardInteractor:Interactor, InfoInteractor {
         text.title = NSLocalizedString("BoardInteractor.columnTitle", comment:String())
         text.subject = column
         text.save = EditPresenter.saveTextChange
-        let delete = DeleteColumn()
+        var delete = EditDelete()
+        delete.title = NSLocalizedString("BoardInteractor.deleteColumn", comment:String())
         delete.column = column
+        delete.confirm = DeletePresenter.confirmColumn
         edit(text:text, delete:delete)
     }
     
@@ -78,9 +83,11 @@ class BoardInteractor:Interactor, InfoInteractor {
         text.title = column.text
         text.subject = card
         text.save = EditPresenter.saveTextChange
-        let delete = DeleteCard()
+        var delete = EditDelete()
+        delete.title = NSLocalizedString("BoardInteractor.deleteCard", comment:String())
         delete.column = column
         delete.card = card
+        delete.confirm = DeletePresenter.confirmCard
         edit(text:text, delete:delete, infoSource:"InfoCard")
     }
     
@@ -92,10 +99,10 @@ class BoardInteractor:Interactor, InfoInteractor {
         return report.makeStats(board:board)
     }
     
-    private func edit(text:EditText, delete:DeleteStrategy? = nil, infoSource:String? = nil) {
+    private func edit(text:EditText, delete:EditDelete? = nil, infoSource:String? = nil) {
         let view = EditView(presenter:EditPresenter())
         view.presenter.editText = text
-        view.presenter.strategyDelete = delete
+        view.presenter.editDelete = delete
         view.presenter.interactor = self
         view.presenter.infoSource = infoSource
         Application.router.pushViewController(view, animated:true)

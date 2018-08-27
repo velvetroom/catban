@@ -46,7 +46,7 @@ class DeleteView:View<DeletePresenter> {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize:16, weight:.regular)
-        label.text = presenter.strategy.title
+        label.text = presenter.edit.title
         label.textAlignment = .center
         view.addSubview(label)
         self.label = label

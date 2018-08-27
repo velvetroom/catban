@@ -5,7 +5,7 @@ class DeleteBoard:DeleteStrategy {
     let title:String
     
     init() {
-        self.title = NSLocalizedString("DeleteBoard.title", comment:String())
+        title = NSLocalizedString("DeleteBoard.title", comment:String())
     }
     
     func delete(interactor:BoardInteractor) {

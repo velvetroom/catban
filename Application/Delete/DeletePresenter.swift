@@ -13,7 +13,7 @@ class DeletePresenter:Presenter {
     }
     
     @objc func delete() {
-        self.strategy.delete(interactor:self.interactor)
+        strategy.delete(interactor:interactor)
         Application.router.dismiss(animated:true) {
             Application.router.popViewController(animated:true)
         }

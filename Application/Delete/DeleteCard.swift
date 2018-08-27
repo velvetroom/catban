@@ -7,11 +7,11 @@ class DeleteCard:DeleteStrategy {
     let title:String
     
     init() {
-        self.title = NSLocalizedString("DeleteCard.title", comment:String())
+        title = NSLocalizedString("DeleteCard.title", comment:String())
     }
     
     func delete(interactor:BoardInteractor) {
-        self.column.delete(card:self.card)
+        column.delete(card:card)
         interactor.save()
     }
 }

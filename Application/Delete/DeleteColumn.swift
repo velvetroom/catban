@@ -6,11 +6,11 @@ class DeleteColumn:DeleteStrategy {
     let title:String
     
     init() {
-        self.title = NSLocalizedString("DeleteColumn.title", comment:String())
+        title = NSLocalizedString("DeleteColumn.title", comment:String())
     }
     
     func delete(interactor:BoardInteractor) {
-        interactor.board.delete(column:self.column)
+        interactor.board.delete(column:column)
         interactor.save()
     }
 }

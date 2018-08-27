@@ -404,8 +404,8 @@
 				DA4C651C211DD58A00ECAD21 /* DeletePresenter.swift */,
 				DA4C651D211DD58A00ECAD21 /* DeleteBoard.swift */,
 				DA4C651E211DD58A00ECAD21 /* DeleteCard.swift */,
-				DA4C651F211DD58A00ECAD21 /* DeleteView.swift */,
 				DA4C6520211DD58A00ECAD21 /* DeleteColumn.swift */,
+				DA4C651F211DD58A00ECAD21 /* DeleteView.swift */,
 			);
 			path = Delete;
 			sourceTree = "<group>";

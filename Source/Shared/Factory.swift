@@ -6,19 +6,11 @@ public class Factory {
     private static var library:Library!
     
     public class func makeLibrary() -> Library {
-        if library == nil {
-            library = Library()
-        }
+        if library == nil { library = Library() }
         return library
     }
     
-    class func makeCache() -> CacheService {
-        return cache.init()
-    }
-    
-    class func makeDatabase() -> DatabaseService {
-        return database.init()
-    }
-    
+    class func makeCache() -> CacheService { return cache.init() }
+    class func makeDatabase() -> DatabaseService { return database.init() }
     private init() { }
 }

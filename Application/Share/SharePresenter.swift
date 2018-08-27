@@ -6,10 +6,6 @@ class SharePresenter:Presenter {
     weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
     private let qrHero = QRhero()
-    private static let top:CGFloat = 125
-    private static let margin:CGFloat = 45
-    private static let logo:CGFloat = 50
-    private static let logoMargin:CGFloat = 20
     
     required init() { }
     
@@ -47,35 +43,18 @@ class SharePresenter:Presenter {
     }
     
     private func decorate(code:CGImage) -> UIImage? {
-        let size = CGSize(width:CGFloat(code.width) + SharePresenter.margin + SharePresenter.margin,
-                          height:CGFloat(code.height) + SharePresenter.top + SharePresenter.margin)
+        let size = CGSize(width:CGFloat(code.width) + 90, height:CGFloat(code.height) + 170)
         UIGraphicsBeginImageContext(size)
-        writeName(code:code, size:size)
+        NSAttributedString(string:interactor.board.text, attributes:[
+            .font:UIFont.systemFont(ofSize:40, weight:.bold), .foregroundColor:UIColor.black]).draw(in:
+                CGRect(x:115, y:size.height - 94, width:CGFloat(code.width), height:50))
         UIGraphicsGetCurrentContext()!.translateBy(x:0, y:size.height)
         UIGraphicsGetCurrentContext()!.scaleBy(x:1, y:-1)
-        drawLogo()
-        draw(code:code)
+        UIGraphicsGetCurrentContext()!.draw(#imageLiteral(resourceName: "assetLogoSmall.pdf").cgImage!, in:CGRect(x:51, y:45, width:50, height:50))
+        UIGraphicsGetCurrentContext()!.draw(code, in:CGRect(x:45, y:125, width:CGFloat(code.width), height:CGFloat(code.height)))
+        let image = UIImage(cgImage:UIGraphicsGetCurrentContext()!.makeImage()!)
         UIGraphicsEndImageContext()
-        return UIImage(cgImage:UIGraphicsGetCurrentContext()!.makeImage()!)
-    }
-    
-    private func writeName(code:CGImage, size:CGSize) {
-        let rect = CGRect(x:SharePresenter.margin + SharePresenter.logo + SharePresenter.logoMargin, y:size.height -
-            SharePresenter.logo - SharePresenter.logoMargin, width:CGFloat(code.width), height:SharePresenter.logo)
-        NSAttributedString(string:interactor.board.text, attributes:[.font:UIFont.systemFont(ofSize:20, weight:.light),
-                                                                     .foregroundColor:UIColor.black]).draw(in:rect)
-    }
-    
-    private func drawLogo() {
-        let rect = CGRect(x:SharePresenter.margin + 6.0, y:SharePresenter.margin, width:SharePresenter.logo,
-                          height:SharePresenter.logo)
-        UIGraphicsGetCurrentContext()!.draw(#imageLiteral(resourceName: "assetLogoSmall.pdf").cgImage!, in:rect)
-    }
-    
-    private func draw(code:CGImage) {
-        let rect = CGRect(x:SharePresenter.margin, y:SharePresenter.top, width:CGFloat(code.width),
-                          height:CGFloat(code.height))
-        UIGraphicsGetCurrentContext()!.draw(code, in:rect)
+        return image
     }
     
     func temporalUrl(image:UIImage) -> URL? {

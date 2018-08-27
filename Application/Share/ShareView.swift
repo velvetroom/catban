@@ -36,7 +36,7 @@ class ShareView:View<SharePresenter> {
         let base = UIView()
         base.isUserInteractionEnabled = false
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.backgroundColor = UIColor(white:1, alpha:0.9)
+        base.backgroundColor = .white
         base.layer.cornerRadius = 6
         base.clipsToBounds = true
         view.addSubview(base)

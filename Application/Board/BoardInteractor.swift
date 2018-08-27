@@ -33,14 +33,6 @@ class BoardInteractor:Interactor, InfoInteractor {
         Application.router.present(view, animated:true)
     }
     
-    func edit() {
-        let text = TextChange()
-        text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
-        text.text = board.text
-        text.subject = board
-        edit(text:text, delete:DeleteBoard(), infoSource:nil)
-    }
-    
     func info() {
         let view = InfoView(presenter:InfoPresenter<BoardInteractor>())
         view.presenter.interactor = self
@@ -48,31 +40,44 @@ class BoardInteractor:Interactor, InfoInteractor {
         Application.router.present(view, animated:true)
     }
     
+    func edit() {
+        var text = EditText()
+        text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
+        text.subject = board
+        text.save = EditPresenter.saveTextChange
+        edit(text:text, delete:DeleteBoard())
+    }
+    
     func newColumn() {
-        edit(text:TextCreateColumn(), delete:nil, infoSource:nil)
+        var text = EditText()
+        text.title = NSLocalizedString("BoardInteractor.newColumn", comment:String())
+        text.save = EditPresenter.saveNewColumn
+        edit(text:text)
     }
     
     func editColumn(column:Column) {
-        let text = TextChange()
+        var text = EditText()
         text.title = NSLocalizedString("BoardInteractor.columnTitle", comment:String())
-        text.text = column.text
         text.subject = column
+        text.save = EditPresenter.saveTextChange
         let delete = DeleteColumn()
         delete.column = column
-        edit(text:text, delete:delete, infoSource:nil)
+        edit(text:text, delete:delete)
     }
     
     func newCard(column:Column) {
-        let text = TextCreateCard()
-        text.column = column
-        edit(text:text, delete:nil, infoSource:"InfoCard")
+        var text = EditText()
+        text.title = NSLocalizedString("BoardInteractor.newCard", comment:String())
+        text.other = column
+        text.save = EditPresenter.saveNewCard
+        edit(text:text, infoSource:"InfoCard")
     }
     
     func editCard(column:Column, card:Card) {
-        let text = TextChange()
+        var text = EditText()
         text.title = column.text
-        text.text = card.text
         text.subject = card
+        text.save = EditPresenter.saveTextChange
         let delete = DeleteCard()
         delete.column = column
         delete.card = card
@@ -87,9 +92,9 @@ class BoardInteractor:Interactor, InfoInteractor {
         return report.makeStats(board:board)
     }
     
-    private func edit(text:TextStrategy, delete:DeleteStrategy?, infoSource:String?) {
+    private func edit(text:EditText, delete:DeleteStrategy? = nil, infoSource:String? = nil) {
         let view = EditView(presenter:EditPresenter())
-        view.presenter.strategyText = text
+        view.presenter.editText = text
         view.presenter.strategyDelete = delete
         view.presenter.interactor = self
         view.presenter.infoSource = infoSource

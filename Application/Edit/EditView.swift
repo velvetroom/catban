@@ -5,16 +5,14 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     weak var text:UITextView!
     weak var layoutBottom:NSLayoutConstraint!
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
+    deinit { NotificationCenter.default.removeObserver(self) }
     
     override func viewDidLoad() {
         makeOutlets()
         layoutOutlets()
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = presenter.strategyText.title
+        title = presenter.editText.title
         NotificationCenter.default.addObserver(forName:UIResponder.keyboardWillChangeFrameNotification, object:
             nil, queue:.main) { [weak self] (notification) in self?.keyboardChanged(notification:notification) }
     }
@@ -47,7 +45,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         text.contentInset = .zero
         text.font = UIFont.systemFont(ofSize:28, weight:.light)
         text.textContainerInset = UIEdgeInsets(top:12, left:12, bottom:12, right:12)
-        text.text = presenter.strategyText.text
+        text.text = presenter.editText.subject?.text
         view.addSubview(text)
         self.text = text
         

@@ -69,10 +69,6 @@
 		DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6534211DD58A00ECAD21 /* Application.swift */; };
 		DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6536211DD58A00ECAD21 /* LoadingView.swift */; };
 		DA4C6566211DD58A00ECAD21 /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */; };
-		DA4C6567211DD58A00ECAD21 /* TextCreateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C653D211DD58A00ECAD21 /* TextCreateCard.swift */; };
-		DA4C6568211DD58A00ECAD21 /* TextStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C653E211DD58A00ECAD21 /* TextStrategy.swift */; };
-		DA4C6569211DD58A00ECAD21 /* TextCreateColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */; };
-		DA4C656A211DD58A00ECAD21 /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6540211DD58A00ECAD21 /* TextChange.swift */; };
 		DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6541211DD58A00ECAD21 /* EditView.swift */; };
 		DA4C656D211DD58A00ECAD21 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6544211DD58A00ECAD21 /* Database.swift */; };
 		DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6545211DD58A00ECAD21 /* Cache.swift */; };
@@ -96,6 +92,7 @@
 		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
+		DAC3670D21342A05009DD113 /* EditText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670C21342A05009DD113 /* EditText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,10 +185,6 @@
 		DA4C6534211DD58A00ECAD21 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DA4C6536211DD58A00ECAD21 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
-		DA4C653D211DD58A00ECAD21 /* TextCreateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCreateCard.swift; sourceTree = "<group>"; };
-		DA4C653E211DD58A00ECAD21 /* TextStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStrategy.swift; sourceTree = "<group>"; };
-		DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCreateColumn.swift; sourceTree = "<group>"; };
-		DA4C6540211DD58A00ECAD21 /* TextChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
 		DA4C6541211DD58A00ECAD21 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		DA4C6544211DD58A00ECAD21 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		DA4C6545211DD58A00ECAD21 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
@@ -214,6 +207,7 @@
 		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
+		DAC3670C21342A05009DD113 /* EditText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditText.swift; sourceTree = "<group>"; };
 		E1A186EED2CF0D527F6E84AD /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
 		EF2AD30BA7F2E2A002D78D36 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,17 +272,6 @@
 				DA4C64D2211DD40300ECAD21 /* Tests.xctest */,
 				DA4C64D3211DD40300ECAD21 /* Application.app */,
 			);
-			sourceTree = "<group>";
-		};
-		DA2617742126DED8003A2DE7 /* Text */ = {
-			isa = PBXGroup;
-			children = (
-				DA4C653E211DD58A00ECAD21 /* TextStrategy.swift */,
-				DA4C653D211DD58A00ECAD21 /* TextCreateCard.swift */,
-				DA4C653F211DD58A00ECAD21 /* TextCreateColumn.swift */,
-				DA4C6540211DD58A00ECAD21 /* TextChange.swift */,
-			);
-			path = Text;
 			sourceTree = "<group>";
 		};
 		DA4C64D5211DD4E400ECAD21 /* Configuration */ = {
@@ -389,7 +372,6 @@
 				DA69DCF2212828AD00FE7C90 /* Settings */,
 				DA759E1E2126AB7700E92FD9 /* Info */,
 				DA4C651A211DD58A00ECAD21 /* Delete */,
-				DA2617742126DED8003A2DE7 /* Text */,
 				DA4C653B211DD58A00ECAD21 /* Edit */,
 				DA4C6542211DD58A00ECAD21 /* Services */,
 				DA4C6546211DD58A00ECAD21 /* Share */,
@@ -461,6 +443,7 @@
 			children = (
 				DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */,
 				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
+				DAC3670C21342A05009DD113 /* EditText.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -739,15 +722,14 @@
 				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
-				DA4C6568211DD58A00ECAD21 /* TextStrategy.swift in Sources */,
 				DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */,
 				DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */,
 				DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */,
 				DA4C654D211DD58A00ECAD21 /* DeleteCard.swift in Sources */,
 				DA4C654A211DD58A00ECAD21 /* DeleteStrategy.swift in Sources */,
+				DAC3670D21342A05009DD113 /* EditText.swift in Sources */,
 				DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */,
 				DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */,
-				DA4C6567211DD58A00ECAD21 /* TextCreateCard.swift in Sources */,
 				DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */,
 				DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */,
 				DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */,
@@ -756,12 +738,10 @@
 				DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */,
 				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
 				DA8D1297213161800019B2C2 /* Popup.swift in Sources */,
-				DA4C6569211DD58A00ECAD21 /* TextCreateColumn.swift in Sources */,
 				DA4C654C211DD58A00ECAD21 /* DeleteBoard.swift in Sources */,
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */,
-				DA4C656A211DD58A00ECAD21 /* TextChange.swift in Sources */,
 				DA4C654F211DD58A00ECAD21 /* DeleteColumn.swift in Sources */,
 				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,

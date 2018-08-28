@@ -24,5 +24,5 @@ ShareView.done="Done";
 ShareView.send="Send";
 InfoView.dismiss="Dismiss";
 SettingsView.title="Settings";
-SettingsView.labelColumns="**Default columns**\nAdd the columns\n_To do_, _In progress_ and _Done_\nto new boards";
+SettingsView.labelColumns="**Default columns**\nAdd columns\n_To do_, _In progress_ and _Done_\nto new boards";
 SettingsView.labelFont="**Font size**\nSize of text used in cards";

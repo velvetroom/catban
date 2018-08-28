@@ -45,6 +45,8 @@ class DeleteView:PopupView<DeletePresenter> {
         super.layoutOutlets()
         base.widthAnchor.constraint(equalToConstant:260).isActive = true
         base.heightAnchor.constraint(equalToConstant:130).isActive = true
+        base.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        base.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
         
         label.topAnchor.constraint(equalTo:base.topAnchor, constant:35).isActive = true
         label.centerXAnchor.constraint(equalTo:base.centerXAnchor).isActive = true

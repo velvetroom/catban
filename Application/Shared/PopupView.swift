@@ -38,7 +38,7 @@ class PopupView<P:Presenter>:View<P> {
         let base = UIView()
         base.translatesAutoresizingMaskIntoConstraints = false
         base.backgroundColor = .white
-        base.layer.cornerRadius = 3
+        base.layer.cornerRadius = 5
         base.clipsToBounds = true
         view.addSubview(base)
         self.base = base
@@ -54,8 +54,5 @@ class PopupView<P:Presenter>:View<P> {
         back.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         back.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         back.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        
-        base.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        base.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
     }
 }

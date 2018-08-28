@@ -11,47 +11,44 @@ class BoardItemView:UIControl {
     weak var right:BoardItemView?
     var column:Column!
     var card:Card!
-    var point:CGPoint
+    var point = CGPoint.zero
     
     init() {
-        self.point = CGPoint.zero
-        super.init(frame:CGRect.zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.makeOutlets()
-        self.layoutOutlets()
+        super.init(frame:.zero)
+        translatesAutoresizingMaskIntoConstraints = false
+        makeOutlets()
     }
     
     required init?(coder:NSCoder) { return nil }
-    override var isSelected:Bool { didSet { self.updateState() } }
-    override var isHighlighted:Bool { didSet { self.updateState() } }
+    override var isSelected:Bool { didSet { updateState() } }
+    override var isHighlighted:Bool { didSet { updateState() } }
     func makeOutlets() { }
-    func layoutOutlets() { }
     func showSelected() { }
     func showDefault() { }
     
-    final func dragStart() {
-        self.isSelected = true
-        self.point = CGPoint(x:self.left.constant, y:self.top.constant)
+    func dragStart() {
+        isSelected = true
+        point = CGPoint(x:left.constant, y:top.constant)
     }
     
-    final func dragEnd() {
-        self.isSelected = false
+    func dragEnd() {
+        isSelected = false
     }
     
-    final func drag(point:CGPoint) {
-        self.left.constant = self.point.x + point.x
-        self.top.constant = self.point.y + point.y
+    func drag(point:CGPoint) {
+        left.constant = self.point.x + point.x
+        top.constant = self.point.y + point.y
     }
     
-    final func updateState() {
-        if self.isSelected || self.isHighlighted {
-            self.showSelected()
+    func updateState() {
+        if isSelected || isHighlighted {
+            showSelected()
         } else {
-            self.showDefault()
+            showDefault()
         }
     }
     
-    final func add(target:BoardPresenter, selector:Selector) {
-        self.addTarget(target, action:selector, for:UIControl.Event.touchUpInside)
+    func add(target:BoardPresenter, selector:Selector) {
+        addTarget(target, action:selector, for:.touchUpInside)
     }
 }

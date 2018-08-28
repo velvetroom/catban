@@ -5,34 +5,30 @@ class TestReport:XCTestCase {
     private var report:Report!
     
     override func setUp() {
-        super.setUp()
-        self.report = Report()
+        report = Report()
     }
 
     func testStatsWithColumns() {
-        let stats:ReportStats = self.report.makeStats(board:self.makeBoard())
-        XCTAssertEqual(stats.columns.count, 3, "Should have 3 columns")
-        XCTAssertEqual(2, stats.columns.first, "First column should have 2 cards")
-        XCTAssertEqual(3, stats.columns.last, "Last column should have 3 cards")
+        let stats = report.makeStats(board:makeBoard())
+        XCTAssertEqual(3, stats.columns.count)
+        XCTAssertEqual(2, stats.columns.first)
+        XCTAssertEqual(3, stats.columns.last)
     }
     
     func testStatsWithProgress() {
-        let stats:ReportStats = self.report.makeStats(board:self.makeBoard())
-        XCTAssertEqual(stats.progress, 0.6, "Should have 60% progress")
+        XCTAssertEqual(0.6, report.makeStats(board:makeBoard()).progress)
     }
     
     func testStatsWithCards() {
-        let stats:ReportStats = self.report.makeStats(board:self.makeBoard())
-        XCTAssertEqual(stats.cards, 5, "Should have 5 cards")
+        XCTAssertEqual(5, report.makeStats(board:makeBoard()).cards)
     }
     
     func testLongerColumn() {
-        let stats:ReportStats = self.report.makeStats(board:self.makeBoard())
-        XCTAssertEqual(stats.longerColumn, 3, "Longer column should have 3 cards")
+        XCTAssertEqual(3, report.makeStats(board:makeBoard()).longerColumn)
     }
     
     private func makeBoard() -> Board {
-        let board:Board = Board()
+        let board = Board()
         board.addColumn(text:"First")
         board.addColumn(text:"Second")
         board.addColumn(text:"Third")

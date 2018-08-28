@@ -3,21 +3,15 @@ import Catban
 import CodableHero
 
 class Cache:CacheService {
-    private let codableHero:CodableHero
+    private let codableHero = CodableHero()
     
-    required init() {
-        self.codableHero = CodableHero()
-    }
+    required init() { }
     
     func loadSession() throws -> Session {
-        return try self.codableHero.load(path:Constants.session)
+        return try codableHero.load(path:"Session.catban")
     }
     
     func save(session:Session) {
-        do { try self.codableHero.save(model:session, path:Constants.session) } catch { }
+        do { try codableHero.save(model:session, path:"Session.catban") } catch { }
     }
-}
-
-private struct Constants {
-    static let session:String = "Session.catban"
 }

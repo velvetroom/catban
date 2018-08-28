@@ -1,126 +1,64 @@
 import UIKit
-import CleanArchitecture
 
-class DeleteView:View<DeletePresenter> {
-    weak var blur:UIVisualEffectView!
-    weak var back:UIControl!
-    weak var base:UIView!
+class DeleteView:PopupView<DeletePresenter> {
     weak var label:UILabel!
     weak var cancel:UIButton!
     weak var delete:UIButton!
-    weak var border:UIView!
-
-    override func viewDidLoad() {
-        self.makeOutlets()
-        self.layoutOutlets()
-        super.viewDidLoad()
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.view.backgroundColor = UIColor.clear
-    }
     
-    private func makeOutlets() {
-        let blur:UIVisualEffectView = UIVisualEffectView(effect:UIBlurEffect(style:UIBlurEffect.Style.dark))
-        blur.translatesAutoresizingMaskIntoConstraints = false
-        blur.isUserInteractionEnabled = false
-        self.blur = blur
-        self.view.addSubview(blur)
+    override func makeOutlets() {
+        super.makeOutlets()
+        back.addTarget(presenter, action:#selector(presenter.cancel), for:.touchUpInside)
         
-        let back:UIControl = UIControl()
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.addTarget(self.presenter, action:#selector(self.presenter.cancel), for:UIControl.Event.touchUpInside)
-        self.back = back
-        self.view.addSubview(back)
-        
-        let base:UIView = UIView()
-        base.isUserInteractionEnabled = false
-        base.translatesAutoresizingMaskIntoConstraints = false
-        base.backgroundColor = UIColor.white
-        base.layer.cornerRadius = Constants.radius
-        base.clipsToBounds = true
-        self.base = base
-        self.view.addSubview(base)
-        
-        let label:UILabel = UILabel()
+        let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.black
-        label.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
-        label.text = self.presenter.strategy.title
-        label.textAlignment = NSTextAlignment.center
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize:16, weight:.regular)
+        label.text = presenter.edit.title
+        label.textAlignment = .center
+        view.addSubview(label)
         self.label = label
-        self.view.addSubview(label)
         
-        let border:UIView = UIView()
-        border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0.0, alpha:0.1)
-        border.isUserInteractionEnabled = false
-        self.border = border
-        self.view.addSubview(border)
-        
-        let cancel:UIButton = UIButton()
+        let cancel = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
-        cancel.addTarget(self.presenter, action:#selector(self.presenter.cancel), for:UIControl.Event.touchUpInside)
-        cancel.setTitleColor(UIColor.black, for:UIControl.State.normal)
-        cancel.setTitleColor(UIColor(white:0.0, alpha:0.2), for:UIControl.State.highlighted)
-        cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:UIControl.State())
-        cancel.titleLabel!.font = UIFont.systemFont(ofSize:Constants.buttons, weight:UIFont.Weight.medium)
+        cancel.addTarget(presenter, action:#selector(presenter.cancel), for:.touchUpInside)
+        cancel.setTitleColor(UIColor(white:0, alpha:0.8), for:.normal)
+        cancel.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:[])
+        cancel.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.medium)
+        base.addSubview(cancel)
         self.cancel = cancel
-        self.view.addSubview(cancel)
         
-        let delete:UIButton = UIButton()
+        let delete = UIButton()
         delete.translatesAutoresizingMaskIntoConstraints = false
-        delete.addTarget(self.presenter, action:#selector(self.presenter.delete), for:UIControl.Event.touchUpInside)
-        delete.setTitleColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1), for:UIControl.State.normal)
-        delete.setTitleColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1).withAlphaComponent(0.2), for:UIControl.State.highlighted)
-        delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:UIControl.State())
-        delete.titleLabel!.font = UIFont.systemFont(ofSize:Constants.buttons, weight:UIFont.Weight.medium)
+        delete.addTarget(presenter, action:#selector(presenter.delete), for:.touchUpInside)
+        delete.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+        delete.setTitleColor(.white, for:.normal)
+        delete.setTitleColor(UIColor(white:1, alpha:0.3), for:.highlighted)
+        delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:[])
+        delete.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.medium)
+        base.addSubview(delete)
         self.delete = delete
-        self.view.addSubview(delete)
     }
     
-    private func layoutOutlets() {
-        self.blur.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-        self.blur.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
-        self.blur.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.blur.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+    override func layoutOutlets() {
+        super.layoutOutlets()
+        base.widthAnchor.constraint(equalToConstant:260).isActive = true
+        base.heightAnchor.constraint(equalToConstant:130).isActive = true
+        base.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        base.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
         
-        self.back.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-        self.back.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
-        self.back.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.back.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        label.topAnchor.constraint(equalTo:base.topAnchor, constant:35).isActive = true
+        label.centerXAnchor.constraint(equalTo:base.centerXAnchor).isActive = true
         
-        self.base.widthAnchor.constraint(equalToConstant:Constants.width).isActive = true
-        self.base.heightAnchor.constraint(equalToConstant:Constants.height).isActive = true
-        self.base.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
-        self.base.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true
+        cancel.leftAnchor.constraint(equalTo:base.leftAnchor).isActive = true
+        cancel.rightAnchor.constraint(equalTo:base.centerXAnchor).isActive = true
+        cancel.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
+        cancel.heightAnchor.constraint(equalToConstant:45).isActive = true
         
-        self.label.topAnchor.constraint(equalTo:self.base.topAnchor, constant:Constants.top).isActive = true
-        self.label.centerXAnchor.constraint(equalTo:self.base.centerXAnchor).isActive = true
-        
-        self.cancel.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
-        self.cancel.rightAnchor.constraint(equalTo:self.base.centerXAnchor).isActive = true
-        self.cancel.bottomAnchor.constraint(equalTo:self.base.bottomAnchor).isActive = true
-        self.cancel.heightAnchor.constraint(equalToConstant:Constants.buttonHeight).isActive = true
-        
-        self.delete.leftAnchor.constraint(equalTo:self.base.centerXAnchor).isActive = true
-        self.delete.rightAnchor.constraint(equalTo:self.base.rightAnchor).isActive = true
-        self.delete.bottomAnchor.constraint(equalTo:self.base.bottomAnchor).isActive = true
-        self.delete.heightAnchor.constraint(equalToConstant:Constants.buttonHeight).isActive = true
-        
-        self.border.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
-        self.border.rightAnchor.constraint(equalTo:self.base.rightAnchor).isActive = true
-        self.border.bottomAnchor.constraint(equalTo:self.base.bottomAnchor).isActive = true
-        self.border.topAnchor.constraint(equalTo:self.cancel.topAnchor).isActive = true
+        delete.leftAnchor.constraint(equalTo:base.centerXAnchor).isActive = true
+        delete.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
+        delete.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
+        delete.heightAnchor.constraint(equalToConstant:45).isActive = true
     }
-}
-
-private struct Constants {
-    static let radius:CGFloat = 4.0
-    static let width:CGFloat = 260.0
-    static let height:CGFloat = 130.0
-    static let font:CGFloat = 16.0
-    static let buttons:CGFloat = 14.0
-    static let top:CGFloat = 35.0
-    static let buttonHeight:CGFloat = 45.0
 }

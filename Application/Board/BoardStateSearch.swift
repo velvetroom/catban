@@ -9,7 +9,7 @@ class BoardStateSearch:BoardState {
     }
     
     func makeCard(drawer:BoardDrawer, column:Column, card:Card) {
-        if card.text.localizedCaseInsensitiveContains(self.text) {
+        if card.text.localizedCaseInsensitiveContains(text) {
             drawer.makeCard(column:column, card:card)
         }
     }

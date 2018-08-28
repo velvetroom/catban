@@ -1,111 +1,65 @@
 import UIKit
 import CleanArchitecture
 
-class InfoView<I:InfoInteractor>:View<InfoPresenter<I>> {
-    weak var blur:UIVisualEffectView!
-    weak var back:UIControl!
-    weak var base:UIView!
+class InfoView<I:Interactor>:PopupView<InfoPresenter<I>> {
     weak var dismiss:UIButton!
     weak var text:UITextView!
     
     override func viewDidLoad() {
-        self.makeOutlets()
-        self.layoutOutlets()
-        self.configureViewModel()
+        configureViewModel()
         super.viewDidLoad()
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.view.backgroundColor = UIColor.clear
     }
     
-    private func makeOutlets() {
-        let blur:UIVisualEffectView = UIVisualEffectView(effect:UIBlurEffect(style:UIBlurEffect.Style.dark))
-        blur.translatesAutoresizingMaskIntoConstraints = false
-        blur.isUserInteractionEnabled = false
-        self.blur = blur
-        self.view.addSubview(blur)
+    override func makeOutlets() {
+        super.makeOutlets()
+        back.addTarget(presenter, action:#selector(presenter.dismiss), for:.touchUpInside)
         
-        let back:UIControl = UIControl()
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.addTarget(self.presenter, action:#selector(self.presenter.dismiss), for:UIControl.Event.touchUpInside)
-        self.back = back
-        self.view.addSubview(back)
-        
-        let base:UIView = UIView()
-        base.isUserInteractionEnabled = false
-        base.translatesAutoresizingMaskIntoConstraints = false
-        base.backgroundColor = UIColor.white
-        base.layer.cornerRadius = Constants.radius
-        base.clipsToBounds = true
-        self.base = base
-        self.view.addSubview(base)
-        
-        let text:UITextView = UITextView()
+        let text = UITextView()
         text.clipsToBounds = true
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.backgroundColor = UIColor.clear
-        text.textColor = UIColor.black
+        text.backgroundColor = .clear
+        text.textColor = .black
         text.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         text.alwaysBounceVertical = true
         text.showsHorizontalScrollIndicator = false
         text.isEditable = false
-        text.contentInset = UIEdgeInsets.zero
-        text.textContainerInset = UIEdgeInsets(top:Constants.insets, left:Constants.insets, bottom:Constants.insets,
-                                               right:Constants.insets)
+        text.contentInset = .zero
+        text.textContainerInset = UIEdgeInsets(top:30, left:12, bottom:30, right:12)
+        base.addSubview(text)
         self.text = text
-        self.view.addSubview(text)
         
-        let dismiss:UIButton = UIButton()
+        let dismiss = UIButton()
         dismiss.translatesAutoresizingMaskIntoConstraints = false
-        dismiss.addTarget(self.presenter, action:#selector(self.presenter.dismiss), for:UIControl.Event.touchUpInside)
-        dismiss.setTitleColor(UIColor.white, for:UIControl.State.normal)
-        dismiss.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.highlighted)
-        dismiss.setTitle(NSLocalizedString("InfoView.dismiss", comment:String()), for:UIControl.State())
-        dismiss.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
+        dismiss.addTarget(presenter, action:#selector(presenter.dismiss), for:.touchUpInside)
+        dismiss.setTitleColor(.white, for:.normal)
+        dismiss.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
+        dismiss.setTitle(NSLocalizedString("InfoView.dismiss", comment:String()), for:[])
+        dismiss.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.bold)
+        view.addSubview(dismiss)
         self.dismiss = dismiss
-        self.view.addSubview(dismiss)
     }
     
-    private func layoutOutlets() {
-        self.blur.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-        self.blur.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
-        self.blur.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.blur.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+    override func layoutOutlets() {
+        super.layoutOutlets()
+        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:15).isActive = true
+        base.rightAnchor.constraint(equalTo:view.rightAnchor,constant:-15).isActive = true
+        base.topAnchor.constraint(equalTo:view.topAnchor, constant:45).isActive = true
+        base.bottomAnchor.constraint(equalTo:dismiss.topAnchor).isActive = true
         
-        self.back.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-        self.back.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
-        self.back.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.back.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
+        dismiss.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        dismiss.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:-15).isActive = true
+        dismiss.heightAnchor.constraint(equalToConstant:50).isActive = true
+        dismiss.widthAnchor.constraint(equalToConstant:150).isActive = true
         
-        self.base.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:Constants.margin).isActive = true
-        self.base.rightAnchor.constraint(equalTo:self.view.rightAnchor,constant:-Constants.margin).isActive = true
-        self.base.topAnchor.constraint(equalTo:self.view.topAnchor, constant:Constants.top).isActive = true
-        self.base.bottomAnchor.constraint(equalTo:self.dismiss.topAnchor).isActive = true
-        
-        self.dismiss.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
-        self.dismiss.bottomAnchor.constraint(equalTo:self.view.bottomAnchor, constant:-Constants.margin).isActive = true
-        self.dismiss.heightAnchor.constraint(equalToConstant:Constants.buttonHeight).isActive = true
-        self.dismiss.widthAnchor.constraint(equalToConstant:Constants.buttonWidth).isActive = true
-        
-        self.text.topAnchor.constraint(equalTo:self.base.topAnchor).isActive = true
-        self.text.bottomAnchor.constraint(equalTo:self.base.bottomAnchor).isActive = true
-        self.text.leftAnchor.constraint(equalTo:self.base.leftAnchor).isActive = true
-        self.text.rightAnchor.constraint(equalTo:self.base.rightAnchor).isActive = true
+        text.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
+        text.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
+        text.leftAnchor.constraint(equalTo:base.leftAnchor).isActive = true
+        text.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
     }
     
     private func configureViewModel() {
-        self.presenter.viewModels.observe { [weak self] (viewModel:InfoViewModel) in
+        presenter.viewModels.observe { [weak self] (viewModel:InfoViewModel) in
             self?.text.attributedText = viewModel.text
         }
     }
-}
-
-private struct Constants {
-    static let radius:CGFloat = 4.0
-    static let top:CGFloat = 45.0
-    static let margin:CGFloat = 15.0
-    static let font:CGFloat = 14.0
-    static let buttonHeight:CGFloat = 50.0
-    static let buttonWidth:CGFloat = 150.0
-    static let insets:CGFloat = 12.0
 }

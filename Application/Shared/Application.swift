@@ -3,13 +3,13 @@ import Catban
 import Firebase
 
 @UIApplicationMain class Application:UIResponder, UIApplicationDelegate {
-    static let router:Router = Router()
+    static let router = Router()
     var window:UIWindow?
     
     func application(_:UIApplication, didFinishLaunchingWithOptions:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
-        self.injection()
-        self.services()
-        self.makeWindow()
+        injection()
+        services()
+        makeWindow()
         return true
     }
     
@@ -19,15 +19,14 @@ import Firebase
     }
     
     private func services() {
-        FirebaseConfiguration.shared.setLoggerLevel(FirebaseLoggerLevel.min)
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
     }
     
     private func makeWindow() {
-        let window:UIWindow = UIWindow(frame:UIScreen.main.bounds)
-        window.backgroundColor = UIColor.white
-        window.makeKeyAndVisible()
-        window.rootViewController = Application.router
-        self.window = window
+        window = UIWindow(frame:UIScreen.main.bounds)
+        window!.backgroundColor = .white
+        window!.makeKeyAndVisible()
+        window!.rootViewController = Application.router
     }
 }

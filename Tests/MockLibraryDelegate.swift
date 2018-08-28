@@ -7,14 +7,14 @@ class MockLibraryDelegate:LibraryDelegate {
     var onCreated:(() -> Void)?
     
     func librarySessionLoaded() {
-        self.onSessionLoaded?()
+        onSessionLoaded?()
     }
     
     func libraryBoardsUpdated() {
-        self.onBoardsUpdated?()
+        onBoardsUpdated?()
     }
     
     func libraryCreated(board:String) {
-        self.onCreated?()
+        onCreated?()
     }
 }

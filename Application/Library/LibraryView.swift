@@ -8,80 +8,78 @@ class LibraryView:View<LibraryPresenter> {
     weak var add:UIBarButtonItem!
     weak var scan:UIBarButtonItem!
     weak var settings:UIBarButtonItem!
+    private static let margin:CGFloat = 17
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("LibraryView.title", comment:String())
-        self.view.backgroundColor = UIColor.white
-        self.makeOutlets()
-        self.layoutOutlets()
-        self.configureViewModel()
+        title = NSLocalizedString("LibraryView.title", comment:String())
+        view.backgroundColor = .white
+        makeOutlets()
+        layoutOutlets()
+        configureViewModel()
     }
     
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to:size, with:coordinator)
-        self.layoutCells(size:size)
+        layoutCells(size:size)
     }
     
     private func makeOutlets() {
-        let scroll:UIScrollView = UIScrollView()
+        let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.showsVerticalScrollIndicator = true
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
+        view.addSubview(scroll)
         self.scroll = scroll
-        self.view.addSubview(scroll)
         
-        let message:UILabel = UILabel()
+        let message = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
-        message.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
-        message.textColor = UIColor(white:0.0, alpha:0.8)
+        message.font = UIFont.systemFont(ofSize:16, weight:.light)
+        message.textColor = UIColor(white:0, alpha:0.7)
         message.numberOfLines = 0
         message.isUserInteractionEnabled = false
+        view.addSubview(message)
         self.message = message
-        self.view.addSubview(message)
         
-        let loading:LoadingView = LoadingView()
+        let loading = LoadingView()
         loading.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        view.addSubview(loading)
         self.loading = loading
-        self.view.addSubview(loading)
         
-        let add:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.add,
-                                                  target:self.presenter, action:#selector(self.presenter.newBoard))
+        let add = UIBarButtonItem(barButtonSystemItem:.add, target:presenter, action:#selector(presenter.newBoard))
+        let scan = UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:.plain, target:presenter, action:#selector(presenter.scan))
+        let settings = UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:.plain, target:presenter, action:#selector(presenter.settings))
+        navigationItem.rightBarButtonItems = [add, scan, settings]
         self.add = add
-        let scan:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetQr.pdf"), style:UIBarButtonItem.Style.plain, target:self.presenter,
-                                                   action:#selector(self.presenter.scan))
         self.scan = scan
-        let settings:UIBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:UIBarButtonItem.Style.plain,
-                                                       target:self.presenter, action:#selector(self.presenter.settings))
         self.settings = settings
-        self.navigationItem.rightBarButtonItems = [add, scan, settings]
     }
     
     private func layoutOutlets() {
-        self.scroll.leftAnchor.constraint(equalTo:self.view.leftAnchor).isActive = true
-        self.scroll.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        self.scroll.bottomAnchor.constraint(equalTo:self.view.bottomAnchor).isActive = true
+        scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
-        self.message.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:Constants.margin).isActive = true
-        self.message.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:-Constants.margin).isActive = true
+        message.leftAnchor.constraint(equalTo:view.leftAnchor, constant:LibraryView.margin).isActive = true
+        message.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-LibraryView.margin).isActive = true
         
-        self.loading.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
-        self.loading.centerYAnchor.constraint(equalTo:self.view.centerYAnchor).isActive = true
+        loading.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        loading.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
-            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.always
-            self.scroll.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-            self.message.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor,
-                                              constant:Constants.margin).isActive = true
+            navigationItem.largeTitleDisplayMode = .always
+            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
+            message.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor,
+                                         constant:LibraryView.margin).isActive = true
         } else {
-            self.scroll.topAnchor.constraint(equalTo:self.view.topAnchor).isActive = true
-            self.message.topAnchor.constraint(equalTo:self.view.topAnchor, constant:Constants.margin).isActive = true
+            scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+            message.topAnchor.constraint(equalTo:view.topAnchor, constant:LibraryView.margin).isActive = true
         }
     }
     
     private func configureViewModel() {
-        self.presenter.viewModels.observe { [weak self] (viewModel:LibraryViewModel) in
+        presenter.viewModels.observe { [weak self] (viewModel:LibraryItems) in
             self?.loading.isHidden = viewModel.loadingHidden
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled
@@ -91,36 +89,26 @@ class LibraryView:View<LibraryPresenter> {
         }
     }
     
-    private func update(items:[LibraryItemViewModel]) {
-        self.scroll.subviews.forEach { (view:UIView) in view.removeFromSuperview() }
-        items.forEach { (item:LibraryItemViewModel) in
-            let cell:LibraryCellView = LibraryCellView()
+    private func update(items:[LibraryItem]) {
+        scroll.subviews.forEach { (view) in view.removeFromSuperview() }
+        items.forEach { (item) in
+            let cell = LibraryCellView()
             cell.viewModel = item
-            cell.addTarget(self.presenter, action:#selector(self.presenter.selected(cell:)),
-                           for:UIControl.Event.touchUpInside)
-            cell.addTarget(self.presenter, action:#selector(self.presenter.highlight(cell:)),
-                           for:UIControl.Event(arrayLiteral:UIControl.Event.touchDown,
-                                               UIControl.Event.touchDragEnter))
-            cell.addTarget(self.presenter, action:#selector(self.presenter.unhighlight(cell:)),
-                           for:UIControl.Event(arrayLiteral:UIControl.Event.touchUpOutside,
-                                               UIControl.Event.touchDragExit, UIControl.Event.touchCancel))
-            self.scroll.addSubview(cell)
+            cell.addTarget(presenter, action:#selector(presenter.selected(cell:)), for:.touchUpInside)
+            cell.addTarget(presenter, action:#selector(presenter.highlight(cell:)), for:[.touchDown, .touchDragEnter])
+            cell.addTarget(presenter, action:#selector(presenter.unhighlight(cell:)), for:
+                [.touchUpOutside, .touchDragExit, .touchCancel])
+            scroll.addSubview(cell)
         }
-        self.layoutCells(size:self.view.bounds.size)
+        layoutCells(size:view.bounds.size)
     }
     
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
-        self.scroll.subviews.forEach { (view:UIView) in
-            view.frame = CGRect(x:0, y:y, width:size.width, height:Constants.cellHeight)
-            y += Constants.cellHeight
+        scroll.subviews.forEach { (view) in
+            view.frame = CGRect(x:0, y:y, width:size.width, height:70)
+            y += view.bounds.height
         }
-        self.scroll.contentSize = CGSize(width:size.width, height:y)
+        scroll.contentSize = CGSize(width:size.width, height:y)
     }
-}
-
-private struct Constants {
-    static let font:CGFloat = 16.0
-    static let margin:CGFloat = 20.0
-    static let cellHeight:CGFloat = 60.0
 }

@@ -5,64 +5,64 @@ import Catban
 class BoardPresenter:Presenter {
     var interactor:BoardInteractor!
     var viewModels:ViewModels!
-    private(set) var state:BoardState
+    private(set) var state:BoardState = BoardStateDefault()
     
-    required init() {
-        self.state = BoardStateDefault()
-    }
+    required init() { }
     
     func detach(item:BoardCardView) {
-        self.interactor.detach(card:item.card, column:item.column)
+        interactor.detach(card:item.card, column:item.column)
         item.column = nil
     }
     
     func attach(item:BoardCardView, after:BoardItemView) {
-        self.interactor.attach(card:item.card, column:after.column, after:after.card)
+        interactor.attach(card:item.card, column:after.column, after:after.card)
         item.column = after.column
     }
     
     @objc func edit() {
-        self.interactor.edit()
+        interactor.edit()
     }
     
     @objc func info() {
-        self.interactor.info()
+        Application.router.dismiss(animated:false)
+        interactor.info()
     }
     
     @objc func share() {
-        self.interactor.share()
+        Application.router.dismiss(animated:false)
+        interactor.share()
     }
     
     @objc func newColumn() {
-        self.interactor.newColumn()
+        interactor.newColumn()
     }
     
     @objc func editColumn(view:BoardItemView) {
-        self.interactor.editColumn(column:view.column!)
+        interactor.editColumn(column:view.column!)
     }
     
     @objc func newCard(view:BoardItemView) {
-        self.interactor.newCard(column:view.column!)
+        interactor.newCard(column:view.column!)
     }
     
     @objc func editCard(view:BoardCardView) {
-        self.interactor.editCard(column:view.column!, card:view.card!)
+        interactor.editCard(column:view.column!, card:view.card!)
     }
     
     func search(text:String) {
-        self.state = BoardStateSearch(text:text)
-        self.updateViewModel()
+        state = BoardStateSearch(text:text)
+        updateViewModel()
     }
     
     func clearSearch() {
-        self.state = BoardStateDefault()
-        self.updateViewModel()
+        state = BoardStateDefault()
+        updateViewModel()
     }
     
     func updateProgress() {
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in
-            guard let stats:ReportStats = self?.interactor.makeStats() else { return }
-            var viewModel:BoardProgressViewModel = BoardProgressViewModel()
+        DispatchQueue.global(qos:.background).async { [weak self] in
+            guard let stats = self?.interactor.makeStats() else { return }
+            var viewModel = BoardProgress()
             viewModel.progress = stats.progress
             viewModel.columns = stats.columns
             self?.viewModels.update(viewModel:viewModel)
@@ -70,13 +70,13 @@ class BoardPresenter:Presenter {
     }
     
     func didAppear() {
-        self.updateViewModel()
-        self.updateProgress()
+        updateViewModel()
+        updateProgress()
     }
     
     private func updateViewModel() {
-        var viewModel:BoardViewModel = BoardViewModel()
-        viewModel.title = self.interactor.board.text
-        self.viewModels.update(viewModel:viewModel)
+        var viewModel = BoardTitle()
+        viewModel.title = interactor.board.text
+        viewModels.update(viewModel:viewModel)
     }
 }

@@ -1,18 +1,32 @@
 import UIKit
 import CleanArchitecture
+import Catban
 
 class EditPresenter:Presenter {
     weak var interactor:BoardInteractor!
     var viewModels:ViewModels!
-    var strategyText:TextStrategy!
-    var strategyDelete:DeleteStrategy?
+    var editText:EditText!
+    var editDelete:EditDelete?
     var infoSource:String?
     
     required init() { }
     
     func save(text:String) {
-        self.strategyText.save(interactor:self.interactor, text:text)
+        editText.save(self)(validate(text:text))
+        interactor.save()
         DispatchQueue.main.async { Application.router.popViewController(animated:true) }
+    }
+    
+    func saveTextChange(text:String) {
+        editText.subject!.text = text
+    }
+    
+    func saveNewColumn(text:String) {
+        interactor.board.addColumn(text:text)
+    }
+    
+    func saveNewCard(text:String) {
+        (editText.other as! Column).addCard(text:text)
     }
     
     @objc func cancel() {
@@ -20,16 +34,24 @@ class EditPresenter:Presenter {
     }
     
     @objc func delete() {
-        let view:DeleteView = DeleteView(presenter:DeletePresenter())
-        view.presenter.interactor = self.interactor
-        view.presenter.strategy = self.strategyDelete
-        Application.router.present(view, animated:true, completion:nil)
+        let view = DeleteView(presenter:DeletePresenter())
+        view.presenter.interactor = interactor
+        view.presenter.edit = editDelete
+        Application.router.present(view, animated:true)
     }
     
     @objc func info() {
-        let view:InfoView = InfoView(presenter:InfoPresenter<BoardInteractor>())
-        view.presenter.interactor = self.interactor
-        view.presenter.source = self.infoSource!
-        Application.router.present(view, animated:true, completion:nil)
+        let view = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        view.presenter.interactor = interactor
+        view.presenter.source = infoSource!
+        Application.router.present(view, animated:true)
+    }
+    
+    private func validate(text:String) -> String {
+        var text = text
+        if text.isEmpty || text == " " {
+            text = "-"
+        }
+        return text
     }
 }

@@ -1,26 +1,22 @@
 import Foundation
 
 class LibraryStateDefault:LibraryStateProtocol {
+    func loadBoards(context:Library) throws { throw CatbanError.noSession }
+    
     func loadSession(context:Library) {
-        context.queue.async { [weak self] in
+        context.queue.async {
             do {
-                let session:Session = try context.cache.loadSession()
-                context.loaded(session:session)
+                self.loaded(context:context, session:try context.cache.loadSession())
             } catch {
-                self?.createSession(context:context)
+                self.loaded(context:context, session:Session())
             }
         }
     }
     
-    func loadBoards(context:Library) throws { throw CatbanError.noSession }
-    func newBoard(context:Library) { }
-    func addBoard(context:Library, identifier:String) { }
-    func save(context:Library, board:Board) { }
-    func delete(context:Library, board:Board) { }
-    
-    private func createSession(context:Library) {
-        let session:Session = Session()
-        context.cache.save(session:session)
-        context.loaded(session:session)
+    private func loaded(context:Library, session:Session) {
+        context.session = session
+        context.saveSession()
+        context.state = Library.stateReady
+        DispatchQueue.main.async { context.delegate?.librarySessionLoaded() }
     }
 }

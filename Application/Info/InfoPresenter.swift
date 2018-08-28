@@ -2,35 +2,28 @@ import Foundation
 import CleanArchitecture
 import MarkdownHero
 
-class InfoPresenter<I:InfoInteractor>:Presenter {
+class InfoPresenter<I:Interactor>:Presenter {
     var interactor:I!
     var viewModels:ViewModels!
-    var source:String
-    private var parser:Parser
+    var source = String()
+    private var parser = Parser()
     
-    required init() {
-        self.source = String()
-        self.parser = Parser()
-    }
+    required init() { }
     
     @objc func dismiss() {
-        self.interactor.dismiss()
+        Application.router.dismiss(animated:true)
     }
     
     func didLoad() {
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { [weak self] in self?.loadInfo() }
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.loadInfo() }
     }
     
     private func loadInfo() {
-        let url:URL = Bundle(for:InfoPresenter.self).url(forResource:self.source, withExtension:Constants.file)!
+        let url = Bundle.main.url(forResource:source, withExtension:"md")!
         let string:String
-        do { try string = String(contentsOf:url, encoding:String.Encoding.utf8) } catch { return }
-        var viewModel:InfoViewModel = InfoViewModel()
-        viewModel.text = self.parser.parse(string:string)
-        self.viewModels.update(viewModel:viewModel)
+        do { try string = String(contentsOf:url, encoding:.utf8) } catch { return }
+        var viewModel = InfoViewModel()
+        viewModel.text = parser.parse(string:string)
+        viewModels.update(viewModel:viewModel)
     }
-}
-
-private struct Constants {
-    static let file:String = "md"
 }

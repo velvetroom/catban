@@ -3,59 +3,53 @@ import UIKit
 class LibraryCellView:UIControl {
     weak var name:UILabel!
     weak var progress:UIProgressView!
-    var viewModel:LibraryItemViewModel! { didSet {
-        self.name.text = self.viewModel.name
-        let progress:Float = self.viewModel.progress
+    var viewModel:LibraryItem! { didSet {
+        name.text = viewModel.name
+        let progress = viewModel.progress
         DispatchQueue.main.async { [weak self] in self?.progress.setProgress(progress, animated:true) }
     } }
     
     init() {
-        super.init(frame:CGRect.zero)
-        self.makeOutlets()
-        self.layoutOutlets()
+        super.init(frame:.zero)
+        makeOutlets()
+        layoutOutlets()
     }
     
     required init?(coder:NSCoder) { return nil }
     
     func highlight() {
-        self.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
     }
     
     func unhighlight() {
-        self.backgroundColor = UIColor.clear
+        backgroundColor = .clear
     }
     
     private func makeOutlets() {
-        let name:UILabel = UILabel()
+        let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
+        name.font = UIFont.systemFont(ofSize:12, weight:.medium)
         name.textColor = UIColor.black
+        addSubview(name)
         self.name = name
-        self.addSubview(name)
         
-        let progress:UIProgressView = UIProgressView()
+        let progress = UIProgressView()
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.isUserInteractionEnabled = false
         progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         progress.trackTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.1)
+        addSubview(progress)
         self.progress = progress
-        self.addSubview(progress)
     }
     
     private func layoutOutlets() {
-        self.name.centerYAnchor.constraint(equalTo:self.centerYAnchor).isActive = true
-        self.name.leftAnchor.constraint(equalTo:self.leftAnchor, constant:Constants.left).isActive = true
+        name.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
+        name.leftAnchor.constraint(equalTo:leftAnchor, constant:20).isActive = true
         
-        self.progress.bottomAnchor.constraint(equalTo:self.bottomAnchor).isActive = true
-        self.progress.leftAnchor.constraint(equalTo:self.leftAnchor).isActive = true
-        self.progress.rightAnchor.constraint(equalTo:self.rightAnchor).isActive = true
-        self.progress.heightAnchor.constraint(equalToConstant:Constants.progress).isActive = true
+        progress.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
+        progress.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
+        progress.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
+        progress.heightAnchor.constraint(equalToConstant:10).isActive = true
     }
-}
-
-private struct Constants {
-    static let left:CGFloat = 20.0
-    static let font:CGFloat = 13.0
-    static let progress:CGFloat = 5.0
 }

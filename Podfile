@@ -5,6 +5,7 @@ def podlist
     pod 'CleanArchitecture'
     pod 'CodableHero'
     pod 'MarkdownHero'
+    pod 'QRhero'
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
 end

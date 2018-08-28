@@ -13,7 +13,7 @@ class BoardDrawer {
     private let options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
     private let size = CGSize(width:BoardDrawer.columnWidth, height:10000)
     private static let columnWidth:CGFloat = 200
-    private static let new:CGFloat = 30
+    private static let new:CGFloat = 40
     
     func draw() {
         clearContent()
@@ -63,7 +63,7 @@ class BoardDrawer {
         item.label.text = column.text
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
-        layout(item:item, height:24, width:BoardDrawer.columnWidth)
+        layout(item:item, height:38, width:BoardDrawer.columnWidth)
     }
     
     private func clearContent() {

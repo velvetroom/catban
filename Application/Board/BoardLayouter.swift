@@ -11,7 +11,7 @@ class BoardLayouter {
             var top:CGFloat = 0
             var item = column
             while let currentItem = item {
-                top += 15
+                top += 10
                 item?.top.constant = top
                 item?.left.constant = left
                 item = currentItem.down

@@ -4,14 +4,14 @@ class BoardCardView:BoardItemView {
     weak var halo:UIView!
     weak var label:UILabel!
     weak var gesture:UIPanGestureRecognizer!
-    private static let halo:CGFloat = 12
+    private static let halo:CGFloat = 10
     
     override func makeOutlets() {
         let halo = UIView()
         halo.isUserInteractionEnabled = false
         halo.translatesAutoresizingMaskIntoConstraints = false
         halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        halo.layer.cornerRadius = 4
+        halo.layer.cornerRadius = 3
         halo.alpha = 0.0
         addSubview(halo)
         self.halo = halo

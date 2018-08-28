@@ -13,7 +13,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     let drawer = BoardDrawer()
     let layouter = BoardLayouter()
     private var reportY:CGFloat = 0
-    private static let reportHeight:CGFloat = 380
+    private var reportHandler:(() -> Void)!
+    private static let reportHeight:CGFloat = 390
     private static let reportTop:CGFloat = -75
     private static let handleHeight:CGFloat = 3
     
@@ -43,11 +44,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
                 layoutReportTop.constant = -BoardView.reportHeight
             }
         case .cancelled, .ended, .failed:
-            if layoutReportTop.constant < -(BoardView.reportHeight - 50) {
-                showReport()
-            } else {
-                hideReport()
-            }
+            reportHandler()
         }
     }
     
@@ -60,6 +57,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         super.viewDidLoad()
         view.backgroundColor = .white
         title = presenter.interactor.board.text
+        reportHandler = handlerHidden
     }
     
     func updateSearchResults(for search:UISearchController) {
@@ -200,7 +198,24 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         }
     }
     
+    private func handlerHidden() {
+        if layoutReportTop.constant < BoardView.reportTop - 30 {
+            showReport()
+        } else {
+            hideReport()
+        }
+    }
+    
+    private func handlerShown() {
+        if layoutReportTop.constant < -(BoardView.reportHeight - 30) {
+            showReport()
+        } else {
+            hideReport()
+        }
+    }
+    
     private func hideReport() {
+        reportHandler = handlerHidden
         layoutReportTop.constant = BoardView.reportTop
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
@@ -208,6 +223,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func showReport() {
+        reportHandler = handlerShown
         layoutReportTop.constant = -BoardView.reportHeight
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()

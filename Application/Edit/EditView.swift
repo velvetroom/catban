@@ -111,7 +111,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         let rect = keyboardRectFrom(notification:notification)
         let height = view.bounds.height
         if rect.minY < height {
-            return -(rect.height + 3)
+            return -(rect.height + 2)
         }
         return 0
     }

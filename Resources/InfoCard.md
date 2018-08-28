@@ -18,6 +18,9 @@ You can add format to the content of yours cards easily with _Markdown_.
 ### Lists
 - ```- Minus```: add a listed element.
 
+### Escaping
+- You can escape text (avoid Markdown) by wrapping anything inside 3 `.
+
 ## Example
 Consider a project for a barbecue.
 You could have cards for doing specific tasks and cards for ingredients and groceries to get from the supermarket.

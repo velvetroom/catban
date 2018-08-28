@@ -49,6 +49,21 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         view.addSubview(text)
         self.text = text
         
+        let accessory = UIView(frame:CGRect(x:0, y:0, width:0, height:34))
+        accessory.backgroundColor = .white
+        text.inputAccessoryView = accessory
+        
+        let pound = addKey(title:"#")
+        let list = addKey(title:"-")
+        let underscore = addKey(title:"_")
+        let asterisk = addKey(title:"*")
+        let escaper = addKey(title:"`")
+        pound.leftAnchor.constraint(equalTo:accessory.leftAnchor).isActive = true
+        list.leftAnchor.constraint(equalTo:pound.rightAnchor, constant:1).isActive = true
+        underscore.leftAnchor.constraint(equalTo:list.rightAnchor, constant:1).isActive = true
+        asterisk.leftAnchor.constraint(equalTo:underscore.rightAnchor, constant:1).isActive = true
+        escaper.leftAnchor.constraint(equalTo:asterisk.rightAnchor, constant:1).isActive = true
+        
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetDone.pdf"), style:.plain, target:self, action:#selector(save))]
         
@@ -96,7 +111,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         let rect = keyboardRectFrom(notification:notification)
         let height = view.bounds.height
         if rect.minY < height {
-            return -rect.height
+            return -(rect.height + 3)
         }
         return 0
     }
@@ -115,5 +130,26 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
             let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber
         else { return 0 }
         return duration.doubleValue
+    }
+    
+    private func addKey(title:String) -> UIButton {
+        let key = UIButton()
+        key.backgroundColor = UIColor(red:0.9, green:0.92, blue:0.95, alpha:1)
+        key.translatesAutoresizingMaskIntoConstraints = false
+        key.setTitle(title, for:[])
+        key.setTitleColor(.black, for:.normal)
+        key.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        key.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.bold)
+        key.addTarget(self, action:#selector(add(key:)), for:.touchUpInside)
+        text.inputAccessoryView!.addSubview(key)
+        key.topAnchor.constraint(equalTo:text.inputAccessoryView!.topAnchor).isActive = true
+        key.bottomAnchor.constraint(equalTo:text.inputAccessoryView!.bottomAnchor).isActive = true
+        key.widthAnchor.constraint(equalTo:text.inputAccessoryView!.widthAnchor, multiplier:0.2,
+                                   constant:-1).isActive = true
+        return key
+    }
+    
+    @objc private func add(key:UIButton) {
+        text.insertText(key.title(for:[])!)
     }
 }

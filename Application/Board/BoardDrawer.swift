@@ -12,7 +12,7 @@ class BoardDrawer {
     private var parser = Parser()
     private let options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
     private let size = CGSize(width:BoardDrawer.columnWidth, height:10000)
-    private static let columnWidth:CGFloat = 200
+    private static let columnWidth:CGFloat = 190
     private static let new:CGFloat = 40
     
     func draw() {

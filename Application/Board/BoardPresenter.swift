@@ -24,10 +24,12 @@ class BoardPresenter:Presenter {
     }
     
     @objc func info() {
+        Application.router.dismiss(animated:false)
         interactor.info()
     }
     
     @objc func share() {
+        Application.router.dismiss(animated:false)
         interactor.share()
     }
     

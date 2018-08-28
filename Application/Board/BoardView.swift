@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
+class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var report:UIView!
@@ -71,6 +71,11 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
             return
         }
         presenter.search(text:text)
+    }
+    
+    func searchBarCancelButtonClicked(_ bar:UISearchBar) {
+        bar.setShowsCancelButton(false, animated:true)
+        presenter.clearSearch()
     }
     
     private func makeOutlets() {
@@ -167,6 +172,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating {
             search.searchResultsUpdater = self
             search.isActive = true
             search.obscuresBackgroundDuringPresentation = false
+            search.hidesNavigationBarDuringPresentation = false
+            search.searchBar.delegate = self
             navigationItem.searchController = search
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true

@@ -1,6 +1,6 @@
 import UIKit
 
-class Popup:UIViewController {
+class Alert:UIViewController {
     var image:UIImage? { didSet { icon?.image = image } }
     override var title:String? { didSet { label?.text = title } }
     private weak var timer:Timer?
@@ -26,7 +26,7 @@ class Popup:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         timer = Timer.scheduledTimer(
-            timeInterval:5, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:4, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
         layoutOutlets()
     }
@@ -39,11 +39,11 @@ class Popup:UIViewController {
     private func makeOutlets() {
         let base = UIView()
         base.isUserInteractionEnabled = false
-        base.backgroundColor = UIColor(white:0.96, alpha:0.99)
+        base.backgroundColor = UIColor(white:0.96, alpha:1)
         base.translatesAutoresizingMaskIntoConstraints = false
         base.layer.cornerRadius = 4
         base.clipsToBounds = true
-        base.layer.borderColor = UIColor(white:0.94, alpha:2).cgColor
+        base.layer.borderColor = UIColor(white:0.9, alpha:1).cgColor
         base.layer.borderWidth = 1
         view.addSubview(base)
         self.base = base
@@ -52,7 +52,7 @@ class Popup:UIViewController {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
-        label.font = UIFont.systemFont(ofSize:14, weight:.light)
+        label.font = UIFont.systemFont(ofSize:14, weight:.medium)
         label.textColor = .black
         label.numberOfLines = 0
         view.addSubview(label)
@@ -69,24 +69,24 @@ class Popup:UIViewController {
     }
     
     private func layoutOutlets() {
-        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:Popup.margin).isActive = true
-        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-Popup.margin).isActive = true
-        base.heightAnchor.constraint(equalToConstant:Popup.height).isActive = true
+        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:Alert.margin).isActive = true
+        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-Alert.margin).isActive = true
+        base.heightAnchor.constraint(equalToConstant:Alert.height).isActive = true
         
         label.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
-        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:Popup.horizontal).isActive = true
-        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-Popup.horizontal).isActive = true
+        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:Alert.horizontal).isActive = true
+        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-Alert.horizontal).isActive = true
         label.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
         
         icon.centerYAnchor.constraint(equalTo:base.centerYAnchor).isActive = true
-        icon.widthAnchor.constraint(equalToConstant:Popup.height).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:Popup.height).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:Alert.height).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:Alert.height).isActive = true
         icon.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
-            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:Popup.top).isActive = true
+            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:Alert.top).isActive = true
         } else {
-            base.topAnchor.constraint(equalTo:view.topAnchor, constant:Popup.top).isActive = true
+            base.topAnchor.constraint(equalTo:view.topAnchor, constant:Alert.top).isActive = true
         }
     }
     

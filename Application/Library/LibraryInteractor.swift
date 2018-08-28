@@ -98,7 +98,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     
     private func popup(error:String) {
         Application.router.dismiss(animated:true) {
-            let popup = Popup()
+            let popup = Alert()
             popup.image = #imageLiteral(resourceName: "assetError.pdf")
             popup.title = error
         }
@@ -106,7 +106,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     
     private func popupSuccess() {
         Application.router.dismiss(animated:true) {
-            let popup = Popup()
+            let popup = Alert()
             popup.image = #imageLiteral(resourceName: "assetDone.pdf")
             popup.title = NSLocalizedString("LibraryInteractor.boardAdded", comment:String())
         }

@@ -50,7 +50,7 @@ class InfoView<I:Interactor>:View<InfoPresenter<I>> {
         text.showsHorizontalScrollIndicator = false
         text.isEditable = false
         text.contentInset = .zero
-        text.textContainerInset = UIEdgeInsets(top:24, left:12, bottom:24, right:12)
+        text.textContainerInset = UIEdgeInsets(top:30, left:12, bottom:30, right:12)
         view.addSubview(text)
         self.text = text
         

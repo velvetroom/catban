@@ -10,6 +10,7 @@
 		2A8F15B97B8245C5B2232546 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */; };
 		DA1602FB2132AD2C004F6D44 /* TestLibrary_Ready.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */; };
 		DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */; };
+		DA28AED721353C250030AE9E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28AED621353C250030AE9E /* PopupView.swift */; };
 		DA2E4B3D211DD97400861576 /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */; };
 		DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CF2120356C001C758E /* BoardCardView.swift */; };
@@ -118,6 +119,7 @@
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Ready.swift; sourceTree = "<group>"; };
 		DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		DA28AED621353C250030AE9E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				DA4C6532211DD58A00ECAD21 /* Router.swift */,
 				DA4C6536211DD58A00ECAD21 /* LoadingView.swift */,
 				DA8D1296213161800019B2C2 /* Alert.swift */,
+				DA28AED621353C250030AE9E /* PopupView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */,
+				DA28AED721353C250030AE9E /* PopupView.swift in Sources */,
 				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
 				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,

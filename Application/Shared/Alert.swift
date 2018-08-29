@@ -7,10 +7,6 @@ class Alert:UIViewController {
     private weak var base:UIView!
     private weak var icon:UIImageView!
     private weak var label:UILabel!
-    private static let top:CGFloat = 20
-    private static let horizontal:CGFloat = 12
-    private static let margin:CGFloat = 5
-    private static let height:CGFloat = 60
     
     init() {
         super.init(nibName:nil, bundle:nil)
@@ -52,7 +48,7 @@ class Alert:UIViewController {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
-        label.font = UIFont.systemFont(ofSize:14, weight:.medium)
+        label.font = .systemFont(ofSize:14, weight:.medium)
         label.textColor = .black
         label.numberOfLines = 0
         view.addSubview(label)
@@ -69,24 +65,24 @@ class Alert:UIViewController {
     }
     
     private func layoutOutlets() {
-        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:Alert.margin).isActive = true
-        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-Alert.margin).isActive = true
-        base.heightAnchor.constraint(equalToConstant:Alert.height).isActive = true
+        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:5).isActive = true
+        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-5).isActive = true
+        base.heightAnchor.constraint(equalToConstant:60).isActive = true
         
         label.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
-        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:Alert.horizontal).isActive = true
-        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-Alert.horizontal).isActive = true
+        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:12).isActive = true
+        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-12).isActive = true
         label.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
         
         icon.centerYAnchor.constraint(equalTo:base.centerYAnchor).isActive = true
-        icon.widthAnchor.constraint(equalToConstant:Alert.height).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:Alert.height).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:60).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:60).isActive = true
         icon.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
-            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:Alert.top).isActive = true
+            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:20).isActive = true
         } else {
-            base.topAnchor.constraint(equalTo:view.topAnchor, constant:Alert.top).isActive = true
+            base.topAnchor.constraint(equalTo:view.topAnchor, constant:20).isActive = true
         }
     }
     

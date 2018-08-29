@@ -29,7 +29,7 @@ class ShareView:PopupView<SharePresenter> {
         label.textColor = .black
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize:14, weight:.light)
+        label.font = .systemFont(ofSize:14, weight:.light)
         label.text = NSLocalizedString("ShareView.label", comment:String())
         base.addSubview(label)
         self.label = label
@@ -40,7 +40,7 @@ class ShareView:PopupView<SharePresenter> {
         done.setTitleColor(UIColor(white:0, alpha:0.4), for:.normal)
         done.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         done.setTitle(NSLocalizedString("ShareView.done", comment:String()), for:[])
-        done.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.bold)
+        done.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(done)
         self.done = done
         
@@ -51,7 +51,7 @@ class ShareView:PopupView<SharePresenter> {
         send.setTitleColor(.white, for:.normal)
         send.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
         send.setTitle(NSLocalizedString("ShareView.send", comment:String()), for:[])
-        send.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.bold)
+        send.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         send.layer.cornerRadius = 6
         base.addSubview(send)
         self.send = send

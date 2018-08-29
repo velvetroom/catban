@@ -14,9 +14,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     let layouter = BoardLayouter()
     private var reportY:CGFloat = 0
     private var reportHandler:(() -> Void)!
-    private static let reportHeight:CGFloat = 390
-    private static let reportTop:CGFloat = -75
-    private static let handleHeight:CGFloat = 3
     
     @objc func dragCard(pan:UIPanGestureRecognizer) {
         let view = pan.view as! BoardCardView
@@ -40,8 +37,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         case .began: reportY = layoutReportTop.constant
         case .possible, .changed:
             layoutReportTop.constant = reportY + pan.translation(in:view).y
-            if layoutReportTop.constant < -BoardView.reportHeight {
-                layoutReportTop.constant = -BoardView.reportHeight
+            if layoutReportTop.constant < -390 {
+                layoutReportTop.constant = -390
             }
         case .cancelled, .ended, .failed:
             reportHandler()
@@ -109,7 +106,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         handle.translatesAutoresizingMaskIntoConstraints = false
         handle.clipsToBounds = true
         handle.backgroundColor = UIColor(white:0.9, alpha:1)
-        handle.layer.cornerRadius = BoardView.handleHeight / 2
+        handle.layer.cornerRadius = 1.5
         report.addSubview(handle)
         self.handle = handle
         
@@ -143,14 +140,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        report.heightAnchor.constraint(equalToConstant:BoardView.reportHeight).isActive = true
-        layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:BoardView.reportTop)
+        report.heightAnchor.constraint(equalToConstant:390).isActive = true
+        layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-75)
         layoutReportTop.isActive = true
 
         handle.topAnchor.constraint(equalTo:report.topAnchor, constant:14).isActive = true
         handle.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         handle.widthAnchor.constraint(equalToConstant:30).isActive = true
-        handle.heightAnchor.constraint(equalToConstant:BoardView.handleHeight).isActive = true
+        handle.heightAnchor.constraint(equalToConstant:3).isActive = true
         
         border.bottomAnchor.constraint(equalTo:report.topAnchor).isActive = true
         border.leftAnchor.constraint(equalTo:report.leftAnchor).isActive = true
@@ -199,7 +196,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func handlerHidden() {
-        if layoutReportTop.constant < BoardView.reportTop - 30 {
+        if layoutReportTop.constant < -105 {
             showReport()
         } else {
             hideReport()
@@ -207,7 +204,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func handlerShown() {
-        if layoutReportTop.constant < -(BoardView.reportHeight - 30) {
+        if layoutReportTop.constant < -360 {
             showReport()
         } else {
             hideReport()
@@ -216,7 +213,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     
     private func hideReport() {
         reportHandler = handlerHidden
-        layoutReportTop.constant = BoardView.reportTop
+        layoutReportTop.constant = -75
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }
@@ -224,7 +221,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     
     private func showReport() {
         reportHandler = handlerShown
-        layoutReportTop.constant = -BoardView.reportHeight
+        layoutReportTop.constant = -390
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }

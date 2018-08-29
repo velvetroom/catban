@@ -13,10 +13,6 @@ class SettingsView:View<SettingsPresenter> {
     weak var columnsSwitch:UISwitch!
     weak var fontSlider:UISlider!
     private let parser = Parser()
-    private static let columnsHeight:CGFloat = 115
-    private static let fontHeight:CGFloat = 120
-    private static let spacing:CGFloat = 1
-    private static let margin:CGFloat = 17
     
     override func viewDidLoad() {
         makeOutlets()
@@ -118,33 +114,32 @@ class SettingsView:View<SettingsPresenter> {
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
         columns.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
-        columns.heightAnchor.constraint(equalToConstant:SettingsView.columnsHeight).isActive = true
+        columns.heightAnchor.constraint(equalToConstant:115).isActive = true
         columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        font.topAnchor.constraint(equalTo:columns.bottomAnchor, constant:SettingsView.spacing).isActive = true
-        font.heightAnchor.constraint(equalToConstant:SettingsView.fontHeight).isActive = true
+        font.topAnchor.constraint(equalTo:columns.bottomAnchor, constant:1).isActive = true
+        font.heightAnchor.constraint(equalToConstant:120).isActive = true
         font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:SettingsView.margin).isActive = true
-        labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:SettingsView.margin).isActive = true
-        labelColumns.rightAnchor.constraint(equalTo:columnsSwitch.leftAnchor,
-                                            constant:-SettingsView.margin).isActive = true
+        labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:17).isActive = true
+        labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:17).isActive = true
+        labelColumns.rightAnchor.constraint(equalTo:columnsSwitch.leftAnchor, constant:-17).isActive = true
         
-        columnsSwitch.topAnchor.constraint(equalTo:columns.topAnchor, constant:SettingsView.margin).isActive = true
-        columnsSwitch.rightAnchor.constraint(equalTo:columns.rightAnchor, constant:-SettingsView.margin).isActive = true
+        columnsSwitch.topAnchor.constraint(equalTo:columns.topAnchor, constant:17).isActive = true
+        columnsSwitch.rightAnchor.constraint(equalTo:columns.rightAnchor, constant:-17).isActive = true
         columnsSwitch.widthAnchor.constraint(equalToConstant:44).isActive = true
         
-        labelFont.topAnchor.constraint(equalTo:font.topAnchor, constant:SettingsView.margin).isActive = true
-        labelFont.leftAnchor.constraint(equalTo:font.leftAnchor, constant:SettingsView.margin).isActive = true
+        labelFont.topAnchor.constraint(equalTo:font.topAnchor, constant:17).isActive = true
+        labelFont.leftAnchor.constraint(equalTo:font.leftAnchor, constant:17).isActive = true
         
-        fontSlider.bottomAnchor.constraint(equalTo:font.bottomAnchor, constant:-SettingsView.margin).isActive = true
-        fontSlider.leftAnchor.constraint(equalTo:font.leftAnchor, constant:SettingsView.margin).isActive = true
-        fontSlider.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-SettingsView.margin).isActive = true
+        fontSlider.bottomAnchor.constraint(equalTo:font.bottomAnchor, constant:-17).isActive = true
+        fontSlider.leftAnchor.constraint(equalTo:font.leftAnchor, constant:17).isActive = true
+        fontSlider.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-17).isActive = true
         
-        displayFont.topAnchor.constraint(equalTo:font.topAnchor, constant:SettingsView.margin).isActive = true
-        displayFont.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-SettingsView.margin).isActive = true
+        displayFont.topAnchor.constraint(equalTo:font.topAnchor, constant:17).isActive = true
+        displayFont.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-17).isActive = true
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -163,8 +158,7 @@ class SettingsView:View<SettingsPresenter> {
     }
     
     private func update(width:CGFloat) {
-        scroll.contentSize = CGSize(width:width, height:SettingsView.columnsHeight + SettingsView.spacing +
-            SettingsView.fontHeight)
+        scroll.contentSize = CGSize(width:width, height:236)
         content.frame = CGRect(origin:.zero, size:scroll.contentSize)
     }
     
@@ -179,7 +173,7 @@ class SettingsView:View<SettingsPresenter> {
     }
     
     private func updateDisplay(size:Int) {
-        displayFont.font = UIFont.systemFont(ofSize:CGFloat(size), weight:.bold)
+        displayFont.font = .systemFont(ofSize:CGFloat(size), weight:.bold)
         displayFont.text = String(size)
     }
 }

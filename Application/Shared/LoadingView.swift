@@ -8,11 +8,6 @@ class LoadingView:UIView {
         circle.fillColor = tintColor.cgColor
         pulse.strokeColor = tintColor.cgColor
     } }
-    private static let size:CGFloat = 52
-    private static let circleRadius:CGFloat = 10
-    private static let pulseMiddleRadius:CGFloat = 1.4
-    private static let animationPulse:TimeInterval = 0.2
-    private static let animationFade:TimeInterval = 0.7
     
     init() {
         super.init(frame:.zero)
@@ -26,8 +21,8 @@ class LoadingView:UIView {
         circle.strokeColor = nil
         circle.backgroundColor = nil
         circle.fillColor = tintColor.cgColor
-        circle.path = arch(radius:LoadingView.circleRadius)
-        circle.frame = CGRect(x:0, y:0, width:LoadingView.size, height:LoadingView.size)
+        circle.path = arch(radius:10)
+        circle.frame = CGRect(x:0, y:0, width:52, height:52)
         layer.addSublayer(circle)
         self.circle = circle
         
@@ -36,8 +31,8 @@ class LoadingView:UIView {
         pulse.strokeColor = tintColor.cgColor
         pulse.backgroundColor = nil
         pulse.fillColor = nil
-        pulse.path = arch(radius:LoadingView.circleRadius)
-        pulse.frame = CGRect(x:0, y:0, width:LoadingView.size, height:LoadingView.size)
+        pulse.path = arch(radius:10)
+        pulse.frame = CGRect(x:0, y:0, width:52, height:52)
         layer.addSublayer(pulse)
         self.pulse = pulse
         
@@ -51,41 +46,40 @@ class LoadingView:UIView {
     }
     
     required init?(coder:NSCoder) { return nil }
-    override var intrinsicContentSize:CGSize { return CGSize(width:LoadingView.size, height:LoadingView.size) }
+    override var intrinsicContentSize:CGSize { return CGSize(width:52, height:52) }
     
     private func animateRadiusPulse() -> CAAnimation {
         let animation = CABasicAnimation(keyPath:"transform.scale")
-        animation.duration = LoadingView.animationPulse
+        animation.duration = 0.2
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 1
-        animation.toValue = LoadingView.pulseMiddleRadius
+        animation.toValue = 1.4
         return animation
     }
     
     private func animateRadiusFade() -> CAAnimation {
         let animation = CABasicAnimation(keyPath:"transform.scale")
-        animation.duration = LoadingView.animationFade
+        animation.duration = 0.7
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
-        animation.fromValue = LoadingView.pulseMiddleRadius
+        animation.fromValue = 1.4
         animation.toValue = 2.4
-        animation.beginTime = LoadingView.animationPulse
+        animation.beginTime = 0.2
         return animation
     }
     
     private func animateAlpha() -> CAAnimation {
         let animation = CABasicAnimation(keyPath:"opacity")
-        animation.duration = LoadingView.animationFade
+        animation.duration = 0.7
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 0.8
         animation.toValue = 0
-        animation.beginTime = LoadingView.animationPulse
+        animation.beginTime = 0.2
         return animation
     }
     
     private func arch(radius:CGFloat) -> CGPath {
         let path = UIBezierPath()
-        path.addArc(withCenter:CGPoint(x:LoadingView.size / 2, y:LoadingView.size / 2), radius:radius,
-                    startAngle:0.0001, endAngle:0, clockwise:true)
+        path.addArc(withCenter:CGPoint(x:26, y:26), radius:radius, startAngle:0.001, endAngle:0, clockwise:true)
         return path.cgPath
     }
 }

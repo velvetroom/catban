@@ -19,10 +19,9 @@ public class Library {
     var cache = Factory.makeCache()
     var database = Factory.makeDatabase()
     var state:LibraryStateProtocol = Library.stateDefault
-    let queue = DispatchQueue(label:Library.prefix, qos:.background, target:.global(qos:.background))
+    let queue = DispatchQueue(label:String(), qos:.background, target:.global(qos:.background))
     static let stateDefault = LibraryStateDefault()
     static let stateReady = LibraryStateReady()
-    private static let prefix = "iturbide.catban."
     
     public func loadBoards() throws {
         try state.loadBoards(context:self)
@@ -68,7 +67,7 @@ public class Library {
     }
     
     public func url(identifier:String) -> String {
-        return Library.prefix.appending(identifier)
+        return "iturbide.catban.".appending(identifier)
     }
     
     func saveSession() {
@@ -80,7 +79,7 @@ public class Library {
     }
     
     private func identifierFrom(url:String) throws -> String {
-        let components = url.components(separatedBy:Library.prefix)
+        let components = url.components(separatedBy:"iturbide.catban.")
         if components.count == 2 && !components[1].isEmpty {
             return components[1]
         } else {

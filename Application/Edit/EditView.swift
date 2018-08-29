@@ -43,7 +43,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         text.autocapitalizationType = .sentences
         text.keyboardType = .alphabet
         text.contentInset = .zero
-        text.font = UIFont.systemFont(ofSize:28, weight:.light)
+        text.font = .systemFont(ofSize:28, weight:.light)
         text.textContainerInset = UIEdgeInsets(top:12, left:12, bottom:12, right:12)
         text.text = presenter.editText.subject?.text
         view.addSubview(text)
@@ -139,7 +139,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         key.setTitle(title, for:[])
         key.setTitleColor(.black, for:.normal)
         key.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
-        key.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.bold)
+        key.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         key.addTarget(self, action:#selector(add(key:)), for:.touchUpInside)
         text.inputAccessoryView!.addSubview(key)
         key.topAnchor.constraint(equalTo:text.inputAccessoryView!.topAnchor).isActive = true

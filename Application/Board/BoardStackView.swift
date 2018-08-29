@@ -5,9 +5,6 @@ class BoardStackView:UIView {
     private var itemY:CGFloat = 0
     private var width:CGFloat = 0
     private var height:CGFloat = 0
-    private static let width:CGFloat = 15
-    private static let height:CGFloat = 15
-    private static let spacing:CGFloat = 2
     
     init() {
         super.init(frame:.zero)
@@ -27,7 +24,7 @@ class BoardStackView:UIView {
         for index in 0 ..< progress.columns.count {
             itemY = 0
             if index != 0 {
-                itemX += BoardStackView.spacing
+                itemX += 2
             }
             var color:UIColor
             if index == progress.columns.count - 1 {
@@ -39,7 +36,7 @@ class BoardStackView:UIView {
             for _ in 0 ..< progress.columns[index] {
                 addItem(color:color)
             }
-            itemX += BoardStackView.width
+            itemX += 15
             height = max(height, itemY)
         }
         width = itemX
@@ -54,9 +51,9 @@ class BoardStackView:UIView {
         addSubview(item)
         item.topAnchor.constraint(equalTo:topAnchor, constant:itemY).isActive = true
         item.leftAnchor.constraint(equalTo:leftAnchor, constant:itemX).isActive = true
-        item.widthAnchor.constraint(equalToConstant:BoardStackView.width).isActive = true
-        item.heightAnchor.constraint(equalToConstant:BoardStackView.height).isActive = true
-        itemY += BoardStackView.height
-        itemY += BoardStackView.spacing
+        item.widthAnchor.constraint(equalToConstant:15).isActive = true
+        item.heightAnchor.constraint(equalToConstant:15).isActive = true
+        itemY += 15
+        itemY += 2
     }
 }

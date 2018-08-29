@@ -4,7 +4,6 @@ class BoardCardView:BoardItemView {
     weak var halo:UIView!
     weak var label:UILabel!
     weak var gesture:UIPanGestureRecognizer!
-    private static let halo:CGFloat = 10
     
     override func makeOutlets() {
         let halo = UIView()
@@ -28,10 +27,10 @@ class BoardCardView:BoardItemView {
         addGestureRecognizer(gesture)
         self.gesture = gesture
         
-        halo.topAnchor.constraint(equalTo:topAnchor, constant:-BoardCardView.halo).isActive = true
-        halo.leftAnchor.constraint(equalTo:leftAnchor, constant:-BoardCardView.halo).isActive = true
-        halo.bottomAnchor.constraint(equalTo:bottomAnchor, constant:BoardCardView.halo).isActive = true
-        halo.rightAnchor.constraint(equalTo:rightAnchor, constant:BoardCardView.halo).isActive = true
+        halo.topAnchor.constraint(equalTo:topAnchor, constant:-10).isActive = true
+        halo.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
+        halo.bottomAnchor.constraint(equalTo:bottomAnchor, constant:10).isActive = true
+        halo.rightAnchor.constraint(equalTo:rightAnchor, constant:10).isActive = true
         
         label.topAnchor.constraint(equalTo:topAnchor).isActive = true
         label.leftAnchor.constraint(equalTo:leftAnchor).isActive = true

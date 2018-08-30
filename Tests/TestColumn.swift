@@ -15,12 +15,11 @@ class TestColumn:XCTestCase {
     }
     
     func testDeletingCard() {
-        let text = "hello world"
-        column.addCard(text:text)
+        column.addCard(text:"hello world")
         column.addCard(text:"Another one")
         column.delete(card:column.cards.first!)
         XCTAssertEqual(1, column.cards.count)
-        XCTAssertNotEqual(text, column.cards.first?.text)
+        XCTAssertNotEqual("hello world", column.cards.first?.text)
     }
     
     func testInsertingCardAfterAnother() {

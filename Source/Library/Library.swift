@@ -77,9 +77,9 @@ public class Library {
     
     private func createNewBoard() {
         let board = Board()
-        let identifier = self.database.create(board:board)
-        self.session.boards[identifier] = board
-        self.saveSession()
+        let identifier = database.create(board:board)
+        session.boards[identifier] = board
+        saveSession()
         DispatchQueue.main.async { [weak self] in self?.delegate?.libraryCreated(board:identifier) }
     }
     

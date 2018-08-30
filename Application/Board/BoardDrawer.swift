@@ -34,7 +34,8 @@ class BoardDrawer {
         item.card = card
         item.label.attributedText = text
         item.add(target:view.presenter, selector:#selector(view.presenter.editCard(view:)))
-        item.gesture.addTarget(view, action:#selector(view.dragCard(pan:)))
+        item.dragGesture.addTarget(view, action:#selector(view.dragCard(pan:)))
+        item.longGesture.addTarget(view, action:#selector(view.long(gesture:)))
         addItem(item:item)
         layout(item:item, height:textHeight, width:BoardDrawer.columnWidth)
     }

@@ -15,19 +15,30 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     private var reportY:CGFloat = 0
     private var reportHandler:(() -> Void)!
     
+    @objc func long(gesture:UILongPressGestureRecognizer) {
+        let view = gesture.view as! BoardCardView
+        switch gesture.state {
+        case .began:
+            gesture.isEnabled = false
+            detach(card:view)
+            view.top.constant = 0
+            view.left.constant += view.width.constant
+            attach(card:view)
+        case .cancelled, .ended, .failed:
+            view.isUserInteractionEnabled = true
+        case .possible, .changed: break
+        }
+    }
+    
     @objc func dragCard(pan:UIPanGestureRecognizer) {
         let view = pan.view as! BoardCardView
         switch pan.state {
         case .began:
             view.dragStart()
-            content.bringSubviewToFront(view)
-            layouter.detach(item:view)
-            animate()
+            detach(card:view)
         case .cancelled, .ended, .failed:
             view.dragEnd()
-            layouter.attach(item:view)
-            animate()
-            presenter.updateProgress()
+            attach(card:view)
         case .possible, .changed: view.drag(point:pan.translation(in:content))
         }
     }
@@ -232,5 +243,17 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }
+    }
+    
+    private func detach(card:BoardCardView) {
+        content.bringSubviewToFront(view)
+        layouter.detach(item:card)
+        animate()
+    }
+    
+    private func attach(card:BoardCardView) {
+        layouter.attach(item:card)
+        animate()
+        presenter.updateProgress()
     }
 }

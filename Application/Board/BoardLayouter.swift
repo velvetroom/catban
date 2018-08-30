@@ -33,7 +33,8 @@ class BoardLayouter {
     
     func attach(item:BoardCardView) {
         var column = view.drawer.firstColumn!
-        while column.frame.maxX < item.frame.midX {
+        let midX = item.left.constant + (item.width.constant / 2)
+        while column.frame.maxX < midX {
             if let right = column.right as? BoardHeaderView {
                 column = right
             } else {

@@ -3,7 +3,8 @@ import UIKit
 class BoardCardView:BoardItemView {
     weak var halo:UIView!
     weak var label:UILabel!
-    weak var gesture:UIPanGestureRecognizer!
+    weak var dragGesture:UIPanGestureRecognizer!
+    weak var longGesture:UILongPressGestureRecognizer!
     
     override func makeOutlets() {
         let halo = UIView()
@@ -23,9 +24,14 @@ class BoardCardView:BoardItemView {
         addSubview(label)
         self.label = label
         
-        let gesture = UIPanGestureRecognizer()
-        addGestureRecognizer(gesture)
-        self.gesture = gesture
+        let dragGesture = UIPanGestureRecognizer()
+        addGestureRecognizer(dragGesture)
+        self.dragGesture = dragGesture
+        
+        let longGesture = UILongPressGestureRecognizer()
+        longGesture.minimumPressDuration = 1
+        addGestureRecognizer(longGesture)
+        self.longGesture = longGesture
         
         halo.topAnchor.constraint(equalTo:topAnchor, constant:-10).isActive = true
         halo.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true

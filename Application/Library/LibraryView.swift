@@ -1,7 +1,7 @@
 import Foundation
 import CleanArchitecture
 
-class LibraryView:View<LibraryPresenter> {
+class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     weak var loading:LoadingView!
     weak var scroll:UIScrollView!
     weak var message:UILabel!
@@ -16,11 +16,26 @@ class LibraryView:View<LibraryPresenter> {
         makeOutlets()
         layoutOutlets()
         configureViewModel()
+        touch3d()
     }
     
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to:size, with:coordinator)
         layoutCells(size:size)
+    }
+    
+    func previewingContext(_ context:UIViewControllerPreviewing,
+                           viewControllerForLocation location:CGPoint) -> UIViewController? {
+        var view:UIViewController?
+        if let item = scroll.subviews.first(where: { (view) -> Bool in view.frame.contains(location) }) {
+            context.sourceRect = item.frame
+            view = presenter.interactor.board(identifier:(item as! LibraryCellView).viewModel.board)
+        }
+        return view
+    }
+    
+    func previewingContext(_ context:UIViewControllerPreviewing, commit controller:UIViewController) {
+        Application.router.pushViewController(controller, animated:true)
     }
     
     private func makeOutlets() {
@@ -85,6 +100,11 @@ class LibraryView:View<LibraryPresenter> {
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }
+    }
+    
+    private func touch3d() {
+        guard traitCollection.forceTouchCapability == .available else { return }
+        registerForPreviewing(with:self, sourceView:scroll)
     }
     
     private func update(items:[LibraryItem]) {

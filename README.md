@@ -9,9 +9,9 @@
 
 
 # Kanban board
-## Do more with less
+**Do more with less**
 
-Human management
+Human management.
 
 Catban uses a minimalistic interface to manage your projects and helps you focusing on getting things done.
 

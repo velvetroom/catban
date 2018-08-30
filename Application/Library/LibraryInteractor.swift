@@ -37,10 +37,14 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func select(identifier:String) {
+        Application.router.pushViewController(board(identifier:identifier), animated:true)
+    }
+    
+    func board(identifier:String) -> BoardView {
         let view = BoardView()
         view.presenter.interactor.identifier = identifier
         view.presenter.interactor.board = library.boards[identifier]
-        Application.router.pushViewController(view, animated:true)
+        return view
     }
     
     func librarySessionLoaded() {

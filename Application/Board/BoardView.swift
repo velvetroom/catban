@@ -246,7 +246,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func detach(card:BoardCardView) {
-        content.bringSubviewToFront(view)
+        content.bringSubviewToFront(card)
         layouter.detach(item:card)
         animate()
     }

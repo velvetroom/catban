@@ -18,10 +18,10 @@ public class Library {
     var session = Session()
     var cache = Factory.makeCache()
     var database = Factory.makeDatabase()
-    var state:LibraryStateProtocol = Library.stateDefault
+    var state:LibraryState = Library.stateDefault
     let queue = DispatchQueue(label:String(), qos:.background, target:.global(qos:.background))
-    static let stateDefault = LibraryStateDefault()
-    static let stateReady = LibraryStateReady()
+    static let stateDefault = LibraryDefault()
+    static let stateReady = LibraryReady()
     
     public func loadBoards() throws {
         try state.loadBoards(context:self)

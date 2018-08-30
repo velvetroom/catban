@@ -25,10 +25,10 @@
 		DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */; };
 		DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA4C64D8211DD4E400ECAD21 /* GoogleService-Info.plist */; };
 		DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DC211DD54100ECAD21 /* Library.swift */; };
-		DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */; };
+		DA4C64EF211DD54100ECAD21 /* LibraryDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DD211DD54100ECAD21 /* LibraryDefault.swift */; };
 		DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */; };
-		DA4C64F1211DD54100ECAD21 /* LibraryStateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */; };
-		DA4C64F3211DD54100ECAD21 /* LibraryStateReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */; };
+		DA4C64F1211DD54100ECAD21 /* LibraryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64DF211DD54100ECAD21 /* LibraryState.swift */; };
+		DA4C64F3211DD54100ECAD21 /* LibraryReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E1211DD54100ECAD21 /* LibraryReady.swift */; };
 		DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E3211DD54100ECAD21 /* CacheService.swift */; };
 		DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E4211DD54100ECAD21 /* CatbanError.swift */; };
 		DA4C64F6211DD54100ECAD21 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64E5211DD54100ECAD21 /* DatabaseService.swift */; };
@@ -77,6 +77,9 @@
 		DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */; };
 		DA69DCF621282AF900FE7C90 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */; };
 		DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF721282B1A00FE7C90 /* SettingsView.swift */; };
+		DA6C360D213802450009583A /* LibraryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C360C213802450009583A /* LibraryState.swift */; };
+		DA6C360F213802D80009583A /* LibraryDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C360E213802D80009583A /* LibraryDefault.swift */; };
+		DA6C3611213802DF0009583A /* LibraryQuick.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C3610213802DF0009583A /* LibraryQuick.swift */; };
 		DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */; };
 		DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E212126AB9C00E92FD9 /* InfoView.swift */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
@@ -138,10 +141,10 @@
 		DA4C64D7211DD4E400ECAD21 /* application.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = application.plist; sourceTree = "<group>"; };
 		DA4C64D8211DD4E400ECAD21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA4C64DC211DD54100ECAD21 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
-		DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateDefault.swift; sourceTree = "<group>"; };
+		DA4C64DD211DD54100ECAD21 /* LibraryDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDefault.swift; sourceTree = "<group>"; };
 		DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDelegate.swift; sourceTree = "<group>"; };
-		DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateProtocol.swift; sourceTree = "<group>"; };
-		DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryStateReady.swift; sourceTree = "<group>"; };
+		DA4C64DF211DD54100ECAD21 /* LibraryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryState.swift; sourceTree = "<group>"; };
+		DA4C64E1211DD54100ECAD21 /* LibraryReady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryReady.swift; sourceTree = "<group>"; };
 		DA4C64E3211DD54100ECAD21 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		DA4C64E4211DD54100ECAD21 /* CatbanError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatbanError.swift; sourceTree = "<group>"; };
 		DA4C64E5211DD54100ECAD21 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -189,6 +192,9 @@
 		DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		DA69DCF721282B1A00FE7C90 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DA6C360C213802450009583A /* LibraryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryState.swift; sourceTree = "<group>"; };
+		DA6C360E213802D80009583A /* LibraryDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDefault.swift; sourceTree = "<group>"; };
+		DA6C3610213802DF0009583A /* LibraryQuick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryQuick.swift; sourceTree = "<group>"; };
 		DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		DA759E212126AB9C00E92FD9 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
@@ -294,9 +300,9 @@
 			children = (
 				DA4C64DC211DD54100ECAD21 /* Library.swift */,
 				DA4C64DE211DD54100ECAD21 /* LibraryDelegate.swift */,
-				DA4C64DF211DD54100ECAD21 /* LibraryStateProtocol.swift */,
-				DA4C64DD211DD54100ECAD21 /* LibraryStateDefault.swift */,
-				DA4C64E1211DD54100ECAD21 /* LibraryStateReady.swift */,
+				DA4C64DF211DD54100ECAD21 /* LibraryState.swift */,
+				DA4C64DD211DD54100ECAD21 /* LibraryDefault.swift */,
+				DA4C64E1211DD54100ECAD21 /* LibraryReady.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -413,6 +419,9 @@
 				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
+				DA6C360C213802450009583A /* LibraryState.swift */,
+				DA6C360E213802D80009583A /* LibraryDefault.swift */,
+				DA6C3610213802DF0009583A /* LibraryQuick.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -659,18 +668,18 @@
 				DA4C64F6211DD54100ECAD21 /* DatabaseService.swift in Sources */,
 				DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */,
 				DA4C64F9211DD54100ECAD21 /* Board.swift in Sources */,
-				DA4C64F1211DD54100ECAD21 /* LibraryStateProtocol.swift in Sources */,
+				DA4C64F1211DD54100ECAD21 /* LibraryState.swift in Sources */,
 				DA4C64FD211DD54100ECAD21 /* TextProtocol.swift in Sources */,
 				DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
-				DA4C64EF211DD54100ECAD21 /* LibraryStateDefault.swift in Sources */,
+				DA4C64EF211DD54100ECAD21 /* LibraryDefault.swift in Sources */,
 				DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */,
 				DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */,
 				DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */,
 				DA4C64F5211DD54100ECAD21 /* CatbanError.swift in Sources */,
 				DA817F802121646600732944 /* ReportStats.swift in Sources */,
-				DA4C64F3211DD54100ECAD21 /* LibraryStateReady.swift in Sources */,
+				DA4C64F3211DD54100ECAD21 /* LibraryReady.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +711,7 @@
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,
 				DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */,
 				DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */,
+				DA6C360F213802D80009583A /* LibraryDefault.swift in Sources */,
 				DA4C656D211DD58A00ECAD21 /* Database.swift in Sources */,
 				DA4C6550211DD58A00ECAD21 /* BoardView.swift in Sources */,
 				DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */,
@@ -711,6 +721,7 @@
 				DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */,
 				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */,
+				DA6C3611213802DF0009583A /* LibraryQuick.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
 				DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */,
 				DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */,
@@ -725,6 +736,7 @@
 				DA32C2522121DC5A0018BBC3 /* BoardProgress.swift in Sources */,
 				DA4C654E211DD58A00ECAD21 /* DeleteView.swift in Sources */,
 				DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */,
+				DA6C360D213802450009583A /* LibraryState.swift in Sources */,
 				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
 				DA8D1297213161800019B2C2 /* Alert.swift in Sources */,
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,

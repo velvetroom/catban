@@ -6,6 +6,7 @@ import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     weak var delegate:InteractorDelegate?
+    var state:LibraryState = LibraryDefault()
     let library = Factory.makeLibrary()
     private let report = Report()
     
@@ -52,7 +53,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func libraryBoardsUpdated() {
-        delegate?.shouldUpdate()
+        state.boardsUpdated(context:self)
     }
     
     func libraryCreated(board:String) {

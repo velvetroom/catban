@@ -1,6 +1,6 @@
 import Foundation
 
-class LibraryStateDefault:LibraryStateProtocol {
+class LibraryDefault:LibraryState {
     func loadBoards(context:Library) throws { throw CatbanError.noSession }
     
     func loadSession(context:Library) {

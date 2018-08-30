@@ -33,6 +33,10 @@ class LibraryPresenter:Presenter {
         cell.unhighlight()
     }
     
+    func didLoad() {
+        UIApplication.shared.shortcutItems = []
+    }
+    
     func willAppear() {
         viewModels.update(viewModel:LibraryItems())
         interactor.load()
@@ -44,6 +48,7 @@ class LibraryPresenter:Presenter {
         } else {
             DispatchQueue.global(qos:.background).async { [weak self] in self?.showItems() }
         }
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.registerShortcuts() }
     }
     
     private func showEmpty() {
@@ -74,5 +79,18 @@ class LibraryPresenter:Presenter {
         return items.sorted { (left, right) -> Bool in
             return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
         }
-    } 
+    }
+    
+    private func registerShortcuts() {
+        var items:[UIApplicationShortcutItem] = []
+        let icon = UIApplicationShortcutIcon(templateImageName:"assetQuickIcon")
+        let boards = interactor.library.boards.sorted { (left, right) -> Bool in
+            return left.value.text.caseInsensitiveCompare(right.value.text) == .orderedAscending
+        }
+        boards.forEach { element in
+            items.append(UIApplicationShortcutItem(type:String(), localizedTitle:element.value.text, localizedSubtitle:
+                nil, icon:icon, userInfo:["board":NSString(string:element.key)]))
+        }
+        DispatchQueue.main.async { UIApplication.shared.shortcutItems = items }
+    }
 }

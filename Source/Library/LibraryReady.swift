@@ -1,6 +1,6 @@
 import Foundation
 
-class LibraryStateReady:LibraryStateProtocol {
+class LibraryReady:LibraryState {
     func loadBoards(context:Library) throws {
         recursiveLoad(context:context, identifiers:Array(context.session.boards.keys))
     }

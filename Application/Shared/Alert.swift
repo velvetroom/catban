@@ -13,7 +13,6 @@ class Alert:UIViewController {
         modalPresentationStyle = .overCurrentContext
         modalTransitionStyle = .crossDissolve
         modalPresentationCapturesStatusBarAppearance = true
-        view.backgroundColor = .clear
         Application.router.present(self, animated:true)
     }
     
@@ -21,8 +20,10 @@ class Alert:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = false
         timer = Timer.scheduledTimer(
-            timeInterval:4, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:3, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
         layoutOutlets()
     }
@@ -35,12 +36,13 @@ class Alert:UIViewController {
     private func makeOutlets() {
         let base = UIView()
         base.isUserInteractionEnabled = false
-        base.backgroundColor = UIColor(white:0.96, alpha:1)
+        base.backgroundColor = .white
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.layer.cornerRadius = 4
-        base.clipsToBounds = true
-        base.layer.borderColor = UIColor(white:0.9, alpha:1).cgColor
-        base.layer.borderWidth = 1
+        base.layer.cornerRadius = 5
+        base.layer.shadowColor = UIColor.black.cgColor
+        base.layer.shadowOffset = .zero
+        base.layer.shadowRadius = 3
+        base.layer.shadowOpacity = 0.6
         view.addSubview(base)
         self.base = base
         
@@ -80,9 +82,9 @@ class Alert:UIViewController {
         icon.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
-            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:20).isActive = true
+            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:10).isActive = true
         } else {
-            base.topAnchor.constraint(equalTo:view.topAnchor, constant:20).isActive = true
+            base.topAnchor.constraint(equalTo:view.topAnchor, constant:10).isActive = true
         }
     }
     

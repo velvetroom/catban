@@ -26,6 +26,15 @@ import Firebase
         completionHandler(true)
     }
     
+    func application(_:UIApplication, open url:URL, options:[UIApplication.OpenURLOptionsKey:Any] = [:]) -> Bool {
+        let components = url.absoluteString.components(separatedBy:"catban:")
+        if components.count == 2 {
+            Application.router.quick(board:components[1])
+            return true
+        }
+        return false
+    }
+    
     private func injection() {
         Factory.cache = Cache.self
         Factory.database = Database.self

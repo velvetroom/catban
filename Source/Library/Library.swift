@@ -32,12 +32,8 @@ public class Library {
     }
     
     public func newBoard() {
-        queue.async {
-            let board = Board()
-            let identifier = self.database.create(board:board)
-            self.session.boards[identifier] = board
-            self.saveSession()
-            DispatchQueue.main.async { self.delegate?.libraryCreated(board:identifier) }
+        queue.async { [weak self] in
+            self?.createNewBoard()
         }
     }
     
@@ -45,24 +41,25 @@ public class Library {
         let identifier = try identifierFrom(url:url)
         try validate(identifier:identifier)
         session.boards[identifier] = Board()
-        queue.async {
-            self.saveSession()
+        queue.async { [weak self] in
+            self?.saveSession()
         }
     }
     
     public func save(board:Board) {
-        queue.async {
-            guard let identifier = self.identifier(board:board) else { return }
+        queue.async { [weak self] in
+            guard let identifier = self?.identifier(board:board) else { return }
             board.syncstamp = Date()
-            self.database.save(identifier:identifier, board:board)
+            self?.database.save(identifier:identifier, board:board)
         }
     }
     
     public func delete(board:Board) {
-        queue.async {
-            guard let identifier = self.identifier(board:board) else { return }
-            self.session.boards.removeValue(forKey:identifier)
-            self.saveSession()
+        queue.async { [weak self] in
+            guard let identifier = self?.identifier(board:board) else { return }
+            self?.session.boards.removeValue(forKey:identifier)
+            self?.saveSession()
+            self?.boardsUpdated()
         }
     }
     
@@ -72,6 +69,18 @@ public class Library {
     
     func saveSession() {
         cache.save(session:session)
+    }
+    
+    func boardsUpdated() {
+        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryBoardsUpdated() }
+    }
+    
+    private func createNewBoard() {
+        let board = Board()
+        let identifier = self.database.create(board:board)
+        self.session.boards[identifier] = board
+        self.saveSession()
+        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryCreated(board:identifier) }
     }
     
     private func identifier(board:Board) -> String? {

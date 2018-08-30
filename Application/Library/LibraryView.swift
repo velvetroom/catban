@@ -16,7 +16,6 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         makeOutlets()
         layoutOutlets()
         configureViewModel()
-        touch3d()
     }
     
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {
@@ -34,7 +33,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         return view
     }
     
-    func previewingContext(_ context:UIViewControllerPreviewing, commit controller:UIViewController) {
+    func previewingContext(_:UIViewControllerPreviewing, commit controller:UIViewController) {
         Application.router.pushViewController(controller, animated:true)
     }
     
@@ -45,6 +44,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
         view.addSubview(scroll)
+        registerForPreviewing(with:self, sourceView:scroll)
         self.scroll = scroll
         
         let message = UILabel()
@@ -100,11 +100,6 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
             self?.message.text = viewModel.message
             self?.update(items:viewModel.items)
         }
-    }
-    
-    private func touch3d() {
-        guard traitCollection.forceTouchCapability == .available else { return }
-        registerForPreviewing(with:self, sourceView:scroll)
     }
     
     private func update(items:[LibraryItem]) {

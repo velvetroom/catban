@@ -57,6 +57,13 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         reportHandler = handlerHidden
     }
     
+    override var previewActionItems:[UIPreviewActionItem] { return [
+        UIPreviewAction(title:NSLocalizedString("BoardView.share", comment:String()), style:.default)
+        { [weak self] (_, _) in self?.presenter.share() },
+        UIPreviewAction(title:NSLocalizedString("BoardView.delete", comment:String()), style:.destructive)
+        { [weak self] (_, _) in self?.presenter.delete() }]
+    }
+    
     func updateSearchResults(for search:UISearchController) {
         guard
             let text = search.searchBar.text,

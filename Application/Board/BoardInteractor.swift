@@ -40,15 +40,19 @@ class BoardInteractor:Interactor {
         Application.router.present(view, animated:true)
     }
     
+    func delete() {
+        let view = DeleteView(presenter:DeletePresenter())
+        view.presenter.interactor = self
+        view.presenter.edit = makeDeleteBoard()
+        Application.router.present(view, animated:true)
+    }
+    
     func edit() {
         var text = EditText()
         text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
         text.subject = board
         text.save = EditPresenter.saveTextChange
-        var delete = EditDelete()
-        delete.title = NSLocalizedString("BoardInteractor.deleteBoard", comment:String())
-        delete.confirm = DeletePresenter.confirmBoard
-        edit(text:text, delete:delete)
+        edit(text:text, delete:makeDeleteBoard())
     }
     
     func newColumn() {
@@ -106,5 +110,12 @@ class BoardInteractor:Interactor {
         view.presenter.interactor = self
         view.presenter.infoSource = infoSource
         Application.router.pushViewController(view, animated:true)
+    }
+    
+    private func makeDeleteBoard() -> EditDelete {
+        var delete = EditDelete()
+        delete.title = String(format:NSLocalizedString("BoardInteractor.deleteBoard", comment:String()), board.text) 
+        delete.confirm = DeletePresenter.confirmBoard
+        return delete
     }
 }

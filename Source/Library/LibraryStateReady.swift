@@ -21,7 +21,7 @@ class LibraryStateReady:LibraryStateProtocol {
                 self?.recursiveLoad(context:context, identifiers:identifiers)
             }
         } else {
-            DispatchQueue.main.async { context.delegate?.libraryBoardsUpdated() }
+            context.boardsUpdated()
         }
     }
     

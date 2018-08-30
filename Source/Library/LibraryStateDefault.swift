@@ -4,11 +4,11 @@ class LibraryStateDefault:LibraryStateProtocol {
     func loadBoards(context:Library) throws { throw CatbanError.noSession }
     
     func loadSession(context:Library) {
-        context.queue.async {
+        context.queue.async { [weak self] in
             do {
-                self.loaded(context:context, session:try context.cache.loadSession())
+                self?.loaded(context:context, session:try context.cache.loadSession())
             } catch {
-                self.loaded(context:context, session:Session())
+                self?.loaded(context:context, session:Session())
             }
         }
     }

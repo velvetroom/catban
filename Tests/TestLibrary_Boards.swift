@@ -44,15 +44,22 @@ class TestLibrary_Boards:XCTestCase {
     }
     
     func testDeleteBoardCallsCache() {
-        let expect = expectation(description:String())
+        let expectCache = expectation(description:String())
+        let expectDelegate = expectation(description:String())
         let board = Board()
+        let delegate = MockLibraryDelegate()
+        library.delegate = delegate
         library.session.boards["a"] = board
+        delegate.onBoardsUpdated = {
+            XCTAssertEqual(Thread.main, Thread.current)
+            expectDelegate.fulfill()
+        }
         (library.cache as! MockCache).onSaveSession = {
             XCTAssertTrue(self.library.session.boards.isEmpty)
             XCTAssertTrue(self.library.boards.isEmpty)
-            expect.fulfill()
+            expectCache.fulfill()
         }
-        library.delete(board:board)
+        DispatchQueue.global(qos:.background).async { self.library.delete(board:board) }
         waitForExpectations(timeout:1, handler:nil)
     }
 }

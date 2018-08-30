@@ -16,6 +16,7 @@ class DeleteView:PopupView<DeletePresenter> {
         label.font = .systemFont(ofSize:16, weight:.regular)
         label.text = presenter.edit.title
         label.textAlignment = .center
+        label.numberOfLines = 0
         view.addSubview(label)
         self.label = label
         

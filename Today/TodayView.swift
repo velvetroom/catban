@@ -1,46 +1,35 @@
 import UIKit
 import NotificationCenter
 
-@objc(TodayView)
-class TodayView:UIViewController, NCWidgetProviding {
-    weak var scroll:UIScrollView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        makeOutlets()
-    }
-        
+@objc(TodayView) class TodayView:UIViewController, NCWidgetProviding {
     func widgetPerformUpdate(completionHandler:(@escaping(NCUpdateResult) -> Void)) {
-        
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.update(result:completionHandler) }
     }
     
-    private func makeOutlets() {
-        self.scroll?.removeFromSuperview()
-        let scroll = UIScrollView()
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.alwaysBounceHorizontal = true
-        scroll.showsHorizontalScrollIndicator = true
-        view.addSubview(scroll)
-        self.scroll = scroll
-        scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-        scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
-        scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        
-        var x:CGFloat = 0
-        /*library.boards.forEach { item in
-            let cell = TodayCellView()
-            cell.label.text = item.value.text
-            cell.frame = CGRect(x:x, y:0, width:100, height:view.bounds.height)
-            x += cell.frame.width
-            scroll.addSubview(cell)
+    private func update(result:@escaping((NCUpdateResult) -> Void)) {
+        if let today = Today.retrieve() {
+            DispatchQueue.main.async { [weak self] in
+                self?.makeOutlets(today:today)
+                result(.newData)
+            }
+        } else {
+            DispatchQueue.main.async { result(.noData) }
         }
-        */
-        let button:UIButton = UIButton()
-        button.backgroundColor = .blue
-        button.addTarget(self, action:#selector(selector), for:.touchUpInside)
-        button.frame = CGRect(x:0, y:0, width:50, height:50)
-        scroll.addSubview(button)
+    }
+    
+    private func makeOutlets(today:Today) {
+        var left = view.leftAnchor
+        today.items.forEach { item in
+            let cell = LibraryCellView()
+            cell.translatesAutoresizingMaskIntoConstraints = false
+            cell.viewModel = item
+            view.addSubview(cell)
+            cell.leftAnchor.constraint(equalTo:left).isActive = true
+            cell.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+            cell.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+            cell.widthAnchor.constraint(equalTo:view.widthAnchor, multiplier:0.25).isActive = true
+            left = cell.rightAnchor
+        }
     }
     
     @objc private func selector() {

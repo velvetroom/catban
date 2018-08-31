@@ -63,7 +63,7 @@ class LibraryPresenter:Presenter {
         let items = self.items
         showItems(items:items)
         registerShortcuts(items:items)
-        registerToday(items:items)
+        Today(items:items).store()
     }
     
     private var items:[LibraryItem] {
@@ -96,11 +96,5 @@ class LibraryPresenter:Presenter {
                 nil, icon:icon, userInfo:["board":NSString(string:item.board)]))
         }
         DispatchQueue.main.async { UIApplication.shared.shortcutItems = shortcuts }
-    }
-    
-    private func registerToday(items:[LibraryItem]) {
-        let store = UserDefaults(suiteName:"group.Catban")
-        do { store?.set(try JSONEncoder().encode(Today(items:items)), forKey:"today") } catch { return }
-        store?.synchronize()
     }
 }

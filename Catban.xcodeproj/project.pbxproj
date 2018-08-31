@@ -85,7 +85,6 @@
 		DA6C363F21381AF80009583A /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C363E21381AF80009583A /* TodayView.swift */; };
 		DA6C3641213824C50009583A /* TodayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C3640213824C50009583A /* TodayCellView.swift */; };
 		DA6C364221382B420009583A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
-		DA6FC4EB213932CD00260055 /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */; };
 		DA741D93213924C6002555E4 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741D92213924C6002555E4 /* Today.swift */; };
 		DA741D94213924C6002555E4 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741D92213924C6002555E4 /* Today.swift */; };
 		DA741D9521392945002555E4 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */; };
@@ -871,7 +870,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA6FC4EB213932CD00260055 /* LibraryCellView.swift in Sources */,
 				DA741D9521392945002555E4 /* LibraryItem.swift in Sources */,
 				DA6C3641213824C50009583A /* TodayCellView.swift in Sources */,
 				DA6C363F21381AF80009583A /* TodayView.swift in Sources */,

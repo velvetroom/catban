@@ -1,6 +1,6 @@
 LibraryView.title="Boards";
 LibraryPresenter.empty="Create a new board or load one from a QR Code.";
-LibraryInteractor.board="Catban board";
+LibraryInteractor.board="New board";
 LibraryInteractor.column.todo="To do";
 LibraryInteractor.column.progress="In progress";
 LibraryInteractor.column.done="Done";

@@ -30,7 +30,7 @@ class LibraryCellView:UIControl {
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
         name.font = .systemFont(ofSize:12, weight:.medium)
-        name.textColor = UIColor.black
+        name.textColor = .black
         addSubview(name)
         self.name = name
         

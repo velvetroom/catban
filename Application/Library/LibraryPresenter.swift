@@ -45,10 +45,10 @@ class LibraryPresenter:Presenter {
     func shouldUpdate() {
         if interactor.library.boards.isEmpty {
             showEmpty()
+            UIApplication.shared.shortcutItems = []
         } else {
-            DispatchQueue.global(qos:.background).async { [weak self] in self?.showItems() }
+            DispatchQueue.global(qos:.background).async { [weak self] in self?.updateItems() }
         }
-        DispatchQueue.global(qos:.background).async { [weak self] in self?.registerShortcuts() }
     }
     
     private func showEmpty() {
@@ -59,12 +59,10 @@ class LibraryPresenter:Presenter {
         viewModels.update(viewModel:viewModel)
     }
     
-    private func showItems() {
-        var viewModel = LibraryItems()
-        viewModel.items = self.items
-        viewModel.loadingHidden = true
-        viewModel.actionsEnabled = true
-        viewModels.update(viewModel:viewModel)
+    private func updateItems() {
+        let items = self.items
+        showItems(items:items)
+        registerShortcuts(items:items)
     }
     
     private var items:[LibraryItem] {
@@ -81,16 +79,25 @@ class LibraryPresenter:Presenter {
         }
     }
     
-    private func registerShortcuts() {
-        var items:[UIApplicationShortcutItem] = []
+    private func showItems(items:[LibraryItem]) {
+        var viewModel = LibraryItems()
+        viewModel.items = items
+        viewModel.loadingHidden = true
+        viewModel.actionsEnabled = true
+        viewModels.update(viewModel:viewModel)
+    }
+    
+    private func registerShortcuts(items:[LibraryItem]) {
+        var shortcuts:[UIApplicationShortcutItem] = []
         let icon = UIApplicationShortcutIcon(templateImageName:"assetQuickIcon")
-        let boards = interactor.library.boards.sorted { (left, right) -> Bool in
-            return left.value.text.caseInsensitiveCompare(right.value.text) == .orderedAscending
+        items.forEach { item in
+            shortcuts.append(UIApplicationShortcutItem(type:String(), localizedTitle:item.name, localizedSubtitle:
+                nil, icon:icon, userInfo:["board":NSString(string:item.board)]))
         }
-        boards.forEach { element in
-            items.append(UIApplicationShortcutItem(type:String(), localizedTitle:element.value.text, localizedSubtitle:
-                nil, icon:icon, userInfo:["board":NSString(string:element.key)]))
-        }
-        DispatchQueue.main.async { UIApplication.shared.shortcutItems = items }
+        DispatchQueue.main.async { UIApplication.shared.shortcutItems = shortcuts }
+    }
+    
+    private func registerToday(items:[LibraryItem]) {
+        
     }
 }

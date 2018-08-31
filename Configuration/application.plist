@@ -59,5 +59,28 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>UIApplicationShortcutItems</key>
+    <array>
+        <dict>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeAdd</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Add board</string>
+            <key>UIApplicationShortcutItemSubtitle</key>
+            <string>Create a new project</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>catban.addBoard</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeCloud</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Load board</string>
+            <key>UIApplicationShortcutItemSubtitle</key>
+            <string>Scan a QR code shared to you</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>catban.loadBoard</string>
+        </dict>
+    </array>
 </dict>
 </plist>

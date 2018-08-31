@@ -15,16 +15,32 @@ class Router:UINavigationController {
     
     func launch(board:String) {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuick(board:board)
+        library.presenter.interactor.state = LibraryQuickBoard(board:board)
+        setViewControllers([library], animated:false)
+    }
+    
+    func launchAdd() {
+        let library = LibraryView()
+        library.presenter.interactor.state = LibraryQuickAdd()
+        setViewControllers([library], animated:false)
+    }
+    
+    func launchScan() {
+        let library = LibraryView()
+        library.presenter.interactor.state = LibraryQuickScan()
         setViewControllers([library], animated:false)
     }
     
     func quick(board:String) {
-        dismiss(animated:false)
-        if let view = viewControllers.first as? LibraryView {
-            popToViewController(view, animated:false)
-            view.presenter.interactor.select(identifier:board)
-        }
+        library().presenter.interactor.select(identifier:board)
+    }
+    
+    func quickAdd() {
+        library().presenter.interactor.newBoard()
+    }
+    
+    func quickScan() {
+        library().presenter.interactor.scan()
     }
     
     override func viewDidAppear(_ animated:Bool) {
@@ -45,5 +61,12 @@ class Router:UINavigationController {
             navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .always
         }
+    }
+    
+    private func library() -> LibraryView {
+        dismiss(animated:false)
+        let view = viewControllers.first as! LibraryView
+        popToViewController(view, animated:false)
+        return view
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-class LibraryQuick:LibraryState {
+class LibraryQuickBoard:LibraryState {
     private let board:String
     
     init(board:String) {

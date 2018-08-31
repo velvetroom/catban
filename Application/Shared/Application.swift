@@ -11,20 +11,15 @@ import Firebase
         injection()
         services()
         makeWindow()
-        var launched = false
-        if let url = options?[.url] as? URL { urlLaunch(url:url) }
-        else if let shortcut = options?[.shortcutItem] as? UIApplicationShortcutItem { }
-        else {
-            Application.router.launchDefault()
-            launched = true
-        }
-        return launched
+        return launch(options:options)
     }
     
     func application(_:UIApplication, performActionFor item:UIApplicationShortcutItem,
                      completionHandler:@escaping(Bool) -> Void) {
-        if let identifier = item.userInfo?["board"] as? String {
-            
+        switch item.type {
+        case "catban.addBoard": Application.router.quickAdd()
+        case "catban.loadBoard": Application.router.quickScan()
+        default: break
         }
     }
     
@@ -53,6 +48,22 @@ import Firebase
         window!.rootViewController = Application.router
     }
     
+    private func launch(options:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
+        var needsLaunch = false
+        if let url = options?[.url] as? URL { urlLaunch(url:url) }
+        else {
+            Application.router.launchDefault()
+            if let shortcut = options?[.shortcutItem] as? UIApplicationShortcutItem {
+                switch shortcut.type {
+                case "catban.addBoard": Application.router.launchAdd()
+                case "catban.loadBoard": Application.router.launchScan()
+                default: break
+                }
+            } else { needsLaunch = true }
+        }
+        return needsLaunch
+    }
+ 
     private func urlLaunch(url:URL) {
         if let identifier = board(url:url) {
             Application.router.launch(board:identifier)
@@ -60,17 +71,7 @@ import Firebase
             Application.router.launchDefault()
         }
     }
-    /*
-    private func quickLaunch(item:Any?) -> Bool {
-        if let board = (item as? UIApplicationShortcutItem)?.userInfo?["board"] as? String {
-            Application.router.quick(board:board)
-            return false
-        } else {
-            
-            return true
-        }
-    }
-    */
+    
     private func board(url:URL) -> String? {
         var board:String?
         let components = url.absoluteString.components(separatedBy:"catban:board=")

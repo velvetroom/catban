@@ -21,7 +21,6 @@ BoardInteractor.deleteBoard="Delete %@?";
 EditView.delete="Delete";
 DeleteView.cancel="Cancel";
 DeleteView.delete="Delete";
-ShareView.label="Share board";
 ShareView.done="Done";
 ShareView.send="Send";
 InfoView.dismiss="Dismiss";

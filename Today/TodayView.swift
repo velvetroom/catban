@@ -3,6 +3,7 @@ import NotificationCenter
 
 @objc(TodayView) class TodayView:UIViewController, NCWidgetProviding {
     private weak var effect:UIVisualEffectView!
+    private weak var label:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,17 @@ import NotificationCenter
         effect.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         effect.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         self.effect = effect
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = false
+        label.font = .systemFont(ofSize:15, weight:.light)
+        label.text = "No boards created yet."
+        label.textColor = .black
+        view.addSubview(label)
+        label.topAnchor.constraint(equalTo:view.topAnchor, constant:10).isActive = true
+        label.leftAnchor.constraint(equalTo:view.leftAnchor, constant:10).isActive = true
+        self.label = label
     }
     
     func widgetPerformUpdate(completionHandler:(@escaping(NCUpdateResult) -> Void)) {
@@ -37,6 +49,7 @@ import NotificationCenter
     }
     
     private func makeOutlets(today:Today) {
+        if !today.items.isEmpty { label.isHidden = true }
         var left = effect.leftAnchor
         today.items.forEach { item in
             let cell = TodayCellView(item:item)
@@ -47,8 +60,7 @@ import NotificationCenter
             cell.widthAnchor.constraint(equalTo:effect.widthAnchor, multiplier:0.25).isActive = true
             left = cell.rightAnchor
             cell.addTarget(cell, action:#selector(cell.highlight), for:.touchDown)
-            cell.addTarget(cell, action:#selector(cell.unhighlight), for:[.touchUpOutside, .touchCancel,
-                                                                          .touchDragExit])
+            cell.addTarget(cell, action:#selector(cell.unhighlight), for:[.touchUpOutside,.touchCancel,.touchDragExit])
             cell.addTarget(self, action:#selector(selected(cell:)), for:.touchUpInside)
         }
     }

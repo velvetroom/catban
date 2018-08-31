@@ -33,10 +33,6 @@ class LibraryPresenter:Presenter {
         cell.unhighlight()
     }
     
-    func didLoad() {
-        UIApplication.shared.shortcutItems = []
-    }
-    
     func willAppear() {
         viewModels.update(viewModel:LibraryItems())
         interactor.load()
@@ -45,7 +41,6 @@ class LibraryPresenter:Presenter {
     func shouldUpdate() {
         if interactor.library.boards.isEmpty {
             showEmpty()
-            UIApplication.shared.shortcutItems = []
         } else {
             DispatchQueue.global(qos:.background).async { [weak self] in self?.updateItems() }
         }
@@ -62,7 +57,6 @@ class LibraryPresenter:Presenter {
     private func updateItems() {
         let items = self.items
         showItems(items:items)
-        registerShortcuts(items:items)
         Today(items:items).store()
     }
     
@@ -86,15 +80,5 @@ class LibraryPresenter:Presenter {
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         viewModels.update(viewModel:viewModel)
-    }
-    
-    private func registerShortcuts(items:[LibraryItem]) {
-        var shortcuts:[UIApplicationShortcutItem] = []
-        let icon = UIApplicationShortcutIcon(templateImageName:"assetQuickIcon")
-        items.forEach { item in
-            shortcuts.append(UIApplicationShortcutItem(type:String(), localizedTitle:item.name, localizedSubtitle:
-                nil, icon:icon, userInfo:["board":NSString(string:item.board)]))
-        }
-        DispatchQueue.main.async { UIApplication.shared.shortcutItems = shortcuts }
     }
 }

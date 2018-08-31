@@ -5,7 +5,7 @@ import MarkdownHero
 class BoardDrawer {
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
-    weak var view:BoardView! { didSet { parser.font = UIFont.systemFont(
+    weak var view:BoardView! { didSet { parser.font = .systemFont(
         ofSize:CGFloat(view.presenter.interactor.cardsFont), weight:.light) } }
     
     private weak var nextItem:BoardItemView?
@@ -13,13 +13,12 @@ class BoardDrawer {
     private let options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
     private let size = CGSize(width:BoardDrawer.columnWidth, height:10000)
     private static let columnWidth:CGFloat = 190
-    private static let new:CGFloat = 40
     
     func draw() {
         clearContent()
-        view.presenter.interactor.board.columns.forEach { (column) in
+        view.presenter.interactor.board.columns.forEach { column in
             makeHeader(column:column)
-            column.cards.forEach{ (card) in
+            column.cards.forEach{ card in
                 view.presenter.state.makeCard(drawer:self, column:column, card:card)
             }
             view.presenter.state.makeNewCard(drawer:self, column:column)
@@ -35,7 +34,8 @@ class BoardDrawer {
         item.card = card
         item.label.attributedText = text
         item.add(target:view.presenter, selector:#selector(view.presenter.editCard(view:)))
-        item.gesture.addTarget(view, action:#selector(view.dragCard(pan:)))
+        item.dragGesture.addTarget(view, action:#selector(view.dragCard(pan:)))
+        item.longGesture.addTarget(view, action:#selector(view.long(gesture:)))
         addItem(item:item)
         layout(item:item, height:textHeight, width:BoardDrawer.columnWidth)
     }
@@ -46,7 +46,7 @@ class BoardDrawer {
         item.image.image = #imageLiteral(resourceName: "assetNew.pdf")
         item.add(target:view.presenter, selector:#selector(view.presenter.newCard(view:)))
         addItem(item:item)
-        layout(item:item, height:BoardDrawer.new, width:BoardDrawer.new)
+        layout(item:item, height:40, width:40)
     }
     
     func makeNewColumn() {
@@ -54,7 +54,7 @@ class BoardDrawer {
         item.image.image = #imageLiteral(resourceName: "assetNew.pdf")
         item.add(target:view.presenter, selector:#selector(view.presenter.newColumn))
         addColumn(item:item)
-        layout(item:item, height:BoardDrawer.new, width:BoardDrawer.new)
+        layout(item:item, height:40, width:40)
     }
     
     private func makeHeader(column:Column) {
@@ -68,7 +68,7 @@ class BoardDrawer {
     
     private func clearContent() {
         firstColumn = nil
-        view.content.subviews.forEach { (view) in view.removeFromSuperview() }
+        view.content.subviews.forEach { view in view.removeFromSuperview() }
     }
     
     private func layout(item:BoardItemView, height:CGFloat, width:CGFloat) {

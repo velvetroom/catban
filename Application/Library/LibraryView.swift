@@ -1,14 +1,13 @@
 import Foundation
 import CleanArchitecture
 
-class LibraryView:View<LibraryPresenter> {
+class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     weak var loading:LoadingView!
     weak var scroll:UIScrollView!
     weak var message:UILabel!
     weak var add:UIBarButtonItem!
     weak var scan:UIBarButtonItem!
     weak var settings:UIBarButtonItem!
-    private static let margin:CGFloat = 17
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +23,20 @@ class LibraryView:View<LibraryPresenter> {
         layoutCells(size:size)
     }
     
+    func previewingContext(_ context:UIViewControllerPreviewing,
+                           viewControllerForLocation location:CGPoint) -> UIViewController? {
+        var view:UIViewController?
+        if let item = scroll.subviews.first(where: { (view) -> Bool in view.frame.contains(location) }) {
+            context.sourceRect = item.frame
+            view = presenter.interactor.board(identifier:(item as! LibraryCellView).viewModel.board)
+        }
+        return view
+    }
+    
+    func previewingContext(_:UIViewControllerPreviewing, commit controller:UIViewController) {
+        Application.router.pushViewController(controller, animated:true)
+    }
+    
     private func makeOutlets() {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -31,11 +44,12 @@ class LibraryView:View<LibraryPresenter> {
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
         view.addSubview(scroll)
+        registerForPreviewing(with:self, sourceView:scroll)
         self.scroll = scroll
         
         let message = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
-        message.font = UIFont.systemFont(ofSize:16, weight:.light)
+        message.font = .systemFont(ofSize:16, weight:.light)
         message.textColor = UIColor(white:0, alpha:0.7)
         message.numberOfLines = 0
         message.isUserInteractionEnabled = false
@@ -61,8 +75,8 @@ class LibraryView:View<LibraryPresenter> {
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
-        message.leftAnchor.constraint(equalTo:view.leftAnchor, constant:LibraryView.margin).isActive = true
-        message.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-LibraryView.margin).isActive = true
+        message.leftAnchor.constraint(equalTo:view.leftAnchor, constant:17).isActive = true
+        message.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-17).isActive = true
         
         loading.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
         loading.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
@@ -70,11 +84,10 @@ class LibraryView:View<LibraryPresenter> {
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-            message.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor,
-                                         constant:LibraryView.margin).isActive = true
+            message.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:17).isActive = true
         } else {
             scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-            message.topAnchor.constraint(equalTo:view.topAnchor, constant:LibraryView.margin).isActive = true
+            message.topAnchor.constraint(equalTo:view.topAnchor, constant:17).isActive = true
         }
     }
     
@@ -90,8 +103,8 @@ class LibraryView:View<LibraryPresenter> {
     }
     
     private func update(items:[LibraryItem]) {
-        scroll.subviews.forEach { (view) in view.removeFromSuperview() }
-        items.forEach { (item) in
+        scroll.subviews.forEach { view in view.removeFromSuperview() }
+        items.forEach { item in
             let cell = LibraryCellView()
             cell.viewModel = item
             cell.addTarget(presenter, action:#selector(presenter.selected(cell:)), for:.touchUpInside)
@@ -105,7 +118,7 @@ class LibraryView:View<LibraryPresenter> {
     
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
-        scroll.subviews.forEach { (view) in
+        scroll.subviews.forEach { view in
             view.frame = CGRect(x:0, y:y, width:size.width, height:70)
             y += view.bounds.height
         }

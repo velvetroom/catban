@@ -3,8 +3,21 @@ import UIKit
 class BoardCardView:BoardItemView {
     weak var halo:UIView!
     weak var label:UILabel!
-    weak var gesture:UIPanGestureRecognizer!
-    private static let halo:CGFloat = 10
+    weak var dragGesture:UIPanGestureRecognizer!
+    weak var longGesture:UILongPressGestureRecognizer!
+    
+    func complete() {
+        halo.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+        UIView.animate(withDuration:0.3, animations: { [weak self] in
+            self?.halo.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration:1, animations: { [weak self] in
+                self?.halo.alpha = 0
+            }) { [weak self] _ in
+                self?.halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+            }
+        }
+    }
     
     override func makeOutlets() {
         let halo = UIView()
@@ -12,7 +25,7 @@ class BoardCardView:BoardItemView {
         halo.translatesAutoresizingMaskIntoConstraints = false
         halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         halo.layer.cornerRadius = 3
-        halo.alpha = 0.0
+        halo.alpha = 0
         addSubview(halo)
         self.halo = halo
         
@@ -24,14 +37,19 @@ class BoardCardView:BoardItemView {
         addSubview(label)
         self.label = label
         
-        let gesture = UIPanGestureRecognizer()
-        addGestureRecognizer(gesture)
-        self.gesture = gesture
+        let dragGesture = UIPanGestureRecognizer()
+        addGestureRecognizer(dragGesture)
+        self.dragGesture = dragGesture
         
-        halo.topAnchor.constraint(equalTo:topAnchor, constant:-BoardCardView.halo).isActive = true
-        halo.leftAnchor.constraint(equalTo:leftAnchor, constant:-BoardCardView.halo).isActive = true
-        halo.bottomAnchor.constraint(equalTo:bottomAnchor, constant:BoardCardView.halo).isActive = true
-        halo.rightAnchor.constraint(equalTo:rightAnchor, constant:BoardCardView.halo).isActive = true
+        let longGesture = UILongPressGestureRecognizer()
+        longGesture.minimumPressDuration = 1
+        addGestureRecognizer(longGesture)
+        self.longGesture = longGesture
+        
+        halo.topAnchor.constraint(equalTo:topAnchor, constant:-10).isActive = true
+        halo.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
+        halo.bottomAnchor.constraint(equalTo:bottomAnchor, constant:10).isActive = true
+        halo.rightAnchor.constraint(equalTo:rightAnchor, constant:10).isActive = true
         
         label.topAnchor.constraint(equalTo:topAnchor).isActive = true
         label.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
@@ -40,13 +58,13 @@ class BoardCardView:BoardItemView {
     
     override func showSelected() {
         UIView.animate(withDuration:0.3) { [weak self] in
-            self?.halo.alpha = 1.0
+            self?.halo.alpha = 1
         }
     }
     
     override func showDefault() {
         UIView.animate(withDuration:0.3) { [weak self] in
-            self?.halo.alpha = 0.0
+            self?.halo.alpha = 0
         }
     }
 }

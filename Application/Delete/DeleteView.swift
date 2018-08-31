@@ -13,9 +13,10 @@ class DeleteView:PopupView<DeletePresenter> {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize:16, weight:.regular)
+        label.font = .systemFont(ofSize:16, weight:.regular)
         label.text = presenter.edit.title
         label.textAlignment = .center
+        label.numberOfLines = 0
         view.addSubview(label)
         self.label = label
         
@@ -25,7 +26,7 @@ class DeleteView:PopupView<DeletePresenter> {
         cancel.setTitleColor(UIColor(white:0, alpha:0.8), for:.normal)
         cancel.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:[])
-        cancel.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.medium)
+        cancel.titleLabel!.font = .systemFont(ofSize:14, weight:.medium)
         base.addSubview(cancel)
         self.cancel = cancel
         
@@ -36,7 +37,7 @@ class DeleteView:PopupView<DeletePresenter> {
         delete.setTitleColor(.white, for:.normal)
         delete.setTitleColor(UIColor(white:1, alpha:0.3), for:.highlighted)
         delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:[])
-        delete.titleLabel!.font = UIFont.systemFont(ofSize:14, weight:.medium)
+        delete.titleLabel!.font = .systemFont(ofSize:14, weight:.medium)
         base.addSubview(delete)
         self.delete = delete
     }

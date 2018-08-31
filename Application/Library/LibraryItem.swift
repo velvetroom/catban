@@ -1,7 +1,6 @@
 import Foundation
-import CleanArchitecture
 
-struct LibraryItem:ViewModel {
+struct LibraryItem:Codable {
     var board = String()
     var name = String()
     var progress:Float = 0

@@ -8,7 +8,7 @@ class Database:DatabaseService {
     required init() { }
     
     func load(identifier:String, board:@escaping((Board) -> Void), error:@escaping(() -> Void)) {
-        boards.document(identifier).getDocument { [weak self] (snapshot, _) in
+        boards.document(identifier).getDocument { [weak self] snapshot, _ in
             guard let json = snapshot?.data() else { return error() }
             self?.loaded(json:json, completion:board)
         }

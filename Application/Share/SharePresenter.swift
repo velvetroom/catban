@@ -27,7 +27,7 @@ class SharePresenter:Presenter {
     }
     
     func didLoad() {
-        qrHero.write(content:interactor.boardUrl) { [weak self] (image) in
+        qrHero.write(content:interactor.boardUrl) { [weak self] image in
             var viewModel = ShareViewModel()
             viewModel.image = image
             self?.viewModels.update(viewModel:viewModel)

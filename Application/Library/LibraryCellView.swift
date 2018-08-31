@@ -29,8 +29,8 @@ class LibraryCellView:UIControl {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = UIFont.systemFont(ofSize:12, weight:.medium)
-        name.textColor = UIColor.black
+        name.font = .systemFont(ofSize:12, weight:.medium)
+        name.textColor = .black
         addSubview(name)
         self.name = name
         

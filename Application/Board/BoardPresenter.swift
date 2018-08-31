@@ -19,6 +19,10 @@ class BoardPresenter:Presenter {
         item.column = after.column
     }
     
+    func delete() {
+        interactor.delete()
+    }
+    
     @objc func edit() {
         interactor.edit()
     }

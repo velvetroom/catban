@@ -7,17 +7,12 @@ class Alert:UIViewController {
     private weak var base:UIView!
     private weak var icon:UIImageView!
     private weak var label:UILabel!
-    private static let top:CGFloat = 20
-    private static let horizontal:CGFloat = 12
-    private static let margin:CGFloat = 5
-    private static let height:CGFloat = 60
     
     init() {
         super.init(nibName:nil, bundle:nil)
         modalPresentationStyle = .overCurrentContext
         modalTransitionStyle = .crossDissolve
         modalPresentationCapturesStatusBarAppearance = true
-        view.backgroundColor = .clear
         Application.router.present(self, animated:true)
     }
     
@@ -25,8 +20,10 @@ class Alert:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = false
         timer = Timer.scheduledTimer(
-            timeInterval:4, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:3, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
         layoutOutlets()
     }
@@ -39,12 +36,13 @@ class Alert:UIViewController {
     private func makeOutlets() {
         let base = UIView()
         base.isUserInteractionEnabled = false
-        base.backgroundColor = UIColor(white:0.96, alpha:1)
+        base.backgroundColor = .white
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.layer.cornerRadius = 4
-        base.clipsToBounds = true
-        base.layer.borderColor = UIColor(white:0.9, alpha:1).cgColor
-        base.layer.borderWidth = 1
+        base.layer.cornerRadius = 5
+        base.layer.shadowColor = UIColor.black.cgColor
+        base.layer.shadowOffset = .zero
+        base.layer.shadowRadius = 3
+        base.layer.shadowOpacity = 0.6
         view.addSubview(base)
         self.base = base
         
@@ -52,7 +50,7 @@ class Alert:UIViewController {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
-        label.font = UIFont.systemFont(ofSize:14, weight:.medium)
+        label.font = .systemFont(ofSize:14, weight:.medium)
         label.textColor = .black
         label.numberOfLines = 0
         view.addSubview(label)
@@ -69,24 +67,24 @@ class Alert:UIViewController {
     }
     
     private func layoutOutlets() {
-        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:Alert.margin).isActive = true
-        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-Alert.margin).isActive = true
-        base.heightAnchor.constraint(equalToConstant:Alert.height).isActive = true
+        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:5).isActive = true
+        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-5).isActive = true
+        base.heightAnchor.constraint(equalToConstant:60).isActive = true
         
         label.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
-        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:Alert.horizontal).isActive = true
-        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-Alert.horizontal).isActive = true
+        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:12).isActive = true
+        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-12).isActive = true
         label.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
         
         icon.centerYAnchor.constraint(equalTo:base.centerYAnchor).isActive = true
-        icon.widthAnchor.constraint(equalToConstant:Alert.height).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:Alert.height).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:60).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:60).isActive = true
         icon.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
-            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:Alert.top).isActive = true
+            base.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:10).isActive = true
         } else {
-            base.topAnchor.constraint(equalTo:view.topAnchor, constant:Alert.top).isActive = true
+            base.topAnchor.constraint(equalTo:view.topAnchor, constant:10).isActive = true
         }
     }
     

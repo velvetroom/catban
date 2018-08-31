@@ -18,11 +18,10 @@ public class Library {
     var session = Session()
     var cache = Factory.makeCache()
     var database = Factory.makeDatabase()
-    var state:LibraryStateProtocol = Library.stateDefault
-    let queue = DispatchQueue(label:Library.prefix, qos:.background, target:.global(qos:.background))
-    static let stateDefault = LibraryStateDefault()
-    static let stateReady = LibraryStateReady()
-    private static let prefix = "iturbide.catban."
+    var state:LibraryState = Library.stateDefault
+    let queue = DispatchQueue(label:String(), qos:.background, target:.global(qos:.background))
+    static let stateDefault = LibraryDefault()
+    static let stateReady = LibraryReady()
     
     public func loadBoards() throws {
         try state.loadBoards(context:self)
@@ -33,12 +32,8 @@ public class Library {
     }
     
     public func newBoard() {
-        queue.async {
-            let board = Board()
-            let identifier = self.database.create(board:board)
-            self.session.boards[identifier] = board
-            self.saveSession()
-            DispatchQueue.main.async { self.delegate?.libraryCreated(board:identifier) }
+        queue.async { [weak self] in
+            self?.createNewBoard()
         }
     }
     
@@ -46,33 +41,46 @@ public class Library {
         let identifier = try identifierFrom(url:url)
         try validate(identifier:identifier)
         session.boards[identifier] = Board()
-        queue.async {
-            self.saveSession()
+        queue.async { [weak self] in
+            self?.saveSession()
         }
     }
     
     public func save(board:Board) {
-        queue.async {
-            guard let identifier = self.identifier(board:board) else { return }
+        queue.async { [weak self] in
+            guard let identifier = self?.identifier(board:board) else { return }
             board.syncstamp = Date()
-            self.database.save(identifier:identifier, board:board)
+            self?.database.save(identifier:identifier, board:board)
         }
     }
     
     public func delete(board:Board) {
-        queue.async {
-            guard let identifier = self.identifier(board:board) else { return }
-            self.session.boards.removeValue(forKey:identifier)
-            self.saveSession()
+        queue.async { [weak self] in
+            guard let identifier = self?.identifier(board:board) else { return }
+            self?.session.boards.removeValue(forKey:identifier)
+            self?.saveSession()
+            self?.boardsUpdated()
         }
     }
     
     public func url(identifier:String) -> String {
-        return Library.prefix.appending(identifier)
+        return "iturbide.catban.".appending(identifier)
     }
     
     func saveSession() {
         cache.save(session:session)
+    }
+    
+    func boardsUpdated() {
+        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryBoardsUpdated() }
+    }
+    
+    private func createNewBoard() {
+        let board = Board()
+        let identifier = database.create(board:board)
+        session.boards[identifier] = board
+        saveSession()
+        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryCreated(board:identifier) }
     }
     
     private func identifier(board:Board) -> String? {
@@ -80,7 +88,7 @@ public class Library {
     }
     
     private func identifierFrom(url:String) throws -> String {
-        let components = url.components(separatedBy:Library.prefix)
+        let components = url.components(separatedBy:"iturbide.catban.")
         if components.count == 2 && !components[1].isEmpty {
             return components[1]
         } else {

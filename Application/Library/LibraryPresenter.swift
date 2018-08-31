@@ -42,7 +42,7 @@ class LibraryPresenter:Presenter {
         if interactor.library.boards.isEmpty {
             showEmpty()
         } else {
-            DispatchQueue.global(qos:.background).async { [weak self] in self?.showItems() }
+            DispatchQueue.global(qos:.background).async { [weak self] in self?.updateItems() }
         }
     }
     
@@ -54,25 +54,26 @@ class LibraryPresenter:Presenter {
         viewModels.update(viewModel:viewModel)
     }
     
-    private func showItems() {
+    private func updateItems() {
         var viewModel = LibraryItems()
-        viewModel.items = self.items
+        viewModel.items = items
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
+        Today(items:viewModel.items).store()
         viewModels.update(viewModel:viewModel)
     }
     
     private var items:[LibraryItem] {
         var items:[LibraryItem] = []
-        interactor.library.boards.forEach { (key, board) in
+        interactor.library.boards.forEach { key, board in
             var item = LibraryItem()
             item.board = key
             item.name = board.text
             item.progress = interactor.makeStats(board:board).progress
             items.append(item)
         }
-        return items.sorted { (left, right) -> Bool in
+        return items.sorted { left, right -> Bool in
             return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
         }
-    } 
+    }
 }

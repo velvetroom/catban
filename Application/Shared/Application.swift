@@ -11,25 +11,26 @@ import Firebase
         injection()
         services()
         makeWindow()
-        return quickLaunch(item:options?[.shortcutItem])
+        var launched = false
+        if let url = options?[.url] as? URL { urlLaunch(url:url) }
+        else if let shortcut = options?[.shortcutItem] as? UIApplicationShortcutItem { }
+        else {
+            Application.router.launchDefault()
+            launched = true
+        }
+        return launched
     }
     
     func application(_:UIApplication, performActionFor item:UIApplicationShortcutItem,
                      completionHandler:@escaping(Bool) -> Void) {
-        guard
-            let identifier = item.userInfo?["board"] as? String,
-            let view = Application.router.viewControllers.first as? LibraryView
-        else { return completionHandler(false) }
-        Application.router.dismiss(animated:false)
-        Application.router.popToViewController(view, animated:false)
-        view.presenter.interactor.select(identifier:identifier)
-        completionHandler(true)
+        if let identifier = item.userInfo?["board"] as? String {
+            
+        }
     }
     
     func application(_:UIApplication, open url:URL, options:[UIApplication.OpenURLOptionsKey:Any] = [:]) -> Bool {
-        let components = url.absoluteString.components(separatedBy:"catban:")
-        if components.count == 2 {
-            Application.router.quick(board:components[1])
+        if let identifier = board(url:url) {
+            Application.router.quick(board:identifier)
             return true
         }
         return false
@@ -52,13 +53,28 @@ import Firebase
         window!.rootViewController = Application.router
     }
     
+    private func urlLaunch(url:URL) {
+        if let identifier = board(url:url) {
+            Application.router.launch(board:identifier)
+        } else {
+            Application.router.launchDefault()
+        }
+    }
+    /*
     private func quickLaunch(item:Any?) -> Bool {
         if let board = (item as? UIApplicationShortcutItem)?.userInfo?["board"] as? String {
             Application.router.quick(board:board)
             return false
         } else {
-            Application.router.regular()
+            
             return true
         }
+    }
+    */
+    private func board(url:URL) -> String? {
+        var board:String?
+        let components = url.absoluteString.components(separatedBy:"catban:board=")
+        if components.count == 2 { board = components[1] }
+        return board
     }
 }

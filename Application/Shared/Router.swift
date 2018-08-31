@@ -9,15 +9,22 @@ class Router:UINavigationController {
     
     required init?(coder:NSCoder) { return nil }
     
-    func regular() {
+    func launchDefault() {
         setViewControllers([LibraryView()], animated:false)
+    }
+    
+    func launch(board:String) {
+        let library = LibraryView()
+        library.presenter.interactor.state = LibraryQuick(board:board)
+        setViewControllers([library], animated:false)
     }
     
     func quick(board:String) {
         dismiss(animated:false)
-        let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuick(board:board)
-        setViewControllers([library], animated:false)
+        if let view = viewControllers.first as? LibraryView {
+            popToViewController(view, animated:false)
+            view.presenter.interactor.select(identifier:board)
+        }
     }
     
     override func viewDidAppear(_ animated:Bool) {

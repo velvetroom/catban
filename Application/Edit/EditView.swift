@@ -14,7 +14,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         view.backgroundColor = .white
         title = presenter.editText.title
         NotificationCenter.default.addObserver(forName:UIResponder.keyboardWillChangeFrameNotification, object:
-            nil, queue:.main) { [weak self] (notification) in self?.keyboardChanged(notification:notification) }
+            nil, queue:.main) { [weak self] notification in self?.keyboardChanged(notification:notification) }
     }
     
     override func viewDidAppear(_ animated:Bool) {

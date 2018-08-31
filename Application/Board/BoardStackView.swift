@@ -17,7 +17,7 @@ class BoardStackView:UIView {
     override var intrinsicContentSize:CGSize { return CGSize(width:width, height:height) }
     
     func update(progress:BoardProgress) {
-        subviews.forEach { (item) in item.removeFromSuperview() }
+        subviews.forEach { item in item.removeFromSuperview() }
         width = 0
         height = 0
         itemX = 0

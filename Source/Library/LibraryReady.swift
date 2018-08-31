@@ -14,7 +14,7 @@ class LibraryReady:LibraryState {
     private func load(context:Library, identifiers:[String]) {
         var identifiers = identifiers
         if let identifier = identifiers.popLast() {
-            context.database.load(identifier:identifier, board: { [weak self] (board) in
+            context.database.load(identifier:identifier, board: { [weak self] board in
                 context.session.boards[identifier] = board
                 self?.recursiveLoad(context:context, identifiers:identifiers)
             }) { [weak self] in

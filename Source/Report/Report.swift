@@ -9,21 +9,21 @@ public class Report {
     
     public func makeStats(board:Board) -> ReportStats {
         let stats = ReportStats()
-        visitors.forEach { (visitor) in
+        visitors.forEach { visitor in
             visitor(board, stats)
         }
         return stats
     }
     
     private func columns(board:Board, stats:ReportStats) {
-        board.columns.forEach { (column) in
+        board.columns.forEach { column in
             stats.columns.append(column.cards.count)
         }
     }
     
     private func progress(board:Board, stats:ReportStats) {
         var counter:Float = 0
-        board.columns.forEach { (column) in
+        board.columns.forEach { column in
             counter += Float(column.cards.count)
         }
         if counter > 0,
@@ -33,13 +33,13 @@ public class Report {
     }
     
     private func cards(board:Board, stats:ReportStats) {
-        board.columns.forEach { (column) in
+        board.columns.forEach { column in
             stats.cards += column.cards.count
         }
     }
     
     private func longerColumn(board:Board, stats:ReportStats) {
-        board.columns.forEach { (column) in
+        board.columns.forEach { column in
             stats.longerColumn = max(stats.longerColumn, column.cards.count)
         }
     }

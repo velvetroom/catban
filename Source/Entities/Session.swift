@@ -25,7 +25,7 @@ public class Session:Codable {
     private func decodeBoards(values:KeyedDecodingContainer<CodingKeys>) {
         let keys:[String]
         do { try keys = values.decode([String].self, forKey:.boards) } catch { return }
-        keys.forEach { (key) in
+        keys.forEach { key in
             boards[key] = Board()
         }
     }

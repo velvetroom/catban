@@ -16,9 +16,9 @@ class BoardDrawer {
     
     func draw() {
         clearContent()
-        view.presenter.interactor.board.columns.forEach { (column) in
+        view.presenter.interactor.board.columns.forEach { column in
             makeHeader(column:column)
-            column.cards.forEach{ (card) in
+            column.cards.forEach{ card in
                 view.presenter.state.makeCard(drawer:self, column:column, card:card)
             }
             view.presenter.state.makeNewCard(drawer:self, column:column)
@@ -68,7 +68,7 @@ class BoardDrawer {
     
     private func clearContent() {
         firstColumn = nil
-        view.content.subviews.forEach { (view) in view.removeFromSuperview() }
+        view.content.subviews.forEach { view in view.removeFromSuperview() }
     }
     
     private func layout(item:BoardItemView, height:CGFloat, width:CGFloat) {

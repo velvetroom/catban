@@ -65,14 +65,14 @@ class LibraryPresenter:Presenter {
     
     private var items:[LibraryItem] {
         var items:[LibraryItem] = []
-        interactor.library.boards.forEach { (key, board) in
+        interactor.library.boards.forEach { key, board in
             var item = LibraryItem()
             item.board = key
             item.name = board.text
             item.progress = interactor.makeStats(board:board).progress
             items.append(item)
         }
-        return items.sorted { (left, right) -> Bool in
+        return items.sorted { left, right -> Bool in
             return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
         }
     }

@@ -100,10 +100,10 @@ class SettingsView:View<SettingsPresenter> {
         font.addSubview(displayFont)
         self.displayFont = displayFont
 
-        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { [weak self] (result) in
+        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { [weak self] result in
             self?.labelColumns.attributedText = result
         }
-        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { [weak self] (result) in
+        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { [weak self] result in
             self?.labelFont.attributedText = result
         }
     }

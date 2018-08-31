@@ -103,8 +103,8 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     }
     
     private func update(items:[LibraryItem]) {
-        scroll.subviews.forEach { (view) in view.removeFromSuperview() }
-        items.forEach { (item) in
+        scroll.subviews.forEach { view in view.removeFromSuperview() }
+        items.forEach { item in
             let cell = LibraryCellView()
             cell.viewModel = item
             cell.addTarget(presenter, action:#selector(presenter.selected(cell:)), for:.touchUpInside)
@@ -118,7 +118,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
-        scroll.subviews.forEach { (view) in
+        scroll.subviews.forEach { view in
             view.frame = CGRect(x:0, y:y, width:size.width, height:70)
             y += view.bounds.height
         }

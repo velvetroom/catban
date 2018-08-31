@@ -21,20 +21,6 @@
                ReferencedContainer = "container:Catban.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA145041211DD27A00D1BD9E"
-               BuildableName = "Application.app"
-               BlueprintName = "Application"
-               ReferencedContainer = "container:Catban.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -47,9 +33,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA6C362A2138194F0009583A"
-            BuildableName = "Today.appex"
-            BlueprintName = "Today"
+            BlueprintIdentifier = "DA145041211DD27A00D1BD9E"
+            BuildableName = "Application.app"
+            BlueprintName = "Application"
             ReferencedContainer = "container:Catban.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,16 +53,6 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA145041211DD27A00D1BD9E"
-            BuildableName = "Application.app"
-            BlueprintName = "Application"
-            ReferencedContainer = "container:Catban.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -87,16 +63,15 @@
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DA145041211DD27A00D1BD9E"
-            BuildableName = "Application.app"
-            BlueprintName = "Application"
+            BlueprintIdentifier = "DA6C362A2138194F0009583A"
+            BuildableName = "Today.appex"
+            BlueprintName = "Today"
             ReferencedContainer = "container:Catban.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

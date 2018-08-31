@@ -6,6 +6,19 @@ class BoardCardView:BoardItemView {
     weak var dragGesture:UIPanGestureRecognizer!
     weak var longGesture:UILongPressGestureRecognizer!
     
+    func complete() {
+        halo.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+        UIView.animate(withDuration:0.3, animations: { [weak self] in
+            self?.halo.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration:1, animations: { [weak self] in
+                self?.halo.alpha = 0
+            }) { [weak self] _ in
+                self?.halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+            }
+        }
+    }
+    
     override func makeOutlets() {
         let halo = UIView()
         halo.isUserInteractionEnabled = false

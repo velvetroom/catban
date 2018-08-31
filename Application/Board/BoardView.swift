@@ -25,7 +25,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             view.left.constant += view.width.constant
             attach(card:view)
         case .cancelled, .ended, .failed:
-            view.isUserInteractionEnabled = true
+            gesture.isEnabled = true
+            view.complete()
         case .possible, .changed: break
         }
     }

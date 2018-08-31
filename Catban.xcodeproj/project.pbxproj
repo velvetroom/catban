@@ -84,7 +84,6 @@
 		DA6C36372138194F0009583A /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA6C362B2138194F0009583A /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA6C363F21381AF80009583A /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C363E21381AF80009583A /* TodayView.swift */; };
 		DA6C3641213824C50009583A /* TodayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C3640213824C50009583A /* TodayCellView.swift */; };
-		DA6C364221382B420009583A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA6FC4ED2139630000260055 /* LibraryQuickScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FC4EC2139630000260055 /* LibraryQuickScan.swift */; };
 		DA6FC4EF2139631E00260055 /* LibraryQuickAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6FC4EE2139631E00260055 /* LibraryQuickAdd.swift */; };
 		DA741D93213924C6002555E4 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741D92213924C6002555E4 /* Today.swift */; };
@@ -279,7 +278,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA6C364221382B420009583A /* libCatban.a in Frameworks */,
 				DA6C362D2138194F0009583A /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

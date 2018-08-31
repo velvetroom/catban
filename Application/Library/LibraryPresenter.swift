@@ -55,9 +55,12 @@ class LibraryPresenter:Presenter {
     }
     
     private func updateItems() {
-        let items = self.items
-        showItems(items:items)
-        Today(items:items).store()
+        var viewModel = LibraryItems()
+        viewModel.items = items
+        viewModel.loadingHidden = true
+        viewModel.actionsEnabled = true
+        Today(items:viewModel.items).store()
+        viewModels.update(viewModel:viewModel)
     }
     
     private var items:[LibraryItem] {
@@ -72,13 +75,5 @@ class LibraryPresenter:Presenter {
         return items.sorted { (left, right) -> Bool in
             return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
         }
-    }
-    
-    private func showItems(items:[LibraryItem]) {
-        var viewModel = LibraryItems()
-        viewModel.items = items
-        viewModel.loadingHidden = true
-        viewModel.actionsEnabled = true
-        viewModels.update(viewModel:viewModel)
     }
 }

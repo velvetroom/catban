@@ -63,6 +63,7 @@ class LibraryPresenter:Presenter {
         let items = self.items
         showItems(items:items)
         registerShortcuts(items:items)
+        registerToday(items:items)
     }
     
     private var items:[LibraryItem] {
@@ -98,6 +99,8 @@ class LibraryPresenter:Presenter {
     }
     
     private func registerToday(items:[LibraryItem]) {
-        
+        let store = UserDefaults(suiteName:"group.Catban")
+        do { store?.set(try JSONEncoder().encode(Today(items:items)), forKey:"today") } catch { return }
+        store?.synchronize()
     }
 }

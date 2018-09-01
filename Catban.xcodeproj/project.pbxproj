@@ -92,7 +92,6 @@
 		DA8D12942131579E0019B2C2 /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12922131579D0019B2C2 /* InfoBoard.md */; };
 		DA8D12952131579E0019B2C2 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12932131579E0019B2C2 /* InfoCard.md */; };
 		DA8D1297213161800019B2C2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D1296213161800019B2C2 /* Alert.swift */; };
-		DAAED640213AB7220031D8B9 /* LibraryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAED63F213AB7220031D8B9 /* LibraryStrategy.swift */; };
 		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
@@ -231,7 +230,6 @@
 		DA8D12922131579D0019B2C2 /* InfoBoard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoBoard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA8D12932131579E0019B2C2 /* InfoCard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoCard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA8D1296213161800019B2C2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		DAAED63F213AB7220031D8B9 /* LibraryStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStrategy.swift; sourceTree = "<group>"; };
 		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
@@ -462,7 +460,6 @@
 				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
-				DAAED63F213AB7220031D8B9 /* LibraryStrategy.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -808,7 +805,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
-				DAAED640213AB7220031D8B9 /* LibraryStrategy.swift in Sources */,
 				DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,
 				DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */,

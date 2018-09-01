@@ -1,7 +1,6 @@
 import UIKit
 
 class Router:UINavigationController {
-    
     init() {
         super.init(nibName:nil, bundle:nil)
         configureNavigation()
@@ -15,20 +14,20 @@ class Router:UINavigationController {
     
     func launch(board:String) {
         let library = LibraryView()
-        library.presenter.interactor.strategy.value = board
-        library.presenter.interactor.strategy.boardsUpdated = LibraryInteractor.selectBoardFromStrategy
+        library.presenter.interactor.identifier = board
+        library.presenter.interactor.strategy = LibraryInteractor.selectBoard
         setViewControllers([library], animated:false)
     }
     
     func launchAdd() {
         let library = LibraryView()
-        library.presenter.interactor.strategy.boardsUpdated = LibraryInteractor.newBoard
+        library.presenter.interactor.strategy = LibraryInteractor.newBoard
         setViewControllers([library], animated:false)
     }
     
     func launchScan() {
         let library = LibraryView()
-        library.presenter.interactor.strategy.boardsUpdated = LibraryInteractor.scan
+        library.presenter.interactor.strategy = LibraryInteractor.scan
         setViewControllers([library], animated:false)
     }
     

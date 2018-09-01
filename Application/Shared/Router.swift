@@ -15,19 +15,20 @@ class Router:UINavigationController {
     
     func launch(board:String) {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuickBoard(board:board)
+        library.presenter.interactor.strategy.value = board
+        library.presenter.interactor.strategy.boardsUpdated = LibraryInteractor.selectBoardFromStrategy
         setViewControllers([library], animated:false)
     }
     
     func launchAdd() {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuickAdd()
+        library.presenter.interactor.strategy.boardsUpdated = LibraryInteractor.newBoard
         setViewControllers([library], animated:false)
     }
     
     func launchScan() {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuickScan()
+        library.presenter.interactor.strategy.boardsUpdated = LibraryInteractor.scan
         setViewControllers([library], animated:false)
     }
     

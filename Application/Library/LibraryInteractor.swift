@@ -6,7 +6,7 @@ import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     weak var delegate:InteractorDelegate?
-    var state:LibraryState = LibraryDefault()
+    var strategy = LibraryStrategy()
     let library = Factory.makeLibrary()
     private let report = Report()
     
@@ -53,7 +53,9 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func libraryBoardsUpdated() {
-        state.boardsUpdated(context:self)
+        strategy.boardsUpdated(self)()
+        strategy.value = String()
+        strategy.boardsUpdated = LibraryInteractor.updateDelegate
     }
     
     func libraryCreated(board:String) {
@@ -83,6 +85,14 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     
     func qrError(error:QRheroError) {
         popup(error:NSLocalizedString("LibraryInteractor.scanError", comment:String()))
+    }
+    
+    func updateDelegate() {
+        delegate?.shouldUpdate()
+    }
+    
+    func selectBoardFromStrategy() {
+        select(identifier:strategy.value)
     }
     
     private func addTemplate(board:Board) {

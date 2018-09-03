@@ -11,6 +11,10 @@ class LibraryCellView:UIControl {
     
     init() {
         super.init(frame:.zero)
+        backgroundColor = .white
+        layer.cornerRadius = 30
+        layer.shadowOpacity = 0.06
+        layer.shadowOffset = CGSize(width:0, height:1)
         makeOutlets()
         layoutOutlets()
     }
@@ -22,7 +26,7 @@ class LibraryCellView:UIControl {
     }
     
     func unhighlight() {
-        backgroundColor = .clear
+        backgroundColor = .white
     }
     
     private func makeOutlets() {
@@ -39,13 +43,14 @@ class LibraryCellView:UIControl {
         progress.isUserInteractionEnabled = false
         progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         progress.trackTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.1)
+        progress.isHidden = true
         addSubview(progress)
         self.progress = progress
     }
     
     private func layoutOutlets() {
         name.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
-        name.leftAnchor.constraint(equalTo:leftAnchor, constant:20).isActive = true
+        name.leftAnchor.constraint(equalTo:leftAnchor, constant:24).isActive = true
         
         progress.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
         progress.leftAnchor.constraint(equalTo:leftAnchor).isActive = true

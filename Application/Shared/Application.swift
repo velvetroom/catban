@@ -43,7 +43,7 @@ import Firebase
     
     private func makeWindow() {
         window = UIWindow(frame:UIScreen.main.bounds)
-        window!.backgroundColor = .white
+        window!.backgroundColor = UIColor(white:0.96, alpha:1)
         window!.makeKeyAndVisible()
         window!.rootViewController = Application.router
     }

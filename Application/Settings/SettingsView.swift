@@ -19,7 +19,7 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         layoutOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white:0.94, alpha:1)
+        view.backgroundColor = UIColor(white:0.96, alpha:1)
         title = NSLocalizedString("SettingsView.title", comment:String())
     }
     

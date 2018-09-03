@@ -51,7 +51,7 @@ class Router:UINavigationController {
     }
     
     private func configureNavigation() {
-        navigationBar.barTintColor = .white
+        navigationBar.barTintColor = UIColor(white:0.96, alpha:1)
         navigationBar.tintColor = .black
         navigationBar.setValue(true, forKey: "hidesShadow")
         navigationBar.isTranslucent = false

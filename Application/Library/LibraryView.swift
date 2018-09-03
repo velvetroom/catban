@@ -12,7 +12,7 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("LibraryView.title", comment:String())
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(white:0.96, alpha:1)
         makeOutlets()
         layoutOutlets()
         configureViewModel()
@@ -119,7 +119,8 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
         scroll.subviews.forEach { view in
-            view.frame = CGRect(x:0, y:y, width:size.width, height:70)
+            y += 15
+            view.frame = CGRect(x:17, y:y, width:size.width - 34, height:60)
             y += view.bounds.height
         }
         scroll.contentSize = CGSize(width:size.width, height:y)

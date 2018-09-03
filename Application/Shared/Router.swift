@@ -54,9 +54,6 @@ class Router:UINavigationController {
         navigationBar.barTintColor = .white
         navigationBar.tintColor = .black
         navigationBar.isTranslucent = false
-        toolbar.barTintColor = .white
-        toolbar.tintColor = .black
-        toolbar.isTranslucent = false
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .always

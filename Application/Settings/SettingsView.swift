@@ -19,7 +19,7 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         layoutOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white:0.96, alpha:1)
+        view.backgroundColor = .white
         title = NSLocalizedString("SettingsView.title", comment:String())
     }
     
@@ -114,11 +114,11 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
         columns.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
-        columns.heightAnchor.constraint(equalToConstant:115).isActive = true
+        columns.heightAnchor.constraint(equalToConstant:130).isActive = true
         columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        font.topAnchor.constraint(equalTo:columns.bottomAnchor, constant:1).isActive = true
+        font.topAnchor.constraint(equalTo:columns.bottomAnchor).isActive = true
         font.heightAnchor.constraint(equalToConstant:120).isActive = true
         font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true

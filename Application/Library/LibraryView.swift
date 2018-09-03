@@ -12,7 +12,7 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("LibraryView.title", comment:String())
-        view.backgroundColor = UIColor(white:0.96, alpha:1)
+        view.backgroundColor = .white
         makeOutlets()
         layoutOutlets()
         configureViewModel()

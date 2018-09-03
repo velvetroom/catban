@@ -73,11 +73,11 @@
 		DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6548211DD58A00ECAD21 /* ShareView.swift */; };
 		DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55AF202122C5A600B50D9C /* BoardStackView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
+		DA665615213DE778007D30DF /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA665614213DE60B007D30DF /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */; };
 		DA69DCF621282AF900FE7C90 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */; };
 		DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF721282B1A00FE7C90 /* SettingsView.swift */; };
 		DA6C362D2138194F0009583A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C362C2138194F0009583A /* NotificationCenter.framework */; };
-		DA6C36372138194F0009583A /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA6C362B2138194F0009583A /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA6C363F21381AF80009583A /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C363E21381AF80009583A /* TodayView.swift */; };
 		DA6C3641213824C50009583A /* TodayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C3640213824C50009583A /* TodayCellView.swift */; };
 		DA741D93213924C6002555E4 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741D92213924C6002555E4 /* Today.swift */; };
@@ -131,7 +131,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				DA6C36372138194F0009583A /* Today.appex in Embed App Extensions */,
+				DA665615213DE778007D30DF /* Today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,10 +208,10 @@
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA55AF202122C5A600B50D9C /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
+		DA665614213DE60B007D30DF /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		DA69DCF721282B1A00FE7C90 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DA6C362B2138194F0009583A /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C362C2138194F0009583A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		DA6C363C21381AEC0009583A /* today.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = today.plist; sourceTree = "<group>"; };
 		DA6C363E21381AF80009583A /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 				DA4C64D1211DD40300ECAD21 /* libCatban.a */,
 				DA4C64D2211DD40300ECAD21 /* Tests.xctest */,
 				DA4C64D3211DD40300ECAD21 /* Application.app */,
-				DA6C362B2138194F0009583A /* Today.appex */,
+				DA665614213DE60B007D30DF /* Today.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -622,7 +622,7 @@
 			);
 			name = Today;
 			productName = Today;
-			productReference = DA6C362B2138194F0009583A /* Today.appex */;
+			productReference = DA665614213DE60B007D30DF /* Today.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */

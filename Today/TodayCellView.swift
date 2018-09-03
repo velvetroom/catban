@@ -6,6 +6,7 @@ class TodayCellView:UIControl {
     init(item:LibraryItem) {
         self.item = item
         super.init(frame:.zero)
+        backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         makeOutlets()
     }
@@ -26,16 +27,16 @@ class TodayCellView:UIControl {
         
         let progress = LibraryProgress()
         progress.tintColor = .black
-        progress.progress = CGFloat(item.progress)
+        progress.value = CGFloat(item.progress)
         addSubview(progress)
         
         label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-12).isActive = true
         label.leftAnchor.constraint(equalTo:leftAnchor, constant:6).isActive = true
         label.rightAnchor.constraint(equalTo:rightAnchor, constant:-6).isActive = true
         
-        progress.topAnchor.constraint(equalTo:topAnchor).isActive = true
-        progress.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
-        progress.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
-        progress.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
+        progress.topAnchor.constraint(equalTo:topAnchor, constant:15).isActive = true
+        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-30).isActive = true
+        progress.leftAnchor.constraint(equalTo:leftAnchor, constant:15).isActive = true
+        progress.rightAnchor.constraint(equalTo:rightAnchor, constant:-15).isActive = true
     }
 }

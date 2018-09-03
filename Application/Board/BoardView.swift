@@ -64,7 +64,7 @@ class BoardView:View<BoardInteractor, BoardPresenter>, UISearchResultsUpdating, 
         layoutOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = UIColor(white:0.96, alpha:1)
+        view.backgroundColor = .white
         title = presenter.interactor.board.text
         reportHandler = handlerHidden
     }

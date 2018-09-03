@@ -53,6 +53,7 @@ class Router:UINavigationController {
     private func configureNavigation() {
         navigationBar.barTintColor = .white
         navigationBar.tintColor = .black
+        navigationBar.setValue(true, forKey: "hidesShadow")
         navigationBar.isTranslucent = false
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true

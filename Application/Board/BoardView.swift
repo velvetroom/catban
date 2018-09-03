@@ -197,8 +197,8 @@ class BoardView:View<BoardInteractor, BoardPresenter>, UISearchResultsUpdating, 
     }
     
     private func configureViewModel() {
-        presenter.viewModel { [weak self] (viewModel:BoardTitle) in
-            self?.title = viewModel.title
+        presenter.viewModel { [weak self] (title:String) in
+            self?.title = title
             self?.drawer.draw()
             self?.layouter.layout()
         }

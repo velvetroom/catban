@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2A8F15B97B8245C5B2232546 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */; };
 		DA1602FB2132AD2C004F6D44 /* TestLibrary_Ready.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */; };
-		DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */; };
 		DA28AED721353C250030AE9E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28AED621353C250030AE9E /* PopupView.swift */; };
 		DA2E4B3D211DD97400861576 /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */; };
@@ -53,7 +52,6 @@
 		DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */; };
 		DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */; };
 		DA4C6553211DD58A00ECAD21 /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */; };
-		DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6526211DD58A00ECAD21 /* BoardTitle.swift */; };
 		DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */; };
 		DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */; };
 		DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */; };
@@ -71,7 +69,6 @@
 		DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6545211DD58A00ECAD21 /* Cache.swift */; };
 		DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */; };
 		DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6548211DD58A00ECAD21 /* ShareView.swift */; };
-		DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */; };
 		DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55AF202122C5A600B50D9C /* BoardStackView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */; };
@@ -143,7 +140,6 @@
 		3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Ready.swift; sourceTree = "<group>"; };
-		DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		DA28AED621353C250030AE9E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
@@ -191,7 +187,6 @@
 		DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDrawer.swift; sourceTree = "<group>"; };
 		DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
 		DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
-		DA4C6526211DD58A00ECAD21 /* BoardTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTitle.swift; sourceTree = "<group>"; };
 		DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
 		DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLayouter.swift; sourceTree = "<group>"; };
 		DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItems.swift; sourceTree = "<group>"; };
@@ -209,7 +204,6 @@
 		DA4C6545211DD58A00ECAD21 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
-		DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
 		DA55AF202122C5A600B50D9C /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
 		DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -434,7 +428,6 @@
 			children = (
 				DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */,
 				DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */,
-				DA4C6526211DD58A00ECAD21 /* BoardTitle.swift */,
 				DA32C2512121DC5A0018BBC3 /* BoardProgress.swift */,
 				DA4C6522211DD58A00ECAD21 /* BoardView.swift */,
 				DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */,
@@ -500,7 +493,6 @@
 			isa = PBXGroup;
 			children = (
 				DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */,
-				DA4C6549211DD58A00ECAD21 /* ShareViewModel.swift */,
 				DA4C6548211DD58A00ECAD21 /* ShareView.swift */,
 			);
 			path = Share;
@@ -539,7 +531,6 @@
 			isa = PBXGroup;
 			children = (
 				DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */,
-				DA254B002126D23C00D1E3C8 /* InfoViewModel.swift */,
 				DA759E212126AB9C00E92FD9 /* InfoView.swift */,
 			);
 			path = Info;
@@ -837,14 +828,11 @@
 				DA741D93213924C6002555E4 /* Today.swift in Sources */,
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
-				DA4C6554211DD58A00ECAD21 /* BoardTitle.swift in Sources */,
 				DA28AED721353C250030AE9E /* PopupView.swift in Sources */,
-				DA254B012126D23C00D1E3C8 /* InfoViewModel.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
 				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,
 				DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */,
 				DA4C6566211DD58A00ECAD21 /* EditPresenter.swift in Sources */,
-				DA4C6571211DD58A00ECAD21 /* ShareViewModel.swift in Sources */,
 				DA4C654B211DD58A00ECAD21 /* DeletePresenter.swift in Sources */,
 				DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */,
 				DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */,

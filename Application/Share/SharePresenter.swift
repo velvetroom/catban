@@ -24,9 +24,7 @@ class SharePresenter:Presenter<BoardInteractor> {
     
     override func didLoad() {
         qrHero.write(content:interactor.boardUrl) { [weak self] image in
-            var viewModel = ShareViewModel()
-            viewModel.image = image
-            self?.update(viewModel:viewModel)
+            self?.update(viewModel:image)
         }
     }
     

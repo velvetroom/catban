@@ -69,7 +69,7 @@ class ShareView:PopupView<BoardInteractor, SharePresenter> {
     }
     
     private func configureViewModel() {
-        presenter.viewModel { [weak self] (viewModel:ShareViewModel) in self?.image.image = viewModel.image }
+        presenter.viewModel { [weak self] (image:UIImage) in self?.image.image = image }
     }
     
     @objc private func sendImage() {

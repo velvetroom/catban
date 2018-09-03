@@ -18,8 +18,6 @@ class InfoPresenter<I:Interactor>:Presenter<I> {
         let url = Bundle.main.url(forResource:source, withExtension:"md")!
         let string:String
         do { try string = String(contentsOf:url, encoding:.utf8) } catch { return }
-        var viewModel = InfoViewModel()
-        viewModel.text = parser.parse(string:string)
-        update(viewModel:viewModel)
+        update(viewModel:parser.parse(string:string))
     }
 }

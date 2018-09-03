@@ -58,8 +58,8 @@ class InfoView<I:Interactor>:PopupView<I, InfoPresenter<I>> {
     }
     
     private func configureViewModel() {
-        presenter.viewModel { [weak self] (viewModel:InfoViewModel) in
-            self?.text.attributedText = viewModel.text
+        presenter.viewModel { [weak self] (text:NSAttributedString) in
+            self?.text.attributedText = text
         }
     }
 }

@@ -1,5 +1,5 @@
 import Foundation
 
-public protocol TextProtocol {
+public protocol Editable:AnyObject {
     var text:String { get set }
 }

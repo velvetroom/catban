@@ -1,6 +1,6 @@
 import Foundation
 
-public class Column:Codable, TextProtocol {
+final public class Column:Editable, Codable {
     public var text = String()
     public private(set) var cards:[Card] = []
     

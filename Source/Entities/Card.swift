@@ -1,5 +1,5 @@
 import Foundation
 
-public class Card:Codable, TextProtocol {
+final public class Card:Editable, Codable {
     public var text = String()
 }

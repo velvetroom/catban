@@ -1,6 +1,6 @@
 import Foundation
 
-public class Board:TextProtocol, Codable {
+final public class Board:Editable, Codable {
     public var text = String()
     public private(set) var columns:[Column] = []
     var syncstamp = Date()

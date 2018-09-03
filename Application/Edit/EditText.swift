@@ -3,7 +3,7 @@ import Catban
 
 struct EditText {
     var title = String()
-    var other:TextProtocol?
-    var subject:TextProtocol?
+    var other:Editable?
+    var subject:Editable?
     var save:((EditPresenter) -> (String) -> Void)!
 }

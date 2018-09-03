@@ -2,14 +2,9 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class LibraryPresenter:Presenter {
-    var interactor:LibraryInteractor!
-    var viewModels:ViewModels!
-    
-    required init() { }
-    
+class LibraryPresenter:Presenter<LibraryInteractor> {
     @objc func newBoard() {
-        viewModels.update(viewModel:LibraryItems())
+        update(viewModel:LibraryItems())
         interactor.newBoard()
     }
     
@@ -33,12 +28,12 @@ class LibraryPresenter:Presenter {
         cell.unhighlight()
     }
     
-    func willAppear() {
-        viewModels.update(viewModel:LibraryItems())
+    override func willAppear() {
+        update(viewModel:LibraryItems())
         interactor.load()
     }
     
-    func shouldUpdate() {
+    override func shouldUpdate() {
         if interactor.library.boards.isEmpty {
             showEmpty()
         } else {
@@ -51,7 +46,7 @@ class LibraryPresenter:Presenter {
         viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
-        viewModels.update(viewModel:viewModel)
+        update(viewModel:viewModel)
     }
     
     private func updateItems() {
@@ -60,7 +55,7 @@ class LibraryPresenter:Presenter {
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         Today(items:viewModel.items).store()
-        viewModels.update(viewModel:viewModel)
+        update(viewModel:viewModel)
     }
     
     private var items:[LibraryItem] {

@@ -1,7 +1,7 @@
 import Foundation
 import CleanArchitecture
 
-class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
+class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPreviewingDelegate {
     weak var loading:LoadingView!
     weak var scroll:UIScrollView!
     weak var message:UILabel!
@@ -26,7 +26,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     func previewingContext(_ context:UIViewControllerPreviewing,
                            viewControllerForLocation location:CGPoint) -> UIViewController? {
         var view:UIViewController?
-        if let item = scroll.subviews.first(where: { (view) -> Bool in view.frame.contains(location) }) {
+        if let item = scroll.subviews.first(where: { (item) -> Bool in item.frame.contains(location) }) {
             context.sourceRect = item.frame
             view = presenter.interactor.board(identifier:(item as! LibraryCellView).viewModel.board)
         }
@@ -92,7 +92,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:LibraryItems) in
+        presenter.viewModel { [weak self] (viewModel:LibraryItems) in
             self?.loading.isHidden = viewModel.loadingHidden
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled

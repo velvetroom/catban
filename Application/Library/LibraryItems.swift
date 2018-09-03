@@ -1,7 +1,6 @@
 import Foundation
-import CleanArchitecture
 
-struct LibraryItems:ViewModel {
+struct LibraryItems {
     var items:[LibraryItem] = []
     var message = String()
     var loadingHidden = false

@@ -5,7 +5,6 @@ import QRhero
 import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
-    weak var delegate:InteractorDelegate?
     var identifier = String()
     var strategy = updateDelegate
     let library = Factory.makeLibrary()

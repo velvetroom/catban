@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class InfoView<I:Interactor>:PopupView<InfoPresenter<I>> {
+class InfoView<I:Interactor>:PopupView<I, InfoPresenter<I>> {
     weak var dismiss:UIButton!
     weak var text:UITextView!
     
@@ -58,7 +58,7 @@ class InfoView<I:Interactor>:PopupView<InfoPresenter<I>> {
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:InfoViewModel) in
+        presenter.viewModel { [weak self] (viewModel:InfoViewModel) in
             self?.text.attributedText = viewModel.text
         }
     }

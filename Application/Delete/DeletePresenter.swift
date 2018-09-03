@@ -2,12 +2,8 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class DeletePresenter:Presenter {
-    weak var interactor:BoardInteractor!
-    var viewModels:ViewModels!
+class DeletePresenter:Presenter<BoardInteractor> {
     var edit:EditDelete!
-    
-    required init() { }
     
     @objc func cancel() {
         Application.router.dismiss(animated:true)

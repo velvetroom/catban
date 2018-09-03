@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class EditView:View<EditPresenter>, UITextViewDelegate {
+class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
     weak var text:UITextView!
     weak var layoutBottom:NSLayoutConstraint!
     

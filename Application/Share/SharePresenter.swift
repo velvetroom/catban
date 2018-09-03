@@ -2,12 +2,8 @@ import UIKit
 import CleanArchitecture
 import QRhero
 
-class SharePresenter:Presenter {
-    weak var interactor:BoardInteractor!
-    var viewModels:ViewModels!
+class SharePresenter:Presenter<BoardInteractor> {
     private let qrHero = QRhero()
-    
-    required init() { }
     
     @objc func done() {
         Application.router.dismiss(animated:true)
@@ -26,11 +22,11 @@ class SharePresenter:Presenter {
         }
     }
     
-    func didLoad() {
+    override func didLoad() {
         qrHero.write(content:interactor.boardUrl) { [weak self] image in
             var viewModel = ShareViewModel()
             viewModel.image = image
-            self?.viewModels.update(viewModel:viewModel)
+            self?.update(viewModel:viewModel)
         }
     }
     

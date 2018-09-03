@@ -2,8 +2,7 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class BoardInteractor:Interactor {    
-    weak var delegate:InteractorDelegate?
+class BoardInteractor:Interactor {
     var board:Board!
     var identifier = String()
     var cardsFont:Int { return library.cardsFont }
@@ -11,8 +10,6 @@ class BoardInteractor:Interactor {
     var boardUrl:String { return library.url(identifier:identifier) }
     private let library = Factory.makeLibrary()
     private let report = Report()
-    
-    required init() { }
     
     func detach(card:Card, column:Column) {
         column.delete(card:card)

@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
+class BoardView:View<BoardInteractor, BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var report:UIView!
@@ -197,12 +197,12 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:BoardTitle) in
+        presenter.viewModel { [weak self] (viewModel:BoardTitle) in
             self?.title = viewModel.title
             self?.drawer.draw()
             self?.layouter.layout()
         }
-        presenter.viewModels.observe { [weak self] (viewModel:BoardProgress) in
+        presenter.viewModel { [weak self] (viewModel:BoardProgress) in
             self?.progress.setProgress(viewModel.progress, animated:true)
             self?.stack.update(progress:viewModel)
         }

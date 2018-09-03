@@ -1,12 +1,7 @@
 import Foundation
 import CleanArchitecture
 
-class SettingsPresenter:Presenter {
-    var interactor:SettingsInteractor!
-    var viewModels:ViewModels!
-    
-    required init() { }
-    
+class SettingsPresenter:Presenter<SettingsInteractor> {    
     func update(cardsFont:Int) {
         interactor.library.cardsFont = cardsFont
     }
@@ -15,10 +10,10 @@ class SettingsPresenter:Presenter {
         interactor.library.defaultColumns = defaultColumns
     }
     
-    func didLoad() {
+    override func didLoad() {
         var viewModel = SettingsViewModel()
         viewModel.cardsFont = interactor.library.cardsFont
         viewModel.defaultColumns = interactor.library.defaultColumns
-        viewModels.update(viewModel:viewModel)
+        update(viewModel:viewModel)
     }
 }

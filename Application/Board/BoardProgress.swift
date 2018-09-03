@@ -1,7 +1,6 @@
 import Foundation
-import CleanArchitecture
 
-struct BoardProgress:ViewModel {
+struct BoardProgress {
     var progress:Float = 0
     var columns:[Int] = []
 }

@@ -1,7 +1,6 @@
 import Foundation
-import CleanArchitecture
 
-struct SettingsViewModel:ViewModel {
+struct SettingsViewModel {
     var cardsFont:Int = 0
     var defaultColumns = false
 }

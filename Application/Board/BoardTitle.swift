@@ -1,6 +1,5 @@
 import Foundation
-import CleanArchitecture
 
-struct BoardTitle:ViewModel {
+struct BoardTitle {
     var title = String()
 }

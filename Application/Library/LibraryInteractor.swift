@@ -11,6 +11,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     private let report = Report()
     
     required init() {
+        super.init()
         library.delegate = self
     }
     

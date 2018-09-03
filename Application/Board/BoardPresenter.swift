@@ -2,12 +2,8 @@ import UIKit
 import CleanArchitecture
 import Catban
 
-class BoardPresenter:Presenter {
-    var interactor:BoardInteractor!
-    var viewModels:ViewModels!
+class BoardPresenter:Presenter<BoardInteractor> {
     private(set) var state:BoardState = BoardStateDefault()
-    
-    required init() { }
     
     func detach(item:BoardCardView) {
         interactor.detach(card:item.card, column:item.column)
@@ -69,11 +65,11 @@ class BoardPresenter:Presenter {
             var viewModel = BoardProgress()
             viewModel.progress = stats.progress
             viewModel.columns = stats.columns
-            self?.viewModels.update(viewModel:viewModel)
+            self?.update(viewModel:viewModel)
         }
     }
     
-    func didAppear() {
+    override func didAppear() {
         updateViewModel()
         updateProgress()
     }
@@ -81,6 +77,6 @@ class BoardPresenter:Presenter {
     private func updateViewModel() {
         var viewModel = BoardTitle()
         viewModel.title = interactor.board.text
-        viewModels.update(viewModel:viewModel)
+        update(viewModel:viewModel)
     }
 }

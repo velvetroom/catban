@@ -2,7 +2,7 @@ import UIKit
 import CleanArchitecture
 import MarkdownHero
 
-class SettingsView:View<SettingsPresenter> {
+class SettingsView:View<SettingsInteractor, SettingsPresenter> {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var columns:UIView!
@@ -150,7 +150,7 @@ class SettingsView:View<SettingsPresenter> {
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:SettingsViewModel) in
+        presenter.viewModel { [weak self] (viewModel:SettingsViewModel) in
             self?.updateDisplay(size:viewModel.cardsFont)
             self?.fontSlider.setValue(Float(viewModel.cardsFont), animated:false)
             self?.columnsSwitch.isOn = viewModel.defaultColumns

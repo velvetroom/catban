@@ -2,14 +2,10 @@ import UIKit
 import CleanArchitecture
 import Catban
 
-class EditPresenter:Presenter {
-    weak var interactor:BoardInteractor!
-    var viewModels:ViewModels!
+class EditPresenter:Presenter<BoardInteractor> {
     var editText:EditText!
     var editDelete:EditDelete?
     var infoSource:String?
-    
-    required init() { }
     
     func save(text:String) {
         editText.save(self)(validate(text:text))

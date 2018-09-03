@@ -1,6 +1,5 @@
 import Foundation
-import CleanArchitecture
 
-struct InfoViewModel:ViewModel {
+struct InfoViewModel {
     var text = NSAttributedString()
 }

@@ -1,6 +1,5 @@
 import UIKit
-import CleanArchitecture
 
-struct ShareViewModel:ViewModel {
+struct ShareViewModel {
     var image:UIImage?
 }

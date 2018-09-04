@@ -19,7 +19,7 @@ class TodayCellView:UIControl {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = false
-        label.font = .systemFont(ofSize:11, weight:.light)
+        label.font = .systemFont(ofSize:12, weight:.regular)
         label.textColor = .black
         label.textAlignment = .center
         label.text = item.name
@@ -30,13 +30,13 @@ class TodayCellView:UIControl {
         progress.value = CGFloat(item.progress)
         addSubview(progress)
         
-        label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-12).isActive = true
+        label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
         label.leftAnchor.constraint(equalTo:leftAnchor, constant:6).isActive = true
         label.rightAnchor.constraint(equalTo:rightAnchor, constant:-6).isActive = true
         
-        progress.topAnchor.constraint(equalTo:topAnchor, constant:15).isActive = true
-        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-30).isActive = true
-        progress.leftAnchor.constraint(equalTo:leftAnchor, constant:15).isActive = true
-        progress.rightAnchor.constraint(equalTo:rightAnchor, constant:-15).isActive = true
+        progress.topAnchor.constraint(equalTo:topAnchor, constant:8).isActive = true
+        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-26).isActive = true
+        progress.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
+        progress.rightAnchor.constraint(equalTo:rightAnchor, constant:-10).isActive = true
     }
 }

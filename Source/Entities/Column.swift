@@ -11,16 +11,19 @@ final public class Column:Codable {
         } catch {
             try name = values.decode(String.self, forKey:.text)
         }
+        try cards = values.decode([Card].self, forKey:.cards)
     }
     
     public func encode(to encoder:Encoder) throws {
         var container = encoder.container(keyedBy:CodingKeys.self)
         try container.encode(name, forKey:.name)
+        try container.encode(cards, forKey:.cards)
     }
     
     init() { }
     
     private enum CodingKeys:CodingKey {
+        case cards
         case text
         case name
     }

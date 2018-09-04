@@ -119,8 +119,8 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
         scroll.subviews.forEach { view in
-            y += 15
-            view.frame = CGRect(x:17, y:y, width:size.width - 34, height:60)
+            y += 18
+            view.frame = CGRect(x:14, y:y, width:size.width - 28, height:40)
             y += view.bounds.height
         }
         scroll.contentSize = CGSize(width:size.width, height:y)

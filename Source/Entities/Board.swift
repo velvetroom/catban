@@ -12,16 +12,22 @@ final public class Board:Codable {
         } catch {
             try name = values.decode(String.self, forKey:.text)
         }
+        try columns = values.decode([Column].self, forKey:.columns)
+        try syncstamp = values.decode(Date.self, forKey:.syncstamp)
     }
     
     public func encode(to encoder:Encoder) throws {
         var container = encoder.container(keyedBy:CodingKeys.self)
         try container.encode(name, forKey:.name)
+        try container.encode(columns, forKey:.columns)
+        try container.encode(syncstamp, forKey:.syncstamp)
     }
     
     init() { }
     
     private enum CodingKeys:CodingKey {
+        case columns
+        case syncstamp
         case text
         case name
     }

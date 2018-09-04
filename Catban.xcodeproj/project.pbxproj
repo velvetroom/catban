@@ -38,7 +38,6 @@
 		DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EA211DD54100ECAD21 /* Session.swift */; };
 		DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EB211DD54100ECAD21 /* Card.swift */; };
 		DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EC211DD54100ECAD21 /* Column.swift */; };
-		DA4C64FD211DD54100ECAD21 /* Editable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64ED211DD54100ECAD21 /* Editable.swift */; };
 		DA4C6504211DD54A00ECAD21 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64FF211DD54900ECAD21 /* TestFactory.swift */; };
 		DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */; };
 		DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6501211DD54900ECAD21 /* MockDatabase.swift */; };
@@ -174,7 +173,6 @@
 		DA4C64EA211DD54100ECAD21 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DA4C64EB211DD54100ECAD21 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		DA4C64EC211DD54100ECAD21 /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
-		DA4C64ED211DD54100ECAD21 /* Editable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editable.swift; sourceTree = "<group>"; };
 		DA4C64FF211DD54900ECAD21 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
 		DA4C6501211DD54900ECAD21 /* MockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
@@ -357,7 +355,6 @@
 		DA4C64E8211DD54100ECAD21 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64ED211DD54100ECAD21 /* Editable.swift */,
 				DA4C64EA211DD54100ECAD21 /* Session.swift */,
 				DA4C64E9211DD54100ECAD21 /* Board.swift */,
 				DA4C64EC211DD54100ECAD21 /* Column.swift */,
@@ -762,7 +759,6 @@
 				DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */,
 				DA4C64F9211DD54100ECAD21 /* Board.swift in Sources */,
 				DA4C64F1211DD54100ECAD21 /* LibraryState.swift in Sources */,
-				DA4C64FD211DD54100ECAD21 /* Editable.swift in Sources */,
 				DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,

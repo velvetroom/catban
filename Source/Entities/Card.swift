@@ -1,5 +1,5 @@
 import Foundation
 
-final public class Card:Editable, Codable {
-    public var text = String()
+final public class Card:Codable {
+    public var content = String()
 }

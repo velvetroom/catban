@@ -11,7 +11,7 @@ class TestColumn:XCTestCase {
     func testAddingCard() {
         column.addCard(text:"lorem ipsum")
         XCTAssertEqual(1, column.cards.count)
-        XCTAssertEqual("lorem ipsum", column.cards.first?.text)
+        XCTAssertEqual("lorem ipsum", column.cards.first?.content)
     }
     
     func testDeletingCard() {
@@ -19,7 +19,7 @@ class TestColumn:XCTestCase {
         column.addCard(text:"Another one")
         column.delete(card:column.cards.first!)
         XCTAssertEqual(1, column.cards.count)
-        XCTAssertNotEqual("hello world", column.cards.first?.text)
+        XCTAssertNotEqual("hello world", column.cards.first?.content)
     }
     
     func testInsertingCardAfterAnother() {

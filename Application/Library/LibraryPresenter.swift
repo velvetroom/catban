@@ -63,7 +63,7 @@ class LibraryPresenter:Presenter<LibraryInteractor> {
         interactor.library.boards.forEach { key, board in
             var item = LibraryItem()
             item.board = key
-            item.name = board.text
+            item.name = board.name
             item.progress = interactor.makeStats(board:board).progress
             items.append(item)
         }

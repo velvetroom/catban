@@ -1,13 +1,13 @@
 import Foundation
 
-final public class Board:Editable, Codable {
-    public var text = String()
+final public class Board:Codable {
+    public var name = String()
     public private(set) var columns:[Column] = []
     var syncstamp = Date()
     
     public func addColumn(text:String) {
         let column = Column()
-        column.text = text
+        column.name = text
         columns.append(column)
     }
     

@@ -6,6 +6,7 @@ class EditPresenter:Presenter<BoardInteractor> {
     var editText:EditText!
     var editDelete:EditDelete?
     var infoSource:String?
+    var column:Column!
     
     func save(text:String) {
         editText.save(self)(validate(text:text))
@@ -13,8 +14,16 @@ class EditPresenter:Presenter<BoardInteractor> {
         DispatchQueue.main.async { Application.router.popViewController(animated:true) }
     }
     
-    func saveTextChange(text:String) {
-        editText.subject!.text = text
+    func saveBoardRename(text:String) {
+        editText.board.name = text
+    }
+    
+    func saveColumnRename(text:String) {
+        editText.column.name = text
+    }
+    
+    func saveCardChange(text:String) {
+        editText.card.content = text
     }
     
     func saveNewColumn(text:String) {
@@ -22,7 +31,7 @@ class EditPresenter:Presenter<BoardInteractor> {
     }
     
     func saveNewCard(text:String) {
-        (editText.other as! Column).addCard(text:text)
+        editText.column.addCard(text:text)
     }
     
     @objc func cancel() {

@@ -97,7 +97,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     private func addTemplate(board:Board) {
-        board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
+        board.name = NSLocalizedString("LibraryInteractor.board", comment:String())
         if library.defaultColumns {
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))

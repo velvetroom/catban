@@ -12,7 +12,7 @@ class TodayCellView:UIControl {
     }
     
     required init?(coder:NSCoder) { return nil }
-    @objc func highlight() { alpha = 0.1 }
+    @objc func highlight() { alpha = 0.2 }
     @objc func unhighlight() { alpha = 1 }
     
     private func makeOutlets() {

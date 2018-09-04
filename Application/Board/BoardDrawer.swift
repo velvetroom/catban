@@ -27,7 +27,7 @@ class BoardDrawer {
     }
     
     func makeCard(column:Column, card:Card) {
-        let text = parser.parse(string:card.text)
+        let text = parser.parse(string:card.content)
         let textHeight = ceil(text.boundingRect(with:size, options:options, context:nil).size.height)
         let item = BoardCardView()
         item.column = column
@@ -60,7 +60,7 @@ class BoardDrawer {
     private func makeHeader(column:Column) {
         let item = BoardHeaderView()
         item.column = column
-        item.label.text = column.text
+        item.label.text = column.name
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
         layout(item:item, height:38, width:BoardDrawer.columnWidth)

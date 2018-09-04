@@ -51,12 +51,12 @@ class BoardPresenter:Presenter<BoardInteractor> {
     
     func search(text:String) {
         state = BoardStateSearch(text:text)
-        update(viewModel:interactor.board.text)
+        update(viewModel:interactor.board.name)
     }
     
     func clearSearch() {
         state = BoardStateDefault()
-        update(viewModel:interactor.board.text)
+        update(viewModel:interactor.board.name)
     }
     
     func updateProgress() {
@@ -70,7 +70,7 @@ class BoardPresenter:Presenter<BoardInteractor> {
     }
     
     override func didAppear() {
-        update(viewModel:interactor.board.text)
+        update(viewModel:interactor.board.name)
         updateProgress()
     }
 }

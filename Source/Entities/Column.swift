@@ -1,12 +1,12 @@
 import Foundation
 
-final public class Column:Editable, Codable {
-    public var text = String()
+final public class Column:Codable {
+    public var name = String()
     public private(set) var cards:[Card] = []
     
     public func addCard(text:String) {
         let card = Card()
-        card.text = text
+        card.content = text
         cards.append(card)
     }
     

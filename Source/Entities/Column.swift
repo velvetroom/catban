@@ -4,6 +4,27 @@ final public class Column:Codable {
     public var name = String()
     public private(set) var cards:[Card] = []
     
+    public required init(from decoder:Decoder) throws {
+        let values = try decoder.container(keyedBy:CodingKeys.self)
+        do {
+            try name = values.decode(String.self, forKey:.name)
+        } catch {
+            try name = values.decode(String.self, forKey:.text)
+        }
+    }
+    
+    public func encode(to encoder:Encoder) throws {
+        var container = encoder.container(keyedBy:CodingKeys.self)
+        try container.encode(name, forKey:.name)
+    }
+    
+    init() { }
+    
+    private enum CodingKeys:CodingKey {
+        case text
+        case name
+    }
+    
     public func addCard(text:String) {
         let card = Card()
         card.content = text

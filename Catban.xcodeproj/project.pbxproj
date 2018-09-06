@@ -299,6 +299,7 @@
 				DA4C6509211DD57A00ECAD21 /* Resources */,
 				DA4C64D5211DD4E400ECAD21 /* Configuration */,
 				AC95CFA14D508AB0D223134C /* Pods */,
+				DAC3670E2134316F009DD113 /* EditDelete.swift */,
 				8B65E65B103781A85F381C5A /* Frameworks */,
 				DA4C64D1211DD40300ECAD21 /* libCatban.a */,
 				DA4C64D2211DD40300ECAD21 /* Tests.xctest */,
@@ -476,7 +477,6 @@
 				DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */,
 				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
 				DAC3670C21342A05009DD113 /* EditText.swift */,
-				DAC3670E2134316F009DD113 /* EditDelete.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";

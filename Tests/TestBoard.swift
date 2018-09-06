@@ -35,26 +35,23 @@ class TestBoard:XCTestCase {
     
     func testLoadLegacyBoard() {
         guard
-            let data = try? JSONSerialization.data(withJSONObject:["text":"hello world", "syncstamp":1, "columns":[]]),
-            let board = try? JSONDecoder().decode(Board.self, from:data)
+            let data = try? JSONSerialization.data(withJSONObject:["text":"hello world", "cards":[]]),
+            let column = try? JSONDecoder().decode(Column.self, from:data)
         else { return XCTFail() }
-        XCTAssertEqual("hello world", board.name)
+        XCTAssertEqual("hello world", column.name)
     }
     
     func testSaveNewBoard() {
-        let date = Date()
-        let board = Board()
-        board.name = "hello world"
-        board.syncstamp = date
-        board.addColumn(text:"lorem ipsum")
-        board.addColumn(text:"column b")
+        let column = Column()
+        column.name = "hello world"
+        column.addCard(text:"lorem ipsum")
+        column.addCard(text:"column b")
         guard
-            let data = try? JSONEncoder().encode(board),
-            let decoded = try? JSONDecoder().decode(Board.self, from:data)
+            let data = try? JSONEncoder().encode(column),
+            let decoded = try? JSONDecoder().decode(Column.self, from:data)
         else { return XCTFail() }
-        XCTAssertEqual("hello world", decoded.name)
-        XCTAssertEqual(date, decoded.syncstamp)
-        XCTAssertEqual("lorem ipsum", decoded.columns[0].name)
-        XCTAssertEqual("column b", decoded.columns[1].name)
+        XCTAssertEqual("hello world", column.name)
+        XCTAssertEqual("lorem ipsum", decoded.cards[0].content)
+        XCTAssertEqual("column b", decoded.cards[1].content)
     }
 }

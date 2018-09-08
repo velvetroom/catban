@@ -14,6 +14,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     required init() {
         super.init()
         library.delegate = self
+        cloud.interactor = self
     }
     
     func load() {
@@ -92,6 +93,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     
     func updateDelegate() {
         delegate?.shouldUpdate()
+        cloud.saveUpdates()
     }
     
     func selectBoard() {

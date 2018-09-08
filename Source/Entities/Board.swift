@@ -2,7 +2,7 @@ import Foundation
 
 final public class Board:Codable {
     public var name = String()
-    public private(set) var columns:[Column] = []
+    public private(set) var columns = [Column]()
     var syncstamp = Date()
    
     public required init(from decoder:Decoder) throws {

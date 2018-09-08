@@ -2,7 +2,7 @@ import Foundation
 
 final public class Column:Codable {
     public var name = String()
-    public private(set) var cards:[Card] = []
+    public private(set) var cards = [Card]()
     
     public required init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy:CodingKeys.self)

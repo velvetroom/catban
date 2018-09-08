@@ -59,7 +59,7 @@ class LibraryPresenter:Presenter<LibraryInteractor> {
     }
     
     private var items:[LibraryItem] {
-        var items:[LibraryItem] = []
+        var items = [LibraryItem]()
         interactor.library.boards.forEach { key, board in
             var item = LibraryItem()
             item.board = key

@@ -9,6 +9,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     var strategy = updateDelegate
     let library = Factory.makeLibrary()
     private let report = Report()
+    private let cloud = Cloud()
     
     required init() {
         super.init()
@@ -51,6 +52,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     
     func librarySessionLoaded() {
         load()
+        cloud.synchronize()
     }
     
     func libraryBoardsUpdated() {

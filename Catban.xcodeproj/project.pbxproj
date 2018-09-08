@@ -96,6 +96,7 @@
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
 		DAC3670D21342A05009DD113 /* EditText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670C21342A05009DD113 /* EditText.swift */; };
 		DAC3670F2134316F009DD113 /* EditDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670E2134316F009DD113 /* EditDelete.swift */; };
+		DAD1DB142143C46700211722 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1DB132143C46700211722 /* Cloud.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +233,7 @@
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		DAC3670C21342A05009DD113 /* EditText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditText.swift; sourceTree = "<group>"; };
 		DAC3670E2134316F009DD113 /* EditDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDelete.swift; sourceTree = "<group>"; };
+		DAD1DB132143C46700211722 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		E1A186EED2CF0D527F6E84AD /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
 		EF2AD30BA7F2E2A002D78D36 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -489,6 +491,7 @@
 			children = (
 				DA4C6544211DD58A00ECAD21 /* Database.swift */,
 				DA4C6545211DD58A00ECAD21 /* Cache.swift */,
+				DAD1DB132143C46700211722 /* Cloud.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */,
 				DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */,
 				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
+				DAD1DB142143C46700211722 /* Cloud.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
 				DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */,

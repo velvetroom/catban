@@ -53,7 +53,7 @@ class SharePresenter:Presenter<BoardInteractor> {
     
     func temporalUrl(image:UIImage) -> URL? {
         let url = URL(fileURLWithPath:NSTemporaryDirectory()).appendingPathComponent("Catban.jpeg")
-        do { try image.jpegData(compressionQuality:1)!.write(to:url, options:.atomicWrite) } catch { }
+        try? image.jpegData(compressionQuality:1)!.write(to:url, options:.atomicWrite)
         return url
     }
 }

@@ -16,8 +16,8 @@ class InfoPresenter<I:Interactor>:Presenter<I> {
     
     private func loadInfo() {
         let url = Bundle.main.url(forResource:source, withExtension:"md")!
-        let string:String
-        do { try string = String(contentsOf:url, encoding:.utf8) } catch { return }
-        update(viewModel:parser.parse(string:string))
+        if let string = try? String(contentsOf:url, encoding:.utf8) {
+            update(viewModel:parser.parse(string:string))
+        }
     }
 }

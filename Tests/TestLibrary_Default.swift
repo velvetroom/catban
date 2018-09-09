@@ -50,4 +50,7 @@ class TestLibrary_Default:XCTestCase {
     func testAddBoardThrows() {
         XCTAssertThrowsError(try library.addBoard(url:"iturbide.catban.hello"))
     }
+    
+    func testMergeThrows() {
+    }
 }

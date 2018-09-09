@@ -11,10 +11,10 @@ class TestSession:XCTestCase {
     func testCodingBoards() {
         session.boards["lorem ipsum"] = Board()
         session.boards["hello world"] = Board()
-        let data:Data
-        do { try data = JSONEncoder().encode(session) } catch { return XCTFail() }
-        let newSession:Session
-        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        guard
+            let data = try? JSONEncoder().encode(session),
+            let newSession = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
         XCTAssertEqual(2, newSession.boards.keys.count)
         XCTAssertTrue(newSession.boards.keys.contains("lorem ipsum"))
         XCTAssertTrue(newSession.boards.keys.contains("hello world"))
@@ -23,18 +23,18 @@ class TestSession:XCTestCase {
     func testCodingCardsFont() {
         let session = Session()
         session.cardsFont = 55
-        let data:Data
-        do { try data = JSONEncoder().encode(session) } catch { return XCTFail() }
-        let newSession:Session
-        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        guard
+            let data = try? JSONEncoder().encode(session),
+            let newSession = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
         XCTAssertEqual(newSession.cardsFont, session.cardsFont)
     }
     
     func testCodingNoPreviousCardsFont() {
-        let data:Data
-        do { try data = JSONEncoder().encode(["boards":[]] as! [String:[String]]) } catch { return XCTFail() }
-        let session:Session
-        do { try session = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        guard
+            let data = try? JSONEncoder().encode(["boards":[]] as! [String:[String]]),
+            let session = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
         XCTAssertEqual(0, session.boards.count)
         XCTAssertEqual(session.cardsFont, Session.cardsFont)
     }
@@ -42,10 +42,10 @@ class TestSession:XCTestCase {
     func testCodingDefaultColumns() {
         let session = Session()
         session.defaultColumns = false
-        let data:Data
-        do { try data = JSONEncoder().encode(session) } catch { return XCTFail() }
-        let newSession:Session
-        do { try newSession = JSONDecoder().decode(Session.self, from:data) } catch { return XCTFail() }
+        guard
+            let data = try? JSONEncoder().encode(session),
+            let newSession = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
         XCTAssertEqual(newSession.defaultColumns, session.defaultColumns)
     }
     

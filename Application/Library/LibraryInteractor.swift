@@ -9,12 +9,10 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     var strategy = updateDelegate
     let library = Factory.makeLibrary()
     private let report = Report()
-    private let cloud = Cloud()
     
     required init() {
         super.init()
         library.delegate = self
-        cloud.interactor = self
     }
     
     func load() {
@@ -52,8 +50,11 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func librarySessionLoaded() {
-        load()
-        cloud.synchronize()
+        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
+            try? library.merge(boards:boards)
+        } else {
+            load()
+        }
     }
     
     func libraryBoardsUpdated() {
@@ -92,8 +93,8 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func updateDelegate() {
+        NSUbiquitousKeyValueStore.default.set(Array(library.boards.keys), forKey:"iturbide.catban.boards")
         delegate?.shouldUpdate()
-        cloud.saveUpdates()
     }
     
     func selectBoard() {

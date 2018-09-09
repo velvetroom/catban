@@ -60,18 +60,16 @@ public class Library {
         return "iturbide.catban.".appending(identifier)
     }
     
+    public func merge(boards:[String]) throws {
+        try state.merge(context:self, boards:boards)
+    }
+    
     func saveSession() {
         cache.save(session:session)
     }
     
     func boardsUpdated() {
         DispatchQueue.main.async { [weak self] in self?.delegate?.libraryBoardsUpdated() }
-    }
-    
-    func validate(identifier:String) throws {
-        if boards[identifier] != nil {
-            throw CatbanError.boardAlreadyLoaded
-        }
     }
     
     private func identifier(board:Board) -> String? {

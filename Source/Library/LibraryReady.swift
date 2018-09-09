@@ -15,10 +15,18 @@ class LibraryReady:LibraryState {
     
     func addBoard(context:Library, url:String) throws {
         let identifier = try identifierFrom(url:url)
-        try context.validate(identifier:identifier)
+        try validate(context:context, identifier:identifier)
         context.session.boards[identifier] = Board()
-        context.queue.async { [weak context] in
-            context?.saveSession()
+        context.queue.async { context.saveSession() }
+    }
+    
+    func merge(context:Library, boards:[String]) throws {
+        context.queue.async { [weak self] in
+            boards.forEach{ board in
+                context.session.boards[board] = Board()
+            }
+            context.saveSession()
+            try? self?.loadBoards(context:context)
         }
     }
     
@@ -47,7 +55,7 @@ class LibraryReady:LibraryState {
         let identifier = context.database.create(board:board)
         context.session.boards[identifier] = board
         context.saveSession()
-        DispatchQueue.main.async { [weak context] in context?.delegate?.libraryCreated(board:identifier) }
+        DispatchQueue.main.async { context.delegate?.libraryCreated(board:identifier) }
     }
     
     private func identifierFrom(url:String) throws -> String {
@@ -56,6 +64,12 @@ class LibraryReady:LibraryState {
             return components[1]
         } else {
             throw CatbanError.invalidBoardUrl
+        }
+    }
+    
+    private func validate(context:Library, identifier:String) throws {
+        if context.boards[identifier] != nil {
+            throw CatbanError.boardAlreadyLoaded
         }
     }
 }

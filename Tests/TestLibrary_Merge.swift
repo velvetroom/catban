@@ -4,25 +4,39 @@ import XCTest
 class TestLibrary_Merge:XCTestCase {
     private var library:Library!
     private var delegate:MockLibraryDelegate!
+    private var cache:MockCache!
     
     override func setUp() {
         Factory.cache = MockCache.self
         Factory.database = MockDatabase.self
         library = Library()
         delegate = MockLibraryDelegate()
+        cache = library.cache as? MockCache
         library.delegate = delegate
         library.state = Library.stateReady
     }
     
-    /*
     func testAddsNewBoards() {
+        let expectSave = expectation(description:String())
+        let expectUpdate = expectation(description:String())
+        cache.onSaveSession = {
+            XCTAssertEqual(2, self.library.session.boards.count)
+            XCTAssertEqual("hello world", self.library.session.boards.keys.first)
+            expectSave.fulfill()
+        }
+        delegate.onBoardsUpdated = { expectUpdate.fulfill() }
+        XCTAssertNoThrow(try library.merge(boards:["hello world", "lorem ipsum"]))
+        waitForExpectations(timeout:1, handler:nil)
+    }
+    
+    func testNotRepeating() {
         let expect = expectation(description:String())
-        (library.cache as! MockCache).onSaveSession = {
-            XCTAssertFalse(self.library.session.boards.isEmpty)
-            XCTAssertEqual("dsakaknaknfkj", self.library.session.boards.keys.first)
+        cache.onSaveSession = {
+            XCTAssertEqual(1, self.library.session.boards.count)
             expect.fulfill()
         }
-        XCTAssertNoThrow(try library.addBoard(url:"iturbide.catban.dsakaknaknfkj"))
+        library.session.boards["hello world"] = Board()
+        XCTAssertNoThrow(try library.merge(boards:["hello world"]))
         waitForExpectations(timeout:1, handler:nil)
-    }*/
+    }
 }

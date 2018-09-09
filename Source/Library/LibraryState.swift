@@ -5,4 +5,5 @@ protocol LibraryState:AnyObject {
     func loadSession(context:Library)
     func newBoard(context:Library) throws
     func addBoard(context:Library, url:String) throws
+    func merge(context:Library, boards:[String]) throws
 }

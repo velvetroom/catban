@@ -52,5 +52,6 @@ class TestLibrary_Default:XCTestCase {
     }
     
     func testMergeThrows() {
+        XCTAssertThrowsError(try library.merge(boards:[String()]))
     }
 }

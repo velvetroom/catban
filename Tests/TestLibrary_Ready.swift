@@ -49,7 +49,7 @@ class TestLibrary_Ready:XCTestCase {
             XCTAssertEqual(Thread.main, Thread.current)
             expectLoad.fulfill()
         }
-        DispatchQueue.global(qos:.background).async { self.library.newBoard() }
+        DispatchQueue.global(qos:.background).async { do { try self.library.newBoard() } catch { } }
         waitForExpectations(timeout:1, handler:nil)
     }
 }

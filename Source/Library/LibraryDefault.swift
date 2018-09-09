@@ -2,6 +2,8 @@ import Foundation
 
 class LibraryDefault:LibraryState {
     func loadBoards(context:Library) throws { throw CatbanError.noSession }
+    func newBoard(context:Library) throws { throw CatbanError.noSession }
+    func addBoard(context:Library, url:String) throws { throw CatbanError.noSession }
     
     func loadSession(context:Library) {
         context.queue.async { [weak self] in

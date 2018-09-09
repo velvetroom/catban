@@ -37,7 +37,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func newBoard() {
-        library.newBoard()
+        try? library.newBoard()
     }
     
     func select(identifier:String) {

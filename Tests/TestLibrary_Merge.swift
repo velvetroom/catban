@@ -21,7 +21,8 @@ class TestLibrary_Merge:XCTestCase {
         let expectUpdate = expectation(description:String())
         cache.onSaveSession = {
             XCTAssertEqual(2, self.library.session.boards.count)
-            XCTAssertEqual("hello world", self.library.session.boards.keys.first)
+            XCTAssertNotNil(self.library.session.boards["hello world"])
+            XCTAssertNotNil(self.library.session.boards["lorem ipsum"])
             expectSave.fulfill()
         }
         delegate.onBoardsUpdated = { expectUpdate.fulfill() }

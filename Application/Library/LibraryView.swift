@@ -1,7 +1,7 @@
 import Foundation
 import CleanArchitecture
 
-class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
+class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPreviewingDelegate {
     weak var loading:LoadingView!
     weak var scroll:UIScrollView!
     weak var message:UILabel!
@@ -26,7 +26,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     func previewingContext(_ context:UIViewControllerPreviewing,
                            viewControllerForLocation location:CGPoint) -> UIViewController? {
         var view:UIViewController?
-        if let item = scroll.subviews.first(where: { (view) -> Bool in view.frame.contains(location) }) {
+        if let item = scroll.subviews.first(where: { (item) -> Bool in item.frame.contains(location) }) {
             context.sourceRect = item.frame
             view = presenter.interactor.board(identifier:(item as! LibraryCellView).viewModel.board)
         }
@@ -57,7 +57,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         self.message = message
         
         let loading = LoadingView()
-        loading.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        loading.tintColor = .black
         view.addSubview(loading)
         self.loading = loading
         
@@ -92,7 +92,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:LibraryItems) in
+        presenter.viewModel { [weak self] (viewModel:LibraryItems) in
             self?.loading.isHidden = viewModel.loadingHidden
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled
@@ -119,7 +119,8 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
         scroll.subviews.forEach { view in
-            view.frame = CGRect(x:0, y:y, width:size.width, height:70)
+            y += 18
+            view.frame = CGRect(x:14, y:y, width:size.width - 28, height:40)
             y += view.bounds.height
         }
         scroll.contentSize = CGSize(width:size.width, height:y)

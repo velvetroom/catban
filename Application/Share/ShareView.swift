@@ -1,6 +1,6 @@
 import UIKit
 
-class ShareView:PopupView<SharePresenter> {
+class ShareView:PopupView<BoardInteractor, SharePresenter> {
     weak var image:UIImageView!
     weak var done:UIButton!
     weak var send:UIButton!
@@ -69,7 +69,7 @@ class ShareView:PopupView<SharePresenter> {
     }
     
     private func configureViewModel() {
-        presenter.viewModels.observe { [weak self] (viewModel:ShareViewModel) in self?.image.image = viewModel.image }
+        presenter.viewModel { [weak self] (image:UIImage) in self?.image.image = image }
     }
     
     @objc private func sendImage() {

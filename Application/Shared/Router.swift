@@ -1,33 +1,26 @@
 import UIKit
 
 class Router:UINavigationController {
-    
-    init() {
-        super.init(nibName:nil, bundle:nil)
-        configureNavigation()
-    }
-    
-    required init?(coder:NSCoder) { return nil }
-    
     func launchDefault() {
         setViewControllers([LibraryView()], animated:false)
     }
     
     func launch(board:String) {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuickBoard(board:board)
+        library.presenter.interactor.identifier = board
+        library.presenter.interactor.strategy = LibraryInteractor.selectBoard
         setViewControllers([library], animated:false)
     }
     
     func launchAdd() {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuickAdd()
+        library.presenter.interactor.strategy = LibraryInteractor.newBoard
         setViewControllers([library], animated:false)
     }
     
     func launchScan() {
         let library = LibraryView()
-        library.presenter.interactor.state = LibraryQuickScan()
+        library.presenter.interactor.strategy = LibraryInteractor.scan
         setViewControllers([library], animated:false)
     }
     
@@ -43,6 +36,11 @@ class Router:UINavigationController {
         library().presenter.interactor.scan()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigation()
+    }
+    
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
         if let gesture = interactivePopGestureRecognizer {
@@ -53,10 +51,8 @@ class Router:UINavigationController {
     private func configureNavigation() {
         navigationBar.barTintColor = .white
         navigationBar.tintColor = .black
+        navigationBar.setValue(true, forKey:"hidesShadow")
         navigationBar.isTranslucent = false
-        toolbar.barTintColor = .white
-        toolbar.tintColor = .black
-        toolbar.isTranslucent = false
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .always

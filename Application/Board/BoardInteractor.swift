@@ -2,17 +2,14 @@ import Foundation
 import CleanArchitecture
 import Catban
 
-class BoardInteractor:Interactor {    
-    weak var delegate:InteractorDelegate?
+class BoardInteractor:Interactor {
     var board:Board!
     var identifier = String()
     var cardsFont:Int { return library.cardsFont }
-    var boardName:String { return board.text }
+    var boardName:String { return board.name }
     var boardUrl:String { return library.url(identifier:identifier) }
     private let library = Factory.makeLibrary()
     private let report = Report()
-    
-    required init() { }
     
     func detach(card:Card, column:Column) {
         column.delete(card:card)
@@ -50,8 +47,9 @@ class BoardInteractor:Interactor {
     func edit() {
         var text = EditText()
         text.title = NSLocalizedString("BoardInteractor.boardTitle", comment:String())
-        text.subject = board
-        text.save = EditPresenter.saveTextChange
+        text.text = board.name
+        text.board = board
+        text.save = EditPresenter.saveBoardRename
         edit(text:text, delete:makeDeleteBoard())
     }
     
@@ -65,8 +63,9 @@ class BoardInteractor:Interactor {
     func editColumn(column:Column) {
         var text = EditText()
         text.title = NSLocalizedString("BoardInteractor.columnTitle", comment:String())
-        text.subject = column
-        text.save = EditPresenter.saveTextChange
+        text.text = column.name
+        text.column = column
+        text.save = EditPresenter.saveColumnRename
         var delete = EditDelete()
         delete.title = NSLocalizedString("BoardInteractor.deleteColumn", comment:String())
         delete.column = column
@@ -77,16 +76,17 @@ class BoardInteractor:Interactor {
     func newCard(column:Column) {
         var text = EditText()
         text.title = NSLocalizedString("BoardInteractor.newCard", comment:String())
-        text.other = column
+        text.column = column
         text.save = EditPresenter.saveNewCard
         edit(text:text, infoSource:"InfoCard")
     }
     
     func editCard(column:Column, card:Card) {
         var text = EditText()
-        text.title = column.text
-        text.subject = card
-        text.save = EditPresenter.saveTextChange
+        text.title = column.name
+        text.text = card.content
+        text.card = card
+        text.save = EditPresenter.saveCardChange
         var delete = EditDelete()
         delete.title = NSLocalizedString("BoardInteractor.deleteCard", comment:String())
         delete.column = column
@@ -114,7 +114,7 @@ class BoardInteractor:Interactor {
     
     private func makeDeleteBoard() -> EditDelete {
         var delete = EditDelete()
-        delete.title = String(format:NSLocalizedString("BoardInteractor.deleteBoard", comment:String()), board.text) 
+        delete.title = String(format:NSLocalizedString("BoardInteractor.deleteBoard", comment:String()), board.name) 
         delete.confirm = DeletePresenter.confirmBoard
         return delete
     }

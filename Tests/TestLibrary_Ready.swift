@@ -20,7 +20,7 @@ class TestLibrary_Ready:XCTestCase {
             XCTAssertEqual(Thread.main, Thread.current)
             expect.fulfill()
         }
-        DispatchQueue.global(qos:.background).async { do { try self.library.loadBoards() } catch {} }
+        DispatchQueue.global(qos:.background).async { try? self.library.loadBoards() }
         waitForExpectations(timeout:1, handler:nil)
     }
     
@@ -33,7 +33,7 @@ class TestLibrary_Ready:XCTestCase {
             XCTAssertEqual(Thread.main, Thread.current)
             expect.fulfill()
         }
-        DispatchQueue.global(qos:.background).async { do { try self.library.loadBoards() } catch {} }
+        DispatchQueue.global(qos:.background).async { try? self.library.loadBoards() }
         waitForExpectations(timeout:1, handler:nil)
     }
     
@@ -49,7 +49,7 @@ class TestLibrary_Ready:XCTestCase {
             XCTAssertEqual(Thread.main, Thread.current)
             expectLoad.fulfill()
         }
-        DispatchQueue.global(qos:.background).async { self.library.newBoard() }
+        DispatchQueue.global(qos:.background).async { try? self.library.newBoard() }
         waitForExpectations(timeout:1, handler:nil)
     }
 }

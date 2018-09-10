@@ -11,7 +11,7 @@ class TestColumn:XCTestCase {
     func testAddingCard() {
         column.addCard(text:"lorem ipsum")
         XCTAssertEqual(1, column.cards.count)
-        XCTAssertEqual("lorem ipsum", column.cards.first?.text)
+        XCTAssertEqual("lorem ipsum", column.cards.first?.content)
     }
     
     func testDeletingCard() {
@@ -19,7 +19,7 @@ class TestColumn:XCTestCase {
         column.addCard(text:"Another one")
         column.delete(card:column.cards.first!)
         XCTAssertEqual(1, column.cards.count)
-        XCTAssertNotEqual("hello world", column.cards.first?.text)
+        XCTAssertNotEqual("hello world", column.cards.first?.content)
     }
     
     func testInsertingCardAfterAnother() {
@@ -38,5 +38,27 @@ class TestColumn:XCTestCase {
         column.makeFirst(card:subject)
         XCTAssertEqual(3, column.cards.count)
         XCTAssertTrue(subject === column.cards.first)
+    }
+    
+    func testLoadLegacyColumn() {
+        guard
+            let data = try? JSONSerialization.data(withJSONObject:["text":"hello world", "cards":[]]),
+            let column = try? JSONDecoder().decode(Column.self, from:data)
+        else { return XCTFail() }
+        XCTAssertEqual("hello world", column.name)
+    }
+    
+    func testSaveNewColumn() {
+        let column = Column()
+        column.name = "hello world"
+        column.addCard(text:"lorem ipsum")
+        column.addCard(text:"column b")
+        guard
+            let data = try? JSONEncoder().encode(column),
+            let decoded = try? JSONDecoder().decode(Column.self, from:data)
+        else { return XCTFail() }
+        XCTAssertEqual("hello world", column.name)
+        XCTAssertEqual("lorem ipsum", decoded.cards[0].content)
+        XCTAssertEqual("column b", decoded.cards[1].content)
     }
 }

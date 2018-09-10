@@ -39,7 +39,6 @@ class Alert:UIViewController {
         base.backgroundColor = .white
         base.translatesAutoresizingMaskIntoConstraints = false
         base.layer.cornerRadius = 5
-        base.layer.shadowColor = UIColor.black.cgColor
         base.layer.shadowOffset = .zero
         base.layer.shadowRadius = 3
         base.layer.shadowOpacity = 0.6

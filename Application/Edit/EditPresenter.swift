@@ -2,14 +2,11 @@ import UIKit
 import CleanArchitecture
 import Catban
 
-class EditPresenter:Presenter {
-    weak var interactor:BoardInteractor!
-    var viewModels:ViewModels!
+class EditPresenter:Presenter<BoardInteractor> {
     var editText:EditText!
     var editDelete:EditDelete?
     var infoSource:String?
-    
-    required init() { }
+    var column:Column!
     
     func save(text:String) {
         editText.save(self)(validate(text:text))
@@ -17,8 +14,16 @@ class EditPresenter:Presenter {
         DispatchQueue.main.async { Application.router.popViewController(animated:true) }
     }
     
-    func saveTextChange(text:String) {
-        editText.subject!.text = text
+    func saveBoardRename(text:String) {
+        editText.board.name = text
+    }
+    
+    func saveColumnRename(text:String) {
+        editText.column.name = text
+    }
+    
+    func saveCardChange(text:String) {
+        editText.card.content = text
     }
     
     func saveNewColumn(text:String) {
@@ -26,7 +31,7 @@ class EditPresenter:Presenter {
     }
     
     func saveNewCard(text:String) {
-        (editText.other as! Column).addCard(text:text)
+        editText.column.addCard(text:text)
     }
     
     @objc func cancel() {

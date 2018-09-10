@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class EditView:View<EditPresenter>, UITextViewDelegate {
+class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
     weak var text:UITextView!
     weak var layoutBottom:NSLayoutConstraint!
     
@@ -45,7 +45,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         text.contentInset = .zero
         text.font = .systemFont(ofSize:28, weight:.light)
         text.textContainerInset = UIEdgeInsets(top:12, left:12, bottom:12, right:12)
-        text.text = presenter.editText.subject?.text
+        text.text = presenter.editText.text
         view.addSubview(text)
         self.text = text
         

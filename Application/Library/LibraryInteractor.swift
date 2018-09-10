@@ -5,12 +5,13 @@ import QRhero
 import StoreKit
 
 class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
-    weak var delegate:InteractorDelegate?
-    var state:LibraryState = LibraryDefault()
+    var identifier = String()
+    var strategy = updateDelegate
     let library = Factory.makeLibrary()
     private let report = Report()
     
     required init() {
+        super.init()
         library.delegate = self
     }
     
@@ -34,7 +35,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func newBoard() {
-        library.newBoard()
+        try? library.newBoard()
     }
     
     func select(identifier:String) {
@@ -49,11 +50,17 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func librarySessionLoaded() {
-        load()
+        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
+            try? library.merge(boards:boards)
+        } else {
+            load()
+        }
     }
     
     func libraryBoardsUpdated() {
-        state.boardsUpdated(context:self)
+        strategy(self)()
+        identifier = String()
+        strategy = LibraryInteractor.updateDelegate
     }
     
     func libraryCreated(board:String) {
@@ -85,8 +92,17 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
         popup(error:NSLocalizedString("LibraryInteractor.scanError", comment:String()))
     }
     
+    func updateDelegate() {
+        NSUbiquitousKeyValueStore.default.set(Array(library.boards.keys), forKey:"iturbide.catban.boards")
+        delegate?.shouldUpdate()
+    }
+    
+    func selectBoard() {
+        select(identifier:identifier)
+    }
+    
     private func addTemplate(board:Board) {
-        board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
+        board.name = NSLocalizedString("LibraryInteractor.board", comment:String())
         if library.defaultColumns {
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))

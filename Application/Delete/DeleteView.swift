@@ -1,6 +1,6 @@
 import UIKit
 
-class DeleteView:PopupView<DeletePresenter> {
+class DeleteView:PopupView<BoardInteractor, DeletePresenter> {
     weak var label:UILabel!
     weak var cancel:UIButton!
     weak var delete:UIButton!

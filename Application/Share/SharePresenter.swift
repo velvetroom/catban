@@ -39,7 +39,7 @@ class SharePresenter:Presenter<BoardInteractor> {
     private func decorate(code:CGImage) -> UIImage? {
         let size = CGSize(width:CGFloat(code.width) + 90, height:CGFloat(code.height) + 170)
         UIGraphicsBeginImageContext(size)
-        NSAttributedString(string:interactor.board.text, attributes:[
+        NSAttributedString(string:interactor.board.name, attributes:[
             .font:UIFont.systemFont(ofSize:40, weight:.bold), .foregroundColor:UIColor.black]).draw(in:
                 CGRect(x:115, y:size.height - 94, width:CGFloat(code.width), height:50))
         UIGraphicsGetCurrentContext()!.translateBy(x:0, y:size.height)
@@ -53,7 +53,7 @@ class SharePresenter:Presenter<BoardInteractor> {
     
     func temporalUrl(image:UIImage) -> URL? {
         let url = URL(fileURLWithPath:NSTemporaryDirectory()).appendingPathComponent("Catban.jpeg")
-        do { try image.jpegData(compressionQuality:1)!.write(to:url, options:.atomicWrite) } catch { }
+        try? image.jpegData(compressionQuality:1)!.write(to:url, options:.atomicWrite)
         return url
     }
 }

@@ -8,6 +8,7 @@ class TestLibrary_Boards:XCTestCase {
         Factory.cache = MockCache.self
         Factory.database = MockDatabase.self
         library = Library()
+        library.state = Library.stateReady
     }
     
     func testAddBoardSavesSession() {

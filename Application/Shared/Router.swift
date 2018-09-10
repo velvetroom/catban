@@ -1,13 +1,6 @@
 import UIKit
 
 class Router:UINavigationController {
-    init() {
-        super.init(nibName:nil, bundle:nil)
-        configureNavigation()
-    }
-    
-    required init?(coder:NSCoder) { return nil }
-    
     func launchDefault() {
         setViewControllers([LibraryView()], animated:false)
     }
@@ -43,6 +36,11 @@ class Router:UINavigationController {
         library().presenter.interactor.scan()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigation()
+    }
+    
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
         if let gesture = interactivePopGestureRecognizer {
@@ -53,10 +51,8 @@ class Router:UINavigationController {
     private func configureNavigation() {
         navigationBar.barTintColor = .white
         navigationBar.tintColor = .black
+        navigationBar.setValue(true, forKey:"hidesShadow")
         navigationBar.isTranslucent = false
-        toolbar.barTintColor = .white
-        toolbar.tintColor = .black
-        toolbar.isTranslucent = false
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .always

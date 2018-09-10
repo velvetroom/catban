@@ -57,7 +57,7 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
         self.message = message
         
         let loading = LoadingView()
-        loading.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        loading.tintColor = .black
         view.addSubview(loading)
         self.loading = loading
         
@@ -119,7 +119,8 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
         scroll.subviews.forEach { view in
-            view.frame = CGRect(x:0, y:y, width:size.width, height:70)
+            y += 18
+            view.frame = CGRect(x:14, y:y, width:size.width - 28, height:40)
             y += view.bounds.height
         }
         scroll.contentSize = CGSize(width:size.width, height:y)

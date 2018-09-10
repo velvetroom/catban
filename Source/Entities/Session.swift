@@ -23,23 +23,19 @@ public class Session:Codable {
     init() { }
     
     private func decodeBoards(values:KeyedDecodingContainer<CodingKeys>) {
-        let keys:[String]
-        do { try keys = values.decode([String].self, forKey:.boards) } catch { return }
-        keys.forEach { key in
-            boards[key] = Board()
+        if let keys = try? values.decode([String].self, forKey:.boards) {
+            keys.forEach { key in
+                boards[key] = Board()
+            }
         }
     }
     
     private func decodeCardsFont(values:KeyedDecodingContainer<CodingKeys>) {
-        do {
-            try cardsFont = values.decode(Int.self, forKey:.cardsFont)
-        } catch {
-            cardsFont = Session.cardsFont
-        }
+        try? cardsFont = values.decode(Int.self, forKey:.cardsFont)
     }
     
     private func decodeDefaultColumns(values:KeyedDecodingContainer<CodingKeys>) {
-        do { try defaultColumns = values.decode(Bool.self, forKey:.defaultColumns) } catch { }
+        try? defaultColumns = values.decode(Bool.self, forKey:.defaultColumns)
     }
     
     private enum CodingKeys:CodingKey {

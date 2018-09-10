@@ -4,7 +4,7 @@ struct Today:Codable {
     static func retrieve() -> Today? {
         var today:Today?
         if let data = UserDefaults(suiteName:"group.Catban")?.data(forKey:"today") {
-            do { today = try JSONDecoder().decode(Today.self, from:data) } catch { }
+            today = try? JSONDecoder().decode(Today.self, from:data)
         }
         return today
     }
@@ -15,7 +15,9 @@ struct Today:Codable {
     
     func store() {
         let store = UserDefaults(suiteName:"group.Catban")
-        do { store?.set(try JSONEncoder().encode(self), forKey:"today") } catch { return }
+        if let data = try? JSONEncoder().encode(self) {
+            store?.set(data, forKey:"today")
+        }
         store?.synchronize()
     }
 }

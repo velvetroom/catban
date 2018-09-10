@@ -35,7 +35,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func newBoard() {
-        library.newBoard()
+        try? library.newBoard()
     }
     
     func select(identifier:String) {
@@ -50,7 +50,11 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func librarySessionLoaded() {
-        load()
+        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
+            try? library.merge(boards:boards)
+        } else {
+            load()
+        }
     }
     
     func libraryBoardsUpdated() {
@@ -89,6 +93,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func updateDelegate() {
+        NSUbiquitousKeyValueStore.default.set(Array(library.boards.keys), forKey:"iturbide.catban.boards")
         delegate?.shouldUpdate()
     }
     
@@ -97,7 +102,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     private func addTemplate(board:Board) {
-        board.text = NSLocalizedString("LibraryInteractor.board", comment:String())
+        board.name = NSLocalizedString("LibraryInteractor.board", comment:String())
         if library.defaultColumns {
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.todo", comment:String()))
             board.addColumn(text:NSLocalizedString("LibraryInteractor.column.progress", comment:String()))

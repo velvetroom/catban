@@ -27,6 +27,7 @@ import NotificationCenter
         label.font = .systemFont(ofSize:15, weight:.light)
         label.text = "No boards created yet."
         label.textColor = .black
+        label.isHidden = true
         view.addSubview(label)
         label.topAnchor.constraint(equalTo:view.topAnchor, constant:10).isActive = true
         label.leftAnchor.constraint(equalTo:view.leftAnchor, constant:10).isActive = true
@@ -34,22 +35,17 @@ import NotificationCenter
     }
     
     func widgetPerformUpdate(completionHandler:(@escaping(NCUpdateResult) -> Void)) {
-        DispatchQueue.global(qos:.background).async { [weak self] in self?.update(result:completionHandler) }
-    }
-    
-    private func update(result:@escaping((NCUpdateResult) -> Void)) {
         if let today = Today.retrieve() {
-            DispatchQueue.main.async { [weak self] in
-                self?.makeOutlets(today:today)
-                result(.newData)
-            }
+            makeOutlets(today:today)
+            completionHandler(.newData)
         } else {
-            DispatchQueue.main.async { result(.noData) }
+            label.isHidden = false
+            completionHandler(.noData)
         }
     }
     
     private func makeOutlets(today:Today) {
-        if !today.items.isEmpty { label.isHidden = true }
+        label.isHidden = !today.items.isEmpty
         var left = effect.leftAnchor
         today.items.forEach { item in
             let cell = TodayCellView(item:item)

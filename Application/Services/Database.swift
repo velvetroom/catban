@@ -23,16 +23,18 @@ class Database:DatabaseService {
     }
     
     private func loaded<M:Codable>(json:[String:Any], completion:@escaping((M) -> Void)) {
-        do {
-            completion(try JSONDecoder().decode(M.self, from:try JSONSerialization.data(withJSONObject:json)))
-        } catch { }
+        guard
+            let data = try? JSONSerialization.data(withJSONObject:json),
+            let model = try? JSONDecoder().decode(M.self, from:data)
+        else { return }
+        completion(model)
     }
     
     private func json<M:Encodable>(model:M) -> [String:Any] {
-        do {
-            return try JSONSerialization.jsonObject(with:try JSONEncoder().encode(model)) as! [String:Any]
-        } catch {
-            return [:]
-        }
+        guard
+            let data = try? JSONEncoder().encode(model),
+            let json = try? JSONSerialization.jsonObject(with:data) as! [String:Any]
+        else { return [:] }
+        return json
     }
 }

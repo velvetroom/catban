@@ -1,13 +1,40 @@
 import Foundation
 
-public class Board:TextProtocol, Codable {
-    public var text = String()
-    public private(set) var columns:[Column] = []
+final public class Board:Codable {
+    public var name = String()
+    public private(set) var columns = [Column]()
     var syncstamp = Date()
+   
+    public required init(from decoder:Decoder) throws {
+        let values = try decoder.container(keyedBy:CodingKeys.self)
+        do {
+            try name = values.decode(String.self, forKey:.name)
+        } catch {
+            try name = values.decode(String.self, forKey:.text)
+        }
+        try columns = values.decode([Column].self, forKey:.columns)
+        try syncstamp = values.decode(Date.self, forKey:.syncstamp)
+    }
+    
+    public func encode(to encoder:Encoder) throws {
+        var container = encoder.container(keyedBy:CodingKeys.self)
+        try container.encode(name, forKey:.name)
+        try container.encode(columns, forKey:.columns)
+        try container.encode(syncstamp, forKey:.syncstamp)
+    }
+    
+    init() { }
+    
+    private enum CodingKeys:CodingKey {
+        case columns
+        case syncstamp
+        case text
+        case name
+    }
     
     public func addColumn(text:String) {
         let column = Column()
-        column.text = text
+        column.name = text
         columns.append(column)
     }
     

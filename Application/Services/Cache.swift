@@ -12,6 +12,6 @@ class Cache:CacheService {
     }
     
     func save(session:Session) {
-        do { try codableHero.save(model:session, path:"Session.catban") } catch { }
+        try? codableHero.save(model:session, path:"Session.catban")
     }
 }

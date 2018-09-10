@@ -31,19 +31,12 @@ public class Library {
         state.loadSession(context:self)
     }
     
-    public func newBoard() {
-        queue.async { [weak self] in
-            self?.createNewBoard()
-        }
+    public func newBoard() throws {
+        try state.newBoard(context:self)
     }
     
     public func addBoard(url:String) throws {
-        let identifier = try identifierFrom(url:url)
-        try validate(identifier:identifier)
-        session.boards[identifier] = Board()
-        queue.async { [weak self] in
-            self?.saveSession()
-        }
+        try state.addBoard(context:self, url:url)
     }
     
     public func save(board:Board) {
@@ -67,6 +60,10 @@ public class Library {
         return "iturbide.catban.".appending(identifier)
     }
     
+    public func merge(boards:[String]) throws {
+        try state.merge(context:self, boards:boards)
+    }
+    
     func saveSession() {
         cache.save(session:session)
     }
@@ -75,30 +72,7 @@ public class Library {
         DispatchQueue.main.async { [weak self] in self?.delegate?.libraryBoardsUpdated() }
     }
     
-    private func createNewBoard() {
-        let board = Board()
-        let identifier = database.create(board:board)
-        session.boards[identifier] = board
-        saveSession()
-        DispatchQueue.main.async { [weak self] in self?.delegate?.libraryCreated(board:identifier) }
-    }
-    
     private func identifier(board:Board) -> String? {
         return boards.first(where: { (_, value) -> Bool in return board === value } )?.key
-    }
-    
-    private func identifierFrom(url:String) throws -> String {
-        let components = url.components(separatedBy:"iturbide.catban.")
-        if components.count == 2 && !components[1].isEmpty {
-            return components[1]
-        } else {
-            throw CatbanError.invalidBoardUrl
-        }
-    }
-    
-    private func validate(identifier:String) throws {
-        if boards[identifier] != nil {
-            throw CatbanError.boardAlreadyLoaded
-        }
     }
 }

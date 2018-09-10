@@ -19,6 +19,8 @@
 		DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */; };
 		DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */; };
 		DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */; };
+		DA41BB77213DE1170074AD29 /* LibraryProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41BB76213DE1170074AD29 /* LibraryProgress.swift */; };
+		DA41BB78213DE2680074AD29 /* LibraryProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41BB76213DE1170074AD29 /* LibraryProgress.swift */; };
 		DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7E82129945800A54E65 /* BoardState.swift */; };
 		DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */; };
 		DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */; };
@@ -36,7 +38,6 @@
 		DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EA211DD54100ECAD21 /* Session.swift */; };
 		DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EB211DD54100ECAD21 /* Card.swift */; };
 		DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64EC211DD54100ECAD21 /* Column.swift */; };
-		DA4C64FD211DD54100ECAD21 /* TextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64ED211DD54100ECAD21 /* TextProtocol.swift */; };
 		DA4C6504211DD54A00ECAD21 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C64FF211DD54900ECAD21 /* TestFactory.swift */; };
 		DA4C6505211DD54A00ECAD21 /* MockLibraryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */; };
 		DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6501211DD54900ECAD21 /* MockDatabase.swift */; };
@@ -71,11 +72,11 @@
 		DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6548211DD58A00ECAD21 /* ShareView.swift */; };
 		DA55AF212122C5A600B50D9C /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA55AF202122C5A600B50D9C /* BoardStackView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
+		DA665615213DE778007D30DF /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA665614213DE60B007D30DF /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */; };
 		DA69DCF621282AF900FE7C90 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */; };
 		DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF721282B1A00FE7C90 /* SettingsView.swift */; };
 		DA6C362D2138194F0009583A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C362C2138194F0009583A /* NotificationCenter.framework */; };
-		DA6C36372138194F0009583A /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA6C362B2138194F0009583A /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA6C363F21381AF80009583A /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C363E21381AF80009583A /* TodayView.swift */; };
 		DA6C3641213824C50009583A /* TodayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C3640213824C50009583A /* TodayCellView.swift */; };
 		DA741D93213924C6002555E4 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA741D92213924C6002555E4 /* Today.swift */; };
@@ -83,6 +84,8 @@
 		DA741D9521392945002555E4 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */; };
 		DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */; };
 		DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E212126AB9C00E92FD9 /* InfoView.swift */; };
+		DA75D0FB2144FF4300E1F6E1 /* TestLibrary_Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA75D0FA2144FF4300E1F6E1 /* TestLibrary_Merge.swift */; };
+		DA805F1921425A0500584806 /* TestCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA805F1821425A0500584806 /* TestCard.swift */; };
 		DA817F7E2121640700732944 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7D2121640700732944 /* Report.swift */; };
 		DA817F802121646600732944 /* ReportStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F7F2121646600732944 /* ReportStats.swift */; };
 		DA817F82212165E000732944 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA817F81212165E000732944 /* TestReport.swift */; };
@@ -129,7 +132,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				DA6C36372138194F0009583A /* Today.appex in Embed App Extensions */,
+				DA665615213DE778007D30DF /* Today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +152,7 @@
 		DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Boards.swift; sourceTree = "<group>"; };
 		DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Properties.swift; sourceTree = "<group>"; };
 		DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		DA41BB76213DE1170074AD29 /* LibraryProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProgress.swift; sourceTree = "<group>"; };
 		DA4BE7E82129945800A54E65 /* BoardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardState.swift; sourceTree = "<group>"; };
 		DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateDefault.swift; sourceTree = "<group>"; };
 		DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateSearch.swift; sourceTree = "<group>"; };
@@ -171,7 +175,6 @@
 		DA4C64EA211DD54100ECAD21 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DA4C64EB211DD54100ECAD21 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		DA4C64EC211DD54100ECAD21 /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
-		DA4C64ED211DD54100ECAD21 /* TextProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextProtocol.swift; sourceTree = "<group>"; };
 		DA4C64FF211DD54900ECAD21 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLibraryDelegate.swift; sourceTree = "<group>"; };
 		DA4C6501211DD54900ECAD21 /* MockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
@@ -205,10 +208,10 @@
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA55AF202122C5A600B50D9C /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
+		DA665614213DE60B007D30DF /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		DA69DCF721282B1A00FE7C90 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		DA6C362B2138194F0009583A /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C362C2138194F0009583A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		DA6C363C21381AEC0009583A /* today.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = today.plist; sourceTree = "<group>"; };
 		DA6C363E21381AF80009583A /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 		DA741D92213924C6002555E4 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		DA759E212126AB9C00E92FD9 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		DA75D0FA2144FF4300E1F6E1 /* TestLibrary_Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Merge.swift; sourceTree = "<group>"; };
+		DA805F1821425A0500584806 /* TestCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCard.swift; sourceTree = "<group>"; };
 		DA817F7D2121640700732944 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		DA817F7F2121646600732944 /* ReportStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStats.swift; sourceTree = "<group>"; };
 		DA817F81212165E000732944 /* TestReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReport.swift; sourceTree = "<group>"; };
@@ -298,11 +303,12 @@
 				DA4C6509211DD57A00ECAD21 /* Resources */,
 				DA4C64D5211DD4E400ECAD21 /* Configuration */,
 				AC95CFA14D508AB0D223134C /* Pods */,
+				DAC3670E2134316F009DD113 /* EditDelete.swift */,
 				8B65E65B103781A85F381C5A /* Frameworks */,
 				DA4C64D1211DD40300ECAD21 /* libCatban.a */,
 				DA4C64D2211DD40300ECAD21 /* Tests.xctest */,
 				DA4C64D3211DD40300ECAD21 /* Application.app */,
-				DA6C362B2138194F0009583A /* Today.appex */,
+				DA665614213DE60B007D30DF /* Today.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -354,7 +360,6 @@
 		DA4C64E8211DD54100ECAD21 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C64ED211DD54100ECAD21 /* TextProtocol.swift */,
 				DA4C64EA211DD54100ECAD21 /* Session.swift */,
 				DA4C64E9211DD54100ECAD21 /* Board.swift */,
 				DA4C64EC211DD54100ECAD21 /* Column.swift */,
@@ -372,8 +377,10 @@
 				DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */,
 				DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */,
 				DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */,
+				DA75D0FA2144FF4300E1F6E1 /* TestLibrary_Merge.swift */,
 				DABD57CC211EDA8700C72A7F /* TestBoard.swift */,
 				DABD57CA211ED98900C72A7F /* TestColumn.swift */,
+				DA805F1821425A0500584806 /* TestCard.swift */,
 				DABD57CE211EF0AE00C72A7F /* TestSession.swift */,
 				DA4C6500211DD54900ECAD21 /* MockLibraryDelegate.swift */,
 				DA4C6501211DD54900ECAD21 /* MockDatabase.swift */,
@@ -453,6 +460,7 @@
 				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
+				DA41BB76213DE1170074AD29 /* LibraryProgress.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -475,7 +483,6 @@
 				DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */,
 				DA4C6541211DD58A00ECAD21 /* EditView.swift */,
 				DAC3670C21342A05009DD113 /* EditText.swift */,
-				DAC3670E2134316F009DD113 /* EditDelete.swift */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -618,7 +625,7 @@
 			);
 			name = Today;
 			productName = Today;
-			productReference = DA6C362B2138194F0009583A /* Today.appex */;
+			productReference = DA665614213DE60B007D30DF /* Today.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -641,6 +648,9 @@
 						CreatedOnToolsVersion = 10.0;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -758,7 +768,6 @@
 				DA4C64F0211DD54100ECAD21 /* LibraryDelegate.swift in Sources */,
 				DA4C64F9211DD54100ECAD21 /* Board.swift in Sources */,
 				DA4C64F1211DD54100ECAD21 /* LibraryState.swift in Sources */,
-				DA4C64FD211DD54100ECAD21 /* TextProtocol.swift in Sources */,
 				DA4C64EE211DD54100ECAD21 /* Library.swift in Sources */,
 				DA4C64F7211DD54100ECAD21 /* Factory.swift in Sources */,
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
@@ -776,6 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA75D0FB2144FF4300E1F6E1 /* TestLibrary_Merge.swift in Sources */,
 				DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */,
 				DA4C6507211DD54A00ECAD21 /* MockCache.swift in Sources */,
 				DA817F82212165E000732944 /* TestReport.swift in Sources */,
@@ -787,6 +797,7 @@
 				DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */,
 				DA4C6506211DD54A00ECAD21 /* MockDatabase.swift in Sources */,
 				DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */,
+				DA805F1921425A0500584806 /* TestCard.swift in Sources */,
 				DA4C6504211DD54A00ECAD21 /* TestFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -829,6 +840,7 @@
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA28AED721353C250030AE9E /* PopupView.swift in Sources */,
+				DA41BB77213DE1170074AD29 /* LibraryProgress.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
 				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,
 				DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */,
@@ -846,6 +858,7 @@
 			files = (
 				DA741D9521392945002555E4 /* LibraryItem.swift in Sources */,
 				DA6C3641213824C50009583A /* TodayCellView.swift in Sources */,
+				DA41BB78213DE2680074AD29 /* LibraryProgress.swift in Sources */,
 				DA6C363F21381AF80009583A /* TodayView.swift in Sources */,
 				DA741D94213924C6002555E4 /* Today.swift in Sources */,
 			);

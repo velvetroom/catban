@@ -42,4 +42,16 @@ class TestLibrary_Default:XCTestCase {
         DispatchQueue.global(qos:.background).async { self.library.loadSession() }
         waitForExpectations(timeout:1, handler:nil)
     }
+    
+    func testNewBoardThrows() {
+        XCTAssertThrowsError(try library.newBoard())
+    }
+    
+    func testAddBoardThrows() {
+        XCTAssertThrowsError(try library.addBoard(url:"iturbide.catban.hello"))
+    }
+    
+    func testMergeThrows() {
+        XCTAssertThrowsError(try library.merge(boards:[String()]))
+    }
 }

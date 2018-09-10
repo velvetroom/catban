@@ -35,7 +35,7 @@ final public class Column:Codable {
     }
     
     public func delete(card:Card) {
-        cards.removeAll { (item) -> Bool in item === card }
+        cards.removeAll { item -> Bool in item === card }
     }
     
     public func insert(card:Card, after:Card) {

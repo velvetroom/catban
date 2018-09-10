@@ -26,7 +26,7 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     func previewingContext(_ context:UIViewControllerPreviewing,
                            viewControllerForLocation location:CGPoint) -> UIViewController? {
         var view:UIViewController?
-        if let item = scroll.subviews.first(where: { (item) -> Bool in item.frame.contains(location) }) {
+        if let item = scroll.subviews.first(where: { item -> Bool in item.frame.contains(location) }) {
             context.sourceRect = item.frame
             view = presenter.interactor.board(identifier:(item as! LibraryCellView).viewModel.board)
         }

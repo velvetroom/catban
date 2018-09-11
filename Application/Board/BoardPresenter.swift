@@ -62,10 +62,19 @@ class BoardPresenter:Presenter<BoardInteractor> {
     func updateProgress() {
         DispatchQueue.global(qos:.background).async { [weak self] in
             guard let stats = self?.interactor.makeStats() else { return }
-            var viewModel = BoardProgress()
-            viewModel.progress = stats.progress
-            viewModel.columns = stats.columns
-            self?.update(viewModel:viewModel)
+            var previous = -CGFloat.pi / 2
+            var progress = [(CGFloat, CGFloat)]()
+            let max = CGFloat.pi * 2
+            stats.columns.forEach{ stat in
+                let next = previous + (CGFloat(stat) / CGFloat(stats.cards) * max)
+                progress.append((previous, next))
+                previous = next + 0.15
+                if previous > max {
+                    previous = max
+                }
+            }
+            self?.update(viewModel:stats.progress)
+            self?.update(viewModel:progress)
         }
     }
     

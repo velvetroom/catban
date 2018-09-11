@@ -2,7 +2,7 @@ import UIKit
 
 class LibraryCellView:UIControl {
     weak var name:UILabel!
-    weak var progress:LibraryProgress!
+    weak var progress:ProgressView!
     var viewModel:LibraryItem! { didSet {
         name.text = viewModel.name
         progress.value = CGFloat(viewModel.progress)
@@ -44,7 +44,7 @@ class LibraryCellView:UIControl {
         addSubview(name)
         self.name = name
         
-        let progress = LibraryProgress()
+        let progress = ProgressView()
         progress.dimAlpha = 0.15
         addSubview(progress)
         self.progress = progress

@@ -8,7 +8,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     weak var border:UIView!
     weak var handle:UIView!
     weak var progress:UIProgressView!
-    weak var stack:BoardStackView!
+    weak var stack:BoardProgressView!
     weak var layoutReportTop:NSLayoutConstraint!
     let drawer = BoardDrawer()
     let layouter = BoardLayouter()
@@ -135,7 +135,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.addSubview(progress)
         self.progress = progress
         
-        let stack = BoardStackView()
+        let stack = BoardProgressView()
         report.addSubview(stack)
         self.stack = stack
         
@@ -172,7 +172,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:22).isActive = true
         
         stack.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
-        stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:35).isActive = true
+        stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:40).isActive = true
+        
         
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController:nil)
@@ -195,9 +196,11 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             self?.drawer.draw()
             self?.layouter.layout()
         }
-        presenter.viewModel { [weak self] (viewModel:BoardProgress) in
-            self?.progress.setProgress(viewModel.progress, animated:true)
-            self?.stack.update(progress:viewModel)
+        presenter.viewModel { [weak self] (viewModel:Float) in
+            self?.progress.setProgress(viewModel, animated:true)
+        }
+        presenter.viewModel { [weak self] (viewModel:[(CGFloat, CGFloat)]) in
+            self?.stack.viewModel = viewModel
         }
     }
     

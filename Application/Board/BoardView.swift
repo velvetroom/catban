@@ -8,7 +8,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     weak var border:UIView!
     weak var handle:UIView!
     weak var progress:UIProgressView!
-    weak var stack:BoardProgressView!
+    weak var stack:BoardStackView!
     weak var layoutReportTop:NSLayoutConstraint!
     let drawer = BoardDrawer()
     let layouter = BoardLayouter()
@@ -135,7 +135,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.addSubview(progress)
         self.progress = progress
         
-        let stack = BoardProgressView()
+        let stack = BoardStackView()
         report.addSubview(stack)
         self.stack = stack
         

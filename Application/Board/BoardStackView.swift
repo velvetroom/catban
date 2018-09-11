@@ -1,6 +1,6 @@
 import UIKit
 
-class BoardProgressView:UIView {
+class BoardStackView:UIView {
     var viewModel = [(CGFloat, CGFloat)]() { didSet { setNeedsDisplay() } }
     override var intrinsicContentSize:CGSize { return CGSize(width:160, height:160) }
     

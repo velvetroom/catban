@@ -15,7 +15,7 @@
 		DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7CF2120356C001C758E /* BoardCardView.swift */; };
 		DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FB7D121203BDF001C758E /* BoardButtonView.swift */; };
 		DA2FB7D421206172001C758E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2FB7D321206172001C758E /* LaunchScreen.storyboard */; };
-		DA2FDC9C2147BFE000370A34 /* BoardProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FDC9B2147BFE000370A34 /* BoardProgressView.swift */; };
+		DA2FDC9C2147BFE000370A34 /* BoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2FDC9B2147BFE000370A34 /* BoardStackView.swift */; };
 		DA2FDC9D2147C0A800370A34 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41BB76213DE1170074AD29 /* ProgressView.swift */; };
 		DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */; };
 		DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */; };
@@ -147,7 +147,7 @@
 		DA2FB7CF2120356C001C758E /* BoardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCardView.swift; sourceTree = "<group>"; };
 		DA2FB7D121203BDF001C758E /* BoardButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardButtonView.swift; sourceTree = "<group>"; };
 		DA2FB7D321206172001C758E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DA2FDC9B2147BFE000370A34 /* BoardProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProgressView.swift; sourceTree = "<group>"; };
+		DA2FDC9B2147BFE000370A34 /* BoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStackView.swift; sourceTree = "<group>"; };
 		DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Boards.swift; sourceTree = "<group>"; };
 		DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Properties.swift; sourceTree = "<group>"; };
 		DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -438,12 +438,12 @@
 				DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */,
 				DA2FB7CF2120356C001C758E /* BoardCardView.swift */,
 				DA2FB7D121203BDF001C758E /* BoardButtonView.swift */,
+				DA2FDC9B2147BFE000370A34 /* BoardStackView.swift */,
 				DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */,
 				DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */,
 				DA4BE7E82129945800A54E65 /* BoardState.swift */,
 				DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */,
 				DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */,
-				DA2FDC9B2147BFE000370A34 /* BoardProgressView.swift */,
 			);
 			path = Board;
 			sourceTree = "<group>";
@@ -805,7 +805,7 @@
 			files = (
 				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
 				DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */,
-				DA2FDC9C2147BFE000370A34 /* BoardProgressView.swift in Sources */,
+				DA2FDC9C2147BFE000370A34 /* BoardStackView.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,
 				DA4C656E211DD58A00ECAD21 /* Cache.swift in Sources */,
 				DA2FB7CE212032E3001C758E /* BoardHeaderView.swift in Sources */,

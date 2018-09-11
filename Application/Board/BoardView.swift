@@ -49,8 +49,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         case .began: reportY = layoutReportTop.constant
         case .possible, .changed:
             layoutReportTop.constant = reportY + pan.translation(in:view).y
-            if layoutReportTop.constant < -390 {
-                layoutReportTop.constant = -390
+            if layoutReportTop.constant < -290 {
+                layoutReportTop.constant = -290
             }
         case .cancelled, .ended, .failed:
             reportHandler()
@@ -111,7 +111,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.layer.cornerRadius = 30
         report.layer.shadowOffset = CGSize(width:0, height:-4)
         report.layer.shadowRadius = 6
-        report.layer.shadowOpacity = 0.16
+        report.layer.shadowOpacity = 0.2
         report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
         view.addSubview(report)
         self.report = report
@@ -129,7 +129,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.isUserInteractionEnabled = false
         progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        progress.trackTintColor = UIColor(white:0.95, alpha:1)
+        progress.trackTintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.3)
         progress.layer.cornerRadius = 3
         progress.clipsToBounds = true
         report.addSubview(progress)
@@ -157,7 +157,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        report.heightAnchor.constraint(equalToConstant:390).isActive = true
+        report.heightAnchor.constraint(equalToConstant:290).isActive = true
         layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-55)
         layoutReportTop.isActive = true
 
@@ -169,11 +169,10 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         progress.widthAnchor.constraint(equalToConstant:250).isActive = true
         progress.heightAnchor.constraint(equalToConstant:6).isActive = true
         progress.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
-        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:22).isActive = true
+        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:20).isActive = true
         
         stack.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
-        stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:40).isActive = true
-        
+        stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:50).isActive = true
         
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController:nil)
@@ -219,7 +218,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func handlerShown() {
-        if layoutReportTop.constant < -360 {
+        if layoutReportTop.constant < -260 {
             showReport()
         } else {
             hideReport()
@@ -236,7 +235,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     
     private func showReport() {
         reportHandler = handlerShown
-        layoutReportTop.constant = -390
+        layoutReportTop.constant = -290
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }

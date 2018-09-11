@@ -12,7 +12,7 @@ class LibraryCellView:UIControl {
     init() {
         super.init(frame:.zero)
         layer.shadowRadius = 8
-        layer.cornerRadius = 20
+        layer.cornerRadius = 24
         layer.shadowOpacity = 0.12
         layer.shadowOffset = CGSize(width:0, height:4)
         makeOutlets()
@@ -53,9 +53,9 @@ class LibraryCellView:UIControl {
         name.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
         name.leftAnchor.constraint(equalTo:progress.rightAnchor).isActive = true
         
-        progress.topAnchor.constraint(equalTo:topAnchor, constant:4).isActive = true
-        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-4).isActive = true
-        progress.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
+        progress.topAnchor.constraint(equalTo:topAnchor, constant:8).isActive = true
+        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-8).isActive = true
+        progress.leftAnchor.constraint(equalTo:leftAnchor, constant:4).isActive = true
         progress.widthAnchor.constraint(equalToConstant:42).isActive = true
     }
 }

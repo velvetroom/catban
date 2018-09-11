@@ -25,7 +25,7 @@ class TodayCellView:UIControl {
         label.text = item.name
         addSubview(label)
         
-        let progress = LibraryProgress()
+        let progress = ProgressView()
         progress.tintColor = .black
         progress.value = CGFloat(item.progress)
         addSubview(progress)

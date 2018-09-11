@@ -19,8 +19,7 @@
 		DA3E97F7212AA97300240F8E /* TestLibrary_Boards.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */; };
 		DA3E97F9212AA9F000240F8E /* TestLibrary_Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */; };
 		DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */; };
-		DA41BB77213DE1170074AD29 /* LibraryProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41BB76213DE1170074AD29 /* LibraryProgress.swift */; };
-		DA41BB78213DE2680074AD29 /* LibraryProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41BB76213DE1170074AD29 /* LibraryProgress.swift */; };
+		DA41BB77213DE1170074AD29 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41BB76213DE1170074AD29 /* ProgressView.swift */; };
 		DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7E82129945800A54E65 /* BoardState.swift */; };
 		DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */; };
 		DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */; };
@@ -152,7 +151,7 @@
 		DA3E97F6212AA97300240F8E /* TestLibrary_Boards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Boards.swift; sourceTree = "<group>"; };
 		DA3E97F8212AA9F000240F8E /* TestLibrary_Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Properties.swift; sourceTree = "<group>"; };
 		DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		DA41BB76213DE1170074AD29 /* LibraryProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProgress.swift; sourceTree = "<group>"; };
+		DA41BB76213DE1170074AD29 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DA4BE7E82129945800A54E65 /* BoardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardState.swift; sourceTree = "<group>"; };
 		DA4BE7EA2129948700A54E65 /* BoardStateDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateDefault.swift; sourceTree = "<group>"; };
 		DA4BE7EC2129949000A54E65 /* BoardStateSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStateSearch.swift; sourceTree = "<group>"; };
@@ -460,7 +459,6 @@
 				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
-				DA41BB76213DE1170074AD29 /* LibraryProgress.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -473,6 +471,7 @@
 				DA4C6536211DD58A00ECAD21 /* LoadingView.swift */,
 				DA8D1296213161800019B2C2 /* Alert.swift */,
 				DA28AED621353C250030AE9E /* PopupView.swift */,
+				DA41BB76213DE1170074AD29 /* ProgressView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -840,7 +839,7 @@
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA28AED721353C250030AE9E /* PopupView.swift in Sources */,
-				DA41BB77213DE1170074AD29 /* LibraryProgress.swift in Sources */,
+				DA41BB77213DE1170074AD29 /* ProgressView.swift in Sources */,
 				DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */,
 				DA4BE7ED2129949000A54E65 /* BoardStateSearch.swift in Sources */,
 				DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */,
@@ -858,7 +857,6 @@
 			files = (
 				DA741D9521392945002555E4 /* LibraryItem.swift in Sources */,
 				DA6C3641213824C50009583A /* TodayCellView.swift in Sources */,
-				DA41BB78213DE2680074AD29 /* LibraryProgress.swift in Sources */,
 				DA6C363F21381AF80009583A /* TodayView.swift in Sources */,
 				DA741D94213924C6002555E4 /* Today.swift in Sources */,
 			);

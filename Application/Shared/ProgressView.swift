@@ -1,6 +1,6 @@
 import UIKit
 
-class LibraryProgress:UIView {
+class ProgressView:UIView {
     var value:CGFloat = 0
     var dimAlpha:CGFloat = 0.05
     

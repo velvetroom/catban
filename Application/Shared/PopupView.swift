@@ -38,7 +38,7 @@ class PopupView<P:PresenterInterface>:View<P> {
         let base = UIView()
         base.translatesAutoresizingMaskIntoConstraints = false
         base.backgroundColor = .white
-        base.layer.cornerRadius = 5
+        base.layer.cornerRadius = 8
         base.clipsToBounds = true
         view.addSubview(base)
         self.base = base

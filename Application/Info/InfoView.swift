@@ -51,8 +51,8 @@ class InfoView:PopupView<InfoPresenter> {
         dismiss.heightAnchor.constraint(equalToConstant:50).isActive = true
         dismiss.widthAnchor.constraint(equalToConstant:150).isActive = true
         
-        text.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
-        text.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
+        text.topAnchor.constraint(equalTo:base.topAnchor, constant:2).isActive = true
+        text.bottomAnchor.constraint(equalTo:base.bottomAnchor, constant:-2).isActive = true
         text.leftAnchor.constraint(equalTo:base.leftAnchor).isActive = true
         text.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
     }

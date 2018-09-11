@@ -13,7 +13,7 @@ class DeleteView:PopupView<DeletePresenter> {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .systemFont(ofSize:16, weight:.regular)
+        label.font = .systemFont(ofSize:18, weight:.light)
         label.text = presenter.edit.title
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -23,10 +23,10 @@ class DeleteView:PopupView<DeletePresenter> {
         let cancel = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
         cancel.addTarget(presenter, action:#selector(presenter.cancel), for:.touchUpInside)
-        cancel.setTitleColor(UIColor(white:0, alpha:0.8), for:.normal)
+        cancel.setTitleColor(UIColor(white:0, alpha:0.4), for:.normal)
         cancel.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:[])
-        cancel.titleLabel!.font = .systemFont(ofSize:14, weight:.medium)
+        cancel.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(cancel)
         self.cancel = cancel
         
@@ -37,29 +37,31 @@ class DeleteView:PopupView<DeletePresenter> {
         delete.setTitleColor(.white, for:.normal)
         delete.setTitleColor(UIColor(white:1, alpha:0.3), for:.highlighted)
         delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:[])
-        delete.titleLabel!.font = .systemFont(ofSize:14, weight:.medium)
+        delete.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
+        delete.layer.cornerRadius = 6
         base.addSubview(delete)
         self.delete = delete
     }
     
     override func layoutOutlets() {
         super.layoutOutlets()
-        base.widthAnchor.constraint(equalToConstant:260).isActive = true
-        base.heightAnchor.constraint(equalToConstant:130).isActive = true
+        base.widthAnchor.constraint(equalToConstant:320).isActive = true
+        base.heightAnchor.constraint(equalToConstant:200).isActive = true
         base.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
         base.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
         
-        label.topAnchor.constraint(equalTo:base.topAnchor, constant:35).isActive = true
+        label.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
         label.centerXAnchor.constraint(equalTo:base.centerXAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant:95).isActive = true
         
         cancel.leftAnchor.constraint(equalTo:base.leftAnchor).isActive = true
-        cancel.rightAnchor.constraint(equalTo:base.centerXAnchor).isActive = true
-        cancel.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
-        cancel.heightAnchor.constraint(equalToConstant:45).isActive = true
+        cancel.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
+        cancel.topAnchor.constraint(equalTo:delete.bottomAnchor).isActive = true
+        cancel.heightAnchor.constraint(equalToConstant:50).isActive = true
         
-        delete.leftAnchor.constraint(equalTo:base.centerXAnchor).isActive = true
-        delete.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
-        delete.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
-        delete.heightAnchor.constraint(equalToConstant:45).isActive = true
+        delete.leftAnchor.constraint(equalTo:base.leftAnchor, constant:14).isActive = true
+        delete.rightAnchor.constraint(equalTo:base.rightAnchor, constant:-14).isActive = true
+        delete.topAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
+        delete.heightAnchor.constraint(equalToConstant:48).isActive = true
     }
 }

@@ -21,7 +21,7 @@ class BoardStackView:UIView {
         context.setLineCap(.round)
         context.drawPath(using:.fill)
         viewModel.forEach { item in
-            if viewModel.last! == item {
+            if viewModel.first! == item {
                 context.setStrokeColor(#colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1).cgColor)
                 context.setLineWidth(10)
             } else {

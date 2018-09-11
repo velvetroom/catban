@@ -19,14 +19,13 @@ class TodayCellView:UIControl {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = false
-        label.font = .systemFont(ofSize:12, weight:.regular)
+        label.font = .systemFont(ofSize:11, weight:.regular)
         label.textColor = .black
         label.textAlignment = .center
         label.text = item.name
         addSubview(label)
         
         let progress = ProgressView()
-        progress.tintColor = .black
         progress.value = CGFloat(item.progress)
         addSubview(progress)
         

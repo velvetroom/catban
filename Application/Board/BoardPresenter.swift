@@ -65,7 +65,7 @@ class BoardPresenter:Presenter<BoardInteractor> {
             var previous = (-CGFloat.pi / 2) + 0.075
             var progress = [(CGFloat, CGFloat)]()
             let max = (CGFloat.pi * 2) + (previous - 0.15)
-            stats.columns.forEach{ stat in
+            stats.columns.reversed().forEach{ stat in
                 if stat > 0 {
                     var next = previous + (CGFloat(stat) / CGFloat(stats.cards) * (CGFloat.pi * 2))
                     if next > max {

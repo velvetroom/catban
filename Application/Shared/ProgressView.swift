@@ -2,7 +2,6 @@ import UIKit
 
 class ProgressView:UIView {
     var value:CGFloat = 0
-    var dimAlpha:CGFloat = 0.05
     
     init() {
         super.init(frame:.zero)
@@ -19,16 +18,21 @@ class ProgressView:UIView {
         let pi_2 = CGFloat.pi / 2
         let end = (CGFloat.pi * 2 * value) - pi_2
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        context.setFillColor(tintColor.withAlphaComponent(dimAlpha).cgColor)
+        context.setFillColor(#colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1).withAlphaComponent(0.1).cgColor)
         context.addArc(center:center, radius:radius - 7, startAngle:0.0001, endAngle:0, clockwise:false)
+        context.setLineCap(.round)
         context.drawPath(using:.fill)
-        context.setStrokeColor(tintColor.cgColor)
+        context.setStrokeColor(#colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1).cgColor)
         context.setLineWidth(6)
         context.addArc(center:center, radius:radius, startAngle:-pi_2, endAngle:end, clockwise:false)
         context.drawPath(using:.stroke)
-        context.setStrokeColor(tintColor.withAlphaComponent(dimAlpha).cgColor)
-        context.setLineWidth(4)
-        context.addArc(center:center, radius:radius, startAngle:end + 0.15, endAngle:-pi_2 - 0.15, clockwise:false)
-        context.drawPath(using:.stroke)
+        let residual = end + 0.3
+        let max = (CGFloat.pi * 2) - (pi_2 + 0.3)
+        if residual < max {
+            context.setStrokeColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1).cgColor)
+            context.setLineWidth(2)
+            context.addArc(center:center, radius:radius, startAngle:residual, endAngle:max, clockwise:false)
+            context.drawPath(using:.stroke)
+        }
     }
 }

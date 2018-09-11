@@ -45,7 +45,6 @@ class LibraryCellView:UIControl {
         self.name = name
         
         let progress = ProgressView()
-        progress.dimAlpha = 0.15
         addSubview(progress)
         self.progress = progress
     }

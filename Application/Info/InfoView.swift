@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class InfoView<I:Interactor>:PopupView<I, InfoPresenter<I>> {
+class InfoView:PopupView<InfoPresenter> {
     weak var dismiss:UIButton!
     weak var text:UITextView!
     

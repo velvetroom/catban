@@ -31,7 +31,7 @@ class BoardInteractor:Interactor {
     }
     
     func info() {
-        let view = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        let view = InfoView(presenter:InfoPresenter())
         view.presenter.interactor = self
         view.presenter.source = "InfoBoard"
         Application.router.present(view, animated:true)

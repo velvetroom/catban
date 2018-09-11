@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class PopupView<I:Interactor, P:Presenter<I>>:View<I, P> {
+class PopupView<P:PresenterInterface>:View<P> {
     weak var blur:UIVisualEffectView!
     weak var back:UIControl!
     weak var base:UIView!

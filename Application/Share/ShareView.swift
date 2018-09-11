@@ -1,6 +1,6 @@
 import UIKit
 
-class ShareView:PopupView<BoardInteractor, SharePresenter> {
+class ShareView:PopupView<SharePresenter> {
     weak var image:UIImageView!
     weak var done:UIButton!
     weak var send:UIButton!

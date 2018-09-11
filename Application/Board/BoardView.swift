@@ -1,7 +1,7 @@
 import UIKit
 import CleanArchitecture
 
-class BoardView:View<BoardInteractor, BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
+class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var report:UIView!

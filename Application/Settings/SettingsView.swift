@@ -2,7 +2,7 @@ import UIKit
 import CleanArchitecture
 import MarkdownHero
 
-class SettingsView:View<SettingsInteractor, SettingsPresenter> {
+class SettingsView:View<SettingsPresenter> {
     weak var scroll:UIScrollView!
     weak var content:UIView!
     weak var columns:UIView!

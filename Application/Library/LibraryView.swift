@@ -1,7 +1,7 @@
 import Foundation
 import CleanArchitecture
 
-class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPreviewingDelegate {
+class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     weak var loading:LoadingView!
     weak var scroll:UIScrollView!
     weak var message:UILabel!

@@ -108,10 +108,10 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         let report = UIView()
         report.translatesAutoresizingMaskIntoConstraints = false
         report.backgroundColor = .white
-        report.layer.cornerRadius = 20
+        report.layer.cornerRadius = 30
         report.layer.shadowOffset = CGSize(width:0, height:-4)
         report.layer.shadowRadius = 6
-        report.layer.shadowOpacity = 0.15
+        report.layer.shadowOpacity = 0.16
         report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
         view.addSubview(report)
         self.report = report
@@ -161,7 +161,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-55)
         layoutReportTop.isActive = true
 
-        handle.topAnchor.constraint(equalTo:report.topAnchor, constant:11).isActive = true
+        handle.topAnchor.constraint(equalTo:report.topAnchor, constant:12).isActive = true
         handle.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         handle.widthAnchor.constraint(equalToConstant:30).isActive = true
         handle.heightAnchor.constraint(equalToConstant:3).isActive = true
@@ -169,7 +169,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         progress.widthAnchor.constraint(equalToConstant:250).isActive = true
         progress.heightAnchor.constraint(equalToConstant:6).isActive = true
         progress.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
-        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:20).isActive = true
+        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:22).isActive = true
         
         stack.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:35).isActive = true

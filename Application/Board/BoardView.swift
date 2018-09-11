@@ -105,17 +105,13 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         view.addSubview(scroll)
         self.scroll = scroll
         
-        let border = UIView()
-        border.isUserInteractionEnabled = false
-        border.translatesAutoresizingMaskIntoConstraints = false
-        border.backgroundColor = UIColor(white:0, alpha:0.03)
-        view.addSubview(border)
-        self.border = border
-        
         let report = UIView()
         report.translatesAutoresizingMaskIntoConstraints = false
         report.backgroundColor = .white
-        report.clipsToBounds = true
+        report.layer.cornerRadius = 20
+        report.layer.shadowOffset = CGSize(width:0, height:-4)
+        report.layer.shadowRadius = 6
+        report.layer.shadowOpacity = 0.15
         report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
         view.addSubview(report)
         self.report = report
@@ -134,6 +130,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         progress.isUserInteractionEnabled = false
         progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
         progress.trackTintColor = UIColor(white:0.95, alpha:1)
+        progress.layer.cornerRadius = 3
+        progress.clipsToBounds = true
         report.addSubview(progress)
         self.progress = progress
         
@@ -160,23 +158,18 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         report.heightAnchor.constraint(equalToConstant:390).isActive = true
-        layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-75)
+        layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-55)
         layoutReportTop.isActive = true
 
-        handle.topAnchor.constraint(equalTo:report.topAnchor, constant:14).isActive = true
+        handle.topAnchor.constraint(equalTo:report.topAnchor, constant:11).isActive = true
         handle.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         handle.widthAnchor.constraint(equalToConstant:30).isActive = true
         handle.heightAnchor.constraint(equalToConstant:3).isActive = true
         
-        border.bottomAnchor.constraint(equalTo:report.topAnchor).isActive = true
-        border.leftAnchor.constraint(equalTo:report.leftAnchor).isActive = true
-        border.rightAnchor.constraint(equalTo:report.rightAnchor).isActive = true
-        border.heightAnchor.constraint(equalToConstant:3).isActive = true
-        
         progress.widthAnchor.constraint(equalToConstant:250).isActive = true
-        progress.heightAnchor.constraint(equalToConstant:4).isActive = true
+        progress.heightAnchor.constraint(equalToConstant:6).isActive = true
         progress.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
-        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:25).isActive = true
+        progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:20).isActive = true
         
         stack.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         stack.topAnchor.constraint(equalTo:progress.bottomAnchor, constant:35).isActive = true
@@ -215,7 +208,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     private func handlerHidden() {
-        if layoutReportTop.constant < -105 {
+        if layoutReportTop.constant < -85 {
             showReport()
         } else {
             hideReport()
@@ -232,7 +225,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     
     private func hideReport() {
         reportHandler = handlerHidden
-        layoutReportTop.constant = -75
+        layoutReportTop.constant = -55
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.view.layoutIfNeeded()
         }

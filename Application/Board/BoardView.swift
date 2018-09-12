@@ -151,7 +151,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         percent.translatesAutoresizingMaskIntoConstraints = false
         percent.textAlignment = .right
         percent.isUserInteractionEnabled = false
-        percent.font = UIFont.systemFont(ofSize:18, weight:.bold)
+        percent.font = .systemFont(ofSize:18, weight:.bold)
         percent.textColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
         report.addSubview(percent)
         self.percent = percent

@@ -23,7 +23,7 @@ class Alert:UIViewController {
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         timer = Timer.scheduledTimer(
-            timeInterval:3, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:4, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
         layoutOutlets()
     }
@@ -41,7 +41,7 @@ class Alert:UIViewController {
         base.layer.cornerRadius = 10
         base.layer.shadowOffset = .zero
         base.layer.shadowRadius = 9
-        base.layer.shadowOpacity = 0.4
+        base.layer.shadowOpacity = 0.5
         view.addSubview(base)
         self.base = base
         

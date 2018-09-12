@@ -2,8 +2,7 @@ import UIKit
 import CleanArchitecture
 
 class InfoView:PopupView<InfoPresenter> {
-    weak var dismiss:UIButton!
-    weak var text:UITextView!
+    private weak var text:UITextView!
     
     override func viewDidLoad() {
         configureViewModel()
@@ -36,11 +35,7 @@ class InfoView:PopupView<InfoPresenter> {
         dismiss.setTitle(NSLocalizedString("InfoView.dismiss", comment:String()), for:[])
         dismiss.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         view.addSubview(dismiss)
-        self.dismiss = dismiss
-    }
-    
-    override func layoutOutlets() {
-        super.layoutOutlets()
+        
         base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:15).isActive = true
         base.rightAnchor.constraint(equalTo:view.rightAnchor,constant:-15).isActive = true
         base.topAnchor.constraint(equalTo:view.topAnchor, constant:45).isActive = true

@@ -3,20 +3,15 @@ import CleanArchitecture
 import MarkdownHero
 
 class SettingsView:View<SettingsPresenter> {
-    weak var scroll:UIScrollView!
-    weak var content:UIView!
-    weak var columns:UIView!
-    weak var font:UIView!
-    weak var labelColumns:UILabel!
-    weak var labelFont:UILabel!
-    weak var displayFont:UILabel!
-    weak var columnsSwitch:UISwitch!
-    weak var fontSlider:UISlider!
+    private weak var scroll:UIScrollView!
+    private weak var content:UIView!
+    private weak var columnsSwitch:UISwitch!
+    private weak var fontSlider:UISlider!
+    private weak var displayFont:UILabel!
     private let parser = Parser()
     
     override func viewDidLoad() {
         makeOutlets()
-        layoutOutlets()
         configureViewModel()
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -52,13 +47,11 @@ class SettingsView:View<SettingsPresenter> {
         columns.backgroundColor = .white
         columns.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(columns)
-        self.columns = columns
         
         let font = UIView()
         font.backgroundColor = .white
         font.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(font)
-        self.font = font
         
         let labelColumns = UILabel()
         labelColumns.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +59,6 @@ class SettingsView:View<SettingsPresenter> {
         labelColumns.textColor = .black
         labelColumns.numberOfLines = 0
         columns.addSubview(labelColumns)
-        self.labelColumns = labelColumns
         
         let columnsSwitch = UISwitch()
         columnsSwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +73,6 @@ class SettingsView:View<SettingsPresenter> {
         labelFont.textColor = .black
         labelFont.numberOfLines = 0
         font.addSubview(labelFont)
-        self.labelFont = labelFont
         
         let fontSlider = UISlider()
         fontSlider.tintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
@@ -100,15 +91,13 @@ class SettingsView:View<SettingsPresenter> {
         font.addSubview(displayFont)
         self.displayFont = displayFont
 
-        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { [weak self] result in
-            self?.labelColumns.attributedText = result
+        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { result in
+            labelColumns.attributedText = result
         }
-        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { [weak self] result in
-            self?.labelFont.attributedText = result
+        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { result in
+            labelFont.attributedText = result
         }
-    }
-    
-    private func layoutOutlets() {
+        
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true

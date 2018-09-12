@@ -2,14 +2,13 @@ import UIKit
 import CleanArchitecture
 
 class EditView:View<EditPresenter>, UITextViewDelegate {
-    weak var text:UITextView!
-    weak var layoutBottom:NSLayoutConstraint!
+    private weak var text:UITextView!
+    private weak var layoutBottom:NSLayoutConstraint!
     
     deinit { NotificationCenter.default.removeObserver(self) }
     
     override func viewDidLoad() {
         makeOutlets()
-        layoutOutlets()
         super.viewDidLoad()
         view.backgroundColor = .white
         title = presenter.editText.title
@@ -82,9 +81,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
             navigationItem.leftBarButtonItem = UIBarButtonItem(
                 barButtonSystemItem:.stop, target:presenter, action:#selector(presenter.delete))
         }
-    }
-    
-    private func layoutOutlets() {
+        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
             text.contentInsetAdjustmentBehavior = .never

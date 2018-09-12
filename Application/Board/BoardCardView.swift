@@ -1,10 +1,10 @@
 import UIKit
 
 class BoardCardView:BoardItemView {
-    weak var halo:UIView!
-    weak var label:UILabel!
-    weak var dragGesture:UIPanGestureRecognizer!
-    weak var longGesture:UILongPressGestureRecognizer!
+    private(set) weak var label:UILabel!
+    private(set) weak var dragGesture:UIPanGestureRecognizer!
+    private(set) weak var longGesture:UILongPressGestureRecognizer!
+    private weak var halo:UIView!
     
     func complete() {
         halo.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)

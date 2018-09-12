@@ -1,7 +1,7 @@
 import UIKit
 
 class BoardButtonView:BoardItemView {
-    weak var image:UIImageView!
+    private(set) weak var image:UIImageView!
     
     override func makeOutlets() {
         let image = UIImageView()

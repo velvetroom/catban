@@ -1,10 +1,6 @@
 import UIKit
 
 class DeleteView:PopupView<DeletePresenter> {
-    weak var label:UILabel!
-    weak var cancel:UIButton!
-    weak var delete:UIButton!
-    
     override func makeOutlets() {
         super.makeOutlets()
         back.addTarget(presenter, action:#selector(presenter.cancel), for:.touchUpInside)
@@ -18,7 +14,6 @@ class DeleteView:PopupView<DeletePresenter> {
         label.textAlignment = .center
         label.numberOfLines = 0
         view.addSubview(label)
-        self.label = label
         
         let cancel = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +23,6 @@ class DeleteView:PopupView<DeletePresenter> {
         cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:[])
         cancel.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(cancel)
-        self.cancel = cancel
         
         let delete = UIButton()
         delete.translatesAutoresizingMaskIntoConstraints = false
@@ -40,11 +34,7 @@ class DeleteView:PopupView<DeletePresenter> {
         delete.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         delete.layer.cornerRadius = 6
         base.addSubview(delete)
-        self.delete = delete
-    }
-    
-    override func layoutOutlets() {
-        super.layoutOutlets()
+        
         base.widthAnchor.constraint(equalToConstant:320).isActive = true
         base.heightAnchor.constraint(equalToConstant:200).isActive = true
         base.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true

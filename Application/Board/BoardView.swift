@@ -2,18 +2,15 @@ import UIKit
 import CleanArchitecture
 
 class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
-    weak var scroll:UIScrollView!
-    weak var content:UIView!
-    weak var report:UIView!
-    weak var border:UIView!
-    weak var handle:UIView!
-    weak var percent:UILabel!
-    weak var track:UIView!
-    weak var progress:UIProgressView!
-    weak var stack:BoardStackView!
-    weak var layoutReportTop:NSLayoutConstraint!
     let drawer = BoardDrawer()
     let layouter = BoardLayouter()
+    private(set) weak var scroll:UIScrollView!
+    private(set) weak var content:UIView!
+    private weak var report:UIView!
+    private weak var percent:UILabel!
+    private weak var progress:UIProgressView!
+    private weak var stack:BoardStackView!
+    private weak var layoutReportTop:NSLayoutConstraint!
     private var reportY:CGFloat = 0
     private var reportHandler:(() -> Void)!
     
@@ -63,7 +60,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         drawer.view = self
         layouter.view = self
         makeOutlets()
-        layoutOutlets()
         configureViewModel()
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -125,14 +121,12 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         handle.backgroundColor = UIColor(white:0.9, alpha:1)
         handle.layer.cornerRadius = 1.5
         report.addSubview(handle)
-        self.handle = handle
         
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
         track.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
         report.addSubview(track)
-        self.track = track
         
         let progress = UIProgressView()
         progress.translatesAutoresizingMaskIntoConstraints = false
@@ -166,9 +160,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:.plain, target:presenter, action:#selector(presenter.edit)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetShare.pdf"), style:.plain, target:presenter, action:#selector(presenter.share)),
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:.plain, target:presenter, action:#selector(presenter.info))]
-    }
-    
-    private func layoutOutlets() {
+        
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
@@ -178,7 +170,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.heightAnchor.constraint(equalToConstant:290).isActive = true
         layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-55)
         layoutReportTop.isActive = true
-
+        
         handle.topAnchor.constraint(equalTo:report.topAnchor, constant:12).isActive = true
         handle.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         handle.widthAnchor.constraint(equalToConstant:30).isActive = true

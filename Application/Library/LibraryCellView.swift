@@ -1,13 +1,13 @@
 import UIKit
 
 class LibraryCellView:UIControl {
-    weak var name:UILabel!
-    weak var progress:ProgressView!
     var viewModel:LibraryItem! { didSet {
         name.text = viewModel.name
         progress.value = CGFloat(viewModel.progress)
         DispatchQueue.main.async { [weak self] in self?.progress.setNeedsDisplay() }
     } }
+    private weak var name:UILabel!
+    private weak var progress:ProgressView!
     
     init() {
         super.init(frame:.zero)

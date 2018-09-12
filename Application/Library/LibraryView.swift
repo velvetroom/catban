@@ -2,19 +2,18 @@ import Foundation
 import CleanArchitecture
 
 class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
-    weak var loading:LoadingView!
-    weak var scroll:UIScrollView!
-    weak var message:UILabel!
-    weak var add:UIBarButtonItem!
-    weak var scan:UIBarButtonItem!
-    weak var settings:UIBarButtonItem!
+    private weak var loading:LoadingView!
+    private weak var scroll:UIScrollView!
+    private weak var message:UILabel!
+    private weak var add:UIBarButtonItem!
+    private weak var scan:UIBarButtonItem!
+    private weak var settings:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("LibraryView.title", comment:String())
         view.backgroundColor = .white
         makeOutlets()
-        layoutOutlets()
         configureViewModel()
     }
     
@@ -68,9 +67,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         self.add = add
         self.scan = scan
         self.settings = settings
-    }
-    
-    private func layoutOutlets() {
+        
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true

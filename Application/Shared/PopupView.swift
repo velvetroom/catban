@@ -2,9 +2,8 @@ import UIKit
 import CleanArchitecture
 
 class PopupView<P:PresenterInterface>:View<P> {
-    weak var blur:UIVisualEffectView!
-    weak var back:UIControl!
-    weak var base:UIView!
+    private(set) weak var back:UIControl!
+    private(set) weak var base:UIView!
     
     override init(presenter:P) {
         super.init(presenter:presenter)
@@ -17,7 +16,6 @@ class PopupView<P:PresenterInterface>:View<P> {
     
     override func viewDidLoad() {
         makeOutlets()
-        layoutOutlets()
         super.viewDidLoad()
         view.backgroundColor = .clear
     }
@@ -28,7 +26,6 @@ class PopupView<P:PresenterInterface>:View<P> {
         blur.isUserInteractionEnabled = false
         blur.alpha = 0.85
         view.addSubview(blur)
-        self.blur = blur
         
         let back = UIControl()
         back.translatesAutoresizingMaskIntoConstraints = false
@@ -42,9 +39,7 @@ class PopupView<P:PresenterInterface>:View<P> {
         base.clipsToBounds = true
         view.addSubview(base)
         self.base = base
-    }
-    
-    func layoutOutlets() {
+        
         blur.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         blur.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         blur.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true

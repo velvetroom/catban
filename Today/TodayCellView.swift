@@ -29,13 +29,13 @@ class TodayCellView:UIControl {
         progress.value = CGFloat(item.progress)
         addSubview(progress)
         
-        label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
+        label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-14).isActive = true
         label.leftAnchor.constraint(equalTo:leftAnchor, constant:6).isActive = true
         label.rightAnchor.constraint(equalTo:rightAnchor, constant:-6).isActive = true
         
-        progress.topAnchor.constraint(equalTo:topAnchor, constant:8).isActive = true
-        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-26).isActive = true
-        progress.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
-        progress.rightAnchor.constraint(equalTo:rightAnchor, constant:-10).isActive = true
+        progress.topAnchor.constraint(equalTo:topAnchor, constant:12).isActive = true
+        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-30).isActive = true
+        progress.leftAnchor.constraint(equalTo:leftAnchor, constant:14).isActive = true
+        progress.rightAnchor.constraint(equalTo:rightAnchor, constant:-14).isActive = true
     }
 }

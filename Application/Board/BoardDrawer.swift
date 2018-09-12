@@ -63,7 +63,7 @@ class BoardDrawer {
         item.label.text = column.name
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
-        layout(item:item, height:38, width:BoardDrawer.columnWidth)
+        layout(item:item, height:40, width:BoardDrawer.columnWidth)
     }
     
     private func clearContent() {

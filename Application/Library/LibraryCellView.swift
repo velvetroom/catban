@@ -11,9 +11,9 @@ class LibraryCellView:UIControl {
     
     init() {
         super.init(frame:.zero)
+        backgroundColor = .white
         layer.shadowRadius = 8
         layer.cornerRadius = 24
-        layer.shadowOpacity = 0.12
         layer.shadowOffset = CGSize(width:0, height:4)
         makeOutlets()
         layoutOutlets()
@@ -23,17 +23,17 @@ class LibraryCellView:UIControl {
     required init?(coder:NSCoder) { return nil }
     
     func highlight() {
-        backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        progress.tintColor = .white
-        name.textColor = .white
-        progress.setNeedsDisplay()
+        UIView.animate(withDuration:0.3) { [weak self] in
+            self?.alpha = 0.3
+            self?.layer.shadowOpacity = 0
+        }
     }
     
     func unhighlight() {
-        backgroundColor = .white
-        progress.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        name.textColor = .black
-        progress.setNeedsDisplay()
+        UIView.animate(withDuration:0.3) { [weak self] in
+            self?.alpha = 1
+            self?.layer.shadowOpacity = 0.12
+        }
     }
     
     private func makeOutlets() {
@@ -41,10 +41,12 @@ class LibraryCellView:UIControl {
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
         name.font = .systemFont(ofSize:12, weight:.bold)
+        name.textColor = .black
         addSubview(name)
         self.name = name
         
         let progress = ProgressView()
+        progress.lineWidth = 3
         addSubview(progress)
         self.progress = progress
     }
@@ -53,8 +55,8 @@ class LibraryCellView:UIControl {
         name.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
         name.leftAnchor.constraint(equalTo:progress.rightAnchor).isActive = true
         
-        progress.topAnchor.constraint(equalTo:topAnchor, constant:8).isActive = true
-        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-8).isActive = true
+        progress.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
+        progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-6).isActive = true
         progress.leftAnchor.constraint(equalTo:leftAnchor, constant:4).isActive = true
         progress.widthAnchor.constraint(equalToConstant:42).isActive = true
     }

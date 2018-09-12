@@ -24,7 +24,7 @@ class BoardCardView:BoardItemView {
         halo.isUserInteractionEnabled = false
         halo.translatesAutoresizingMaskIntoConstraints = false
         halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
-        halo.layer.cornerRadius = 3
+        halo.layer.cornerRadius = 6
         halo.alpha = 0
         addSubview(halo)
         self.halo = halo
@@ -34,6 +34,8 @@ class BoardCardView:BoardItemView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
+        label.shadowOffset = CGSize(width:0.5, height:0.5)
+        label.shadowColor = .clear
         addSubview(label)
         self.label = label
         
@@ -59,12 +61,14 @@ class BoardCardView:BoardItemView {
     override func showSelected() {
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.halo.alpha = 1
+            self?.label.shadowColor = UIColor(white:0, alpha:0.3)
         }
     }
     
     override func showDefault() {
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.halo.alpha = 0
+            self?.label.shadowColor = .clear
         }
     }
 }

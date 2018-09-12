@@ -57,7 +57,7 @@ class BoardLayouter {
     }
 
     private func update(width:CGFloat, height:CGFloat) {
-        view.scroll.contentSize = CGSize(width:width, height:height + 150)
+        view.scroll.contentSize = CGSize(width:width, height:height + 80)
         view.content.frame = CGRect(origin:.zero, size:view.scroll.contentSize)
     }
 }

@@ -62,29 +62,38 @@ class BoardPresenter:Presenter<BoardInteractor> {
     func updateProgress() {
         DispatchQueue.global(qos:.background).async { [weak self] in
             guard let stats = self?.interactor.makeStats() else { return }
-            var previous = (-CGFloat.pi / 2) + 0.075
-            var progress = [(CGFloat, CGFloat)]()
-            let max = (CGFloat.pi * 2) + (previous - 0.15)
-            stats.columns.reversed().forEach{ stat in
-                if stat > 0 {
-                    var next = previous + (CGFloat(stat) / CGFloat(stats.cards) * (CGFloat.pi * 2))
-                    if next > max {
-                        next = max
-                    }
-                    progress.append((previous, next))
-                    previous = next + 0.15
-                    if previous > max {
-                        previous = max
-                    }
-                }
-            }
-            self?.update(viewModel:stats.progress)
-            self?.update(viewModel:progress)
+            self?.updateProgress(stats:stats)
         }
     }
     
     override func didAppear() {
         update(viewModel:interactor.board.name)
         updateProgress()
+    }
+    
+    private func updateProgress(stats:ReportStats) {
+        update(viewModel:stats.progress)
+        update(viewModel:stack(stats:stats))
+    }
+    
+    private func stack(stats:ReportStats) -> [(CGFloat, CGFloat)] {
+        var previous = (-CGFloat.pi / 2) + 0.075
+        var progress = [(CGFloat, CGFloat)]()
+        let max = (CGFloat.pi * 2) + (previous - 0.15)
+        stats.columns.reversed().forEach{ stat in
+            let percent = CGFloat(stat) / CGFloat(stats.cards)
+            if percent == 1 {
+                progress.append((0.0001, 0))
+            } else if percent == 0 {
+                progress.append((previous, previous))
+            } else {
+                var next = previous + (percent * (CGFloat.pi * 2))
+                next = min(next, max)
+                progress.append((previous, next))
+                previous = next + 0.15
+                previous = min(previous, max)
+            }
+        }
+        return progress
     }
 }

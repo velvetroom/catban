@@ -1,7 +1,7 @@
 import UIKit
 
 class BoardHeaderView:BoardItemView {
-    weak var label:UILabel!
+    private(set) weak var label:UILabel!
     
     override func makeOutlets() {
         let label = UILabel()

@@ -1,7 +1,7 @@
 import Foundation
 
 public class Session:Codable {
-    public internal(set) var boards:[String:Board] = [:]
+    public internal(set) var boards = [String:Board]()
     public var cardsFont:Int = Session.cardsFont
     public var defaultColumns = true
     static let cardsFont:Int = 14

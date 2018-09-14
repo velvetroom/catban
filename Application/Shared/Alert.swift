@@ -23,7 +23,7 @@ class Alert:UIViewController {
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         timer = Timer.scheduledTimer(
-            timeInterval:3, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:4, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
         layoutOutlets()
     }
@@ -38,10 +38,10 @@ class Alert:UIViewController {
         base.isUserInteractionEnabled = false
         base.backgroundColor = .white
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.layer.cornerRadius = 5
+        base.layer.cornerRadius = 10
         base.layer.shadowOffset = .zero
-        base.layer.shadowRadius = 3
-        base.layer.shadowOpacity = 0.6
+        base.layer.shadowRadius = 9
+        base.layer.shadowOpacity = 0.5
         view.addSubview(base)
         self.base = base
         
@@ -49,7 +49,7 @@ class Alert:UIViewController {
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
-        label.font = .systemFont(ofSize:14, weight:.medium)
+        label.font = .systemFont(ofSize:14, weight:.regular)
         label.textColor = .black
         label.numberOfLines = 0
         view.addSubview(label)
@@ -66,13 +66,13 @@ class Alert:UIViewController {
     }
     
     private func layoutOutlets() {
-        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:5).isActive = true
-        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-5).isActive = true
+        base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:8).isActive = true
+        base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-8).isActive = true
         base.heightAnchor.constraint(equalToConstant:60).isActive = true
         
         label.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
-        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:12).isActive = true
-        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-12).isActive = true
+        label.leftAnchor.constraint(equalTo:base.leftAnchor, constant:15).isActive = true
+        label.rightAnchor.constraint(equalTo:icon.leftAnchor, constant:-15).isActive = true
         label.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
         
         icon.centerYAnchor.constraint(equalTo:base.centerYAnchor).isActive = true

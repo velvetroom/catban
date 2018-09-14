@@ -73,6 +73,6 @@ public class Library {
     }
     
     private func identifier(board:Board) -> String? {
-        return boards.first(where: { (_, value) -> Bool in return board === value } )?.key
+        return boards.first(where: { _, value -> Bool in return board === value } )?.key
     }
 }

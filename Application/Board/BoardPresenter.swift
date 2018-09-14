@@ -16,10 +16,12 @@ class BoardPresenter:Presenter<BoardInteractor> {
     }
     
     func delete() {
+        Application.router.dismiss(animated:false)
         interactor.delete()
     }
     
     @objc func edit() {
+        Application.router.dismiss(animated:false)
         interactor.edit()
     }
     
@@ -34,18 +36,22 @@ class BoardPresenter:Presenter<BoardInteractor> {
     }
     
     @objc func newColumn() {
+        Application.router.dismiss(animated:false)
         interactor.newColumn()
     }
     
     @objc func editColumn(view:BoardItemView) {
+        Application.router.dismiss(animated:false)
         interactor.editColumn(column:view.column!)
     }
     
     @objc func newCard(view:BoardItemView) {
+        Application.router.dismiss(animated:false)
         interactor.newCard(column:view.column!)
     }
     
     @objc func editCard(view:BoardCardView) {
+        Application.router.dismiss(animated:false)
         interactor.editCard(column:view.column!, card:view.card!)
     }
     
@@ -62,15 +68,38 @@ class BoardPresenter:Presenter<BoardInteractor> {
     func updateProgress() {
         DispatchQueue.global(qos:.background).async { [weak self] in
             guard let stats = self?.interactor.makeStats() else { return }
-            var viewModel = BoardProgress()
-            viewModel.progress = stats.progress
-            viewModel.columns = stats.columns
-            self?.update(viewModel:viewModel)
+            self?.updateProgress(stats:stats)
         }
     }
     
     override func didAppear() {
         update(viewModel:interactor.board.name)
         updateProgress()
+    }
+    
+    private func updateProgress(stats:ReportStats) {
+        update(viewModel:stats.progress)
+        update(viewModel:stack(stats:stats))
+    }
+    
+    private func stack(stats:ReportStats) -> [(CGFloat, CGFloat)] {
+        var previous = (-CGFloat.pi / 2) + 0.075
+        var progress = [(CGFloat, CGFloat)]()
+        let max = (CGFloat.pi * 2) + (previous - 0.15)
+        stats.columns.reversed().forEach{ stat in
+            let percent = CGFloat(stat) / CGFloat(stats.cards)
+            if percent == 1 {
+                progress.append((0.0001, 0))
+            } else if percent == 0 {
+                progress.append((previous, previous))
+            } else {
+                var next = previous + (percent * (CGFloat.pi * 2))
+                next = min(next, max)
+                progress.append((previous, next))
+                previous = next + 0.15
+                previous = min(previous, max)
+            }
+        }
+        return progress
     }
 }

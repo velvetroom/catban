@@ -1,15 +1,14 @@
 import UIKit
 import CleanArchitecture
 
-class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
-    weak var text:UITextView!
-    weak var layoutBottom:NSLayoutConstraint!
+class EditView:View<EditPresenter>, UITextViewDelegate {
+    private weak var text:UITextView!
+    private weak var layoutBottom:NSLayoutConstraint!
     
     deinit { NotificationCenter.default.removeObserver(self) }
     
     override func viewDidLoad() {
         makeOutlets()
-        layoutOutlets()
         super.viewDidLoad()
         view.backgroundColor = .white
         title = presenter.editText.title
@@ -49,8 +48,11 @@ class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
         view.addSubview(text)
         self.text = text
         
-        let accessory = UIView(frame:CGRect(x:0, y:0, width:0, height:34))
-        accessory.backgroundColor = .white
+        let accessory = UIView(frame:CGRect(x:0, y:0, width:0, height:40))
+        accessory.backgroundColor = UIColor(red:0.91, green:0.93, blue:0.96, alpha:1)
+        accessory.layer.shadowOffset = CGSize(width:0, height:-3)
+        accessory.layer.shadowOpacity = 0.12
+        accessory.layer.shadowRadius = 6
         text.inputAccessoryView = accessory
         
         let pound = addKey(title:"#")
@@ -79,9 +81,7 @@ class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
             navigationItem.leftBarButtonItem = UIBarButtonItem(
                 barButtonSystemItem:.stop, target:presenter, action:#selector(presenter.delete))
         }
-    }
-    
-    private func layoutOutlets() {
+        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
             text.contentInsetAdjustmentBehavior = .never
@@ -111,7 +111,7 @@ class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
         let rect = keyboardRectFrom(notification:notification)
         let height = view.bounds.height
         if rect.minY < height {
-            return -(rect.height + 2)
+            return -rect.height
         }
         return 0
     }
@@ -134,22 +134,30 @@ class EditView:View<BoardInteractor, EditPresenter>, UITextViewDelegate {
     
     private func addKey(title:String) -> UIButton {
         let key = UIButton()
-        key.backgroundColor = UIColor(red:0.9, green:0.92, blue:0.95, alpha:1)
+        key.backgroundColor = .white
         key.translatesAutoresizingMaskIntoConstraints = false
         key.setTitle(title, for:[])
-        key.setTitleColor(.black, for:.normal)
-        key.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
-        key.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
+        key.setTitleColor(.black, for:[])
+        key.titleLabel!.font = .systemFont(ofSize:18, weight:.regular)
         key.addTarget(self, action:#selector(add(key:)), for:.touchUpInside)
+        key.addTarget(self, action:#selector(highlight(key:)), for:[.touchDown])
+        key.addTarget(self, action:#selector(unhighlight(key:)), for:[.touchUpInside, .touchUpOutside, .touchCancel])
         text.inputAccessoryView!.addSubview(key)
-        key.topAnchor.constraint(equalTo:text.inputAccessoryView!.topAnchor).isActive = true
+        key.topAnchor.constraint(equalTo:text.inputAccessoryView!.topAnchor, constant:1).isActive = true
         key.bottomAnchor.constraint(equalTo:text.inputAccessoryView!.bottomAnchor).isActive = true
-        key.widthAnchor.constraint(equalTo:text.inputAccessoryView!.widthAnchor, multiplier:0.2,
-                                   constant:-1).isActive = true
+        key.widthAnchor.constraint(equalTo:text.inputAccessoryView!.widthAnchor, multiplier:0.2).isActive = true
         return key
     }
     
     @objc private func add(key:UIButton) {
         text.insertText(key.title(for:[])!)
+    }
+    
+    @objc private func highlight(key:UIButton) {
+        key.backgroundColor = .clear
+    }
+    
+    @objc private func unhighlight(key:UIButton) {
+        key.backgroundColor = .white
     }
 }

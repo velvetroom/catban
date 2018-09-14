@@ -1,9 +1,8 @@
 import UIKit
 import CleanArchitecture
 
-class InfoView<I:Interactor>:PopupView<I, InfoPresenter<I>> {
-    weak var dismiss:UIButton!
-    weak var text:UITextView!
+class InfoView:PopupView<InfoPresenter> {
+    private weak var text:UITextView!
     
     override func viewDidLoad() {
         configureViewModel()
@@ -36,11 +35,7 @@ class InfoView<I:Interactor>:PopupView<I, InfoPresenter<I>> {
         dismiss.setTitle(NSLocalizedString("InfoView.dismiss", comment:String()), for:[])
         dismiss.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         view.addSubview(dismiss)
-        self.dismiss = dismiss
-    }
-    
-    override func layoutOutlets() {
-        super.layoutOutlets()
+        
         base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:15).isActive = true
         base.rightAnchor.constraint(equalTo:view.rightAnchor,constant:-15).isActive = true
         base.topAnchor.constraint(equalTo:view.topAnchor, constant:45).isActive = true
@@ -51,8 +46,8 @@ class InfoView<I:Interactor>:PopupView<I, InfoPresenter<I>> {
         dismiss.heightAnchor.constraint(equalToConstant:50).isActive = true
         dismiss.widthAnchor.constraint(equalToConstant:150).isActive = true
         
-        text.topAnchor.constraint(equalTo:base.topAnchor).isActive = true
-        text.bottomAnchor.constraint(equalTo:base.bottomAnchor).isActive = true
+        text.topAnchor.constraint(equalTo:base.topAnchor, constant:2).isActive = true
+        text.bottomAnchor.constraint(equalTo:base.bottomAnchor, constant:-2).isActive = true
         text.leftAnchor.constraint(equalTo:base.leftAnchor).isActive = true
         text.rightAnchor.constraint(equalTo:base.rightAnchor).isActive = true
     }

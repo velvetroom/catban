@@ -2,7 +2,7 @@ import Foundation
 import CleanArchitecture
 import MarkdownHero
 
-class InfoPresenter<I:Interactor>:Presenter<I> {
+class InfoPresenter:Presenter<BoardInteractor> {
     var source = String()
     private var parser = Parser()
     

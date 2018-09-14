@@ -1,22 +1,19 @@
 import UIKit
 import CleanArchitecture
 import MarkdownHero
+import MessageUI
 
-class SettingsView:View<SettingsInteractor, SettingsPresenter> {
-    weak var scroll:UIScrollView!
-    weak var content:UIView!
-    weak var columns:UIView!
-    weak var font:UIView!
-    weak var labelColumns:UILabel!
-    weak var labelFont:UILabel!
-    weak var displayFont:UILabel!
-    weak var columnsSwitch:UISwitch!
-    weak var fontSlider:UISlider!
+class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate {
+    private weak var scroll:UIScrollView!
+    private weak var content:UIView!
+    private weak var columnsSwitch:UISwitch!
+    private weak var fontSlider:UISlider!
+    private weak var displayFont:UILabel!
     private let parser = Parser()
+    private let url = "itunes.apple.com/\(Locale.current.regionCode!.lowercased())/app/catban/id1363004864"
     
     override func viewDidLoad() {
         makeOutlets()
-        layoutOutlets()
         configureViewModel()
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -31,6 +28,10 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
     override func viewWillTransition(to size:CGSize, with coordinator:UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to:size, with:coordinator)
         update(width:size.width)
+    }
+    
+    func mailComposeController(_:MFMailComposeViewController, didFinishWith:MFMailComposeResult, error:Error?) {
+        Application.router.dismiss(animated:true)
     }
     
     private func makeOutlets() {
@@ -48,17 +49,75 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         scroll.addSubview(content)
         self.content = content
         
+        let about = UIView()
+        about.translatesAutoresizingMaskIntoConstraints = false
+        content.addSubview(about)
+        
         let columns = UIView()
-        columns.backgroundColor = .white
         columns.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(columns)
-        self.columns = columns
         
         let font = UIView()
-        font.backgroundColor = .white
         font.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(font)
-        self.font = font
+        
+        let icon = UIImageView()
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.isUserInteractionEnabled = false
+        icon.clipsToBounds = true
+        icon.image = #imageLiteral(resourceName: "assetLogoSmall.pdf")
+        icon.contentMode = .center
+        about.addSubview(icon)
+        
+        let labelAbout = UILabel()
+        labelAbout.translatesAutoresizingMaskIntoConstraints = false
+        labelAbout.isUserInteractionEnabled = false
+        labelAbout.textColor = .black
+        labelAbout.textAlignment = .center
+        labelAbout.numberOfLines = 0
+        labelAbout.text = String(format:NSLocalizedString("SettingsView.labelAbout", comment:String()),
+            "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
+        labelAbout.font = .systemFont(ofSize:12, weight:.ultraLight)
+        about.addSubview(labelAbout)
+        
+        let contact = UIButton()
+        contact.translatesAutoresizingMaskIntoConstraints = false
+        contact.setTitle(NSLocalizedString("SettingsView.contact", comment:String()), for:[])
+        contact.setTitleColor(.black, for:.normal)
+        contact.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        contact.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
+        contact.addTarget(self, action:#selector(email), for:.touchUpInside)
+        about.addSubview(contact)
+        
+        let share = UIButton()
+        share.translatesAutoresizingMaskIntoConstraints = false
+        share.setTitle(NSLocalizedString("SettingsView.share", comment:String()), for:[])
+        share.setTitleColor(.black, for:.normal)
+        share.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        share.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
+        share.addTarget(self, action:#selector(shareUrl), for:.touchUpInside)
+        about.addSubview(share)
+        
+        let review = UIButton()
+        review.translatesAutoresizingMaskIntoConstraints = false
+        review.setTitle(NSLocalizedString("SettingsView.review", comment:String()), for:[])
+        review.setTitleColor(.black, for:.normal)
+        review.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        review.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
+        review.addTarget(self, action:#selector(reviewUrl), for:.touchUpInside)
+        about.addSubview(review)
+        
+        let separatorLeft = UIView()
+        separatorLeft.translatesAutoresizingMaskIntoConstraints = false
+        separatorLeft.isUserInteractionEnabled = false
+        separatorLeft.backgroundColor = UIColor(white:0, alpha:0.2)
+        about.addSubview(separatorLeft)
+        
+        let separatorRight = UIView()
+        separatorRight.translatesAutoresizingMaskIntoConstraints = false
+        separatorRight.isUserInteractionEnabled = false
+        separatorRight.backgroundColor = UIColor(white:0, alpha:0.2)
+        about.addSubview(separatorRight)
         
         let labelColumns = UILabel()
         labelColumns.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +125,6 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         labelColumns.textColor = .black
         labelColumns.numberOfLines = 0
         columns.addSubview(labelColumns)
-        self.labelColumns = labelColumns
         
         let columnsSwitch = UISwitch()
         columnsSwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +139,6 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         labelFont.textColor = .black
         labelFont.numberOfLines = 0
         font.addSubview(labelFont)
-        self.labelFont = labelFont
         
         let fontSlider = UISlider()
         fontSlider.tintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
@@ -100,20 +157,23 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         font.addSubview(displayFont)
         self.displayFont = displayFont
 
-        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { [weak self] result in
-            self?.labelColumns.attributedText = result
+        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { result in
+            labelColumns.attributedText = result
         }
-        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { [weak self] result in
-            self?.labelFont.attributedText = result
+        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { result in
+            labelFont.attributedText = result
         }
-    }
-    
-    private func layoutOutlets() {
+        
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
-        columns.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
+        about.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
+        about.heightAnchor.constraint(equalToConstant:330).isActive = true
+        about.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
+        about.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
+        
+        columns.topAnchor.constraint(equalTo:about.bottomAnchor).isActive = true
         columns.heightAnchor.constraint(equalToConstant:130).isActive = true
         columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
@@ -122,6 +182,39 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
         font.heightAnchor.constraint(equalToConstant:120).isActive = true
         font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
+        
+        icon.topAnchor.constraint(equalTo:about.topAnchor, constant:60).isActive = true
+        icon.centerXAnchor.constraint(equalTo:about.centerXAnchor).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:50).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:50).isActive = true
+        
+        labelAbout.centerXAnchor.constraint(equalTo:icon.centerXAnchor).isActive = true
+        labelAbout.topAnchor.constraint(equalTo:icon.bottomAnchor, constant:6).isActive = true
+        
+        contact.centerXAnchor.constraint(equalTo:about.centerXAnchor).isActive = true
+        contact.topAnchor.constraint(equalTo:labelAbout.bottomAnchor, constant:80).isActive = true
+        contact.widthAnchor.constraint(equalToConstant:105).isActive = true
+        contact.heightAnchor.constraint(equalToConstant:40).isActive = true
+        
+        share.rightAnchor.constraint(equalTo:contact.leftAnchor).isActive = true
+        share.topAnchor.constraint(equalTo:contact.topAnchor).isActive = true
+        share.widthAnchor.constraint(equalTo:contact.widthAnchor).isActive = true
+        share.heightAnchor.constraint(equalTo:contact.heightAnchor).isActive = true
+        
+        review.leftAnchor.constraint(equalTo:contact.rightAnchor).isActive = true
+        review.topAnchor.constraint(equalTo:contact.topAnchor).isActive = true
+        review.widthAnchor.constraint(equalTo:contact.widthAnchor).isActive = true
+        review.heightAnchor.constraint(equalTo:contact.heightAnchor).isActive = true
+        
+        separatorLeft.centerYAnchor.constraint(equalTo:contact.centerYAnchor).isActive = true
+        separatorLeft.rightAnchor.constraint(equalTo:contact.leftAnchor).isActive = true
+        separatorLeft.widthAnchor.constraint(equalToConstant:1).isActive = true
+        separatorLeft.heightAnchor.constraint(equalToConstant:14).isActive = true
+        
+        separatorRight.centerYAnchor.constraint(equalTo:contact.centerYAnchor).isActive = true
+        separatorRight.leftAnchor.constraint(equalTo:contact.rightAnchor).isActive = true
+        separatorRight.widthAnchor.constraint(equalToConstant:1).isActive = true
+        separatorRight.heightAnchor.constraint(equalToConstant:14).isActive = true
         
         labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:17).isActive = true
         labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:17).isActive = true
@@ -158,7 +251,7 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
     }
     
     private func update(width:CGFloat) {
-        scroll.contentSize = CGSize(width:width, height:236)
+        scroll.contentSize = CGSize(width:width, height:580)
         content.frame = CGRect(origin:.zero, size:scroll.contentSize)
     }
     
@@ -170,6 +263,35 @@ class SettingsView:View<SettingsInteractor, SettingsPresenter> {
     
     @objc private func updateColumns() {
         presenter.update(defaultColumns:columnsSwitch.isOn)
+    }
+    
+    @objc private func email() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["catban@iturbi.de"])
+            mail.setSubject(NSLocalizedString("SettingsView.sendEmailSubject", comment:String()))
+            mail.setMessageBody(NSLocalizedString("SettingsView.sendEmailBody", comment:String()), isHTML:false)
+            Application.router.present(mail, animated:true)
+        } else {
+            let alert = Alert()
+            alert.title = NSLocalizedString("SettingsView.sendEmailFailed", comment:String())
+            alert.image = #imageLiteral(resourceName: "assetError.pdf")
+        }
+    }
+    
+    @objc private func shareUrl() {
+        let view = UIActivityViewController(activityItems:[URL(string:"https://\(url)")!], applicationActivities:nil)
+        if let popover = view.popoverPresentationController {
+            popover.sourceView = content
+            popover.sourceRect = .zero
+            popover.permittedArrowDirections = .any
+        }
+        Application.router.present(view, animated:true)
+    }
+    
+    @objc private func reviewUrl() {
+        UIApplication.shared.openURL(URL(string:"itms-apps://\(url)")!)
     }
     
     private func updateDisplay(size:Int) {

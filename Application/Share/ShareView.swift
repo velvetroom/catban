@@ -1,9 +1,7 @@
 import UIKit
 
-class ShareView:PopupView<BoardInteractor, SharePresenter> {
-    weak var image:UIImageView!
-    weak var done:UIButton!
-    weak var send:UIButton!
+class ShareView:PopupView<SharePresenter> {
+    private weak var image:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +28,6 @@ class ShareView:PopupView<BoardInteractor, SharePresenter> {
         done.setTitle(NSLocalizedString("ShareView.done", comment:String()), for:[])
         done.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(done)
-        self.done = done
         
         let send = UIButton()
         send.translatesAutoresizingMaskIntoConstraints = false
@@ -42,11 +39,7 @@ class ShareView:PopupView<BoardInteractor, SharePresenter> {
         send.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         send.layer.cornerRadius = 6
         base.addSubview(send)
-        self.send = send
-    }
-    
-    override func layoutOutlets() {
-        super.layoutOutlets()
+        
         base.widthAnchor.constraint(equalToConstant:320).isActive = true
         base.heightAnchor.constraint(equalToConstant:440).isActive = true
         base.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true

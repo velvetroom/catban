@@ -1,9 +1,8 @@
 import UIKit
 
 class LoadingView:UIView {
-    weak var circle:CAShapeLayer!
-    weak var pulse:CAShapeLayer!
-    weak var outer:CAShapeLayer!
+    private weak var circle:CAShapeLayer!
+    private weak var pulse:CAShapeLayer!
     override var tintColor:UIColor! { didSet {
         circle.fillColor = tintColor.cgColor
         pulse.strokeColor = tintColor.cgColor

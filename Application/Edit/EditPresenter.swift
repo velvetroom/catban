@@ -46,7 +46,7 @@ class EditPresenter:Presenter<BoardInteractor> {
     }
     
     @objc func info() {
-        let view = InfoView(presenter:InfoPresenter<BoardInteractor>())
+        let view = InfoView(presenter:InfoPresenter())
         view.presenter.interactor = interactor
         view.presenter.source = infoSource!
         Application.router.present(view, animated:true)

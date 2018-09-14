@@ -37,7 +37,7 @@ class BoardDrawer {
         item.dragGesture.addTarget(view, action:#selector(view.dragCard(pan:)))
         item.longGesture.addTarget(view, action:#selector(view.long(gesture:)))
         addItem(item:item)
-        layout(item:item, height:textHeight, width:BoardDrawer.columnWidth)
+        layout(item:item, height:textHeight + 10, width:BoardDrawer.columnWidth)
     }
     
     func makeNewCard(column:Column) {
@@ -63,7 +63,7 @@ class BoardDrawer {
         item.label.text = column.name
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
-        layout(item:item, height:38, width:BoardDrawer.columnWidth)
+        layout(item:item, height:40, width:BoardDrawer.columnWidth)
     }
     
     private func clearContent() {

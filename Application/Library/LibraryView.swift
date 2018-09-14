@@ -1,20 +1,19 @@
 import Foundation
 import CleanArchitecture
 
-class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPreviewingDelegate {
-    weak var loading:LoadingView!
-    weak var scroll:UIScrollView!
-    weak var message:UILabel!
-    weak var add:UIBarButtonItem!
-    weak var scan:UIBarButtonItem!
-    weak var settings:UIBarButtonItem!
+class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
+    private weak var loading:LoadingView!
+    private weak var scroll:UIScrollView!
+    private weak var message:UILabel!
+    private weak var add:UIBarButtonItem!
+    private weak var scan:UIBarButtonItem!
+    private weak var settings:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("LibraryView.title", comment:String())
         view.backgroundColor = .white
         makeOutlets()
-        layoutOutlets()
         configureViewModel()
     }
     
@@ -26,7 +25,7 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     func previewingContext(_ context:UIViewControllerPreviewing,
                            viewControllerForLocation location:CGPoint) -> UIViewController? {
         var view:UIViewController?
-        if let item = scroll.subviews.first(where: { (item) -> Bool in item.frame.contains(location) }) {
+        if let item = scroll.subviews.first(where: { item -> Bool in item.frame.contains(location) }) {
             context.sourceRect = item.frame
             view = presenter.interactor.board(identifier:(item as! LibraryCellView).viewModel.board)
         }
@@ -68,9 +67,7 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
         self.add = add
         self.scan = scan
         self.settings = settings
-    }
-    
-    private func layoutOutlets() {
+        
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
@@ -119,8 +116,8 @@ class LibraryView:View<LibraryInteractor, LibraryPresenter>, UIViewControllerPre
     private func layoutCells(size:CGSize) {
         var y:CGFloat = 0
         scroll.subviews.forEach { view in
-            y += 18
-            view.frame = CGRect(x:14, y:y, width:size.width - 28, height:40)
+            y += 20
+            view.frame = CGRect(x:14, y:y, width:size.width - 28, height:48)
             y += view.bounds.height
         }
         scroll.contentSize = CGSize(width:size.width, height:y)

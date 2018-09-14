@@ -86,7 +86,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
             navigationItem.largeTitleDisplayMode = .always
             text.contentInsetAdjustmentBehavior = .never
             text.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-            layoutBottom = text.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor)
+            layoutBottom = text.bottomAnchor.constraint(equalTo:view.bottomAnchor)
         } else {
             text.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
             layoutBottom = text.bottomAnchor.constraint(equalTo:view.bottomAnchor)

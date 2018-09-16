@@ -27,11 +27,11 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
         let view = QRView()
         view.delegate = self
         view.title = NSLocalizedString("LibraryInteractor.qrView", comment:String())
-        Application.router.present(view, animated:true)
+        Application.navigation.present(view, animated:true)
     }
     
     func settings() {
-        Application.router.pushViewController(SettingsView(), animated:true)
+        Application.navigation.pushViewController(SettingsView(), animated:true)
     }
     
     func newBoard() {
@@ -39,7 +39,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func select(identifier:String) {
-        Application.router.pushViewController(board(identifier:identifier), animated:true)
+        Application.navigation.pushViewController(board(identifier:identifier), animated:true)
     }
     
     func board(identifier:String) -> BoardView {
@@ -85,7 +85,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     func qrCancelled() {
-        Application.router.dismiss(animated:true)
+        Application.navigation.dismiss(animated:true)
     }
     
     func qrError(error:QRheroError) {
@@ -118,7 +118,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     private func popup(error:String) {
-        Application.router.dismiss(animated:true) {
+        Application.navigation.dismiss(animated:true) {
             let popup = Alert()
             popup.image = #imageLiteral(resourceName: "assetError.pdf")
             popup.title = error
@@ -126,7 +126,7 @@ class LibraryInteractor:Interactor, LibraryDelegate, QRViewDelegate {
     }
     
     private func popupSuccess() {
-        Application.router.dismiss(animated:true) {
+        Application.navigation.dismiss(animated:true) {
             let popup = Alert()
             popup.image = #imageLiteral(resourceName: "assetDone.pdf")
             popup.title = NSLocalizedString("LibraryInteractor.boardAdded", comment:String())

@@ -7,7 +7,7 @@ class InfoPresenter:Presenter<BoardInteractor> {
     private var parser = Parser()
     
     @objc func dismiss() {
-        Application.router.dismiss(animated:true)
+        Application.navigation.dismiss(animated:true)
     }
     
     override func didLoad() {

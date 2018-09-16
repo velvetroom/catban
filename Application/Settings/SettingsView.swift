@@ -31,7 +31,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     }
     
     func mailComposeController(_:MFMailComposeViewController, didFinishWith:MFMailComposeResult, error:Error?) {
-        Application.router.dismiss(animated:true)
+        Application.navigation.dismiss(animated:true)
     }
     
     private func makeOutlets() {
@@ -272,7 +272,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
             mail.setToRecipients(["catban@iturbi.de"])
             mail.setSubject(NSLocalizedString("SettingsView.sendEmailSubject", comment:String()))
             mail.setMessageBody(NSLocalizedString("SettingsView.sendEmailBody", comment:String()), isHTML:false)
-            Application.router.present(mail, animated:true)
+            Application.navigation.present(mail, animated:true)
         } else {
             let alert = Alert()
             alert.title = NSLocalizedString("SettingsView.sendEmailFailed", comment:String())
@@ -287,7 +287,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
             popover.sourceRect = .zero
             popover.permittedArrowDirections = .any
         }
-        Application.router.present(view, animated:true)
+        Application.navigation.present(view, animated:true)
     }
     
     @objc private func reviewUrl() {

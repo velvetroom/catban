@@ -33,7 +33,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_:UIViewControllerPreviewing, commit controller:UIViewController) {
-        Application.router.pushViewController(controller, animated:true)
+        Application.navigation.pushViewController(controller, animated:true)
     }
     
     private func makeOutlets() {

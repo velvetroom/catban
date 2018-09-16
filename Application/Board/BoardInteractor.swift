@@ -27,21 +27,21 @@ class BoardInteractor:Interactor {
     func share() {
         let view = ShareView(presenter:SharePresenter())
         view.presenter.interactor = self
-        Application.router.present(view, animated:true)
+        Application.navigation.present(view, animated:true)
     }
     
     func info() {
         let view = InfoView(presenter:InfoPresenter())
         view.presenter.interactor = self
         view.presenter.source = "InfoBoard"
-        Application.router.present(view, animated:true)
+        Application.navigation.present(view, animated:true)
     }
     
     func delete() {
         let view = DeleteView(presenter:DeletePresenter())
         view.presenter.interactor = self
         view.presenter.edit = makeDeleteBoard()
-        Application.router.present(view, animated:true)
+        Application.navigation.present(view, animated:true)
     }
     
     func edit() {
@@ -109,7 +109,7 @@ class BoardInteractor:Interactor {
         view.presenter.editDelete = delete
         view.presenter.interactor = self
         view.presenter.infoSource = infoSource
-        Application.router.pushViewController(view, animated:true)
+        Application.navigation.pushViewController(view, animated:true)
     }
     
     private func makeDeleteBoard() -> EditDelete {

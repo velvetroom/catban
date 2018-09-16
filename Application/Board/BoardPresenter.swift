@@ -16,42 +16,42 @@ class BoardPresenter:Presenter<BoardInteractor> {
     }
     
     func delete() {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.delete()
     }
     
     @objc func edit() {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.edit()
     }
     
     @objc func info() {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.info()
     }
     
     @objc func share() {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.share()
     }
     
     @objc func newColumn() {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.newColumn()
     }
     
     @objc func editColumn(view:BoardItemView) {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.editColumn(column:view.column!)
     }
     
     @objc func newCard(view:BoardItemView) {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.newCard(column:view.column!)
     }
     
     @objc func editCard(view:BoardCardView) {
-        Application.router.dismiss(animated:false)
+        Application.navigation.dismiss(animated:false)
         interactor.editCard(column:view.column!, card:view.card!)
     }
     

@@ -1,6 +1,6 @@
 import UIKit
 
-class Router:UINavigationController {
+class Navigation:UINavigationController {
     func launchDefault() {
         setViewControllers([LibraryView()], animated:false)
     }

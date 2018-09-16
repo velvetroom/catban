@@ -6,19 +6,19 @@ class SharePresenter:Presenter<BoardInteractor> {
     private let qrHero = QRhero()
     
     @objc func done() {
-        Application.router.dismiss(animated:true)
+        Application.navigation.dismiss(animated:true)
     }
     
     func send(image:UIImage) {
         guard let url = prepare(image:image) else { return }
         let view = UIActivityViewController(activityItems:[url], applicationActivities:nil)
         if let popover = view.popoverPresentationController {
-            popover.sourceView = Application.router.view
+            popover.sourceView = Application.navigation.view
             popover.sourceRect = .zero
             popover.permittedArrowDirections = .any
         }
-        Application.router.dismiss(animated:true) {
-            Application.router.present(view, animated:true)
+        Application.navigation.dismiss(animated:true) {
+            Application.navigation.present(view, animated:true)
         }
     }
     

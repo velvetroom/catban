@@ -6,19 +6,19 @@ class DeletePresenter:Presenter<BoardInteractor> {
     var edit:EditDelete!
     
     @objc func cancel() {
-        Application.router.dismiss(animated:true)
+        Application.navigation.dismiss(animated:true)
     }
     
     @objc func delete() {
         edit.confirm(self)()
-        Application.router.dismiss(animated:true) {
-            Application.router.popViewController(animated:true)
+        Application.navigation.dismiss(animated:true) {
+            Application.navigation.popViewController(animated:true)
         }
     }
     
     func confirmBoard() {
         Factory.makeLibrary().delete(board:interactor.board)
-        Application.router.popViewController(animated:false)
+        Application.navigation.popViewController(animated:false)
     }
     
     func confirmColumn() {

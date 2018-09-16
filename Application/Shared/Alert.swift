@@ -13,7 +13,7 @@ class Alert:UIViewController {
         modalPresentationStyle = .overCurrentContext
         modalTransitionStyle = .crossDissolve
         modalPresentationCapturesStatusBarAppearance = true
-        Application.router.present(self, animated:true)
+        Application.navigation.present(self, animated:true)
     }
     
     required init?(coder:NSCoder) { return nil }
@@ -88,6 +88,6 @@ class Alert:UIViewController {
     }
     
     @objc private func timeout() {
-        Application.router.dismiss(animated:true)
+        Application.navigation.dismiss(animated:true)
     }
 }

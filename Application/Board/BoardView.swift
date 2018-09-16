@@ -199,6 +199,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             search.obscuresBackgroundDuringPresentation = false
             search.hidesNavigationBarDuringPresentation = false
             search.searchBar.delegate = self
+            search.searchBar.autocorrectionType = .yes
+            search.searchBar.spellCheckingType = .yes
+            search.searchBar.autocapitalizationType = .sentences
             navigationItem.searchController = search
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true

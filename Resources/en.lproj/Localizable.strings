@@ -1,14 +1,16 @@
 LibraryView.title="Boards";
+LibraryPresenter.qrView="QR Codes";
 LibraryPresenter.empty="Create a new board or load one from a QR Code.";
-LibraryInteractor.board="New board";
-LibraryInteractor.column.todo="To do";
-LibraryInteractor.column.progress="In progress";
-LibraryInteractor.column.done="Done";
-LibraryInteractor.qrView="QR Codes";
-LibraryInteractor.scanError="Error: Failed to scan QR Code";
-LibraryInteractor.boardAdded="Board added to your library";
-LibraryInteractor.boardDuplicated="Board already in your library";
-LibraryInteractor.invalidQRCode="Invalid QR Code";
+LibraryPresenter.boardDuplicated="Board already in your library";
+LibraryPresenter.invalidQRCode="Invalid QR Code";
+LibraryPresenter.scanError="Error: Failed to scan QR Code";
+LibraryPresenter.board="New board";
+LibraryPresenter.column.todo="To do";
+LibraryPresenter.column.progress="In progress";
+LibraryPresenter.column.done="Done";
+LibraryPresenter.boardAdded="Board added to your library";
+
+
 BoardView.share="Share";
 BoardView.delete="Delete";
 BoardInteractor.boardTitle="Edit board";

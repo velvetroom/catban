@@ -59,7 +59,6 @@
 		DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652B211DD58A00ECAD21 /* LibraryView.swift */; };
 		DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */; };
 		DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */; };
-		DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */; };
 		DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */; };
 		DA4C655E211DD58A00ECAD21 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6532211DD58A00ECAD21 /* Navigation.swift */; };
 		DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6534211DD58A00ECAD21 /* Application.swift */; };
@@ -195,7 +194,6 @@
 		DA4C652B211DD58A00ECAD21 /* LibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItem.swift; sourceTree = "<group>"; };
 		DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
-		DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryInteractor.swift; sourceTree = "<group>"; };
 		DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
 		DA4C6532211DD58A00ECAD21 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		DA4C6534211DD58A00ECAD21 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -450,12 +448,11 @@
 		DA4C6529211DD58A00ECAD21 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */,
 				DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */,
-				DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */,
-				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
+				DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */,
+				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -803,7 +800,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
 				DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */,
 				DA2FDC9C2147BFE000370A34 /* BoardStackView.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,

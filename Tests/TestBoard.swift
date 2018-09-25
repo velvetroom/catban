@@ -33,14 +33,6 @@ class TestBoard:XCTestCase {
         XCTAssertEqual("hello world", board.columns[1].cards[0].content)
     }
     
-    func testLoadLegacyBoard() {
-        guard
-            let data = try? JSONSerialization.data(withJSONObject:["text":"hello world", "syncstamp":1, "columns":[]]),
-            let board = try? JSONDecoder().decode(Board.self, from:data)
-        else { return XCTFail() }
-        XCTAssertEqual("hello world", board.name)
-    }
-    
     func testSaveNewBoard() {
         let date = Date()
         let board = Board()

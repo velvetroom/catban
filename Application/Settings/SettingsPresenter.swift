@@ -1,19 +1,21 @@
-import Foundation
 import CleanArchitecture
+import Catban
 
-class SettingsPresenter:Presenter<SettingsInteractor> {    
+class SettingsPresenter:Presenter {
+    private let library = Factory.makeLibrary()
+    
     func update(cardsFont:Int) {
-        interactor.library.cardsFont = cardsFont
+        library.cardsFont = cardsFont
     }
     
     func update(defaultColumns:Bool) {
-        interactor.library.defaultColumns = defaultColumns
+        library.defaultColumns = defaultColumns
     }
     
     override func didLoad() {
         var viewModel = SettingsViewModel()
-        viewModel.cardsFont = interactor.library.cardsFont
-        viewModel.defaultColumns = interactor.library.defaultColumns
+        viewModel.cardsFont = library.cardsFont
+        viewModel.defaultColumns = library.defaultColumns
         update(viewModel:viewModel)
     }
 }

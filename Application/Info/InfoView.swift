@@ -1,4 +1,3 @@
-import UIKit
 import CleanArchitecture
 
 class InfoView:PopupView<InfoPresenter> {

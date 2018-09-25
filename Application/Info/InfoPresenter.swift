@@ -1,8 +1,7 @@
-import Foundation
 import CleanArchitecture
 import MarkdownHero
 
-class InfoPresenter:Presenter<BoardInteractor> {
+class InfoPresenter:Presenter {
     var source = String()
     private var parser = Parser()
     

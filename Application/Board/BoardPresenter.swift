@@ -10,7 +10,6 @@ class BoardPresenter:Presenter {
     private(set) var state:BoardState = BoardStateDefault()
     private let library = Factory.makeLibrary()
     private let report = Report()
-    func save() { library.save(board:board) }
     
     func search(text:String) {
         state = BoardStateSearch(text:text)
@@ -33,14 +32,14 @@ class BoardPresenter:Presenter {
         } else {
             after.column.makeFirst(card:item.card)
         }
-        save()
+        library.save(board:board)
         item.column = after.column
     }
     
     func delete() {
         Application.navigation.dismiss(animated:false)
         let view = DeleteView(presenter:DeletePresenter())
-        view.presenter.interactor = self
+        view.presenter.board = board
         view.presenter.edit = makeDeleteBoard()
         Application.navigation.present(view, animated:true)
     }
@@ -66,7 +65,8 @@ class BoardPresenter:Presenter {
     @objc func share() {
         Application.navigation.dismiss(animated:false)
         let view = ShareView(presenter:SharePresenter())
-        view.presenter.interactor = self
+        view.presenter.boardUrl = boardUrl
+        view.presenter.board = board
         Application.navigation.present(view, animated:true)
     }
     
@@ -129,7 +129,7 @@ class BoardPresenter:Presenter {
         let view = EditView(presenter:EditPresenter())
         view.presenter.editText = text
         view.presenter.editDelete = delete
-        view.presenter.interactor = self
+        view.presenter.board = board
         view.presenter.infoSource = infoSource
         Application.navigation.pushViewController(view, animated:true)
     }

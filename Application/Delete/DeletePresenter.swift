@@ -1,13 +1,11 @@
-import Foundation
 import CleanArchitecture
 import Catban
 
-class DeletePresenter:Presenter<BoardInteractor> {
+class DeletePresenter:Presenter {
+    weak var board:Board!
     var edit:EditDelete!
-    
-    @objc func cancel() {
-        Application.navigation.dismiss(animated:true)
-    }
+    private let library = Factory.makeLibrary()
+    @objc func cancel() { Application.navigation.dismiss(animated:true) }
     
     @objc func delete() {
         edit.confirm(self)()
@@ -17,17 +15,17 @@ class DeletePresenter:Presenter<BoardInteractor> {
     }
     
     func confirmBoard() {
-        Factory.makeLibrary().delete(board:interactor.board)
+        Factory.makeLibrary().delete(board:board)
         Application.navigation.popViewController(animated:false)
     }
     
     func confirmColumn() {
-        interactor.board.delete(column:edit.column!)
-        interactor.save()
+        board.delete(column:edit.column!)
+        library.save(board:board)
     }
     
     func confirmCard() {
         edit.column!.delete(card:edit.card!)
-        interactor.save()
+        library.save(board:board)
     }
 }

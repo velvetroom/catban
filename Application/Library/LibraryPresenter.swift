@@ -4,14 +4,16 @@ import QRhero
 import StoreKit
 
 class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
+    var identifier = String()
     var strategy = updateDelegate
     let library = Factory.makeLibrary()
     private let report = Report()
     func makeStats(board:Board) -> ReportStats { return report.makeStats(board:board) }
     func qrCancelled() { Application.navigation.dismiss(animated:true) }
     func qrError(error:QRheroError) { popup(error:NSLocalizedString("LibraryPresenter.scanError", comment:String())) }
+    func selectBoard() { select(identifier:identifier) }
     @objc func settings() { Application.navigation.pushViewController(SettingsView(), animated:true) }
-    @objc func selected(cell:LibraryCellView) { self.selected(identifier:cell.viewModel.board) }
+    @objc func selected(cell:LibraryCellView) { self.select(identifier:cell.viewModel.board) }
     @objc func highlight(cell:LibraryCellView) { cell.highlight() }
     @objc func unhighlight(cell:LibraryCellView) { cell.unhighlight() }
     
@@ -51,6 +53,13 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         } else {
             DispatchQueue.global(qos:.background).async { [weak self] in self?.updateItems() }
         }
+    }
+    
+    func select(identifier:String) {
+        let view = BoardView()
+        view.presenter.identifier = identifier
+        view.presenter.board = library.boards[identifier]
+        Application.navigation.pushViewController(view, animated:true)
     }
     
     @objc func newBoard() {
@@ -99,13 +108,6 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
             popup.image = #imageLiteral(resourceName: "assetDone.pdf")
             popup.title = NSLocalizedString("LibraryPresenter.boardAdded", comment:String())
         }
-    }
-    
-    private func selected(identifier:String) {
-        let view = BoardView()
-        view.presenter.identifier = identifier
-        view.presenter.board = library.boards[identifier]
-        Application.navigation.pushViewController(view, animated:true)
     }
     
     private func showEmpty() {

@@ -62,7 +62,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         configureViewModel()
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = presenter.interactor.board.name
+        title = presenter.board.name
         reportHandler = handlerHidden
     }
     

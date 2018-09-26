@@ -2,9 +2,12 @@ import UIKit
 
 class Navigation:UINavigationController {
     func launchDefault() { setViewControllers([LibraryView()], animated:false) }
-    func quick(board:String) { library().presenter.select(identifier:board) }
-    func quickAdd() { library().presenter.newBoard() }
-    func quickScan() { library().presenter.scan() }
+    func quickAdd() { library().newBoard() }
+    func quickScan() { library().scan() }
+    
+    func quick(board:String) {
+        Application.navigation.pushViewController(library().board(identifier:board), animated:true)
+    }
     
     func launch(board:String) {
         let library = LibraryView()
@@ -48,10 +51,10 @@ class Navigation:UINavigationController {
         }
     }
     
-    private func library() -> LibraryView {
+    private func library() -> LibraryPresenter {
         dismiss(animated:false)
         let view = viewControllers.first as! LibraryView
         popToViewController(view, animated:false)
-        return view
+        return view.presenter
     }
 }

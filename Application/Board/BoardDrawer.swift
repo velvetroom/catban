@@ -6,7 +6,7 @@ class BoardDrawer {
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
     weak var view:BoardView! { didSet { parser.font = .systemFont(
-        ofSize:CGFloat(view.presenter.interactor.cardsFont), weight:.light) } }
+        ofSize:CGFloat(view.presenter.cardsFont), weight:.light) } }
     
     private weak var nextItem:BoardItemView?
     private var parser = Parser()
@@ -16,7 +16,7 @@ class BoardDrawer {
     
     func draw() {
         clearContent()
-        view.presenter.interactor.board.columns.forEach { column in
+        view.presenter.board.columns.forEach { column in
             makeHeader(column:column)
             column.cards.forEach{ card in
                 view.presenter.state.makeCard(drawer:self, column:column, card:card)

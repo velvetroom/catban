@@ -44,6 +44,12 @@ class BoardPresenter:Presenter {
         Application.navigation.present(view, animated:true)
     }
     
+    func updateProgress() {
+        let stats = report.makeStats(board:board)
+        update(viewModel:stats.progress)
+        update(viewModel:stack(stats:stats))
+    }
+    
     @objc func edit() {
         Application.navigation.dismiss(animated:false)
         var text = EditText()
@@ -57,7 +63,6 @@ class BoardPresenter:Presenter {
     @objc func info() {
         Application.navigation.dismiss(animated:false)
         let view = InfoView(presenter:InfoPresenter())
-        view.presenter.interactor = self
         view.presenter.source = "InfoBoard"
         Application.navigation.present(view, animated:true)
     }
@@ -118,11 +123,7 @@ class BoardPresenter:Presenter {
     
     override func didAppear() {
         update(viewModel:board.name)
-        DispatchQueue.global(qos:.background).async {
-            let stats = self.report.makeStats(board:self.board)
-            self.update(viewModel:stats.progress)
-            self.update(viewModel:self.stack(stats:stats))
-        }
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.updateProgress() }
     }
     
     private func edit(text:EditText, delete:EditDelete? = nil, infoSource:String? = nil) {

@@ -11,9 +11,8 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     func makeStats(board:Board) -> ReportStats { return report.makeStats(board:board) }
     func qrCancelled() { Application.navigation.dismiss(animated:true) }
     func qrError(error:QRheroError) { popup(error:NSLocalizedString("LibraryPresenter.scanError", comment:String())) }
-    func selectBoard() { select(identifier:identifier) }
+    func selectBoard() { Application.navigation.pushViewController(board(identifier:identifier), animated:true) }
     @objc func settings() { Application.navigation.pushViewController(SettingsView(), animated:true) }
-    @objc func selected(cell:LibraryCellView) { self.select(identifier:cell.viewModel.board) }
     @objc func highlight(cell:LibraryCellView) { cell.highlight() }
     @objc func unhighlight(cell:LibraryCellView) { cell.unhighlight() }
     
@@ -55,11 +54,15 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         }
     }
     
-    func select(identifier:String) {
+    func board(identifier:String) -> BoardView {
         let view = BoardView()
         view.presenter.identifier = identifier
         view.presenter.board = library.boards[identifier]
-        Application.navigation.pushViewController(view, animated:true)
+        return view
+    }
+    
+    @objc func selected(cell:LibraryCellView) {
+        Application.navigation.pushViewController(board(identifier:identifier), animated:true)
     }
     
     @objc func newBoard() {

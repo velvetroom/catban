@@ -1,4 +1,3 @@
-import UIKit
 import CleanArchitecture
 
 class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelegate {
@@ -63,7 +62,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         configureViewModel()
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = presenter.interactor.board.name
+        title = presenter.board.name
         reportHandler = handlerHidden
     }
     
@@ -125,7 +124,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
-        track.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+        track.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1)
         report.addSubview(track)
         
         let progress = UIProgressView()
@@ -199,6 +198,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             search.obscuresBackgroundDuringPresentation = false
             search.hidesNavigationBarDuringPresentation = false
             search.searchBar.delegate = self
+            search.searchBar.autocorrectionType = .yes
+            search.searchBar.spellCheckingType = .yes
+            search.searchBar.autocapitalizationType = .sentences
             navigationItem.searchController = search
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true

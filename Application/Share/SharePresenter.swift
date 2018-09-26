@@ -1,29 +1,28 @@
-import UIKit
 import CleanArchitecture
+import Catban
 import QRhero
 
-class SharePresenter:Presenter<BoardInteractor> {
+class SharePresenter:Presenter {
+    weak var board:Board!
+    var boardUrl = String()
     private let qrHero = QRhero()
-    
-    @objc func done() {
-        Application.router.dismiss(animated:true)
-    }
+    @objc func done() { Application.navigation.dismiss(animated:true) }
     
     func send(image:UIImage) {
         guard let url = prepare(image:image) else { return }
         let view = UIActivityViewController(activityItems:[url], applicationActivities:nil)
         if let popover = view.popoverPresentationController {
-            popover.sourceView = Application.router.view
+            popover.sourceView = Application.navigation.view
             popover.sourceRect = .zero
             popover.permittedArrowDirections = .any
         }
-        Application.router.dismiss(animated:true) {
-            Application.router.present(view, animated:true)
+        Application.navigation.dismiss(animated:true) {
+            Application.navigation.present(view, animated:true)
         }
     }
     
     override func didLoad() {
-        qrHero.write(content:interactor.boardUrl) { [weak self] image in
+        qrHero.write(content:boardUrl) { [weak self] image in
             self?.update(viewModel:image)
         }
     }
@@ -39,7 +38,7 @@ class SharePresenter:Presenter<BoardInteractor> {
     private func decorate(code:CGImage) -> UIImage? {
         let size = CGSize(width:CGFloat(code.width) + 90, height:CGFloat(code.height) + 170)
         UIGraphicsBeginImageContext(size)
-        NSAttributedString(string:interactor.board.name, attributes:[
+        NSAttributedString(string:board.name, attributes:[
             .font:UIFont.systemFont(ofSize:40, weight:.bold), .foregroundColor:UIColor.black]).draw(in:
                 CGRect(x:115, y:size.height - 94, width:CGFloat(code.width), height:50))
         UIGraphicsGetCurrentContext()!.translateBy(x:0, y:size.height)

@@ -3,7 +3,7 @@ import Catban
 import Firebase
 
 @UIApplicationMain class Application:UIResponder, UIApplicationDelegate {
-    static let router = Router()
+    static let navigation = Navigation()
     var window:UIWindow?
     
     func application(_:UIApplication, didFinishLaunchingWithOptions options:[UIApplication.LaunchOptionsKey:
@@ -17,15 +17,15 @@ import Firebase
     func application(_:UIApplication, performActionFor item:UIApplicationShortcutItem,
                      completionHandler:@escaping(Bool) -> Void) {
         switch item.type {
-        case "catban.addBoard": Application.router.quickAdd()
-        case "catban.loadBoard": Application.router.quickScan()
+        case "catban.addBoard": Application.navigation.quickAdd()
+        case "catban.loadBoard": Application.navigation.quickScan()
         default: break
         }
     }
     
     func application(_:UIApplication, open url:URL, options:[UIApplication.OpenURLOptionsKey:Any] = [:]) -> Bool {
         if let identifier = board(url:url) {
-            Application.router.quick(board:identifier)
+            Application.navigation.quick(board:identifier)
             return true
         }
         return false
@@ -45,18 +45,18 @@ import Firebase
         window = UIWindow(frame:UIScreen.main.bounds)
         window!.backgroundColor = .white
         window!.makeKeyAndVisible()
-        window!.rootViewController = Application.router
+        window!.rootViewController = Application.navigation
     }
     
     private func launch(options:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
         var needsLaunch = false
         if let url = options?[.url] as? URL { urlLaunch(url:url) }
         else {
-            Application.router.launchDefault()
+            Application.navigation.launchDefault()
             if let shortcut = options?[.shortcutItem] as? UIApplicationShortcutItem {
                 switch shortcut.type {
-                case "catban.addBoard": Application.router.launchAdd()
-                case "catban.loadBoard": Application.router.launchScan()
+                case "catban.addBoard": Application.navigation.launchAdd()
+                case "catban.loadBoard": Application.navigation.launchScan()
                 default: break
                 }
             } else { needsLaunch = true }
@@ -66,9 +66,9 @@ import Firebase
  
     private func urlLaunch(url:URL) {
         if let identifier = board(url:url) {
-            Application.router.launch(board:identifier)
+            Application.navigation.launch(board:identifier)
         } else {
-            Application.router.launchDefault()
+            Application.navigation.launchDefault()
         }
     }
     

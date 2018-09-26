@@ -40,14 +40,6 @@ class TestColumn:XCTestCase {
         XCTAssertTrue(subject === column.cards.first)
     }
     
-    func testLoadLegacyColumn() {
-        guard
-            let data = try? JSONSerialization.data(withJSONObject:["text":"hello world", "cards":[]]),
-            let column = try? JSONDecoder().decode(Column.self, from:data)
-        else { return XCTFail() }
-        XCTAssertEqual("hello world", column.name)
-    }
-    
     func testSaveNewColumn() {
         let column = Column()
         column.name = "hello world"

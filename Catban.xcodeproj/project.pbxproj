@@ -53,15 +53,13 @@
 		DA4C6551211DD58A00ECAD21 /* BoardDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */; };
 		DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */; };
 		DA4C6553211DD58A00ECAD21 /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */; };
-		DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */; };
 		DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */; };
 		DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */; };
 		DA4C6558211DD58A00ECAD21 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652B211DD58A00ECAD21 /* LibraryView.swift */; };
 		DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */; };
 		DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */; };
-		DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */; };
 		DA4C655C211DD58A00ECAD21 /* LibraryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */; };
-		DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6532211DD58A00ECAD21 /* Router.swift */; };
+		DA4C655E211DD58A00ECAD21 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6532211DD58A00ECAD21 /* Navigation.swift */; };
 		DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6534211DD58A00ECAD21 /* Application.swift */; };
 		DA4C6562211DD58A00ECAD21 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6536211DD58A00ECAD21 /* LoadingView.swift */; };
 		DA4C6566211DD58A00ECAD21 /* EditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */; };
@@ -72,7 +70,6 @@
 		DA4C6570211DD58A00ECAD21 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4C6548211DD58A00ECAD21 /* ShareView.swift */; };
 		DA56EADB211DDA77000A333A /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
 		DA665615213DE778007D30DF /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA665614213DE60B007D30DF /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */; };
 		DA69DCF621282AF900FE7C90 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */; };
 		DA69DCF821282B1A00FE7C90 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA69DCF721282B1A00FE7C90 /* SettingsView.swift */; };
 		DA6C362D2138194F0009583A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA6C362C2138194F0009583A /* NotificationCenter.framework */; };
@@ -189,15 +186,13 @@
 		DA4C6523211DD58A00ECAD21 /* BoardDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardDrawer.swift; sourceTree = "<group>"; };
 		DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardItemView.swift; sourceTree = "<group>"; };
 		DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
-		DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
 		DA4C6528211DD58A00ECAD21 /* BoardLayouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardLayouter.swift; sourceTree = "<group>"; };
 		DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItems.swift; sourceTree = "<group>"; };
 		DA4C652B211DD58A00ECAD21 /* LibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryItem.swift; sourceTree = "<group>"; };
 		DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryCellView.swift; sourceTree = "<group>"; };
-		DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryInteractor.swift; sourceTree = "<group>"; };
 		DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPresenter.swift; sourceTree = "<group>"; };
-		DA4C6532211DD58A00ECAD21 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DA4C6532211DD58A00ECAD21 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		DA4C6534211DD58A00ECAD21 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DA4C6536211DD58A00ECAD21 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA4C653C211DD58A00ECAD21 /* EditPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPresenter.swift; sourceTree = "<group>"; };
@@ -207,7 +202,6 @@
 		DA4C6547211DD58A00ECAD21 /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
 		DA4C6548211DD58A00ECAD21 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		DA665614213DE60B007D30DF /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		DA69DCF721282B1A00FE7C90 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA6C362C2138194F0009583A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -430,7 +424,6 @@
 		DA4C6521211DD58A00ECAD21 /* Board */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C6527211DD58A00ECAD21 /* BoardInteractor.swift */,
 				DA4C6525211DD58A00ECAD21 /* BoardPresenter.swift */,
 				DA4C6522211DD58A00ECAD21 /* BoardView.swift */,
 				DA4C6524211DD58A00ECAD21 /* BoardItemView.swift */,
@@ -450,12 +443,11 @@
 		DA4C6529211DD58A00ECAD21 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				DA4C652E211DD58A00ECAD21 /* LibraryInteractor.swift */,
 				DA4C652F211DD58A00ECAD21 /* LibraryPresenter.swift */,
-				DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */,
-				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 				DA4C652B211DD58A00ECAD21 /* LibraryView.swift */,
 				DA4C652D211DD58A00ECAD21 /* LibraryCellView.swift */,
+				DA4C652A211DD58A00ECAD21 /* LibraryItems.swift */,
+				DA4C652C211DD58A00ECAD21 /* LibraryItem.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -464,7 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4C6534211DD58A00ECAD21 /* Application.swift */,
-				DA4C6532211DD58A00ECAD21 /* Router.swift */,
+				DA4C6532211DD58A00ECAD21 /* Navigation.swift */,
 				DA4C6536211DD58A00ECAD21 /* LoadingView.swift */,
 				DA8D1296213161800019B2C2 /* Alert.swift */,
 				DA28AED621353C250030AE9E /* PopupView.swift */,
@@ -505,7 +497,6 @@
 		DA69DCF2212828AD00FE7C90 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				DA69DCF3212828E400FE7C90 /* SettingsInteractor.swift */,
 				DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */,
 				DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */,
 				DA69DCF721282B1A00FE7C90 /* SettingsView.swift */,
@@ -669,7 +660,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = DA14501D211DD1F700D1BD9E;
 			productRefGroup = DA14501D211DD1F700D1BD9E;
@@ -803,7 +793,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA4C655B211DD58A00ECAD21 /* LibraryInteractor.swift in Sources */,
 				DA4C6557211DD58A00ECAD21 /* LibraryItems.swift in Sources */,
 				DA2FDC9C2147BFE000370A34 /* BoardStackView.swift in Sources */,
 				DA4C6556211DD58A00ECAD21 /* BoardLayouter.swift in Sources */,
@@ -819,9 +808,8 @@
 				DA759E222126AB9C00E92FD9 /* InfoView.swift in Sources */,
 				DA4C6559211DD58A00ECAD21 /* LibraryItem.swift in Sources */,
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
-				DA4C6555211DD58A00ECAD21 /* BoardInteractor.swift in Sources */,
 				DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */,
-				DA4C655E211DD58A00ECAD21 /* Router.swift in Sources */,
+				DA4C655E211DD58A00ECAD21 /* Navigation.swift in Sources */,
 				DAC3670F2134316F009DD113 /* EditDelete.swift in Sources */,
 				DAC3670D21342A05009DD113 /* EditText.swift in Sources */,
 				DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */,
@@ -844,7 +832,6 @@
 				DA4C654B211DD58A00ECAD21 /* DeletePresenter.swift in Sources */,
 				DA4BE7EB2129948700A54E65 /* BoardStateDefault.swift in Sources */,
 				DA4BE7E92129945800A54E65 /* BoardState.swift in Sources */,
-				DA69DCF4212828E400FE7C90 /* SettingsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

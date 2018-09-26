@@ -1,7 +1,6 @@
-import UIKit
 import CleanArchitecture
 
-class PopupView<P:PresenterInterface>:View<P> {
+class PopupView<P:Presenter>:View<P> {
     private(set) weak var back:UIControl!
     private(set) weak var base:UIView!
     

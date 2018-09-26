@@ -1,39 +1,28 @@
 import UIKit
 
-class Router:UINavigationController {
-    func launchDefault() {
-        setViewControllers([LibraryView()], animated:false)
-    }
+class Navigation:UINavigationController {
+    func launchDefault() { setViewControllers([LibraryView()], animated:false) }
+    func quick(board:String) { pushViewController(library().board(identifier:board), animated:true) }
+    func quickAdd() { library().newBoard() }
+    func quickScan() { library().scan() }
     
     func launch(board:String) {
         let library = LibraryView()
-        library.presenter.interactor.identifier = board
-        library.presenter.interactor.strategy = LibraryInteractor.selectBoard
+        library.presenter.identifier = board
+        library.presenter.strategy = LibraryPresenter.selectBoard
         setViewControllers([library], animated:false)
     }
     
     func launchAdd() {
         let library = LibraryView()
-        library.presenter.interactor.strategy = LibraryInteractor.newBoard
+        library.presenter.strategy = LibraryPresenter.newBoard
         setViewControllers([library], animated:false)
     }
     
     func launchScan() {
         let library = LibraryView()
-        library.presenter.interactor.strategy = LibraryInteractor.scan
+        library.presenter.strategy = LibraryPresenter.scan
         setViewControllers([library], animated:false)
-    }
-    
-    func quick(board:String) {
-        library().presenter.interactor.select(identifier:board)
-    }
-    
-    func quickAdd() {
-        library().presenter.interactor.newBoard()
-    }
-    
-    func quickScan() {
-        library().presenter.interactor.scan()
     }
     
     override func viewDidLoad() {
@@ -59,10 +48,10 @@ class Router:UINavigationController {
         }
     }
     
-    private func library() -> LibraryView {
+    private func library() -> LibraryPresenter {
         dismiss(animated:false)
         let view = viewControllers.first as! LibraryView
         popToViewController(view, animated:false)
-        return view
+        return view.presenter
     }
 }

@@ -7,7 +7,7 @@ class BoardCardView:BoardItemView {
     private weak var halo:UIView!
     
     func complete() {
-        halo.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+        halo.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1)
         UIView.animate(withDuration:0.3, animations: { [weak self] in
             self?.halo.alpha = 1
         }) { _ in

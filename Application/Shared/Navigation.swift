@@ -2,12 +2,9 @@ import UIKit
 
 class Navigation:UINavigationController {
     func launchDefault() { setViewControllers([LibraryView()], animated:false) }
+    func quick(board:String) { pushViewController(library().board(identifier:board), animated:true) }
     func quickAdd() { library().newBoard() }
     func quickScan() { library().scan() }
-    
-    func quick(board:String) {
-        Application.navigation.pushViewController(library().board(identifier:board), animated:true)
-    }
     
     func launch(board:String) {
         let library = LibraryView()

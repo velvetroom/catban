@@ -27,7 +27,7 @@ class DeleteView:PopupView<DeletePresenter> {
         let delete = UIButton()
         delete.translatesAutoresizingMaskIntoConstraints = false
         delete.addTarget(presenter, action:#selector(presenter.delete), for:.touchUpInside)
-        delete.backgroundColor = #colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1)
+        delete.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1)
         delete.setTitleColor(.white, for:.normal)
         delete.setTitleColor(UIColor(white:1, alpha:0.3), for:.highlighted)
         delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:[])

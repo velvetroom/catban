@@ -9,17 +9,15 @@ LibraryPresenter.column.todo="To do";
 LibraryPresenter.column.progress="In progress";
 LibraryPresenter.column.done="Done";
 LibraryPresenter.boardAdded="Board added to your library";
-
-
 BoardView.share="Share";
 BoardView.delete="Delete";
-BoardInteractor.boardTitle="Edit board";
-BoardInteractor.newColumn="New column";
-BoardInteractor.columnTitle="Edit column";
-BoardInteractor.newCard="New card";
-BoardInteractor.deleteCard="Delete card?";
-BoardInteractor.deleteColumn="Delete column?";
-BoardInteractor.deleteBoard="Delete %@?";
+BoardPresenter.boardTitle="Edit board";
+BoardPresenter.newColumn="New column";
+BoardPresenter.columnTitle="Edit column";
+BoardPresenter.newCard="New card";
+BoardPresenter.deleteCard="Delete card?";
+BoardPresenter.deleteColumn="Delete column?";
+BoardPresenter.deleteBoard="Delete %@?";
 EditView.delete="Delete";
 DeleteView.cancel="Cancel";
 DeleteView.delete="Delete";

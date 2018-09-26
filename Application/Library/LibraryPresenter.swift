@@ -31,6 +31,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     
     func libraryCreated(board:String) {
         addTemplate(board:library.boards[board]!)
+        Application.navigation.pushViewController(self.board(identifier:board), animated:true)
         if library.boards.count > 2 { if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() } }
     }
     
@@ -62,7 +63,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     }
     
     @objc func selected(cell:LibraryCellView) {
-        Application.navigation.pushViewController(board(identifier:identifier), animated:true)
+        Application.navigation.pushViewController(board(identifier:cell.viewModel.board), animated:true)
     }
     
     @objc func newBoard() {

@@ -25,7 +25,7 @@ class BoardStackView:UIView {
                 context.setStrokeColor(#colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1).cgColor)
                 context.setLineWidth(10)
             } else {
-                context.setStrokeColor(#colorLiteral(red: 0.9229999781, green: 0.201000005, blue: 0.3190000057, alpha: 1).cgColor)
+                context.setStrokeColor(#colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1).cgColor)
                 context.setLineWidth(4)
             }
             context.addArc(center:center, radius:70, startAngle:item.0, endAngle:item.1, clockwise:false)

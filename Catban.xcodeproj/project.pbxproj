@@ -660,7 +660,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = DA14501D211DD1F700D1BD9E;
 			productRefGroup = DA14501D211DD1F700D1BD9E;

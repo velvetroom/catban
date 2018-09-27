@@ -50,8 +50,10 @@ import Firebase
     
     private func launch(options:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
         var needsLaunch = false
-        if let url = options?[.url] as? URL { urlLaunch(url:url) }
-        else {
+        if let url = options?[.url] as? URL,
+            let identifier = board(url:url) {
+            Application.navigation.launch(board:identifier)
+        } else {
             Application.navigation.launchDefault()
             if let shortcut = options?[.shortcutItem] as? UIApplicationShortcutItem {
                 switch shortcut.type {
@@ -62,14 +64,6 @@ import Firebase
             } else { needsLaunch = true }
         }
         return needsLaunch
-    }
- 
-    private func urlLaunch(url:URL) {
-        if let identifier = board(url:url) {
-            Application.navigation.launch(board:identifier)
-        } else {
-            Application.navigation.launchDefault()
-        }
     }
     
     private func board(url:URL) -> String? {

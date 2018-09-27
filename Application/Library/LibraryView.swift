@@ -61,7 +61,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         load.setTitleColor(.black, for:.normal)
         load.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         load.titleLabel!.font = .systemFont(ofSize:16, weight:.bold)
-        load.addTarget(presenter, action:#selector(presenter.loadCloud), for:.touchUpInside)
+        load.addTarget(presenter, action:#selector(presenter.manuallyLoadCloud), for:.touchUpInside)
         self.load = load
         view.addSubview(load)
         

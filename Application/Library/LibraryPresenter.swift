@@ -75,12 +75,10 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         Application.navigation.present(view, animated:true)
     }
     
-    @objc func loadCloud() {
+    @objc func manuallyLoadCloud() {
         update(viewModel:LibraryItems())
-        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
-            try? library.merge(boards:boards)
-        } else {
-            willAppear()
+        DispatchQueue.global(qos:.background).asyncAfter(deadline:.now() + 10) { [weak self] in    
+            self?.loadCloud()
         }
     }
     
@@ -102,6 +100,14 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
             board.addColumn(text:NSLocalizedString("LibraryPresenter.column.done", comment:String()))
         }
         library.save(board:board)
+    }
+    
+    private func loadCloud() {
+        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
+            try? library.merge(boards:boards)
+        } else {
+            willAppear()
+        }
     }
     
     private func popup(error:String) {

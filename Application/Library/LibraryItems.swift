@@ -5,4 +5,5 @@ struct LibraryItems {
     var message = NSAttributedString()
     var loadingHidden = false
     var actionsEnabled = false
+    var loadHidden = true
 }

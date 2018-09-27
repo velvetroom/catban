@@ -18,11 +18,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     @objc func unhighlight(cell:LibraryCellView) { cell.unhighlight() }
     
     func librarySessionLoaded() {
-        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
-            try? library.merge(boards:boards)
-        } else {
-            willAppear()
-        }
+        loadCloud()
     }
     
     func libraryBoardsUpdated() {
@@ -79,6 +75,15 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         Application.navigation.present(view, animated:true)
     }
     
+    @objc func loadCloud() {
+        update(viewModel:LibraryItems())
+        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
+            try? library.merge(boards:boards)
+        } else {
+            willAppear()
+        }
+    }
+    
     override func willAppear() {
         update(viewModel:LibraryItems())
         library.delegate = self
@@ -120,6 +125,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         viewModel.message = Parser().parse(string:NSLocalizedString("LibraryPresenter.empty", comment:String()))
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
+        viewModel.loadHidden = false
         update(viewModel:viewModel)
     }
     

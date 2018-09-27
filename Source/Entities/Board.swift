@@ -17,7 +17,7 @@ final public class Board:Codable {
     
     public func moveRight(card:Card) {
         for index in 0 ..< columns.count - 1 {
-            if let _ = columns[index].cards.first(where: { item -> Bool in item === card }) {
+            if columns[index].cards.contains(where: { item in item === card } ) {
                 columns[index].delete(card:card)
                 columns[index + 1].makeFirst(card:card)
                 break

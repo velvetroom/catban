@@ -144,9 +144,8 @@ class BoardPresenter:Presenter {
     
     private func stack(stats:ReportStats) -> [(CGFloat, CGFloat)] {
         var previous = (-CGFloat.pi / 2) + 0.075
-        var progress = [(CGFloat, CGFloat)]()
         let max = (CGFloat.pi * 2) + (previous - 0.15)
-        stats.columns.reversed().forEach{ stat in
+        return stats.columns.reversed().reduce(into:[(CGFloat, CGFloat)]()) { progress, stat in
             let percent = CGFloat(stat) / CGFloat(stats.cards)
             if percent == 1 {
                 progress.append((0.0001, 0))
@@ -160,6 +159,5 @@ class BoardPresenter:Presenter {
                 previous = min(previous, max)
             }
         }
-        return progress
     }
 }

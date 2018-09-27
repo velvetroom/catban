@@ -145,16 +145,12 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     }
     
     private var items:[LibraryItem] {
-        var items = [LibraryItem]()
-        library.boards.forEach { key, board in
+        return library.boards.map { key, board in
             var item = LibraryItem()
             item.board = key
             item.name = board.name
             item.progress = makeStats(board:board).progress
-            items.append(item)
-        }
-        return items.sorted { left, right -> Bool in
-            return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
-        }
+            return item
+        }.sorted { left, right in left.name.caseInsensitiveCompare(right.name) == .orderedAscending }
     }
 }

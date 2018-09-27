@@ -18,12 +18,8 @@ public class Report {
     }
     
     private func progress(board:Board, stats:ReportStats) {
-        var counter:Float = 0
-        board.columns.forEach { column in
-            counter += Float(column.cards.count)
-        }
-        if counter > 0,
-           let lastColumn = board.columns.last {
+        let counter = board.columns.reduce(into:0) { counter, column in counter += Float(column.cards.count) }
+        if counter > 0, let lastColumn = board.columns.last {
             stats.progress = Float(lastColumn.cards.count) / counter
         }
     }

@@ -2,6 +2,7 @@ import CleanArchitecture
 import Catban
 import QRhero
 import StoreKit
+import MarkdownHero
 
 class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     var identifier = String()
@@ -116,7 +117,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     
     private func showEmpty() {
         var viewModel = LibraryItems()
-        viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
+        viewModel.message = Parser().parse(string:NSLocalizedString("LibraryPresenter.empty", comment:String()))
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         update(viewModel:viewModel)

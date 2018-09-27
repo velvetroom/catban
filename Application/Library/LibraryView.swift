@@ -93,7 +93,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
             self?.add.isEnabled = viewModel.actionsEnabled
             self?.scan.isEnabled = viewModel.actionsEnabled
             self?.settings.isEnabled = viewModel.actionsEnabled
-            self?.message.text = viewModel.message
+            self?.message.attributedText = viewModel.message
             self?.update(items:viewModel.items)
         }
     }

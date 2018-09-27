@@ -8,11 +8,7 @@ public class Report {
     }
     
     public func makeStats(board:Board) -> ReportStats {
-        let stats = ReportStats()
-        visitors.forEach { visitor in
-            visitor(board, stats)
-        }
-        return stats
+        return visitors.reduce(into:ReportStats()) { stats, visitor in visitor(board, stats) }
     }
     
     private func columns(board:Board, stats:ReportStats) {

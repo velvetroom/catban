@@ -127,7 +127,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         let columnsSwitch = UISwitch()
         columnsSwitch.translatesAutoresizingMaskIntoConstraints = false
-        columnsSwitch.onTintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
+        columnsSwitch.onTintColor = .catBlue
         columnsSwitch.addTarget(self, action:#selector(updateColumns), for:.valueChanged)
         columns.addSubview(columnsSwitch)
         self.columnsSwitch = columnsSwitch
@@ -140,7 +140,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         font.addSubview(labelFont)
         
         let fontSlider = UISlider()
-        fontSlider.tintColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
+        fontSlider.tintColor = .catBlue
         fontSlider.translatesAutoresizingMaskIntoConstraints = false
         fontSlider.minimumValue = 8
         fontSlider.maximumValue = 30

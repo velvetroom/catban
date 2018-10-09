@@ -88,7 +88,9 @@
 		DA8D12942131579E0019B2C2 /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12922131579D0019B2C2 /* InfoBoard.md */; };
 		DA8D12952131579E0019B2C2 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA8D12932131579E0019B2C2 /* InfoCard.md */; };
 		DA8D1297213161800019B2C2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D1296213161800019B2C2 /* Alert.swift */; };
+		DAAAF64D216C8E430092E05E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAF2E5B216C8CA900D7B506 /* UIColor.swift */; };
 		DAAF2E5A216C8B3200D7B506 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAF2E59216C8B3200D7B506 /* String.swift */; };
+		DAAF2E5C216C8CA900D7B506 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAF2E5B216C8CA900D7B506 /* UIColor.swift */; };
 		DABD57CB211ED98900C72A7F /* TestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CA211ED98900C72A7F /* TestColumn.swift */; };
 		DABD57CD211EDA8700C72A7F /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CC211EDA8700C72A7F /* TestBoard.swift */; };
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
@@ -223,6 +225,7 @@
 		DA8D12932131579E0019B2C2 /* InfoCard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoCard.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
 		DA8D1296213161800019B2C2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		DAAF2E59216C8B3200D7B506 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		DAAF2E5B216C8CA900D7B506 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DABD57CA211ED98900C72A7F /* TestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColumn.swift; sourceTree = "<group>"; };
 		DABD57CC211EDA8700C72A7F /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
@@ -464,6 +467,7 @@
 				DA28AED621353C250030AE9E /* PopupView.swift */,
 				DA41BB76213DE1170074AD29 /* ProgressView.swift */,
 				DAAF2E59216C8B3200D7B506 /* String.swift */,
+				DAAF2E5B216C8CA900D7B506 /* UIColor.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -825,6 +829,7 @@
 				DA759E202126AB8B00E92FD9 /* InfoPresenter.swift in Sources */,
 				DA8D1297213161800019B2C2 /* Alert.swift in Sources */,
 				DA741D93213924C6002555E4 /* Today.swift in Sources */,
+				DAAF2E5C216C8CA900D7B506 /* UIColor.swift in Sources */,
 				DA3E97FB212AACB400240F8E /* SettingsViewModel.swift in Sources */,
 				DA2FB7D221203BDF001C758E /* BoardButtonView.swift in Sources */,
 				DA28AED721353C250030AE9E /* PopupView.swift in Sources */,
@@ -844,6 +849,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA741D9521392945002555E4 /* LibraryItem.swift in Sources */,
+				DAAAF64D216C8E430092E05E /* UIColor.swift in Sources */,
 				DA6C3641213824C50009583A /* TodayCellView.swift in Sources */,
 				DA2FDC9D2147C0A800370A34 /* ProgressView.swift in Sources */,
 				DA6C363F21381AF80009583A /* TodayView.swift in Sources */,

@@ -32,7 +32,7 @@ class ShareView:PopupView<SharePresenter> {
         let send = UIButton()
         send.translatesAutoresizingMaskIntoConstraints = false
         send.addTarget(self, action:#selector(sendImage), for:.touchUpInside)
-        send.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        send.backgroundColor = .catBlue
         send.setTitleColor(.white, for:.normal)
         send.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
         send.setTitle(.local("ShareView.send"), for:[])

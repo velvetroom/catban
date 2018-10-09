@@ -5,11 +5,11 @@ import MarkdownHero
 class BoardDrawer {
     weak var firstColumn:BoardItemView?
     weak var nextColumn:BoardItemView?
-    weak var view:BoardView! { didSet { parser.font = .systemFont(
+    weak var view:BoardView! { didSet { hero.font = .systemFont(
         ofSize:CGFloat(view.presenter.cardsFont), weight:.light) } }
     
     private weak var nextItem:BoardItemView?
-    private var parser = Parser()
+    private let hero = Hero()
     private let options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
     private let size = CGSize(width:BoardDrawer.columnWidth, height:10000)
     private static let columnWidth:CGFloat = 190
@@ -27,7 +27,7 @@ class BoardDrawer {
     }
     
     func makeCard(column:Column, card:Card) {
-        let text = parser.parse(string:card.content)
+        let text = hero.parse(string:card.content)
         let textHeight = ceil(text.boundingRect(with:size, options:options, context:nil).size.height)
         let item = BoardCardView()
         item.column = column

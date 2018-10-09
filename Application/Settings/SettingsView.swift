@@ -8,7 +8,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private weak var columnsSwitch:UISwitch!
     private weak var fontSlider:UISlider!
     private weak var displayFont:UILabel!
-    private let parser = Parser()
+    private let hero = Hero()
     private let url = "itunes.apple.com/\(Locale.current.regionCode!.lowercased())/app/catban/id1363004864"
     
     override func viewDidLoad() {
@@ -156,10 +156,10 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         font.addSubview(displayFont)
         self.displayFont = displayFont
 
-        parser.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { result in
+        hero.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { result in
             labelColumns.attributedText = result
         }
-        parser.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { result in
+        hero.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { result in
             labelFont.attributedText = result
         }
         

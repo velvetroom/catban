@@ -5,7 +5,7 @@ import QRhero
 class SharePresenter:Presenter {
     weak var board:Board!
     var boardUrl = String()
-    private let qrHero = QRhero()
+    private let hero = Hero()
     @objc func done() { Application.navigation.dismiss(animated:true) }
     
     func send(image:UIImage) {
@@ -22,7 +22,7 @@ class SharePresenter:Presenter {
     }
     
     override func didLoad() {
-        qrHero.write(content:boardUrl) { [weak self] image in
+        hero.write(content:boardUrl) { [weak self] image in
             self?.update(viewModel:image)
         }
     }

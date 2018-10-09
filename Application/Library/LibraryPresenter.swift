@@ -8,10 +8,11 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     var identifier = String()
     var strategy = updateDelegate
     let library = Factory.makeLibrary()
+    private let hero = MarkdownHero.Hero()
     private let report = Report()
     func makeStats(board:Board) -> ReportStats { return report.makeStats(board:board) }
     func qrCancelled() { Application.navigation.dismiss(animated:true) }
-    func qrError(error:QRheroError) { popup(error:NSLocalizedString("LibraryPresenter.scanError", comment:String())) }
+    func qrError(error:HeroError) { popup(error:NSLocalizedString("LibraryPresenter.scanError", comment:String())) }
     func selectBoard() { Application.navigation.pushViewController(board(identifier:identifier), animated:true) }
     @objc func settings() { Application.navigation.pushViewController(SettingsView(), animated:true) }
     @objc func highlight(cell:LibraryCellView) { cell.highlight() }
@@ -128,7 +129,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     
     private func showEmpty() {
         var viewModel = LibraryItems()
-        viewModel.message = Parser().parse(string:NSLocalizedString("LibraryPresenter.empty", comment:String()))
+        viewModel.message = hero.parse(string:NSLocalizedString("LibraryPresenter.empty", comment:String()))
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         viewModel.loadHidden = false

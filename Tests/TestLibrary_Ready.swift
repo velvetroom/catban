@@ -44,6 +44,7 @@ class TestLibrary_Ready:XCTestCase {
         (library.database as! MockDatabase).onCreate = { expectCreate.fulfill() }
         (library.cache as! MockCache).onSaveSession = { expectSaveSession.fulfill() }
         delegate.onCreated = {
+            XCTAssertEqual(1, self.library.session.counter)
             XCTAssertFalse(self.library.session.boards.isEmpty)
             XCTAssertFalse(self.library.boards.isEmpty)
             XCTAssertEqual(Thread.main, Thread.current)

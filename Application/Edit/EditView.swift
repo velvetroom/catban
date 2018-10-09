@@ -31,7 +31,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .clear
         text.textColor = .black
-        text.tintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        text.tintColor = .catBlue
         text.alwaysBounceVertical = true
         text.showsHorizontalScrollIndicator = false
         text.returnKeyType = .default

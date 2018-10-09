@@ -18,7 +18,7 @@ class BoardHeaderView:BoardItemView {
     }
     
     override func showSelected() {
-        label.textColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        label.textColor = .catBlue
     }
     
     override func showDefault() {

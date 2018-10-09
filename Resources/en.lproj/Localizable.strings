@@ -1,6 +1,7 @@
 LibraryView.title="Boards";
+LibraryView.load="Load";
 LibraryPresenter.qrView="QR Codes";
-LibraryPresenter.empty="Create a new board or load one from a QR Code.";
+LibraryPresenter.empty="## Library empty\n\n_Next steps_\n- Create a new board\n- Scan a QR code with a Board shared\n\n\nIf you have Boards in another device but they are not showing here you can try to load them again.";
 LibraryPresenter.boardDuplicated="Board already in your library";
 LibraryPresenter.invalidQRCode="Invalid QR Code";
 LibraryPresenter.scanError="Error: Failed to scan QR Code";

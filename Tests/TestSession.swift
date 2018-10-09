@@ -27,7 +27,7 @@ class TestSession:XCTestCase {
             let data = try? JSONEncoder().encode(session),
             let newSession = try? JSONDecoder().decode(Session.self, from:data)
         else { return XCTFail() }
-        XCTAssertEqual(newSession.cardsFont, session.cardsFont)
+        XCTAssertEqual(session.cardsFont, newSession.cardsFont)
     }
     
     func testCodingNoPreviousCardsFont() {
@@ -36,7 +36,7 @@ class TestSession:XCTestCase {
             let session = try? JSONDecoder().decode(Session.self, from:data)
         else { return XCTFail() }
         XCTAssertEqual(0, session.boards.count)
-        XCTAssertEqual(session.cardsFont, Session.cardsFont)
+        XCTAssertEqual(Session.cardsFont, session.cardsFont)
     }
     
     func testCodingDefaultColumns() {
@@ -46,7 +46,7 @@ class TestSession:XCTestCase {
             let data = try? JSONEncoder().encode(session),
             let newSession = try? JSONDecoder().decode(Session.self, from:data)
         else { return XCTFail() }
-        XCTAssertEqual(newSession.defaultColumns, session.defaultColumns)
+        XCTAssertEqual(session.defaultColumns, newSession.defaultColumns)
     }
     
     func testNewSessionHasDefaultCardsFont() {
@@ -55,5 +55,41 @@ class TestSession:XCTestCase {
     
     func testNewSessionHasDefaultColumns() {
         XCTAssertTrue(Session().defaultColumns)
+    }
+    
+    func testCodingCounter() {
+        let session = Session()
+        session.counter = 99
+        guard
+            let data = try? JSONEncoder().encode(session),
+            let newSession = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
+        XCTAssertEqual(99, newSession.counter)
+    }
+    
+    func testCodingNoPreviousCounter() {
+        guard
+            let data = try? JSONEncoder().encode(["boards":[]] as! [String:[String]]),
+            let session = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
+        XCTAssertEqual(0, session.counter)
+    }
+    
+    func testCodingRates() {
+        let session = Session()
+        session.rates = [Date(), Date()]
+        guard
+            let data = try? JSONEncoder().encode(session),
+            let newSession = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
+        XCTAssertEqual(2, newSession.rates.count)
+    }
+    
+    func testCodingNoPreviousRates() {
+        guard
+            let data = try? JSONEncoder().encode(["boards":[]] as! [String:[String]]),
+            let session = try? JSONDecoder().decode(Session.self, from:data)
+        else { return XCTFail() }
+        XCTAssertTrue(session.rates.isEmpty)
     }
 }

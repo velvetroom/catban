@@ -54,6 +54,7 @@ class LibraryReady:LibraryState {
         let board = Board()
         let identifier = context.database.create(board:board)
         context.session.boards[identifier] = board
+        context.session.counter += 1
         context.saveSession()
         DispatchQueue.main.async { context.delegate?.libraryCreated(board:identifier) }
     }

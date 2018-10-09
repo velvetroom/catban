@@ -7,14 +7,14 @@ class BoardCardView:BoardItemView {
     private weak var halo:UIView!
     
     func complete() {
-        halo.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1)
+        halo.backgroundColor = .catRed
         UIView.animate(withDuration:0.3, animations: { [weak self] in
             self?.halo.alpha = 1
         }) { _ in
             UIView.animate(withDuration:1, animations: { [weak self] in
                 self?.halo.alpha = 0
             }) { [weak self] _ in
-                self?.halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+                self?.halo.backgroundColor = .catBlue
             }
         }
     }
@@ -23,7 +23,7 @@ class BoardCardView:BoardItemView {
         let halo = UIView()
         halo.isUserInteractionEnabled = false
         halo.translatesAutoresizingMaskIntoConstraints = false
-        halo.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        halo.backgroundColor = .catBlue
         halo.layer.cornerRadius = 6
         halo.alpha = 0
         addSubview(halo)

@@ -2,7 +2,8 @@ import Foundation
 
 struct LibraryItems {
     var items = [LibraryItem]()
-    var message = String()
+    var message = NSAttributedString()
     var loadingHidden = false
     var actionsEnabled = false
+    var loadHidden = true
 }

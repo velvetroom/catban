@@ -67,9 +67,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     override var previewActionItems:[UIPreviewActionItem] { return [
-        UIPreviewAction(title:NSLocalizedString("BoardView.share", comment:String()), style:.default)
+        UIPreviewAction(title:.local("BoardView.share"), style:.default)
         { [weak self] _, _ in self?.presenter.share() },
-        UIPreviewAction(title:NSLocalizedString("BoardView.delete", comment:String()), style:.destructive)
+        UIPreviewAction(title:.local("BoardView.delete"), style:.destructive)
         { [weak self] _, _ in self?.presenter.delete() }]
     }
     
@@ -124,13 +124,13 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
-        track.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1)
+        track.backgroundColor = .catRed
         report.addSubview(track)
         
         let progress = UIProgressView()
         progress.translatesAutoresizingMaskIntoConstraints = false
         progress.isUserInteractionEnabled = false
-        progress.progressTintColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        progress.progressTintColor = .catBlue
         progress.layer.cornerRadius = 3
         progress.clipsToBounds = true
         progress.trackImage = UIImage()
@@ -151,7 +151,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         percent.textAlignment = .right
         percent.isUserInteractionEnabled = false
         percent.font = .systemFont(ofSize:18, weight:.bold)
-        percent.textColor = #colorLiteral(red: 0.2349999994, green: 0.7220000029, blue: 1, alpha: 1)
+        percent.textColor = .catBlue
         report.addSubview(percent)
         self.percent = percent
         

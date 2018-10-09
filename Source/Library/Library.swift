@@ -64,6 +64,22 @@ public class Library {
         try state.merge(context:self, boards:boards)
     }
     
+    public func rate() -> Bool {
+        var rating = false
+        if session.counter > 1 {
+            if let last = session.rates.last,
+                let months = Calendar.current.dateComponents([.month], from:last, to:Date()).month {
+                rating = months < -2
+            } else {
+                rating = true
+            }
+        }
+        if rating {
+            session.rates.append(Date())
+        }
+        return rating
+    }
+    
     func saveSession() {
         cache.save(session:session)
     }
@@ -73,6 +89,6 @@ public class Library {
     }
     
     private func identifier(board:Board) -> String? {
-        return boards.first(where: { _, value -> Bool in return board === value } )?.key
+        return boards.first { _, value in board === value }?.key
     }
 }

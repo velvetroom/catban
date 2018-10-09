@@ -25,17 +25,17 @@ class ShareView:PopupView<SharePresenter> {
         done.addTarget(presenter, action:#selector(presenter.done), for:.touchUpInside)
         done.setTitleColor(UIColor(white:0, alpha:0.4), for:.normal)
         done.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
-        done.setTitle(NSLocalizedString("ShareView.done", comment:String()), for:[])
+        done.setTitle(.local("ShareView.done"), for:[])
         done.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(done)
         
         let send = UIButton()
         send.translatesAutoresizingMaskIntoConstraints = false
         send.addTarget(self, action:#selector(sendImage), for:.touchUpInside)
-        send.backgroundColor = #colorLiteral(red: 0.2380000055, green: 0.7220000029, blue: 1, alpha: 1)
+        send.backgroundColor = .catBlue
         send.setTitleColor(.white, for:.normal)
         send.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
-        send.setTitle(NSLocalizedString("ShareView.send", comment:String()), for:[])
+        send.setTitle(.local("ShareView.send"), for:[])
         send.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         send.layer.cornerRadius = 6
         base.addSubview(send)

@@ -2,26 +2,24 @@ import CleanArchitecture
 import Catban
 import QRhero
 import StoreKit
+import MarkdownHero
 
 class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     var identifier = String()
     var strategy = updateDelegate
     let library = Factory.makeLibrary()
+    private let hero = MarkdownHero.Hero()
     private let report = Report()
     func makeStats(board:Board) -> ReportStats { return report.makeStats(board:board) }
     func qrCancelled() { Application.navigation.dismiss(animated:true) }
-    func qrError(error:QRheroError) { popup(error:NSLocalizedString("LibraryPresenter.scanError", comment:String())) }
+    func qrError(error:HeroError) { popup(error:.local("LibraryPresenter.scanError")) }
     func selectBoard() { Application.navigation.pushViewController(board(identifier:identifier), animated:true) }
     @objc func settings() { Application.navigation.pushViewController(SettingsView(), animated:true) }
     @objc func highlight(cell:LibraryCellView) { cell.highlight() }
     @objc func unhighlight(cell:LibraryCellView) { cell.unhighlight() }
     
     func librarySessionLoaded() {
-        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
-            try? library.merge(boards:boards)
-        } else {
-            willAppear()
-        }
+        loadCloud()
     }
     
     func libraryBoardsUpdated() {
@@ -32,7 +30,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     func libraryCreated(board:String) {
         addTemplate(board:library.boards[board]!)
         Application.navigation.pushViewController(self.board(identifier:board), animated:true)
-        if library.boards.count > 2 { if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() } }
+        if library.rate() { if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() } }
     }
     
     func qrRead(content:String) {
@@ -40,9 +38,9 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
             try library.addBoard(url:content)
             DispatchQueue.main.async { [weak self] in self?.popupSuccess()  }
         } catch CatbanError.boardAlreadyLoaded {
-            popup(error:NSLocalizedString("LibraryPresenter.boardDuplicated", comment:String()))
+            popup(error:.local("LibraryPresenter.boardDuplicated"))
         } catch CatbanError.invalidBoardUrl {
-            popup(error:NSLocalizedString("LibraryPresenter.invalidQRCode", comment:String()))
+            popup(error:.local("LibraryPresenter.invalidQRCode"))
         } catch { }
     }
     
@@ -74,8 +72,15 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     @objc func scan() {
         let view = QRView()
         view.delegate = self
-        view.title = NSLocalizedString("LibraryPresenter.qrView", comment:String())
+        view.title = .local("LibraryPresenter.qrView")
         Application.navigation.present(view, animated:true)
+    }
+    
+    @objc func manuallyLoadCloud() {
+        update(viewModel:LibraryItems())
+        DispatchQueue.global(qos:.background).asyncAfter(deadline:.now() + 10) { [weak self] in    
+            self?.loadCloud()
+        }
     }
     
     override func willAppear() {
@@ -89,13 +94,21 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     }
     
     private func addTemplate(board:Board) {
-        board.name = NSLocalizedString("LibraryPresenter.board", comment:String())
+        board.name = .local("LibraryPresenter.board")
         if library.defaultColumns {
-            board.addColumn(text:NSLocalizedString("LibraryPresenter.column.todo", comment:String()))
-            board.addColumn(text:NSLocalizedString("LibraryPresenter.column.progress", comment:String()))
-            board.addColumn(text:NSLocalizedString("LibraryPresenter.column.done", comment:String()))
+            board.addColumn(text:.local("LibraryPresenter.column.todo"))
+            board.addColumn(text:.local("LibraryPresenter.column.progress"))
+            board.addColumn(text:.local("LibraryPresenter.column.done"))
         }
         library.save(board:board)
+    }
+    
+    private func loadCloud() {
+        if let boards = NSUbiquitousKeyValueStore.default.array(forKey:"iturbide.catban.boards") as? [String] {
+            try? library.merge(boards:boards)
+        } else {
+            willAppear()
+        }
     }
     
     private func popup(error:String) {
@@ -110,15 +123,16 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         Application.navigation.dismiss(animated:true) {
             let popup = Alert()
             popup.image = #imageLiteral(resourceName: "assetDone.pdf")
-            popup.title = NSLocalizedString("LibraryPresenter.boardAdded", comment:String())
+            popup.title = .local("LibraryPresenter.boardAdded")
         }
     }
     
     private func showEmpty() {
         var viewModel = LibraryItems()
-        viewModel.message = NSLocalizedString("LibraryPresenter.empty", comment:String())
+        viewModel.message = hero.parse(string:.local("LibraryPresenter.empty"))
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
+        viewModel.loadHidden = false
         update(viewModel:viewModel)
     }
     
@@ -132,16 +146,12 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     }
     
     private var items:[LibraryItem] {
-        var items = [LibraryItem]()
-        library.boards.forEach { key, board in
+        return library.boards.map { key, board in
             var item = LibraryItem()
             item.board = key
             item.name = board.name
             item.progress = makeStats(board:board).progress
-            items.append(item)
-        }
-        return items.sorted { left, right -> Bool in
-            return left.name.caseInsensitiveCompare(right.name) == .orderedAscending
-        }
+            return item
+        }.sorted { left, right in left.name.caseInsensitiveCompare(right.name) == .orderedAscending }
     }
 }

@@ -53,7 +53,7 @@ class BoardPresenter:Presenter {
     @objc func edit() {
         Application.navigation.dismiss(animated:false)
         var text = EditText()
-        text.title = NSLocalizedString("BoardPresenter.boardTitle", comment:String())
+        text.title = .local("BoardPresenter.boardTitle")
         text.text = board.name
         text.board = board
         text.save = EditPresenter.saveBoardRename
@@ -78,7 +78,7 @@ class BoardPresenter:Presenter {
     @objc func newColumn() {
         Application.navigation.dismiss(animated:false)
         var text = EditText()
-        text.title = NSLocalizedString("BoardPresenter.newColumn", comment:String())
+        text.title = .local("BoardPresenter.newColumn")
         text.save = EditPresenter.saveNewColumn
         edit(text:text)
     }
@@ -86,12 +86,12 @@ class BoardPresenter:Presenter {
     @objc func editColumn(view:BoardItemView) {
         Application.navigation.dismiss(animated:false)
         var text = EditText()
-        text.title = NSLocalizedString("BoardPresenter.columnTitle", comment:String())
+        text.title = .local("BoardPresenter.columnTitle")
         text.text = view.column.name
         text.column = view.column
         text.save = EditPresenter.saveColumnRename
         var delete = EditDelete()
-        delete.title = NSLocalizedString("BoardPresenter.deleteColumn", comment:String())
+        delete.title = .local("BoardPresenter.deleteColumn")
         delete.column = view.column
         delete.confirm = DeletePresenter.confirmColumn
         edit(text:text, delete:delete)
@@ -100,7 +100,7 @@ class BoardPresenter:Presenter {
     @objc func newCard(view:BoardItemView) {
         Application.navigation.dismiss(animated:false)
         var text = EditText()
-        text.title = NSLocalizedString("BoardPresenter.newCard", comment:String())
+        text.title = .local("BoardPresenter.newCard")
         text.column = view.column
         text.save = EditPresenter.saveNewCard
         edit(text:text, infoSource:"InfoCard")
@@ -114,7 +114,7 @@ class BoardPresenter:Presenter {
         text.card = view.card
         text.save = EditPresenter.saveCardChange
         var delete = EditDelete()
-        delete.title = NSLocalizedString("BoardPresenter.deleteCard", comment:String())
+        delete.title = .local("BoardPresenter.deleteCard")
         delete.column = view.column
         delete.card = view.card
         delete.confirm = DeletePresenter.confirmCard
@@ -137,7 +137,7 @@ class BoardPresenter:Presenter {
     
     private func makeDeleteBoard() -> EditDelete {
         var delete = EditDelete()
-        delete.title = String(format:NSLocalizedString("BoardPresenter.deleteBoard", comment:String()), board.name)
+        delete.title = String(format:.local("BoardPresenter.deleteBoard"), board.name)
         delete.confirm = DeletePresenter.confirmBoard
         return delete
     }

@@ -16,7 +16,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         configureViewModel()
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = NSLocalizedString("SettingsView.title", comment:String())
+        title = .local("SettingsView.title")
     }
     
     override func viewWillAppear(_ animated:Bool) {
@@ -74,14 +74,14 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         labelAbout.textColor = .black
         labelAbout.textAlignment = .center
         labelAbout.numberOfLines = 0
-        labelAbout.text = String(format:NSLocalizedString("SettingsView.labelAbout", comment:String()),
+        labelAbout.text = String(format:.local("SettingsView.labelAbout"),
             "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
         labelAbout.font = .systemFont(ofSize:12, weight:.ultraLight)
         about.addSubview(labelAbout)
         
         let contact = UIButton()
         contact.translatesAutoresizingMaskIntoConstraints = false
-        contact.setTitle(NSLocalizedString("SettingsView.contact", comment:String()), for:[])
+        contact.setTitle(.local("SettingsView.contact"), for:[])
         contact.setTitleColor(.black, for:.normal)
         contact.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         contact.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
@@ -90,7 +90,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         let share = UIButton()
         share.translatesAutoresizingMaskIntoConstraints = false
-        share.setTitle(NSLocalizedString("SettingsView.share", comment:String()), for:[])
+        share.setTitle(.local("SettingsView.share"), for:[])
         share.setTitleColor(.black, for:.normal)
         share.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         share.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
@@ -99,7 +99,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         let review = UIButton()
         review.translatesAutoresizingMaskIntoConstraints = false
-        review.setTitle(NSLocalizedString("SettingsView.review", comment:String()), for:[])
+        review.setTitle(.local("SettingsView.review"), for:[])
         review.setTitleColor(.black, for:.normal)
         review.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         review.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
@@ -156,10 +156,10 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         font.addSubview(displayFont)
         self.displayFont = displayFont
 
-        hero.parse(string:NSLocalizedString("SettingsView.labelColumns", comment:String())) { result in
+        hero.parse(string:.local("SettingsView.labelColumns")) { result in
             labelColumns.attributedText = result
         }
-        hero.parse(string:NSLocalizedString("SettingsView.labelFont", comment:String())) { result in
+        hero.parse(string:.local("SettingsView.labelFont")) { result in
             labelFont.attributedText = result
         }
         
@@ -269,12 +269,12 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["catban@iturbi.de"])
-            mail.setSubject(NSLocalizedString("SettingsView.sendEmailSubject", comment:String()))
-            mail.setMessageBody(NSLocalizedString("SettingsView.sendEmailBody", comment:String()), isHTML:false)
+            mail.setSubject(.local("SettingsView.sendEmailSubject"))
+            mail.setMessageBody(.local("SettingsView.sendEmailBody"), isHTML:false)
             Application.navigation.present(mail, animated:true)
         } else {
             let alert = Alert()
-            alert.title = NSLocalizedString("SettingsView.sendEmailFailed", comment:String())
+            alert.title = .local("SettingsView.sendEmailFailed")
             alert.image = #imageLiteral(resourceName: "assetError.pdf")
         }
     }

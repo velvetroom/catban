@@ -12,7 +12,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     private let report = Report()
     func makeStats(board:Board) -> ReportStats { return report.makeStats(board:board) }
     func qrCancelled() { Application.navigation.dismiss(animated:true) }
-    func qrError(error:HeroError) { popup(error:NSLocalizedString("LibraryPresenter.scanError", comment:String())) }
+    func qrError(error:HeroError) { popup(error:.local("LibraryPresenter.scanError")) }
     func selectBoard() { Application.navigation.pushViewController(board(identifier:identifier), animated:true) }
     @objc func settings() { Application.navigation.pushViewController(SettingsView(), animated:true) }
     @objc func highlight(cell:LibraryCellView) { cell.highlight() }
@@ -38,9 +38,9 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
             try library.addBoard(url:content)
             DispatchQueue.main.async { [weak self] in self?.popupSuccess()  }
         } catch CatbanError.boardAlreadyLoaded {
-            popup(error:NSLocalizedString("LibraryPresenter.boardDuplicated", comment:String()))
+            popup(error:.local("LibraryPresenter.boardDuplicated"))
         } catch CatbanError.invalidBoardUrl {
-            popup(error:NSLocalizedString("LibraryPresenter.invalidQRCode", comment:String()))
+            popup(error:.local("LibraryPresenter.invalidQRCode"))
         } catch { }
     }
     
@@ -72,7 +72,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     @objc func scan() {
         let view = QRView()
         view.delegate = self
-        view.title = NSLocalizedString("LibraryPresenter.qrView", comment:String())
+        view.title = .local("LibraryPresenter.qrView")
         Application.navigation.present(view, animated:true)
     }
     
@@ -94,11 +94,11 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     }
     
     private func addTemplate(board:Board) {
-        board.name = NSLocalizedString("LibraryPresenter.board", comment:String())
+        board.name = .local("LibraryPresenter.board")
         if library.defaultColumns {
-            board.addColumn(text:NSLocalizedString("LibraryPresenter.column.todo", comment:String()))
-            board.addColumn(text:NSLocalizedString("LibraryPresenter.column.progress", comment:String()))
-            board.addColumn(text:NSLocalizedString("LibraryPresenter.column.done", comment:String()))
+            board.addColumn(text:.local("LibraryPresenter.column.todo"))
+            board.addColumn(text:.local("LibraryPresenter.column.progress"))
+            board.addColumn(text:.local("LibraryPresenter.column.done"))
         }
         library.save(board:board)
     }
@@ -123,13 +123,13 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         Application.navigation.dismiss(animated:true) {
             let popup = Alert()
             popup.image = #imageLiteral(resourceName: "assetDone.pdf")
-            popup.title = NSLocalizedString("LibraryPresenter.boardAdded", comment:String())
+            popup.title = .local("LibraryPresenter.boardAdded")
         }
     }
     
     private func showEmpty() {
         var viewModel = LibraryItems()
-        viewModel.message = hero.parse(string:NSLocalizedString("LibraryPresenter.empty", comment:String()))
+        viewModel.message = hero.parse(string:.local("LibraryPresenter.empty"))
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         viewModel.loadHidden = false

@@ -67,9 +67,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     }
     
     override var previewActionItems:[UIPreviewActionItem] { return [
-        UIPreviewAction(title:NSLocalizedString("BoardView.share", comment:String()), style:.default)
+        UIPreviewAction(title:.local("BoardView.share"), style:.default)
         { [weak self] _, _ in self?.presenter.share() },
-        UIPreviewAction(title:NSLocalizedString("BoardView.delete", comment:String()), style:.destructive)
+        UIPreviewAction(title:.local("BoardView.delete"), style:.destructive)
         { [weak self] _, _ in self?.presenter.delete() }]
     }
     

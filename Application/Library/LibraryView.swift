@@ -11,7 +11,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = NSLocalizedString("LibraryView.title", comment:String())
+        title = .local("LibraryView.title")
         view.backgroundColor = .white
         makeOutlets()
         configureViewModel()
@@ -57,7 +57,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         
         let load = UIButton()
         load.translatesAutoresizingMaskIntoConstraints = false
-        load.setTitle(NSLocalizedString("LibraryView.load", comment:String()), for:[])
+        load.setTitle(.local("LibraryView.load"), for:[])
         load.setTitleColor(.black, for:.normal)
         load.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         load.titleLabel!.font = .systemFont(ofSize:16, weight:.bold)

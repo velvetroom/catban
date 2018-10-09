@@ -31,7 +31,7 @@ class InfoView:PopupView<InfoPresenter> {
         dismiss.addTarget(presenter, action:#selector(presenter.dismiss), for:.touchUpInside)
         dismiss.setTitleColor(.white, for:.normal)
         dismiss.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
-        dismiss.setTitle(NSLocalizedString("InfoView.dismiss", comment:String()), for:[])
+        dismiss.setTitle(.local("InfoView.dismiss"), for:[])
         dismiss.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         view.addSubview(dismiss)
         

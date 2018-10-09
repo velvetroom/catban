@@ -20,7 +20,7 @@ class DeleteView:PopupView<DeletePresenter> {
         cancel.addTarget(presenter, action:#selector(presenter.cancel), for:.touchUpInside)
         cancel.setTitleColor(UIColor(white:0, alpha:0.4), for:.normal)
         cancel.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
-        cancel.setTitle(NSLocalizedString("DeleteView.cancel", comment:String()), for:[])
+        cancel.setTitle(.local("DeleteView.cancel"), for:[])
         cancel.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(cancel)
         
@@ -30,7 +30,7 @@ class DeleteView:PopupView<DeletePresenter> {
         delete.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.0431372549, blue: 0.1215686275, alpha: 1)
         delete.setTitleColor(.white, for:.normal)
         delete.setTitleColor(UIColor(white:1, alpha:0.3), for:.highlighted)
-        delete.setTitle(NSLocalizedString("DeleteView.delete", comment:String()), for:[])
+        delete.setTitle(.local("DeleteView.delete"), for:[])
         delete.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         delete.layer.cornerRadius = 6
         base.addSubview(delete)

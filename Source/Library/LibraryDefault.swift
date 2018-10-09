@@ -11,6 +11,7 @@ class LibraryDefault:LibraryState {
             do {
                 self?.loaded(context:context, session:try context.cache.loadSession())
             } catch {
+                self?.avoidBackup()
                 self?.loaded(context:context, session:Session())
             }
         }
@@ -21,5 +22,12 @@ class LibraryDefault:LibraryState {
         context.saveSession()
         context.state = Library.stateReady
         DispatchQueue.main.async { context.delegate?.librarySessionLoaded() }
+    }
+    
+    private func avoidBackup() {
+        var url = FileManager.default.urls(for:.documentDirectory, in:.userDomainMask)[0]
+        var resources = URLResourceValues()
+        resources.isExcludedFromBackup = true
+        try! url.setResourceValues(resources)
     }
 }

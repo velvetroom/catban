@@ -1,7 +1,7 @@
 import Foundation
 
-struct Today:Codable {
-    static func retrieve() -> Today? {
+class Today:Codable {
+    class func retrieve() -> Today? {
         var today:Today?
         if let data = UserDefaults(suiteName:"group.Catban")?.data(forKey:"today") {
             today = try? JSONDecoder().decode(Today.self, from:data)

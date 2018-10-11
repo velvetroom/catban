@@ -24,7 +24,7 @@ import Firebase
     }
     
     func application(_:UIApplication, open url:URL, options:[UIApplication.OpenURLOptionsKey:Any] = [:]) -> Bool {
-        if let identifier = board(url:url) {
+        if let identifier = url.absoluteString.components(separatedBy:"catban:board=").last {
             Application.navigation.quick(board:identifier)
             return true
         }
@@ -50,8 +50,7 @@ import Firebase
     
     private func launch(options:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
         var needsLaunch = false
-        if let url = options?[.url] as? URL,
-            let identifier = board(url:url) {
+        if let identifier = (options?[.url] as? URL)?.absoluteString.components(separatedBy:"catban:board=").last {
             Application.navigation.launch(board:identifier)
         } else {
             Application.navigation.launchDefault()
@@ -64,12 +63,5 @@ import Firebase
             } else { needsLaunch = true }
         }
         return needsLaunch
-    }
-    
-    private func board(url:URL) -> String? {
-        var board:String?
-        let components = url.absoluteString.components(separatedBy:"catban:board=")
-        if components.count == 2 { board = components[1] }
-        return board
     }
 }

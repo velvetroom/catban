@@ -134,6 +134,6 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
             y += 20
             view.frame = CGRect(x:14, y:y, width:size.width - 28, height:48)
             y += view.bounds.height
-        })
+        } + 30)
     }
 }

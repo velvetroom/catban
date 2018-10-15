@@ -14,7 +14,7 @@ class LibraryCellView:UIControl {
         backgroundColor = .white
         layer.shadowRadius = 2
         layer.cornerRadius = 24
-        layer.shadowOpacity = 0.2
+        layer.shadowOpacity = 0.15
         layer.shadowOffset = CGSize(width:0, height:1)
         makeOutlets()
     }

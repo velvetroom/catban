@@ -72,6 +72,6 @@ import Firebase
             !components[1].isEmpty {
             return components[1]
         }
-        throw CatbanError.invalidBoardUrl
+        throw Exception.invalidId
     }
 }

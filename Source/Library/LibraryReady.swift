@@ -64,13 +64,13 @@ class LibraryReady:LibraryState {
         if components.count == 2 && !components[1].isEmpty {
             return components[1]
         } else {
-            throw CatbanError.invalidBoardUrl
+            throw Exception.invalidBoardUrl
         }
     }
     
     private func validate(context:Library, identifier:String) throws {
         if context.boards[identifier] != nil {
-            throw CatbanError.boardAlreadyLoaded
+            throw Exception.boardAlreadyLoaded
         }
     }
 }

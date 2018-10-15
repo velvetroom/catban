@@ -1,6 +1,7 @@
 import Foundation
 
-public enum CatbanError:LocalizedError {
+public enum Exception:LocalizedError {
+    case invalidId
     case noSession
     case invalidBoardUrl
     case boardAlreadyLoaded

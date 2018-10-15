@@ -106,9 +106,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.translatesAutoresizingMaskIntoConstraints = false
         report.backgroundColor = .white
         report.layer.cornerRadius = 30
-        report.layer.shadowOffset = CGSize(width:0, height:-4)
-        report.layer.shadowRadius = 6
-        report.layer.shadowOpacity = 0.3
+        report.layer.shadowOffset = CGSize(width:0, height:-2)
+        report.layer.shadowRadius = 4
+        report.layer.shadowOpacity = 0.1
         report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
         view.addSubview(report)
         self.report = report
@@ -181,7 +181,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         track.centerYAnchor.constraint(equalTo:progress.centerYAnchor).isActive = true
         
         progress.widthAnchor.constraint(equalToConstant:250).isActive = true
-        progress.heightAnchor.constraint(equalToConstant:6).isActive = true
+        progress.heightAnchor.constraint(equalToConstant:3).isActive = true
         progress.centerXAnchor.constraint(equalTo:report.centerXAnchor).isActive = true
         progress.topAnchor.constraint(equalTo:handle.bottomAnchor, constant:20).isActive = true
         

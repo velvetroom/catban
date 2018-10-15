@@ -68,16 +68,24 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         icon.contentMode = .center
         about.addSubview(icon)
         
-        let labelAbout = UILabel()
-        labelAbout.translatesAutoresizingMaskIntoConstraints = false
-        labelAbout.isUserInteractionEnabled = false
-        labelAbout.textColor = .black
-        labelAbout.textAlignment = .center
-        labelAbout.numberOfLines = 0
-        labelAbout.text = String(format:.local("SettingsView.labelAbout"),
-            "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)")
-        labelAbout.font = .systemFont(ofSize:12, weight:.ultraLight)
-        about.addSubview(labelAbout)
+        let labelName = UILabel()
+        labelName.translatesAutoresizingMaskIntoConstraints = false
+        labelName.isUserInteractionEnabled = false
+        labelName.textColor = .black
+        labelName.textAlignment = .center
+        labelName.text = .local("SettingsView.labelName")
+        labelName.font = .systemFont(ofSize:16, weight:.medium)
+        about.addSubview(labelName)
+        
+        let labelVersion = UILabel()
+        labelVersion.translatesAutoresizingMaskIntoConstraints = false
+        labelVersion.isUserInteractionEnabled = false
+        labelVersion.textColor = .black
+        labelVersion.textAlignment = .center
+        labelVersion.numberOfLines = 0
+        labelVersion.text = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
+        labelVersion.font = .systemFont(ofSize:11, weight:.ultraLight)
+        about.addSubview(labelVersion)
         
         let contact = UIButton()
         contact.translatesAutoresizingMaskIntoConstraints = false
@@ -184,14 +192,17 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         icon.topAnchor.constraint(equalTo:about.topAnchor, constant:60).isActive = true
         icon.centerXAnchor.constraint(equalTo:about.centerXAnchor).isActive = true
-        icon.widthAnchor.constraint(equalToConstant:50).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:50).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:80).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:80).isActive = true
         
-        labelAbout.centerXAnchor.constraint(equalTo:icon.centerXAnchor).isActive = true
-        labelAbout.topAnchor.constraint(equalTo:icon.bottomAnchor, constant:6).isActive = true
+        labelName.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        labelName.topAnchor.constraint(equalTo:icon.bottomAnchor).isActive = true
+        
+        labelVersion.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        labelVersion.topAnchor.constraint(equalTo:labelName.bottomAnchor).isActive = true
         
         contact.centerXAnchor.constraint(equalTo:about.centerXAnchor).isActive = true
-        contact.topAnchor.constraint(equalTo:labelAbout.bottomAnchor, constant:80).isActive = true
+        contact.topAnchor.constraint(equalTo:labelVersion.bottomAnchor, constant:50).isActive = true
         contact.widthAnchor.constraint(equalToConstant:105).isActive = true
         contact.heightAnchor.constraint(equalToConstant:40).isActive = true
         

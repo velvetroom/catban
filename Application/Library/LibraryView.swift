@@ -62,6 +62,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         load.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         load.titleLabel!.font = .systemFont(ofSize:16, weight:.bold)
         load.addTarget(presenter, action:#selector(presenter.manuallyLoadCloud), for:.touchUpInside)
+        load.isHidden = true
         self.load = load
         view.addSubview(load)
         
@@ -134,6 +135,6 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
             y += 20
             view.frame = CGRect(x:14, y:y, width:size.width - 28, height:48)
             y += view.bounds.height
-        })
+        } + 30)
     }
 }

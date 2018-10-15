@@ -23,17 +23,18 @@ class TodayCellView:UIControl {
         label.textColor = .black
         label.textAlignment = .center
         label.text = item.name
+        label.numberOfLines = 0
         addSubview(label)
         
         let progress = ProgressView()
         progress.value = CGFloat(item.progress)
         addSubview(progress)
         
-        label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-14).isActive = true
-        label.leftAnchor.constraint(equalTo:leftAnchor, constant:6).isActive = true
-        label.rightAnchor.constraint(equalTo:rightAnchor, constant:-6).isActive = true
+        label.topAnchor.constraint(equalTo:topAnchor, constant:66).isActive = true
+        label.leftAnchor.constraint(equalTo:leftAnchor, constant:8).isActive = true
+        label.rightAnchor.constraint(equalTo:rightAnchor, constant:-8).isActive = true
         
-        progress.topAnchor.constraint(equalTo:topAnchor, constant:12).isActive = true
+        progress.topAnchor.constraint(equalTo:topAnchor, constant:8).isActive = true
         progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-30).isActive = true
         progress.leftAnchor.constraint(equalTo:leftAnchor, constant:14).isActive = true
         progress.rightAnchor.constraint(equalTo:rightAnchor, constant:-14).isActive = true

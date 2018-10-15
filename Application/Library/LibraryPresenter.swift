@@ -37,9 +37,9 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         do {
             try library.addBoard(url:content)
             DispatchQueue.main.async { [weak self] in self?.popupSuccess()  }
-        } catch CatbanError.boardAlreadyLoaded {
+        } catch Exception.boardAlreadyLoaded {
             popup(error:.local("LibraryPresenter.boardDuplicated"))
-        } catch CatbanError.invalidBoardUrl {
+        } catch Exception.invalidBoardUrl {
             popup(error:.local("LibraryPresenter.invalidQRCode"))
         } catch { }
     }

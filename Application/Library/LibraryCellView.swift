@@ -12,35 +12,22 @@ class LibraryCellView:UIControl {
     init() {
         super.init(frame:.zero)
         backgroundColor = .white
-        layer.shadowRadius = 8
+        layer.shadowRadius = 2
         layer.cornerRadius = 24
-        layer.shadowOffset = CGSize(width:0, height:4)
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width:0, height:1)
         makeOutlets()
-        layoutOutlets()
-        unhighlight()
     }
     
     required init?(coder:NSCoder) { return nil }
-    
-    func highlight() {
-        UIView.animate(withDuration:0.3) { [weak self] in
-            self?.alpha = 0.3
-            self?.layer.shadowOpacity = 0
-        }
-    }
-    
-    func unhighlight() {
-        UIView.animate(withDuration:0.3) { [weak self] in
-            self?.alpha = 1
-            self?.layer.shadowOpacity = 0.12
-        }
-    }
+    func highlight() { UIView.animate(withDuration:0.3) { [weak self] in self?.alpha = 0.2 } }
+    func unhighlight() { UIView.animate(withDuration:0.3) { [weak self] in self?.alpha = 1 } }
     
     private func makeOutlets() {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
-        name.font = .systemFont(ofSize:12, weight:.bold)
+        name.font = .systemFont(ofSize:14, weight:.bold)
         name.textColor = .black
         addSubview(name)
         self.name = name
@@ -49,11 +36,9 @@ class LibraryCellView:UIControl {
         progress.lineWidth = 3
         addSubview(progress)
         self.progress = progress
-    }
-    
-    private func layoutOutlets() {
+        
         name.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
-        name.leftAnchor.constraint(equalTo:progress.rightAnchor).isActive = true
+        name.leftAnchor.constraint(equalTo:progress.rightAnchor, constant:6).isActive = true
         
         progress.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
         progress.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-6).isActive = true

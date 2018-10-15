@@ -108,7 +108,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         report.layer.cornerRadius = 30
         report.layer.shadowOffset = CGSize(width:0, height:-4)
         report.layer.shadowRadius = 6
-        report.layer.shadowOpacity = 0.2
+        report.layer.shadowOpacity = 0.3
         report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
         view.addSubview(report)
         self.report = report
@@ -124,7 +124,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
-        track.backgroundColor = .catRed
+        track.backgroundColor = UIColor(white:0.95, alpha:1)
         report.addSubview(track)
         
         let progress = UIProgressView()
@@ -150,8 +150,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         percent.translatesAutoresizingMaskIntoConstraints = false
         percent.textAlignment = .right
         percent.isUserInteractionEnabled = false
-        percent.font = .systemFont(ofSize:18, weight:.bold)
-        percent.textColor = .catBlue
+        percent.font = .systemFont(ofSize:22, weight:.light)
+        percent.textColor = .black
         report.addSubview(percent)
         self.percent = percent
         

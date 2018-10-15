@@ -16,10 +16,7 @@ class BoardStackView:UIView {
     override func draw(_ rect:CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         let center = CGPoint(x:rect.midX, y:rect.midY)
-        context.setFillColor(UIColor.catBlue.withAlphaComponent(0.08).cgColor)
-        context.addArc(center:center, radius:60, startAngle:0.0001, endAngle:0, clockwise:false)
         context.setLineCap(.round)
-        context.drawPath(using:.fill)
         viewModel.forEach { item in
             if viewModel.first! == item {
                 context.setStrokeColor(UIColor.catBlue.cgColor)

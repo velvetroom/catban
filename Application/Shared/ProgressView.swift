@@ -19,10 +19,7 @@ class ProgressView:UIView {
         let pi_2 = CGFloat.pi / 2
         let end = (CGFloat.pi * 2 * value) - pi_2
         guard let context = UIGraphicsGetCurrentContext() else { return }
-        context.setFillColor(UIColor.catBlue.withAlphaComponent(0.2).cgColor)
-        context.addArc(center:center, radius:radius - 7, startAngle:0.0001, endAngle:0, clockwise:false)
         context.setLineCap(.round)
-        context.drawPath(using:.fill)
         context.setStrokeColor(UIColor.catBlue.cgColor)
         if value == 0 {
             context.setStrokeColor(UIColor.catRed.cgColor)

@@ -95,6 +95,7 @@
 		DABD57CF211EF0AE00C72A7F /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD57CE211EF0AE00C72A7F /* TestSession.swift */; };
 		DAC3670D21342A05009DD113 /* EditText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670C21342A05009DD113 /* EditText.swift */; };
 		DAC3670F2134316F009DD113 /* EditDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC3670E2134316F009DD113 /* EditDelete.swift */; };
+		DAE550B02175D28C003D798F /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE550AF2175D28C003D798F /* Skin.swift */; };
 		DAF3377F217493BB006339BD /* widget.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF3377E217493BB006339BD /* widget.xcassets */; };
 		DAF337852174945F006339BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAF337812174945F006339BD /* Localizable.strings */; };
 		DAF337862174945F006339BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAF337832174945F006339BD /* InfoPlist.strings */; };
@@ -233,6 +234,7 @@
 		DABD57CE211EF0AE00C72A7F /* TestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		DAC3670C21342A05009DD113 /* EditText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditText.swift; sourceTree = "<group>"; };
 		DAC3670E2134316F009DD113 /* EditDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDelete.swift; sourceTree = "<group>"; };
+		DAE550AF2175D28C003D798F /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		DAF3377E217493BB006339BD /* widget.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = widget.xcassets; sourceTree = "<group>"; };
 		DAF337822174945F006339BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DAF337842174945F006339BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4C64EA211DD54100ECAD21 /* Session.swift */,
+				DAE550AF2175D28C003D798F /* Skin.swift */,
 				DA4C64E9211DD54100ECAD21 /* Board.swift */,
 				DA4C64EC211DD54100ECAD21 /* Column.swift */,
 				DA4C64EB211DD54100ECAD21 /* Card.swift */,
@@ -794,6 +797,7 @@
 				DA4C64FA211DD54100ECAD21 /* Session.swift in Sources */,
 				DA4C64EF211DD54100ECAD21 /* LibraryDefault.swift in Sources */,
 				DA4C64FB211DD54100ECAD21 /* Card.swift in Sources */,
+				DAE550B02175D28C003D798F /* Skin.swift in Sources */,
 				DA4C64F4211DD54100ECAD21 /* CacheService.swift in Sources */,
 				DA4C64FC211DD54100ECAD21 /* Column.swift in Sources */,
 				DA4C64F5211DD54100ECAD21 /* Exception.swift in Sources */,

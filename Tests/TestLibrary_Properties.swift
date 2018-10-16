@@ -31,4 +31,14 @@ class TestLibrary_Properties:XCTestCase {
         library.defaultColumns = false
         waitForExpectations(timeout:1)
     }
+    
+    func testUpdateSkinSavesSession() {
+        let expect = expectation(description:String())
+        cache.onSaveSession = {
+            XCTAssertEqual(Skin.dark, self.library.session.skin)
+            expect.fulfill()
+        }
+        library.skin = .dark
+        waitForExpectations(timeout:1)
+    }
 }

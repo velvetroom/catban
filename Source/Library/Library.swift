@@ -3,6 +3,12 @@ import Foundation
 public class Library {
     public weak var delegate:LibraryDelegate?
     public var boards:[String:Board] { return session.boards }
+    public var skin:Skin { get {
+        return session.skin
+    } set(newValue) {
+        session.skin = newValue
+        saveSession()
+    } }
     public var cardsFont:Int { get {
         return session.cardsFont
     } set(newValue) {
@@ -41,10 +47,6 @@ public class Library {
     
     public func merge(boards:[String]) throws {
         try state.merge(context:self, boards:boards)
-    }
-    
-    public func change(skin:Skin) throws {
-        try state.change(context:self, skin:skin)
     }
     
     public func save(board:Board) {

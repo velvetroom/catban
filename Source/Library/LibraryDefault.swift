@@ -5,7 +5,6 @@ class LibraryDefault:LibraryState {
     func newBoard(context:Library) throws { throw Exception.noSession }
     func addBoard(context:Library, url:String) throws { throw Exception.noSession }
     func merge(context:Library, boards:[String]) throws { throw Exception.noSession }
-    func change(context:Library, skin:Skin) throws { throw Exception.noSession }
     
     func loadSession(context:Library) {
         context.queue.async { [weak self] in

@@ -5,6 +5,7 @@ import MessageUI
 class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate {
     private weak var scroll:UIScrollView!
     private weak var content:UIView!
+    private weak var skinSegmented:UISegmentedControl!
     private weak var columnsSwitch:UISwitch!
     private weak var fontSlider:UISlider!
     private weak var displayFont:UILabel!
@@ -51,6 +52,10 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let about = UIView()
         about.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(about)
+        
+        let skin = UIView()
+        skin.translatesAutoresizingMaskIntoConstraints = false
+        content.addSubview(skin)
         
         let columns = UIView()
         columns.translatesAutoresizingMaskIntoConstraints = false
@@ -126,11 +131,27 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         separatorRight.backgroundColor = UIColor(white:0, alpha:0.2)
         about.addSubview(separatorRight)
         
+        let labelSkin = UILabel()
+        labelSkin.translatesAutoresizingMaskIntoConstraints = false
+        labelSkin.isUserInteractionEnabled = false
+        labelSkin.textColor = .black
+        labelSkin.numberOfLines = 0
+        hero.parse(string:.local("SettingsView.labelSkin")) { result in labelSkin.attributedText = result }
+        skin.addSubview(labelSkin)
+        
+        let skinSegmented = UISegmentedControl(items:["Light", "Dark"])
+        skinSegmented.translatesAutoresizingMaskIntoConstraints = false
+        skinSegmented.tintColor = .catBlue
+        skinSegmented.addTarget(presenter, action:#selector(presenter.skinChange(segmented:)), for:.valueChanged)
+        skin.addSubview(skinSegmented)
+        self.skinSegmented = skinSegmented
+        
         let labelColumns = UILabel()
         labelColumns.translatesAutoresizingMaskIntoConstraints = false
         labelColumns.isUserInteractionEnabled = false
         labelColumns.textColor = .black
         labelColumns.numberOfLines = 0
+        hero.parse(string:.local("SettingsView.labelColumns")) { result in labelColumns.attributedText = result }
         columns.addSubview(labelColumns)
         
         let columnsSwitch = UISwitch()
@@ -145,6 +166,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         labelFont.isUserInteractionEnabled = false
         labelFont.textColor = .black
         labelFont.numberOfLines = 0
+        hero.parse(string:.local("SettingsView.labelFont")) { result in labelFont.attributedText = result }
         font.addSubview(labelFont)
         
         let fontSlider = UISlider()
@@ -163,13 +185,6 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         displayFont.textAlignment = .right
         font.addSubview(displayFont)
         self.displayFont = displayFont
-
-        hero.parse(string:.local("SettingsView.labelColumns")) { result in
-            labelColumns.attributedText = result
-        }
-        hero.parse(string:.local("SettingsView.labelFont")) { result in
-            labelFont.attributedText = result
-        }
         
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
@@ -180,7 +195,12 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         about.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         about.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        columns.topAnchor.constraint(equalTo:about.bottomAnchor).isActive = true
+        skin.topAnchor.constraint(equalTo:about.bottomAnchor).isActive = true
+        skin.heightAnchor.constraint(equalToConstant:150).isActive = true
+        skin.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
+        skin.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
+        
+        columns.topAnchor.constraint(equalTo:skin.bottomAnchor).isActive = true
         columns.heightAnchor.constraint(equalToConstant:130).isActive = true
         columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
@@ -226,6 +246,14 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         separatorRight.widthAnchor.constraint(equalToConstant:1).isActive = true
         separatorRight.heightAnchor.constraint(equalToConstant:14).isActive = true
         
+        labelSkin.topAnchor.constraint(equalTo:skin.topAnchor, constant:17).isActive = true
+        labelSkin.leftAnchor.constraint(equalTo:skin.leftAnchor, constant:17).isActive = true
+        labelSkin.rightAnchor.constraint(equalTo:skin.rightAnchor, constant:-17).isActive = true
+        
+        skinSegmented.topAnchor.constraint(equalTo:labelSkin.bottomAnchor, constant:17).isActive = true
+        skinSegmented.centerXAnchor.constraint(equalTo:skin.centerXAnchor).isActive = true
+        skinSegmented.widthAnchor.constraint(equalToConstant:180).isActive = true
+        
         labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:17).isActive = true
         labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:17).isActive = true
         labelColumns.rightAnchor.constraint(equalTo:columnsSwitch.leftAnchor, constant:-17).isActive = true
@@ -258,13 +286,14 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private func configureViewModel() {
         presenter.viewModel { [weak self] (viewModel:SettingsViewModel) in
             self?.updateDisplay(size:viewModel.cardsFont)
+            self?.skinSegmented.selectedSegmentIndex = viewModel.skin
             self?.fontSlider.setValue(Float(viewModel.cardsFont), animated:false)
             self?.columnsSwitch.isOn = viewModel.defaultColumns
         }
     }
     
     private func update(width:CGFloat) {
-        scroll.contentSize = CGSize(width:width, height:580)
+        scroll.contentSize = CGSize(width:width, height:760)
         content.frame = CGRect(origin:.zero, size:scroll.contentSize)
     }
     

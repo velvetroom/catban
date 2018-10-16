@@ -30,11 +30,6 @@ class LibraryReady:LibraryState {
         }
     }
     
-    func change(context:Library, skin:Skin) throws {
-        context.session.skin = skin
-        context.saveSession()
-    }
-    
     private func recursiveLoad(context:Library, identifiers:[String]) {
         context.queue.async { [weak self] in
             self?.load(context:context, identifiers:identifiers)

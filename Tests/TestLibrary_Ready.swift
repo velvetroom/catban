@@ -53,15 +53,4 @@ class TestLibrary_Ready:XCTestCase {
         DispatchQueue.global(qos:.background).async { try? self.library.newBoard() }
         waitForExpectations(timeout:1)
     }
-    
-    func testChangeSkinSavesSession() {
-        let expect = expectation(description:String())
-        library.session.skin = .light
-        (library.cache as! MockCache).onSaveSession = {
-            XCTAssertEqual(Skin.dark, self.library.session.skin)
-            expect.fulfill()
-        }
-        DispatchQueue.global(qos:.background).async { try? self.library.change(skin:.dark) }
-        waitForExpectations(timeout:1)
-    }
 }

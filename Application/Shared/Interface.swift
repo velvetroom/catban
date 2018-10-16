@@ -9,9 +9,11 @@ class Interface {
         }
     }
     private(set) var background:UIColor!
-    private(set) var cell:UIColor!
+    private(set) var over:UIColor!
     private(set) var tint:UIColor!
     private(set) var text:UIColor!
+    private(set) var keyboard:UIKeyboardAppearance!
+    private(set) var bar:UIBarStyle!
     private(set) var scroll:UIScrollView.IndicatorStyle!
     private(set) var status:UIStatusBarStyle!
     private let store = UserDefaults(suiteName:"group.Catban")!
@@ -28,18 +30,22 @@ class Interface {
     
     private func light() {
         background = .white
-        cell = .white
+        over = .white
         tint = .black
         text = .black
+        keyboard = .default
+        bar = .default
         scroll = .black
         status = .default
     }
     
     private func dark() {
         background = .black
-        cell = .catDark
+        over = .catDark
         tint = .white
         text = .white
+        keyboard = .dark
+        bar = .black
         scroll = .white
         status = .lightContent
     }

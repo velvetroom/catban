@@ -11,7 +11,7 @@ class LibraryCellView:UIControl {
     
     init() {
         super.init(frame:.zero)
-        backgroundColor = Application.interface.cell
+        backgroundColor = Application.interface.over
         layer.shadowRadius = 2
         layer.cornerRadius = 24
         layer.shadowOpacity = 0.15

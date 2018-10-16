@@ -7,7 +7,7 @@ class BoardHeaderView:BoardItemView {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = Application.interface.text
         label.font = .systemFont(ofSize:25, weight:.bold)
         addSubview(label)
         self.label = label

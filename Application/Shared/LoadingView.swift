@@ -41,8 +41,8 @@ class LoadingView:UIView {
         let animation = CABasicAnimation(keyPath:"transform.scale")
         animation.duration = 2
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
-        animation.fromValue = 1
-        animation.toValue = 1.3
+        animation.fromValue = 1.1
+        animation.toValue = 1.4
         animation.beginTime = 0
         return animation
     }

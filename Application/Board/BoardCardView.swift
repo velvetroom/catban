@@ -32,7 +32,7 @@ class BoardCardView:BoardItemView {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = Application.interface.text
         label.numberOfLines = 0
         label.shadowOffset = CGSize(width:0.5, height:0.5)
         label.shadowColor = .clear
@@ -61,13 +61,15 @@ class BoardCardView:BoardItemView {
     override func showSelected() {
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.halo.alpha = 1
-            self?.label.shadowColor = UIColor(white:0, alpha:0.3)
+            self?.label.textColor = .black
+            self?.label.shadowColor = Application.interface.text.withAlphaComponent(0.3)
         }
     }
     
     override func showDefault() {
         UIView.animate(withDuration:0.3) { [weak self] in
             self?.halo.alpha = 0
+            self?.label.textColor = Application.interface.text
             self?.label.shadowColor = .clear
         }
     }

@@ -61,7 +61,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         makeOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Application.interface.background
         title = presenter.board.name
         reportHandler = handlerHidden
     }
@@ -93,7 +93,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.clipsToBounds = true
-        scroll.backgroundColor = .clear
         scroll.showsVerticalScrollIndicator = false
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
@@ -104,7 +103,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         let report = UIView()
         report.translatesAutoresizingMaskIntoConstraints = false
-        report.backgroundColor = .white
+        report.backgroundColor = Application.interface.over
         report.layer.cornerRadius = 30
         report.layer.shadowOffset = CGSize(width:0, height:-2)
         report.layer.shadowRadius = 4
@@ -117,14 +116,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         handle.isUserInteractionEnabled = false
         handle.translatesAutoresizingMaskIntoConstraints = false
         handle.clipsToBounds = true
-        handle.backgroundColor = UIColor(white:0.9, alpha:1)
+        handle.backgroundColor = Application.interface.tint.withAlphaComponent(0.1)
         handle.layer.cornerRadius = 1.5
         report.addSubview(handle)
         
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
-        track.backgroundColor = UIColor(white:0.95, alpha:1)
+        track.backgroundColor = Application.interface.tint.withAlphaComponent(0.05)
         report.addSubview(track)
         
         let progress = UIProgressView()
@@ -151,7 +150,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         percent.textAlignment = .right
         percent.isUserInteractionEnabled = false
         percent.font = .systemFont(ofSize:22, weight:.light)
-        percent.textColor = .black
+        percent.textColor = Application.interface.text
         report.addSubview(percent)
         self.percent = percent
         
@@ -166,7 +165,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        report.heightAnchor.constraint(equalToConstant:290).isActive = true
+        report.heightAnchor.constraint(equalToConstant:350).isActive = true
         layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-55)
         layoutReportTop.isActive = true
         
@@ -198,9 +197,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             search.obscuresBackgroundDuringPresentation = false
             search.hidesNavigationBarDuringPresentation = false
             search.searchBar.delegate = self
+            search.searchBar.barStyle = Application.interface.bar
+            search.searchBar.tintColor = Application.interface.tint
             search.searchBar.autocorrectionType = .yes
             search.searchBar.spellCheckingType = .yes
             search.searchBar.autocapitalizationType = .sentences
+            search.searchBar.keyboardType = .asciiCapable
+            search.searchBar.keyboardAppearance = Application.interface.keyboard
+            
             navigationItem.searchController = search
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true

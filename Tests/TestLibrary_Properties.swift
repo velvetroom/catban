@@ -19,7 +19,7 @@ class TestLibrary_Properties:XCTestCase {
             expect.fulfill()
         }
         library.cardsFont = 99
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
     
     func testUpdateDefaultColumnsSavesSession() {
@@ -29,6 +29,6 @@ class TestLibrary_Properties:XCTestCase {
             expect.fulfill()
         }
         library.defaultColumns = false
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
 }

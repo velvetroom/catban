@@ -6,4 +6,5 @@ protocol LibraryState:AnyObject {
     func newBoard(context:Library) throws
     func addBoard(context:Library, url:String) throws
     func merge(context:Library, boards:[String]) throws
+    func change(context:Library, skin:Skin) throws
 }

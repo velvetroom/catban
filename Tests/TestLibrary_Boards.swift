@@ -19,7 +19,7 @@ class TestLibrary_Boards:XCTestCase {
             expect.fulfill()
         }
         XCTAssertNoThrow(try library.addBoard(url:"iturbide.catban.dsakaknaknfkj"))
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
     
     func testThrowsOnDuplicated() {
@@ -41,7 +41,7 @@ class TestLibrary_Boards:XCTestCase {
             expect.fulfill()
         }
         library.save(board:board)
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
     
     func testDeleteBoardCallsCache() {
@@ -61,6 +61,6 @@ class TestLibrary_Boards:XCTestCase {
             expectCache.fulfill()
         }
         DispatchQueue.global(qos:.background).async { self.library.delete(board:board) }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
 }

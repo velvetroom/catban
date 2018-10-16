@@ -12,9 +12,13 @@ class SettingsPresenter:Presenter {
     
     @objc func skinChange(segmented:UISegmentedControl) {
         switch segmented.selectedSegmentIndex {
-        case 0: library.skin = .light
-        default: library.skin = .dark
+        case 0:
+            Application.interface.skin = .light
+        default:
+            Application.interface.skin = .dark
         }
+        Application.navigation.setNeedsStatusBarAppearanceUpdate()
+        Application.navigation.configureNavigation()
         Application.navigation.setViewControllers([SettingsView()], animated:true)
     }
     
@@ -22,7 +26,7 @@ class SettingsPresenter:Presenter {
         var viewModel = SettingsViewModel()
         viewModel.cardsFont = library.cardsFont
         viewModel.defaultColumns = library.defaultColumns
-        if library.skin == .dark { viewModel.skin = 1 }
+        if Application.interface.skin == .dark { viewModel.skin = 1 }
         update(viewModel:viewModel)
     }
 }

@@ -92,22 +92,4 @@ class TestSession:XCTestCase {
         else { return XCTFail() }
         XCTAssertTrue(session.rates.isEmpty)
     }
-    
-    func testCodingSkin() {
-        let session = Session()
-        session.skin = .dark
-        guard
-            let data = try? JSONEncoder().encode(session),
-            let newSession = try? JSONDecoder().decode(Session.self, from:data)
-        else { return XCTFail() }
-        XCTAssertEqual(Skin.dark, newSession.skin)
-    }
-    
-    func testCodingNoPreviousSkin() {
-        guard
-            let data = try? JSONEncoder().encode(["boards":[]] as! [String:[String]]),
-            let session = try? JSONDecoder().decode(Session.self, from:data)
-        else { return XCTFail() }
-        XCTAssertEqual(Skin.light, session.skin)
-    }
 }

@@ -3,12 +3,6 @@ import Foundation
 public class Library {
     public weak var delegate:LibraryDelegate?
     public var boards:[String:Board] { return session.boards }
-    public var skin:Skin { get {
-        return session.skin
-    } set(newValue) {
-        session.skin = newValue
-        saveSession()
-    } }
     public var cardsFont:Int { get {
         return session.cardsFont
     } set(newValue) {

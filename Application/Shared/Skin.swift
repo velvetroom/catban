@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Skin:String, Codable {
+enum Skin:String {
     case light = "light"
     case dark = "dark"
 }

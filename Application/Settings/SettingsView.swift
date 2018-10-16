@@ -11,12 +11,13 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private weak var displayFont:UILabel!
     private let hero = Hero()
     private let url = "itunes.apple.com/\(Locale.current.regionCode!.lowercased())/app/catban/id1363004864"
+    override var preferredStatusBarStyle:UIStatusBarStyle { return Application.interface.status }
     
     override func viewDidLoad() {
         makeOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Application.interface.background
         title = .local("SettingsView.title")
     }
     
@@ -76,7 +77,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let labelName = UILabel()
         labelName.translatesAutoresizingMaskIntoConstraints = false
         labelName.isUserInteractionEnabled = false
-        labelName.textColor = .black
+        labelName.textColor = Application.interface.text
         labelName.textAlignment = .center
         labelName.text = .local("SettingsView.labelName")
         labelName.font = .systemFont(ofSize:16, weight:.medium)
@@ -85,7 +86,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let labelVersion = UILabel()
         labelVersion.translatesAutoresizingMaskIntoConstraints = false
         labelVersion.isUserInteractionEnabled = false
-        labelVersion.textColor = .black
+        labelVersion.textColor = Application.interface.text
         labelVersion.textAlignment = .center
         labelVersion.numberOfLines = 0
         labelVersion.text = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
@@ -95,8 +96,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let contact = UIButton()
         contact.translatesAutoresizingMaskIntoConstraints = false
         contact.setTitle(.local("SettingsView.contact"), for:[])
-        contact.setTitleColor(.black, for:.normal)
-        contact.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        contact.setTitleColor(Application.interface.text, for:.normal)
+        contact.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         contact.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
         contact.addTarget(self, action:#selector(email), for:.touchUpInside)
         about.addSubview(contact)
@@ -104,8 +105,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let share = UIButton()
         share.translatesAutoresizingMaskIntoConstraints = false
         share.setTitle(.local("SettingsView.share"), for:[])
-        share.setTitleColor(.black, for:.normal)
-        share.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        share.setTitleColor(Application.interface.text, for:.normal)
+        share.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         share.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
         share.addTarget(self, action:#selector(shareUrl), for:.touchUpInside)
         about.addSubview(share)
@@ -113,8 +114,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let review = UIButton()
         review.translatesAutoresizingMaskIntoConstraints = false
         review.setTitle(.local("SettingsView.review"), for:[])
-        review.setTitleColor(.black, for:.normal)
-        review.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        review.setTitleColor(Application.interface.text, for:.normal)
+        review.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         review.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
         review.addTarget(self, action:#selector(reviewUrl), for:.touchUpInside)
         about.addSubview(review)
@@ -122,19 +123,19 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let separatorLeft = UIView()
         separatorLeft.translatesAutoresizingMaskIntoConstraints = false
         separatorLeft.isUserInteractionEnabled = false
-        separatorLeft.backgroundColor = UIColor(white:0, alpha:0.2)
+        separatorLeft.backgroundColor = Application.interface.text.withAlphaComponent(0.2)
         about.addSubview(separatorLeft)
         
         let separatorRight = UIView()
         separatorRight.translatesAutoresizingMaskIntoConstraints = false
         separatorRight.isUserInteractionEnabled = false
-        separatorRight.backgroundColor = UIColor(white:0, alpha:0.2)
+        separatorRight.backgroundColor = Application.interface.text.withAlphaComponent(0.2)
         about.addSubview(separatorRight)
         
         let labelSkin = UILabel()
         labelSkin.translatesAutoresizingMaskIntoConstraints = false
         labelSkin.isUserInteractionEnabled = false
-        labelSkin.textColor = .black
+        labelSkin.textColor = Application.interface.text
         labelSkin.numberOfLines = 0
         hero.parse(string:.local("SettingsView.labelSkin")) { result in labelSkin.attributedText = result }
         skin.addSubview(labelSkin)
@@ -149,7 +150,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let labelColumns = UILabel()
         labelColumns.translatesAutoresizingMaskIntoConstraints = false
         labelColumns.isUserInteractionEnabled = false
-        labelColumns.textColor = .black
+        labelColumns.textColor = Application.interface.text
         labelColumns.numberOfLines = 0
         hero.parse(string:.local("SettingsView.labelColumns")) { result in labelColumns.attributedText = result }
         columns.addSubview(labelColumns)
@@ -164,12 +165,13 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let labelFont = UILabel()
         labelFont.translatesAutoresizingMaskIntoConstraints = false
         labelFont.isUserInteractionEnabled = false
-        labelFont.textColor = .black
+        labelFont.textColor = Application.interface.text
         labelFont.numberOfLines = 0
         hero.parse(string:.local("SettingsView.labelFont")) { result in labelFont.attributedText = result }
         font.addSubview(labelFont)
         
         let fontSlider = UISlider()
+        fontSlider.maximumTrackTintColor = Application.interface.text.withAlphaComponent(0.2)
         fontSlider.tintColor = .catBlue
         fontSlider.translatesAutoresizingMaskIntoConstraints = false
         fontSlider.minimumValue = 8
@@ -180,7 +182,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         let displayFont = UILabel()
         displayFont.translatesAutoresizingMaskIntoConstraints = false
-        displayFont.textColor = .black
+        displayFont.textColor = Application.interface.text
         displayFont.isUserInteractionEnabled = false
         displayFont.textAlignment = .right
         font.addSubview(displayFont)
@@ -252,7 +254,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         skinSegmented.topAnchor.constraint(equalTo:labelSkin.bottomAnchor, constant:17).isActive = true
         skinSegmented.centerXAnchor.constraint(equalTo:skin.centerXAnchor).isActive = true
-        skinSegmented.widthAnchor.constraint(equalToConstant:180).isActive = true
+        skinSegmented.widthAnchor.constraint(equalToConstant:200).isActive = true
         
         labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:17).isActive = true
         labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:17).isActive = true

@@ -41,7 +41,7 @@ class TestLibrary_Boards:XCTestCase {
             expect.fulfill()
         }
         library.save(board:board)
-        waitForExpectations(timeout:1)
+        waitForExpectations(timeout:2)
     }
     
     func testDeleteBoardCallsCache() {

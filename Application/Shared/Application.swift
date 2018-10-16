@@ -4,6 +4,7 @@ import Firebase
 
 @UIApplicationMain class Application:UIResponder, UIApplicationDelegate {
     static let navigation = Navigation()
+    static var interface = Interface()
     var window:UIWindow?
     
     func application(_:UIApplication, didFinishLaunchingWithOptions options:[UIApplication.LaunchOptionsKey:
@@ -39,7 +40,6 @@ import Firebase
     
     private func makeWindow() {
         window = UIWindow(frame:UIScreen.main.bounds)
-        window!.backgroundColor = .white
         window!.makeKeyAndVisible()
         window!.rootViewController = Application.navigation
     }

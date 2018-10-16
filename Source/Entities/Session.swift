@@ -2,7 +2,6 @@ import Foundation
 
 public class Session:Codable {
     public internal(set) var boards = [String:Board]()
-    public internal(set) var skin = Skin.light
     public var cardsFont:Int = Session.cardsFont
     public var defaultColumns = true
     static let cardsFont:Int = 14
@@ -12,7 +11,6 @@ public class Session:Codable {
     public required init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy:CodingKeys.self)
         decodeBoards(values:values)
-        try? skin = values.decode(Skin.self, forKey:.skin)
         try? cardsFont = values.decode(Int.self, forKey:.cardsFont)
         try? defaultColumns = values.decode(Bool.self, forKey:.defaultColumns)
         try? counter = values.decode(Int.self, forKey:.counter)
@@ -21,7 +19,6 @@ public class Session:Codable {
     
     public func encode(to encoder:Encoder) throws {
         var container = encoder.container(keyedBy:CodingKeys.self)
-        try container.encode(skin, forKey:.skin)
         try container.encode(Array(boards.keys), forKey:.boards)
         try container.encode(cardsFont, forKey:.cardsFont)
         try container.encode(defaultColumns, forKey:.defaultColumns)
@@ -41,7 +38,6 @@ public class Session:Codable {
     
     private enum CodingKeys:CodingKey {
         case boards
-        case skin
         case cardsFont
         case defaultColumns
         case counter

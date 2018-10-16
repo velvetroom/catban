@@ -1,9 +1,11 @@
 import Foundation
 
 class Today:Codable {
+    private static let store = UserDefaults(suiteName:"group.Catban")!
+    
     class func retrieve() -> Today? {
         var today:Today?
-        if let data = UserDefaults(suiteName:"group.Catban")?.data(forKey:"today") {
+        if let data = store.data(forKey:"today") {
             today = try? JSONDecoder().decode(Today.self, from:data)
         }
         return today
@@ -14,10 +16,7 @@ class Today:Codable {
     private init() { items = [] }
     
     func store() {
-        let store = UserDefaults(suiteName:"group.Catban")
-        if let data = try? JSONEncoder().encode(self) {
-            store?.set(data, forKey:"today")
-        }
-        store?.synchronize()
+        Today.store.set(try! JSONEncoder().encode(self), forKey:"today")
+        Today.store.synchronize()
     }
 }

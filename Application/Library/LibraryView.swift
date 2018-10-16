@@ -12,7 +12,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = .local("LibraryView.title")
-        view.backgroundColor = .white
+        view.backgroundColor = Application.interface.background
         makeOutlets()
         configureViewModel()
     }
@@ -39,9 +39,8 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     private func makeOutlets() {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.showsVerticalScrollIndicator = true
-        scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
+        scroll.indicatorStyle = Application.interface.scroll
         view.addSubview(scroll)
         registerForPreviewing(with:self, sourceView:scroll)
         self.scroll = scroll
@@ -49,7 +48,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         let message = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
         message.font = .systemFont(ofSize:16, weight:.light)
-        message.textColor = UIColor(white:0, alpha:0.7)
+        message.textColor = Application.interface.text.withAlphaComponent(0.7)
         message.numberOfLines = 0
         message.isUserInteractionEnabled = false
         view.addSubview(message)
@@ -58,8 +57,8 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         let load = UIButton()
         load.translatesAutoresizingMaskIntoConstraints = false
         load.setTitle(.local("LibraryView.load"), for:[])
-        load.setTitleColor(.black, for:.normal)
-        load.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        load.setTitleColor(Application.interface.text, for:.normal)
+        load.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         load.titleLabel!.font = .systemFont(ofSize:16, weight:.bold)
         load.addTarget(presenter, action:#selector(presenter.manuallyLoadCloud), for:.touchUpInside)
         load.isHidden = true
@@ -67,7 +66,6 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         view.addSubview(load)
         
         let loading = LoadingView()
-        loading.tintColor = .black
         view.addSubview(loading)
         self.loading = loading
         

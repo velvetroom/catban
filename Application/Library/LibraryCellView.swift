@@ -11,7 +11,7 @@ class LibraryCellView:UIControl {
     
     init() {
         super.init(frame:.zero)
-        backgroundColor = .white
+        backgroundColor = Application.interface.cell
         layer.shadowRadius = 2
         layer.cornerRadius = 24
         layer.shadowOpacity = 0.15
@@ -28,7 +28,7 @@ class LibraryCellView:UIControl {
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
         name.font = .systemFont(ofSize:14, weight:.bold)
-        name.textColor = .black
+        name.textColor = Application.interface.text
         addSubview(name)
         self.name = name
         

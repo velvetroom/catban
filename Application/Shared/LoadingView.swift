@@ -9,7 +9,7 @@ class LoadingView:UIView {
         backgroundColor = .clear
         
         let pulse = CAShapeLayer()
-        pulse.fillColor = UIColor.black.cgColor
+        pulse.fillColor = Application.interface.tint.cgColor
         pulse.path = UIBezierPath(roundedRect:CGRect(x:50, y:50, width:50, height:50), cornerRadius:8).cgPath
         pulse.frame = CGRect(x:0, y:0, width:150, height:150)
         layer.addSublayer(pulse)

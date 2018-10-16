@@ -244,6 +244,9 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         displayFont.topAnchor.constraint(equalTo:font.topAnchor, constant:17).isActive = true
         displayFont.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-17).isActive = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetDone.pdf"), style:.plain, target:presenter,
+                                                            action:#selector(presenter.done))
+        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true

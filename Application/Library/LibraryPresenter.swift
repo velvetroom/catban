@@ -14,7 +14,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     func qrCancelled() { Application.navigation.dismiss(animated:true) }
     func qrError(error:HeroError) { popup(error:.local("LibraryPresenter.scanError")) }
     func selectBoard() { Application.navigation.pushViewController(board(identifier:identifier), animated:true) }
-    @objc func settings() { Application.navigation.pushViewController(SettingsView(), animated:true) }
+    @objc func settings() { Application.navigation.setViewControllers([SettingsView()], animated:true) }
     @objc func highlight(cell:LibraryCellView) { cell.highlight() }
     @objc func unhighlight(cell:LibraryCellView) { cell.unhighlight() }
     

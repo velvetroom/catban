@@ -6,19 +6,6 @@ class BoardCardView:BoardItemView {
     private(set) weak var longGesture:UILongPressGestureRecognizer!
     private weak var halo:UIView!
     
-    func complete() {
-        halo.backgroundColor = .catRed
-        UIView.animate(withDuration:0.3, animations: { [weak self] in
-            self?.halo.alpha = 1
-        }) { _ in
-            UIView.animate(withDuration:1, animations: { [weak self] in
-                self?.halo.alpha = 0
-            }) { [weak self] _ in
-                self?.halo.backgroundColor = .catBlue
-            }
-        }
-    }
-    
     override func makeOutlets() {
         let halo = UIView()
         halo.isUserInteractionEnabled = false
@@ -32,10 +19,8 @@ class BoardCardView:BoardItemView {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = Application.interface.text
         label.numberOfLines = 0
-        label.shadowOffset = CGSize(width:0.5, height:0.5)
-        label.shadowColor = .clear
         addSubview(label)
         self.label = label
         
@@ -59,16 +44,13 @@ class BoardCardView:BoardItemView {
     }
     
     override func showSelected() {
-        UIView.animate(withDuration:0.3) { [weak self] in
-            self?.halo.alpha = 1
-            self?.label.shadowColor = UIColor(white:0, alpha:0.3)
-        }
+        label.textColor = .black
+        halo.backgroundColor = .catBlue
+        halo.alpha = 1
     }
     
     override func showDefault() {
-        UIView.animate(withDuration:0.3) { [weak self] in
-            self?.halo.alpha = 0
-            self?.label.shadowColor = .clear
-        }
+        label.textColor = Application.interface.text
+        halo.alpha = 0
     }
 }

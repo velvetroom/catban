@@ -43,7 +43,7 @@ class BoardDrawer {
     func makeNewCard(column:Column) {
         let item = BoardButtonView()
         item.column = column
-        item.image.image = #imageLiteral(resourceName: "assetNew.pdf")
+        item.image.image = #imageLiteral(resourceName: "assetNew.pdf").withRenderingMode(.alwaysTemplate)
         item.add(target:view.presenter, selector:#selector(view.presenter.newCard(view:)))
         addItem(item:item)
         layout(item:item, height:40, width:40)
@@ -51,7 +51,7 @@ class BoardDrawer {
     
     func makeNewColumn() {
         let item = BoardButtonView()
-        item.image.image = #imageLiteral(resourceName: "assetNew.pdf")
+        item.image.image = #imageLiteral(resourceName: "assetNew.pdf").withRenderingMode(.alwaysTemplate)
         item.add(target:view.presenter, selector:#selector(view.presenter.newColumn))
         addColumn(item:item)
         layout(item:item, height:40, width:40)
@@ -63,7 +63,7 @@ class BoardDrawer {
         item.label.text = column.name
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
-        layout(item:item, height:40, width:BoardDrawer.columnWidth)
+        layout(item:item, height:50, width:BoardDrawer.columnWidth)
     }
     
     private func clearContent() {

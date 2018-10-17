@@ -99,6 +99,8 @@
 		DAF337852174945F006339BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAF337812174945F006339BD /* Localizable.strings */; };
 		DAF337862174945F006339BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAF337832174945F006339BD /* InfoPlist.strings */; };
 		DAF3378A21749473006339BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAF3378821749473006339BD /* Localizable.strings */; };
+		DAFF2A502175F0320098A37E /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF2A4F2175F0320098A37E /* Interface.swift */; };
+		DAFF2A522175FEC30098A37E /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF2A512175FEC30098A37E /* Skin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +239,8 @@
 		DAF337822174945F006339BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DAF337842174945F006339BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DAF3378921749473006339BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DAFF2A4F2175F0320098A37E /* Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
+		DAFF2A512175FEC30098A37E /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		E1A186EED2CF0D527F6E84AD /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
 		EF2AD30BA7F2E2A002D78D36 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -469,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4C6534211DD58A00ECAD21 /* Application.swift */,
+				DAFF2A4F2175F0320098A37E /* Interface.swift */,
 				DA4C6532211DD58A00ECAD21 /* Navigation.swift */,
 				DA4C6536211DD58A00ECAD21 /* LoadingView.swift */,
 				DA8D1296213161800019B2C2 /* Alert.swift */,
@@ -476,6 +481,7 @@
 				DA41BB76213DE1170074AD29 /* ProgressView.swift */,
 				DAAF2E59216C8B3200D7B506 /* String.swift */,
 				DAAF2E5B216C8CA900D7B506 /* UIColor.swift */,
+				DAFF2A512175FEC30098A37E /* Skin.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -513,8 +519,8 @@
 			isa = PBXGroup;
 			children = (
 				DA69DCF521282AF900FE7C90 /* SettingsPresenter.swift */,
-				DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */,
 				DA69DCF721282B1A00FE7C90 /* SettingsView.swift */,
+				DA3E97FA212AACB400240F8E /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -845,11 +851,13 @@
 				DA4C656F211DD58A00ECAD21 /* SharePresenter.swift in Sources */,
 				DA4C655A211DD58A00ECAD21 /* LibraryCellView.swift in Sources */,
 				DA4C655E211DD58A00ECAD21 /* Navigation.swift in Sources */,
+				DAFF2A502175F0320098A37E /* Interface.swift in Sources */,
 				DAC3670F2134316F009DD113 /* EditDelete.swift in Sources */,
 				DAC3670D21342A05009DD113 /* EditText.swift in Sources */,
 				DA2FB7D02120356C001C758E /* BoardCardView.swift in Sources */,
 				DA4C656B211DD58A00ECAD21 /* EditView.swift in Sources */,
 				DA4C6560211DD58A00ECAD21 /* Application.swift in Sources */,
+				DAFF2A522175FEC30098A37E /* Skin.swift in Sources */,
 				DAAF2E5A216C8B3200D7B506 /* String.swift in Sources */,
 				DA4C6552211DD58A00ECAD21 /* BoardItemView.swift in Sources */,
 				DA4C654E211DD58A00ECAD21 /* DeleteView.swift in Sources */,

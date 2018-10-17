@@ -7,8 +7,9 @@ class BoardHeaderView:BoardItemView {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
-        label.font = .systemFont(ofSize:25, weight:.bold)
+        label.textColor = Application.interface.text
+        label.font = .systemFont(ofSize:30, weight:.bold)
+        label.numberOfLines = 0
         addSubview(label)
         self.label = label
         
@@ -18,10 +19,10 @@ class BoardHeaderView:BoardItemView {
     }
     
     override func showSelected() {
-        label.textColor = .catBlue
+        alpha = 0.3
     }
     
     override func showDefault() {
-        label.textColor = .black
+        alpha = 1
     }
 }

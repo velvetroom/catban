@@ -11,10 +11,10 @@ public class Session:Codable {
     public required init(from decoder:Decoder) throws {
         let values = try decoder.container(keyedBy:CodingKeys.self)
         decodeBoards(values:values)
-        decodeCardsFont(values:values)
-        decodeDefaultColumns(values:values)
-        decodeCounter(values:values)
-        decodeRates(values:values)
+        try? cardsFont = values.decode(Int.self, forKey:.cardsFont)
+        try? defaultColumns = values.decode(Bool.self, forKey:.defaultColumns)
+        try? counter = values.decode(Int.self, forKey:.counter)
+        try? rates = values.decode([Date].self, forKey:.rates)
     }
     
     public func encode(to encoder:Encoder) throws {
@@ -34,22 +34,6 @@ public class Session:Codable {
                 boards[key] = Board()
             }
         }
-    }
-    
-    private func decodeCardsFont(values:KeyedDecodingContainer<CodingKeys>) {
-        try? cardsFont = values.decode(Int.self, forKey:.cardsFont)
-    }
-    
-    private func decodeDefaultColumns(values:KeyedDecodingContainer<CodingKeys>) {
-        try? defaultColumns = values.decode(Bool.self, forKey:.defaultColumns)
-    }
-    
-    private func decodeCounter(values:KeyedDecodingContainer<CodingKeys>) {
-        try? counter = values.decode(Int.self, forKey:.counter)
-    }
-    
-    private func decodeRates(values:KeyedDecodingContainer<CodingKeys>) {
-        try? rates = values.decode([Date].self, forKey:.rates)
     }
     
     private enum CodingKeys:CodingKey {

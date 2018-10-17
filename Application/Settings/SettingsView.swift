@@ -5,6 +5,7 @@ import MessageUI
 class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate {
     private weak var scroll:UIScrollView!
     private weak var content:UIView!
+    private weak var skinSegmented:UISegmentedControl!
     private weak var columnsSwitch:UISwitch!
     private weak var fontSlider:UISlider!
     private weak var displayFont:UILabel!
@@ -15,7 +16,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         makeOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Application.interface.background
         title = .local("SettingsView.title")
     }
     
@@ -36,10 +37,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private func makeOutlets() {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.backgroundColor = .clear
-        scroll.showsVerticalScrollIndicator = true
-        scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
+        scroll.indicatorStyle = Application.interface.scroll
         view.addSubview(scroll)
         self.scroll = scroll
         
@@ -52,46 +51,52 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         about.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(about)
         
+        let skin = UIView()
+        skin.backgroundColor = Application.interface.over
+        skin.translatesAutoresizingMaskIntoConstraints = false
+        content.addSubview(skin)
+        
         let columns = UIView()
+        columns.backgroundColor = Application.interface.over
         columns.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(columns)
         
         let font = UIView()
+        font.backgroundColor = Application.interface.over
         font.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(font)
         
-        let icon = UIImageView()
+        let icon = UIImageView(image:#imageLiteral(resourceName: "assetLogo.pdf"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.isUserInteractionEnabled = false
         icon.clipsToBounds = true
-        icon.image = #imageLiteral(resourceName: "assetLogoSmall.pdf")
         icon.contentMode = .center
         about.addSubview(icon)
         
         let labelName = UILabel()
         labelName.translatesAutoresizingMaskIntoConstraints = false
         labelName.isUserInteractionEnabled = false
-        labelName.textColor = .black
+        labelName.textColor = Application.interface.text
         labelName.textAlignment = .center
         labelName.text = .local("SettingsView.labelName")
-        labelName.font = .systemFont(ofSize:16, weight:.medium)
+        labelName.font = .systemFont(ofSize:18, weight:.medium)
         about.addSubview(labelName)
         
         let labelVersion = UILabel()
         labelVersion.translatesAutoresizingMaskIntoConstraints = false
         labelVersion.isUserInteractionEnabled = false
-        labelVersion.textColor = .black
+        labelVersion.textColor = Application.interface.text
         labelVersion.textAlignment = .center
         labelVersion.numberOfLines = 0
         labelVersion.text = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
-        labelVersion.font = .systemFont(ofSize:11, weight:.ultraLight)
+        labelVersion.font = .systemFont(ofSize:10, weight:.ultraLight)
         about.addSubview(labelVersion)
         
         let contact = UIButton()
         contact.translatesAutoresizingMaskIntoConstraints = false
         contact.setTitle(.local("SettingsView.contact"), for:[])
-        contact.setTitleColor(.black, for:.normal)
-        contact.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        contact.setTitleColor(Application.interface.text, for:.normal)
+        contact.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         contact.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
         contact.addTarget(self, action:#selector(email), for:.touchUpInside)
         about.addSubview(contact)
@@ -99,8 +104,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let share = UIButton()
         share.translatesAutoresizingMaskIntoConstraints = false
         share.setTitle(.local("SettingsView.share"), for:[])
-        share.setTitleColor(.black, for:.normal)
-        share.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        share.setTitleColor(Application.interface.text, for:.normal)
+        share.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         share.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
         share.addTarget(self, action:#selector(shareUrl), for:.touchUpInside)
         about.addSubview(share)
@@ -108,8 +113,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let review = UIButton()
         review.translatesAutoresizingMaskIntoConstraints = false
         review.setTitle(.local("SettingsView.review"), for:[])
-        review.setTitleColor(.black, for:.normal)
-        review.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        review.setTitleColor(Application.interface.text, for:.normal)
+        review.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
         review.titleLabel!.font = .systemFont(ofSize:14, weight:.light)
         review.addTarget(self, action:#selector(reviewUrl), for:.touchUpInside)
         about.addSubview(review)
@@ -117,20 +122,36 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let separatorLeft = UIView()
         separatorLeft.translatesAutoresizingMaskIntoConstraints = false
         separatorLeft.isUserInteractionEnabled = false
-        separatorLeft.backgroundColor = UIColor(white:0, alpha:0.2)
+        separatorLeft.backgroundColor = Application.interface.text.withAlphaComponent(0.2)
         about.addSubview(separatorLeft)
         
         let separatorRight = UIView()
         separatorRight.translatesAutoresizingMaskIntoConstraints = false
         separatorRight.isUserInteractionEnabled = false
-        separatorRight.backgroundColor = UIColor(white:0, alpha:0.2)
+        separatorRight.backgroundColor = Application.interface.text.withAlphaComponent(0.2)
         about.addSubview(separatorRight)
+        
+        let labelSkin = UILabel()
+        labelSkin.translatesAutoresizingMaskIntoConstraints = false
+        labelSkin.isUserInteractionEnabled = false
+        labelSkin.textColor = Application.interface.text
+        labelSkin.numberOfLines = 0
+        hero.parse(string:.local("SettingsView.labelSkin")) { result in labelSkin.attributedText = result }
+        skin.addSubview(labelSkin)
+        
+        let skinSegmented = UISegmentedControl(items:["Light", "Dark"])
+        skinSegmented.translatesAutoresizingMaskIntoConstraints = false
+        skinSegmented.tintColor = Application.interface.tint
+        skinSegmented.addTarget(presenter, action:#selector(presenter.skinChange(segmented:)), for:.valueChanged)
+        skin.addSubview(skinSegmented)
+        self.skinSegmented = skinSegmented
         
         let labelColumns = UILabel()
         labelColumns.translatesAutoresizingMaskIntoConstraints = false
         labelColumns.isUserInteractionEnabled = false
-        labelColumns.textColor = .black
+        labelColumns.textColor = Application.interface.text
         labelColumns.numberOfLines = 0
+        hero.parse(string:.local("SettingsView.labelColumns")) { result in labelColumns.attributedText = result }
         columns.addSubview(labelColumns)
         
         let columnsSwitch = UISwitch()
@@ -143,11 +164,13 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         let labelFont = UILabel()
         labelFont.translatesAutoresizingMaskIntoConstraints = false
         labelFont.isUserInteractionEnabled = false
-        labelFont.textColor = .black
+        labelFont.textColor = Application.interface.text
         labelFont.numberOfLines = 0
+        hero.parse(string:.local("SettingsView.labelFont")) { result in labelFont.attributedText = result }
         font.addSubview(labelFont)
         
         let fontSlider = UISlider()
+        fontSlider.maximumTrackTintColor = Application.interface.text.withAlphaComponent(0.2)
         fontSlider.tintColor = .catBlue
         fontSlider.translatesAutoresizingMaskIntoConstraints = false
         fontSlider.minimumValue = 8
@@ -158,45 +181,43 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         let displayFont = UILabel()
         displayFont.translatesAutoresizingMaskIntoConstraints = false
-        displayFont.textColor = .black
+        displayFont.textColor = Application.interface.text
         displayFont.isUserInteractionEnabled = false
         displayFont.textAlignment = .right
         font.addSubview(displayFont)
         self.displayFont = displayFont
-
-        hero.parse(string:.local("SettingsView.labelColumns")) { result in
-            labelColumns.attributedText = result
-        }
-        hero.parse(string:.local("SettingsView.labelFont")) { result in
-            labelFont.attributedText = result
-        }
         
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
         about.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
-        about.heightAnchor.constraint(equalToConstant:330).isActive = true
+        about.heightAnchor.constraint(equalToConstant:300).isActive = true
         about.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         about.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        columns.topAnchor.constraint(equalTo:about.bottomAnchor).isActive = true
+        skin.topAnchor.constraint(equalTo:about.bottomAnchor, constant:10).isActive = true
+        skin.heightAnchor.constraint(equalToConstant:150).isActive = true
+        skin.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
+        skin.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
+        
+        columns.topAnchor.constraint(equalTo:skin.bottomAnchor, constant:10).isActive = true
         columns.heightAnchor.constraint(equalToConstant:130).isActive = true
         columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        font.topAnchor.constraint(equalTo:columns.bottomAnchor).isActive = true
-        font.heightAnchor.constraint(equalToConstant:120).isActive = true
+        font.topAnchor.constraint(equalTo:columns.bottomAnchor, constant:10).isActive = true
+        font.heightAnchor.constraint(equalToConstant:130).isActive = true
         font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        icon.topAnchor.constraint(equalTo:about.topAnchor, constant:60).isActive = true
+        icon.topAnchor.constraint(equalTo:about.topAnchor, constant:70).isActive = true
         icon.centerXAnchor.constraint(equalTo:about.centerXAnchor).isActive = true
-        icon.widthAnchor.constraint(equalToConstant:80).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:80).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:60).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:60).isActive = true
         
         labelName.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        labelName.topAnchor.constraint(equalTo:icon.bottomAnchor).isActive = true
+        labelName.topAnchor.constraint(equalTo:icon.bottomAnchor, constant:10).isActive = true
         
         labelVersion.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
         labelVersion.topAnchor.constraint(equalTo:labelName.bottomAnchor).isActive = true
@@ -226,6 +247,14 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         separatorRight.widthAnchor.constraint(equalToConstant:1).isActive = true
         separatorRight.heightAnchor.constraint(equalToConstant:14).isActive = true
         
+        labelSkin.topAnchor.constraint(equalTo:skin.topAnchor, constant:17).isActive = true
+        labelSkin.leftAnchor.constraint(equalTo:skin.leftAnchor, constant:17).isActive = true
+        labelSkin.rightAnchor.constraint(equalTo:skin.rightAnchor, constant:-17).isActive = true
+        
+        skinSegmented.topAnchor.constraint(equalTo:labelSkin.bottomAnchor, constant:35).isActive = true
+        skinSegmented.centerXAnchor.constraint(equalTo:skin.centerXAnchor).isActive = true
+        skinSegmented.widthAnchor.constraint(equalToConstant:200).isActive = true
+        
         labelColumns.topAnchor.constraint(equalTo:columns.topAnchor, constant:17).isActive = true
         labelColumns.leftAnchor.constraint(equalTo:columns.leftAnchor, constant:17).isActive = true
         labelColumns.rightAnchor.constraint(equalTo:columnsSwitch.leftAnchor, constant:-17).isActive = true
@@ -244,6 +273,9 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         displayFont.topAnchor.constraint(equalTo:font.topAnchor, constant:17).isActive = true
         displayFont.rightAnchor.constraint(equalTo:font.rightAnchor, constant:-17).isActive = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:#imageLiteral(resourceName: "assetDone.pdf"), style:.plain, target:presenter,
+                                                            action:#selector(presenter.done))
+        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -255,13 +287,14 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private func configureViewModel() {
         presenter.viewModel { [weak self] (viewModel:SettingsViewModel) in
             self?.updateDisplay(size:viewModel.cardsFont)
+            self?.skinSegmented.selectedSegmentIndex = viewModel.skin
             self?.fontSlider.setValue(Float(viewModel.cardsFont), animated:false)
             self?.columnsSwitch.isOn = viewModel.defaultColumns
         }
     }
     
     private func update(width:CGFloat) {
-        scroll.contentSize = CGSize(width:width, height:580)
+        scroll.contentSize = CGSize(width:width, height:760)
         content.frame = CGRect(origin:.zero, size:scroll.contentSize)
     }
     

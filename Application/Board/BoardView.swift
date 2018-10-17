@@ -24,7 +24,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             attach(card:view)
         case .cancelled, .ended, .failed:
             gesture.isEnabled = true
-            view.complete()
         case .possible, .changed: break
         }
     }
@@ -61,7 +60,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         makeOutlets()
         configureViewModel()
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Application.interface.background
         title = presenter.board.name
         reportHandler = handlerHidden
     }
@@ -93,7 +92,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.clipsToBounds = true
-        scroll.backgroundColor = .clear
         scroll.showsVerticalScrollIndicator = false
         scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
@@ -104,11 +102,8 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         let report = UIView()
         report.translatesAutoresizingMaskIntoConstraints = false
-        report.backgroundColor = .white
+        report.backgroundColor = Application.interface.over
         report.layer.cornerRadius = 30
-        report.layer.shadowOffset = CGSize(width:0, height:-2)
-        report.layer.shadowRadius = 4
-        report.layer.shadowOpacity = 0.1
         report.addGestureRecognizer(UIPanGestureRecognizer(target:self, action:#selector(dragReport(pan:))))
         view.addSubview(report)
         self.report = report
@@ -117,14 +112,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         handle.isUserInteractionEnabled = false
         handle.translatesAutoresizingMaskIntoConstraints = false
         handle.clipsToBounds = true
-        handle.backgroundColor = UIColor(white:0.9, alpha:1)
+        handle.backgroundColor = Application.interface.tint.withAlphaComponent(0.15)
         handle.layer.cornerRadius = 1.5
         report.addSubview(handle)
         
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
-        track.backgroundColor = UIColor(white:0.95, alpha:1)
+        track.backgroundColor = Application.interface.tint.withAlphaComponent(0.1)
         report.addSubview(track)
         
         let progress = UIProgressView()
@@ -148,12 +143,20 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         let percent = UILabel()
         percent.translatesAutoresizingMaskIntoConstraints = false
-        percent.textAlignment = .right
+        percent.textAlignment = .center
         percent.isUserInteractionEnabled = false
-        percent.font = .systemFont(ofSize:22, weight:.light)
-        percent.textColor = .black
+        percent.font = .systemFont(ofSize:30, weight:.bold)
+        percent.textColor = Application.interface.text
         report.addSubview(percent)
         self.percent = percent
+        
+        let sign = UILabel()
+        sign.translatesAutoresizingMaskIntoConstraints = false
+        sign.isUserInteractionEnabled = false
+        sign.font = .systemFont(ofSize:14, weight:.ultraLight)
+        sign.textColor = Application.interface.text
+        sign.text = "%"
+        report.addSubview(sign)
         
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:.plain, target:presenter, action:#selector(presenter.edit)),
@@ -166,7 +169,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        report.heightAnchor.constraint(equalToConstant:290).isActive = true
+        report.heightAnchor.constraint(equalToConstant:350).isActive = true
         layoutReportTop = report.topAnchor.constraint(equalTo:view.bottomAnchor, constant:-55)
         layoutReportTop.isActive = true
         
@@ -191,6 +194,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         percent.centerXAnchor.constraint(equalTo:stack.centerXAnchor).isActive = true
         percent.centerYAnchor.constraint(equalTo:stack.centerYAnchor).isActive = true
         
+        sign.leftAnchor.constraint(equalTo:percent.rightAnchor).isActive = true
+        sign.centerYAnchor.constraint(equalTo:percent.centerYAnchor).isActive = true
+        
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController:nil)
             search.searchResultsUpdater = self
@@ -198,9 +204,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             search.obscuresBackgroundDuringPresentation = false
             search.hidesNavigationBarDuringPresentation = false
             search.searchBar.delegate = self
+            search.searchBar.barStyle = Application.interface.bar
+            search.searchBar.tintColor = Application.interface.tint
             search.searchBar.autocorrectionType = .yes
             search.searchBar.spellCheckingType = .yes
             search.searchBar.autocapitalizationType = .sentences
+            search.searchBar.keyboardType = .asciiCapable
+            search.searchBar.keyboardAppearance = Application.interface.keyboard
+            
             navigationItem.searchController = search
             navigationItem.largeTitleDisplayMode = .always
             scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -217,7 +228,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         }
         presenter.viewModel { [weak self] (viewModel:Float) in
             self?.progress.setProgress(viewModel, animated:true)
-            self?.percent.text = "\(Int((viewModel) * 100))%"
+            self?.percent.text = String(Int((viewModel) * 100))
         }
         presenter.viewModel { [weak self] (viewModel:[(CGFloat, CGFloat)]) in
             self?.stack.viewModel = viewModel

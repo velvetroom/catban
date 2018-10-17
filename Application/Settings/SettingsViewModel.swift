@@ -1,6 +1,7 @@
 import Foundation
 
 struct SettingsViewModel {
-    var cardsFont:Int = 0
+    var skin = 0
+    var cardsFont = 0
     var defaultColumns = false
 }

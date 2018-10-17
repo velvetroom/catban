@@ -9,7 +9,7 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     override func viewDidLoad() {
         makeOutlets()
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Application.interface.background
         title = presenter.editText.title
         NotificationCenter.default.addObserver(forName:UIResponder.keyboardWillChangeFrameNotification, object:
             nil, queue:.main) { [weak self] notification in self?.keyboardChanged(notification:notification) }
@@ -30,17 +30,17 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         text.clipsToBounds = true
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .clear
-        text.textColor = .black
+        text.textColor = Application.interface.text
         text.tintColor = .catBlue
         text.alwaysBounceVertical = true
-        text.showsHorizontalScrollIndicator = false
         text.returnKeyType = .default
-        text.keyboardAppearance = .light
+        text.keyboardAppearance = Application.interface.keyboard
         text.autocorrectionType = .yes
         text.spellCheckingType = .yes
         text.autocapitalizationType = .sentences
         text.keyboardType = .alphabet
         text.contentInset = .zero
+        text.indicatorStyle = Application.interface.scroll
         text.font = .systemFont(ofSize:28, weight:.light)
         text.textContainerInset = UIEdgeInsets(top:12, left:12, bottom:12, right:12)
         text.text = presenter.editText.text
@@ -48,10 +48,6 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         self.text = text
         
         let accessory = UIView(frame:CGRect(x:0, y:0, width:0, height:40))
-        accessory.backgroundColor = UIColor(red:0.91, green:0.93, blue:0.96, alpha:1)
-        accessory.layer.shadowOffset = CGSize(width:0, height:-3)
-        accessory.layer.shadowOpacity = 0.12
-        accessory.layer.shadowRadius = 6
         text.inputAccessoryView = accessory
         
         let pound = addKey(title:"#")
@@ -133,14 +129,15 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     
     private func addKey(title:String) -> UIButton {
         let key = UIButton()
-        key.backgroundColor = .white
+        key.backgroundColor = Application.interface.over
         key.translatesAutoresizingMaskIntoConstraints = false
         key.setTitle(title, for:[])
-        key.setTitleColor(.black, for:[])
-        key.titleLabel!.font = .systemFont(ofSize:18, weight:.regular)
+        key.setTitleColor(Application.interface.text, for:[])
+        key.titleLabel!.font = .systemFont(ofSize:18, weight:.medium)
         key.addTarget(self, action:#selector(add(key:)), for:.touchUpInside)
         key.addTarget(self, action:#selector(highlight(key:)), for:[.touchDown])
-        key.addTarget(self, action:#selector(unhighlight(key:)), for:[.touchUpInside, .touchUpOutside, .touchCancel])
+        key.addTarget(self, action:#selector(unhighlight(key:)), for:
+            [.touchDragExit, .touchUpInside, .touchUpOutside, .touchCancel])
         text.inputAccessoryView!.addSubview(key)
         key.topAnchor.constraint(equalTo:text.inputAccessoryView!.topAnchor, constant:1).isActive = true
         key.bottomAnchor.constraint(equalTo:text.inputAccessoryView!.bottomAnchor).isActive = true
@@ -157,6 +154,6 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
     }
     
     @objc private func unhighlight(key:UIButton) {
-        key.backgroundColor = .white
+        key.backgroundColor = Application.interface.over
     }
 }

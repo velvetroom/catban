@@ -9,27 +9,27 @@ class LoadingView:UIView {
         backgroundColor = .clear
         
         let pulse = CAShapeLayer()
-        pulse.fillColor = UIColor.black.cgColor
+        pulse.fillColor = Application.interface.tint.cgColor
         pulse.path = UIBezierPath(roundedRect:CGRect(x:50, y:50, width:50, height:50), cornerRadius:8).cgPath
         pulse.frame = CGRect(x:0, y:0, width:150, height:150)
         layer.addSublayer(pulse)
         
         let groupAnimation = CAAnimationGroup()
         groupAnimation.animations = [animateRadiusFade(), animateAlpha()]
-        groupAnimation.duration = 2.2
+        groupAnimation.duration = 2
         groupAnimation.repeatCount = .infinity
         groupAnimation.isRemovedOnCompletion = false
         groupAnimation.fillMode = .forwards
         pulse.add(groupAnimation, forKey:"animation")
         
-        let icon = UIImageView(image:#imageLiteral(resourceName: "assetLogoSmall.pdf"))
+        let icon = UIImageView(image:#imageLiteral(resourceName: "assetLogo.pdf"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.clipsToBounds = true
         icon.contentMode = .center
         addSubview(icon)
         
-        icon.widthAnchor.constraint(equalToConstant:80).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:80).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:60).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:60).isActive = true
         icon.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
         icon.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
     }
@@ -42,18 +42,18 @@ class LoadingView:UIView {
         animation.duration = 2
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 1
-        animation.toValue = 1.3
+        animation.toValue = 1.5
         animation.beginTime = 0
         return animation
     }
     
     private func animateAlpha() -> CAAnimation {
         let animation = CABasicAnimation(keyPath:"opacity")
-        animation.duration = 2
+        animation.duration = 1
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
-        animation.fromValue = 1
+        animation.fromValue = 0.5
         animation.toValue = 0
-        animation.beginTime = 0
+        animation.beginTime = 1
         return animation
     }
 }

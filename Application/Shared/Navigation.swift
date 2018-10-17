@@ -1,6 +1,8 @@
 import UIKit
 
 class Navigation:UINavigationController {
+    override var preferredStatusBarStyle:UIStatusBarStyle { return Application.interface.status }
+    
     func launchDefault() { setViewControllers([LibraryView()], animated:false) }
     func quick(board:String) { pushViewController(library().board(identifier:board), animated:true) }
     func quickAdd() { library().newBoard() }
@@ -25,6 +27,20 @@ class Navigation:UINavigationController {
         setViewControllers([library], animated:false)
     }
     
+    func configureNavigation() {
+        UIApplication.shared.windows.first!.backgroundColor = Application.interface.background
+        navigationBar.barTintColor = Application.interface.background
+        navigationBar.tintColor = Application.interface.tint
+        navigationBar.setValue(true, forKey:"hidesShadow")
+        navigationBar.isTranslucent = false
+        navigationBar.titleTextAttributes = [.foregroundColor:Application.interface.tint]
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .always
+            navigationBar.largeTitleTextAttributes = [.foregroundColor:Application.interface.tint]
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
@@ -34,17 +50,6 @@ class Navigation:UINavigationController {
         super.viewDidAppear(animated)
         if let gesture = interactivePopGestureRecognizer {
             view.removeGestureRecognizer(gesture)
-        }
-    }
-    
-    private func configureNavigation() {
-        navigationBar.barTintColor = .white
-        navigationBar.tintColor = .black
-        navigationBar.setValue(true, forKey:"hidesShadow")
-        navigationBar.isTranslucent = false
-        if #available(iOS 11.0, *) {
-            navigationBar.prefersLargeTitles = true
-            navigationItem.largeTitleDisplayMode = .always
         }
     }
     

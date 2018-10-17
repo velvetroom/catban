@@ -8,7 +8,7 @@ class DeleteView:PopupView<DeletePresenter> {
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = Application.interface.text
         label.font = .systemFont(ofSize:18, weight:.light)
         label.text = presenter.edit.title
         label.textAlignment = .center
@@ -18,8 +18,8 @@ class DeleteView:PopupView<DeletePresenter> {
         let cancel = UIButton()
         cancel.translatesAutoresizingMaskIntoConstraints = false
         cancel.addTarget(presenter, action:#selector(presenter.cancel), for:.touchUpInside)
-        cancel.setTitleColor(UIColor(white:0, alpha:0.4), for:.normal)
-        cancel.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        cancel.setTitleColor(Application.interface.tint.withAlphaComponent(0.5), for:.normal)
+        cancel.setTitleColor(Application.interface.tint.withAlphaComponent(0.2), for:.highlighted)
         cancel.setTitle(.local("DeleteView.cancel"), for:[])
         cancel.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(cancel)

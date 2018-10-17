@@ -24,7 +24,7 @@ class TestLibrary_Default:XCTestCase {
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async { self.library.loadSession() }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
     
     func testLoadCreatesSessionOnError() {
@@ -40,7 +40,7 @@ class TestLibrary_Default:XCTestCase {
             expectLoad.fulfill()
         }
         DispatchQueue.global(qos:.background).async { self.library.loadSession() }
-        waitForExpectations(timeout:2, handler:nil)
+        waitForExpectations(timeout:3)
     }
     
     func testNewBoardThrows() {

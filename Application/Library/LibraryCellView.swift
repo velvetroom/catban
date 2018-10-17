@@ -8,27 +8,26 @@ class LibraryCellView:UIControl {
     } }
     private weak var name:UILabel!
     private weak var progress:ProgressView!
+    override var intrinsicContentSize:CGSize { return CGSize(width:UIView.noIntrinsicMetric, height:48) }
     
     init() {
         super.init(frame:.zero)
-        backgroundColor = .white
-        layer.shadowRadius = 2
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = Application.interface.over
         layer.cornerRadius = 24
-        layer.shadowOpacity = 0.15
-        layer.shadowOffset = CGSize(width:0, height:1)
         makeOutlets()
     }
     
     required init?(coder:NSCoder) { return nil }
-    func highlight() { UIView.animate(withDuration:0.3) { [weak self] in self?.alpha = 0.2 } }
-    func unhighlight() { UIView.animate(withDuration:0.3) { [weak self] in self?.alpha = 1 } }
+    func highlight() { alpha = 0.2 }
+    func unhighlight() { alpha = 1 }
     
     private func makeOutlets() {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
         name.isUserInteractionEnabled = false
         name.font = .systemFont(ofSize:14, weight:.bold)
-        name.textColor = .black
+        name.textColor = Application.interface.text
         addSubview(name)
         self.name = name
         

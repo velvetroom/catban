@@ -21,7 +21,7 @@ class TestLibrary_Ready:XCTestCase {
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async { try? self.library.loadBoards() }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
     
     func testLoadUpdatesNonEmptyBoards() {
@@ -34,7 +34,7 @@ class TestLibrary_Ready:XCTestCase {
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async { try? self.library.loadBoards() }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
     
     func testNewBoardAddsBoardAndNotifiesDelegate() {
@@ -51,6 +51,6 @@ class TestLibrary_Ready:XCTestCase {
             expectLoad.fulfill()
         }
         DispatchQueue.global(qos:.background).async { try? self.library.newBoard() }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1)
     }
 }

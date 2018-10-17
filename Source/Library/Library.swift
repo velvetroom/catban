@@ -39,6 +39,10 @@ public class Library {
         try state.addBoard(context:self, url:url)
     }
     
+    public func merge(boards:[String]) throws {
+        try state.merge(context:self, boards:boards)
+    }
+    
     public func save(board:Board) {
         queue.async { [weak self] in
             guard let identifier = self?.identifier(board:board) else { return }
@@ -58,10 +62,6 @@ public class Library {
     
     public func url(identifier:String) -> String {
         return "iturbide.catban.".appending(identifier)
-    }
-    
-    public func merge(boards:[String]) throws {
-        try state.merge(context:self, boards:boards)
     }
     
     public func rate() -> Bool {

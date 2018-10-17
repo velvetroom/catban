@@ -19,7 +19,7 @@ class SettingsPresenter:Presenter {
         }
         Application.navigation.setNeedsStatusBarAppearanceUpdate()
         Application.navigation.configureNavigation()
-        Application.navigation.setViewControllers([SettingsView()], animated:true)
+        Application.navigation.setViewControllers([SettingsView()], animated:false)
     }
     
     override func didLoad() {

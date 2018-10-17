@@ -38,10 +38,8 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private func makeOutlets() {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.backgroundColor = .clear
-        scroll.showsVerticalScrollIndicator = true
-        scroll.showsHorizontalScrollIndicator = false
         scroll.alwaysBounceVertical = true
+        scroll.indicatorStyle = Application.interface.scroll
         view.addSubview(scroll)
         self.scroll = scroll
         
@@ -55,14 +53,17 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         content.addSubview(about)
         
         let skin = UIView()
+        skin.backgroundColor = Application.interface.over
         skin.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(skin)
         
         let columns = UIView()
+        columns.backgroundColor = Application.interface.over
         columns.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(columns)
         
         let font = UIView()
+        font.backgroundColor = Application.interface.over
         font.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(font)
         
@@ -193,22 +194,22 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         
         about.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
-        about.heightAnchor.constraint(equalToConstant:330).isActive = true
+        about.heightAnchor.constraint(equalToConstant:300).isActive = true
         about.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         about.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        skin.topAnchor.constraint(equalTo:about.bottomAnchor).isActive = true
+        skin.topAnchor.constraint(equalTo:about.bottomAnchor, constant:10).isActive = true
         skin.heightAnchor.constraint(equalToConstant:150).isActive = true
         skin.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         skin.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        columns.topAnchor.constraint(equalTo:skin.bottomAnchor).isActive = true
+        columns.topAnchor.constraint(equalTo:skin.bottomAnchor, constant:10).isActive = true
         columns.heightAnchor.constraint(equalToConstant:130).isActive = true
         columns.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         columns.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        font.topAnchor.constraint(equalTo:columns.bottomAnchor).isActive = true
-        font.heightAnchor.constraint(equalToConstant:120).isActive = true
+        font.topAnchor.constraint(equalTo:columns.bottomAnchor, constant:10).isActive = true
+        font.heightAnchor.constraint(equalToConstant:130).isActive = true
         font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
@@ -252,7 +253,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         labelSkin.leftAnchor.constraint(equalTo:skin.leftAnchor, constant:17).isActive = true
         labelSkin.rightAnchor.constraint(equalTo:skin.rightAnchor, constant:-17).isActive = true
         
-        skinSegmented.topAnchor.constraint(equalTo:labelSkin.bottomAnchor, constant:17).isActive = true
+        skinSegmented.topAnchor.constraint(equalTo:labelSkin.bottomAnchor, constant:35).isActive = true
         skinSegmented.centerXAnchor.constraint(equalTo:skin.centerXAnchor).isActive = true
         skinSegmented.widthAnchor.constraint(equalToConstant:200).isActive = true
         

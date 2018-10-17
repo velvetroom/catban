@@ -116,14 +116,14 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         handle.isUserInteractionEnabled = false
         handle.translatesAutoresizingMaskIntoConstraints = false
         handle.clipsToBounds = true
-        handle.backgroundColor = Application.interface.tint.withAlphaComponent(0.1)
+        handle.backgroundColor = Application.interface.tint.withAlphaComponent(0.15)
         handle.layer.cornerRadius = 1.5
         report.addSubview(handle)
         
         let track = UIView()
         track.isUserInteractionEnabled = false
         track.translatesAutoresizingMaskIntoConstraints = false
-        track.backgroundColor = Application.interface.tint.withAlphaComponent(0.05)
+        track.backgroundColor = Application.interface.tint.withAlphaComponent(0.1)
         report.addSubview(track)
         
         let progress = UIProgressView()

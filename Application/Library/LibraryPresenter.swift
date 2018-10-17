@@ -78,7 +78,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     
     @objc func manuallyLoadCloud() {
         update(viewModel:LibraryItems())
-        DispatchQueue.global(qos:.background).asyncAfter(deadline:.now() + 10) { [weak self] in    
+        DispatchQueue.global(qos:.background).asyncAfter(deadline:.now() + 20) { [weak self] in    
             self?.loadCloud()
         }
     }

@@ -23,7 +23,7 @@ class Interface {
             let skin = Skin(rawValue:rawSkin) {
             self.skin = skin
         } else {
-            self.skin = .light
+            self.skin = .dark
         }
         update()
     }

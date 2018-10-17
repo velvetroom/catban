@@ -64,7 +64,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         load.setTitle(.local("LibraryView.load"), for:[])
         load.setTitleColor(Application.interface.text, for:.normal)
         load.setTitleColor(Application.interface.text.withAlphaComponent(0.2), for:.highlighted)
-        load.titleLabel!.font = .systemFont(ofSize:16, weight:.bold)
+        load.titleLabel!.font = .systemFont(ofSize:20, weight:.bold)
         load.addTarget(presenter, action:#selector(presenter.manuallyLoadCloud), for:.touchUpInside)
         load.isHidden = true
         self.load = load
@@ -89,10 +89,10 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         message.leftAnchor.constraint(equalTo:view.leftAnchor, constant:17).isActive = true
         message.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-17).isActive = true
         
-        load.topAnchor.constraint(equalTo:message.bottomAnchor).isActive = true
-        load.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        load.widthAnchor.constraint(equalToConstant:65).isActive = true
-        load.heightAnchor.constraint(equalToConstant:60).isActive = true
+        load.topAnchor.constraint(equalTo:message.bottomAnchor, constant:20).isActive = true
+        load.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        load.widthAnchor.constraint(equalToConstant:120).isActive = true
+        load.heightAnchor.constraint(equalToConstant:70).isActive = true
         
         loading.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
         loading.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true

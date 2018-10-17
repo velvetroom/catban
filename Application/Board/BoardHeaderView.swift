@@ -19,10 +19,10 @@ class BoardHeaderView:BoardItemView {
     }
     
     override func showSelected() {
-        label.textColor = .catBlue
+        alpha = 0.3
     }
     
     override func showDefault() {
-        label.textColor = .black
+        alpha = 1
     }
 }

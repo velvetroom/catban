@@ -16,7 +16,7 @@ class LoadingView:UIView {
         
         let groupAnimation = CAAnimationGroup()
         groupAnimation.animations = [animateRadiusFade(), animateAlpha()]
-        groupAnimation.duration = 2.2
+        groupAnimation.duration = 2
         groupAnimation.repeatCount = .infinity
         groupAnimation.isRemovedOnCompletion = false
         groupAnimation.fillMode = .forwards
@@ -42,18 +42,18 @@ class LoadingView:UIView {
         animation.duration = 2
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 1
-        animation.toValue = 1.3
+        animation.toValue = 1.5
         animation.beginTime = 0
         return animation
     }
     
     private func animateAlpha() -> CAAnimation {
         let animation = CABasicAnimation(keyPath:"opacity")
-        animation.duration = 0.5
+        animation.duration = 1
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
-        animation.fromValue = 1
+        animation.fromValue = 0.5
         animation.toValue = 0
-        animation.beginTime = 1.5
+        animation.beginTime = 1
         return animation
     }
 }

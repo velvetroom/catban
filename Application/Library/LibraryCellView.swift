@@ -8,9 +8,11 @@ class LibraryCellView:UIControl {
     } }
     private weak var name:UILabel!
     private weak var progress:ProgressView!
+    override var intrinsicContentSize:CGSize { return CGSize(width:UIView.noIntrinsicMetric, height:48) }
     
     init() {
         super.init(frame:.zero)
+        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = Application.interface.over
         layer.cornerRadius = 24
         makeOutlets()

@@ -20,7 +20,7 @@ class BoardButtonView:BoardItemView {
     }
     
     override func showSelected() {
-        alpha = 0.15
+        alpha = 0.3
     }
     
     override func showDefault() {

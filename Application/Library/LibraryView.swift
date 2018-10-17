@@ -3,6 +3,7 @@ import CleanArchitecture
 class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     private weak var loading:LoadingView!
     private weak var scroll:UIScrollView!
+    private weak var content:UIView!
     private weak var message:UILabel!
     private weak var load:UIButton!
     private weak var add:UIBarButtonItem!
@@ -25,9 +26,9 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     func previewingContext(_ context:UIViewControllerPreviewing,
                            viewControllerForLocation location:CGPoint) -> UIViewController? {
         var view:UIViewController?
-        if let item = scroll.subviews.first(where: { item in item.frame.contains(location) } ) {
+        if let item = content.subviews.first(where: { $0.frame.contains(location) } ) as? LibraryCellView {
             context.sourceRect = item.frame
-            view = presenter.board(identifier:(item as! LibraryCellView).viewModel.board)
+            view = presenter.board(identifier:item.viewModel.board)
         }
         return view
     }
@@ -42,8 +43,12 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         scroll.alwaysBounceVertical = true
         scroll.indicatorStyle = Application.interface.scroll
         view.addSubview(scroll)
-        registerForPreviewing(with:self, sourceView:scroll)
         self.scroll = scroll
+        
+        let content = UIView()
+        scroll.addSubview(content)
+        registerForPreviewing(with:self, sourceView:content)
+        self.content = content
         
         let message = UILabel()
         message.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +120,8 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     }
     
     private func update(items:[LibraryItem]) {
-        scroll.subviews.forEach { view in view.removeFromSuperview() }
+        var top = content.topAnchor
+        content.subviews.forEach { $0.removeFromSuperview() }
         items.forEach { item in
             let cell = LibraryCellView()
             cell.viewModel = item
@@ -123,16 +129,18 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
             cell.addTarget(presenter, action:#selector(presenter.highlight(cell:)), for:[.touchDown, .touchDragEnter])
             cell.addTarget(presenter, action:#selector(presenter.unhighlight(cell:)), for:
                 [.touchUpOutside, .touchDragExit, .touchCancel])
-            scroll.addSubview(cell)
+            content.addSubview(cell)
+            
+            cell.topAnchor.constraint(equalTo:top, constant:20).isActive = true
+            cell.leftAnchor.constraint(equalTo:content.leftAnchor, constant:20).isActive = true
+            cell.rightAnchor.constraint(equalTo:content.rightAnchor, constant:20).isActive = true
+            top = cell.bottomAnchor
         }
         layoutCells(size:view.bounds.size)
     }
     
     private func layoutCells(size:CGSize) {
-        scroll.contentSize = CGSize(width:size.width, height:scroll.subviews.reduce(into:0) { y, view in
-            y += 20
-            view.frame = CGRect(x:14, y:y, width:size.width, height:48)
-            y += view.bounds.height
-        } + 30)
+        scroll.contentSize = CGSize(width:size.width, height:30 + (CGFloat(content.subviews.count) * 68))
+        content.frame = CGRect(origin:CGPoint.zero, size:scroll.contentSize)
     }
 }

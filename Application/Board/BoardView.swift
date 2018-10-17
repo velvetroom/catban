@@ -24,7 +24,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             attach(card:view)
         case .cancelled, .ended, .failed:
             gesture.isEnabled = true
-            view.complete()
         case .possible, .changed: break
         }
     }
@@ -144,12 +143,20 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         
         let percent = UILabel()
         percent.translatesAutoresizingMaskIntoConstraints = false
-        percent.textAlignment = .right
+        percent.textAlignment = .center
         percent.isUserInteractionEnabled = false
-        percent.font = .systemFont(ofSize:22, weight:.light)
+        percent.font = .systemFont(ofSize:30, weight:.bold)
         percent.textColor = Application.interface.text
         report.addSubview(percent)
         self.percent = percent
+        
+        let sign = UILabel()
+        sign.translatesAutoresizingMaskIntoConstraints = false
+        sign.isUserInteractionEnabled = false
+        sign.font = .systemFont(ofSize:14, weight:.ultraLight)
+        sign.textColor = Application.interface.text
+        sign.text = "%"
+        report.addSubview(sign)
         
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetEdit.pdf"), style:.plain, target:presenter, action:#selector(presenter.edit)),
@@ -187,6 +194,9 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         percent.centerXAnchor.constraint(equalTo:stack.centerXAnchor).isActive = true
         percent.centerYAnchor.constraint(equalTo:stack.centerYAnchor).isActive = true
         
+        sign.leftAnchor.constraint(equalTo:percent.rightAnchor).isActive = true
+        sign.centerYAnchor.constraint(equalTo:percent.centerYAnchor).isActive = true
+        
         if #available(iOS 11.0, *) {
             let search = UISearchController(searchResultsController:nil)
             search.searchResultsUpdater = self
@@ -218,7 +228,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         }
         presenter.viewModel { [weak self] (viewModel:Float) in
             self?.progress.setProgress(viewModel, animated:true)
-            self?.percent.text = "\(Int((viewModel) * 100))%"
+            self?.percent.text = String(Int((viewModel) * 100))
         }
         presenter.viewModel { [weak self] (viewModel:[(CGFloat, CGFloat)]) in
             self?.stack.viewModel = viewModel

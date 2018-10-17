@@ -6,19 +6,6 @@ class BoardCardView:BoardItemView {
     private(set) weak var longGesture:UILongPressGestureRecognizer!
     private weak var halo:UIView!
     
-    func complete() {
-        halo.backgroundColor = .catRed
-        UIView.animate(withDuration:0.3, animations: { [weak self] in
-            self?.halo.alpha = 1
-        }) { _ in
-            UIView.animate(withDuration:1, animations: { [weak self] in
-                self?.halo.alpha = 0
-            }) { [weak self] _ in
-                self?.halo.backgroundColor = .catBlue
-            }
-        }
-    }
-    
     override func makeOutlets() {
         let halo = UIView()
         halo.isUserInteractionEnabled = false
@@ -58,15 +45,12 @@ class BoardCardView:BoardItemView {
     
     override func showSelected() {
         label.textColor = .black
-        UIView.animate(withDuration:0.4) { [weak self] in
-            self?.halo.alpha = 1
-        }
+        halo.backgroundColor = .catBlue
+        halo.alpha = 1
     }
     
     override func showDefault() {
         label.textColor = Application.interface.text
-        UIView.animate(withDuration:0.4) { [weak self] in
-            self?.halo.alpha = 0
-        }
+        halo.alpha = 0
     }
 }

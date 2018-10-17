@@ -4,16 +4,16 @@ class Alert:UIViewController {
     var image:UIImage? { didSet { icon?.image = image } }
     override var title:String? { didSet { label?.text = title } }
     private weak var timer:Timer?
-    private weak var base:UIView!
     private weak var icon:UIImageView!
     private weak var label:UILabel!
+    override var preferredStatusBarStyle:UIStatusBarStyle { return Application.interface.status }
     
     init() {
         super.init(nibName:nil, bundle:nil)
         modalPresentationStyle = .overCurrentContext
         modalTransitionStyle = .crossDissolve
         modalPresentationCapturesStatusBarAppearance = true
-        Application.navigation.present(self, animated:true)
+        Application.navigation.present(self, animated:false)
     }
     
     required init?(coder:NSCoder) { return nil }
@@ -23,9 +23,8 @@ class Alert:UIViewController {
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = false
         timer = Timer.scheduledTimer(
-            timeInterval:4, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
+            timeInterval:5, target:self, selector:#selector(timeout), userInfo:nil, repeats:false)
         makeOutlets()
-        layoutOutlets()
     }
     
     override func viewWillDisappear(_ animated:Bool) {
@@ -36,21 +35,17 @@ class Alert:UIViewController {
     private func makeOutlets() {
         let base = UIView()
         base.isUserInteractionEnabled = false
-        base.backgroundColor = .white
+        base.backgroundColor = Application.interface.over
         base.translatesAutoresizingMaskIntoConstraints = false
         base.layer.cornerRadius = 10
-        base.layer.shadowOffset = .zero
-        base.layer.shadowRadius = 9
-        base.layer.shadowOpacity = 0.5
         view.addSubview(base)
-        self.base = base
         
         let label = UILabel()
         label.isUserInteractionEnabled = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
         label.font = .systemFont(ofSize:14, weight:.regular)
-        label.textColor = .black
+        label.textColor = Application.interface.text
         label.numberOfLines = 0
         view.addSubview(label)
         self.label = label
@@ -63,9 +58,7 @@ class Alert:UIViewController {
         icon.image = image
         view.addSubview(icon)
         self.icon = icon
-    }
-    
-    private func layoutOutlets() {
+        
         base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:8).isActive = true
         base.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-8).isActive = true
         base.heightAnchor.constraint(equalToConstant:60).isActive = true
@@ -86,8 +79,8 @@ class Alert:UIViewController {
             base.topAnchor.constraint(equalTo:view.topAnchor, constant:10).isActive = true
         }
     }
-    
+
     @objc private func timeout() {
-        Application.navigation.dismiss(animated:true)
+        Application.navigation.dismiss(animated:false)
     }
 }

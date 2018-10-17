@@ -20,8 +20,8 @@ class LibraryCellView:UIControl {
     }
     
     required init?(coder:NSCoder) { return nil }
-    func highlight() { UIView.animate(withDuration:0.3) { [weak self] in self?.alpha = 0.2 } }
-    func unhighlight() { UIView.animate(withDuration:0.3) { [weak self] in self?.alpha = 1 } }
+    func highlight() { alpha = 0.2 }
+    func unhighlight() { alpha = 1 }
     
     private func makeOutlets() {
         let name = UILabel()

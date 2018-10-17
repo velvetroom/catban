@@ -28,10 +28,10 @@ class InfoView:PopupView<InfoPresenter> {
         let dismiss = UIButton()
         dismiss.translatesAutoresizingMaskIntoConstraints = false
         dismiss.addTarget(presenter, action:#selector(presenter.dismiss), for:.touchUpInside)
-        dismiss.setTitleColor(Application.interface.tint, for:.normal)
-        dismiss.setTitleColor(Application.interface.tint.withAlphaComponent(0.2), for:.highlighted)
+        dismiss.setTitleColor(.white, for:.normal)
+        dismiss.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
         dismiss.setTitle(.local("InfoView.dismiss"), for:[])
-        dismiss.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
+        dismiss.titleLabel!.font = .systemFont(ofSize:15, weight:.bold)
         view.addSubview(dismiss)
         
         base.leftAnchor.constraint(equalTo:view.leftAnchor, constant:15).isActive = true

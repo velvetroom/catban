@@ -30,7 +30,7 @@ class Interface {
     
     private func light() {
         background = .white
-        over = .white
+        over = .catLight
         tint = .black
         text = .black
         keyboard = .default

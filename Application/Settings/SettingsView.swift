@@ -11,7 +11,6 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
     private weak var displayFont:UILabel!
     private let hero = Hero()
     private let url = "itunes.apple.com/\(Locale.current.regionCode!.lowercased())/app/catban/id1363004864"
-    override var preferredStatusBarStyle:UIStatusBarStyle { return Application.interface.status }
     
     override func viewDidLoad() {
         makeOutlets()
@@ -143,7 +142,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         let skinSegmented = UISegmentedControl(items:["Light", "Dark"])
         skinSegmented.translatesAutoresizingMaskIntoConstraints = false
-        skinSegmented.tintColor = .catBlue
+        skinSegmented.tintColor = Application.interface.tint
         skinSegmented.addTarget(presenter, action:#selector(presenter.skinChange(segmented:)), for:.valueChanged)
         skin.addSubview(skinSegmented)
         self.skinSegmented = skinSegmented

@@ -59,18 +59,18 @@ class BoardCardView:BoardItemView {
     }
     
     override func showSelected() {
-        UIView.animate(withDuration:0.3) { [weak self] in
+        label.textColor = .black
+        label.shadowColor = UIColor(white:0, alpha:0.3)
+        UIView.animate(withDuration:0.4) { [weak self] in
             self?.halo.alpha = 1
-            self?.label.textColor = .black
-            self?.label.shadowColor = Application.interface.text.withAlphaComponent(0.3)
         }
     }
     
     override func showDefault() {
-        UIView.animate(withDuration:0.3) { [weak self] in
+        label.textColor = Application.interface.text
+        label.shadowColor = .clear
+        UIView.animate(withDuration:0.4) { [weak self] in
             self?.halo.alpha = 0
-            self?.label.textColor = Application.interface.text
-            self?.label.shadowColor = .clear
         }
     }
 }

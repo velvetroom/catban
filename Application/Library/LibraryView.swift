@@ -131,7 +131,7 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
     private func layoutCells(size:CGSize) {
         scroll.contentSize = CGSize(width:size.width, height:scroll.subviews.reduce(into:0) { y, view in
             y += 20
-            view.frame = CGRect(x:14, y:y, width:size.width - 28, height:48)
+            view.frame = CGRect(x:14, y:y, width:size.width, height:48)
             y += view.bounds.height
         } + 30)
     }

@@ -22,14 +22,14 @@ class LoadingView:UIView {
         groupAnimation.fillMode = .forwards
         pulse.add(groupAnimation, forKey:"animation")
         
-        let icon = UIImageView(image:#imageLiteral(resourceName: "assetLogoSmall.pdf"))
+        let icon = UIImageView(image:#imageLiteral(resourceName: "assetLogo.pdf"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.clipsToBounds = true
         icon.contentMode = .center
         addSubview(icon)
         
-        icon.widthAnchor.constraint(equalToConstant:80).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:80).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:60).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:60).isActive = true
         icon.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
         icon.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
     }
@@ -41,19 +41,19 @@ class LoadingView:UIView {
         let animation = CABasicAnimation(keyPath:"transform.scale")
         animation.duration = 2
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
-        animation.fromValue = 1.1
-        animation.toValue = 1.4
+        animation.fromValue = 1
+        animation.toValue = 1.3
         animation.beginTime = 0
         return animation
     }
     
     private func animateAlpha() -> CAAnimation {
         let animation = CABasicAnimation(keyPath:"opacity")
-        animation.duration = 2
+        animation.duration = 0.5
         animation.timingFunction = CAMediaTimingFunction(controlPoints:0.4, 0, 0.2, 1)
         animation.fromValue = 1
         animation.toValue = 0
-        animation.beginTime = 0
+        animation.beginTime = 1.5
         return animation
     }
 }

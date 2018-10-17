@@ -66,11 +66,10 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         font.translatesAutoresizingMaskIntoConstraints = false
         content.addSubview(font)
         
-        let icon = UIImageView()
+        let icon = UIImageView(image:#imageLiteral(resourceName: "assetLogo.pdf"))
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.isUserInteractionEnabled = false
         icon.clipsToBounds = true
-        icon.image = #imageLiteral(resourceName: "assetLogoSmall.pdf")
         icon.contentMode = .center
         about.addSubview(icon)
         
@@ -80,7 +79,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         labelName.textColor = Application.interface.text
         labelName.textAlignment = .center
         labelName.text = .local("SettingsView.labelName")
-        labelName.font = .systemFont(ofSize:16, weight:.medium)
+        labelName.font = .systemFont(ofSize:18, weight:.medium)
         about.addSubview(labelName)
         
         let labelVersion = UILabel()
@@ -90,7 +89,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         labelVersion.textAlignment = .center
         labelVersion.numberOfLines = 0
         labelVersion.text = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
-        labelVersion.font = .systemFont(ofSize:11, weight:.ultraLight)
+        labelVersion.font = .systemFont(ofSize:10, weight:.ultraLight)
         about.addSubview(labelVersion)
         
         let contact = UIButton()
@@ -212,13 +211,13 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         font.leftAnchor.constraint(equalTo:content.leftAnchor).isActive = true
         font.rightAnchor.constraint(equalTo:content.rightAnchor).isActive = true
         
-        icon.topAnchor.constraint(equalTo:about.topAnchor, constant:60).isActive = true
+        icon.topAnchor.constraint(equalTo:about.topAnchor, constant:70).isActive = true
         icon.centerXAnchor.constraint(equalTo:about.centerXAnchor).isActive = true
-        icon.widthAnchor.constraint(equalToConstant:80).isActive = true
-        icon.heightAnchor.constraint(equalToConstant:80).isActive = true
+        icon.widthAnchor.constraint(equalToConstant:60).isActive = true
+        icon.heightAnchor.constraint(equalToConstant:60).isActive = true
         
         labelName.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        labelName.topAnchor.constraint(equalTo:icon.bottomAnchor).isActive = true
+        labelName.topAnchor.constraint(equalTo:icon.bottomAnchor, constant:10).isActive = true
         
         labelVersion.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
         labelVersion.topAnchor.constraint(equalTo:labelName.bottomAnchor).isActive = true

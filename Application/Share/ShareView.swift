@@ -23,8 +23,8 @@ class ShareView:PopupView<SharePresenter> {
         let done = UIButton()
         done.translatesAutoresizingMaskIntoConstraints = false
         done.addTarget(presenter, action:#selector(presenter.done), for:.touchUpInside)
-        done.setTitleColor(UIColor(white:0, alpha:0.4), for:.normal)
-        done.setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
+        done.setTitleColor(Application.interface.tint.withAlphaComponent(0.5), for:.normal)
+        done.setTitleColor(Application.interface.tint.withAlphaComponent(0.2), for:.highlighted)
         done.setTitle(.local("ShareView.done"), for:[])
         done.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         base.addSubview(done)

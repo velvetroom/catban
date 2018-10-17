@@ -16,12 +16,11 @@ class InfoView:PopupView<InfoPresenter> {
         text.clipsToBounds = true
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .clear
-        text.textColor = .black
         text.tintColor = .catBlue
         text.alwaysBounceVertical = true
-        text.showsHorizontalScrollIndicator = false
         text.isEditable = false
         text.contentInset = .zero
+        text.indicatorStyle = Application.interface.scroll
         text.textContainerInset = UIEdgeInsets(top:30, left:12, bottom:30, right:12)
         base.addSubview(text)
         self.text = text
@@ -29,8 +28,8 @@ class InfoView:PopupView<InfoPresenter> {
         let dismiss = UIButton()
         dismiss.translatesAutoresizingMaskIntoConstraints = false
         dismiss.addTarget(presenter, action:#selector(presenter.dismiss), for:.touchUpInside)
-        dismiss.setTitleColor(.white, for:.normal)
-        dismiss.setTitleColor(UIColor(white:1, alpha:0.2), for:.highlighted)
+        dismiss.setTitleColor(Application.interface.tint, for:.normal)
+        dismiss.setTitleColor(Application.interface.tint.withAlphaComponent(0.2), for:.highlighted)
         dismiss.setTitle(.local("InfoView.dismiss"), for:[])
         dismiss.titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
         view.addSubview(dismiss)
@@ -54,6 +53,7 @@ class InfoView:PopupView<InfoPresenter> {
     private func configureViewModel() {
         presenter.viewModel { [weak self] (text:NSAttributedString) in
             self?.text.attributedText = text
+            self?.text.textColor = Application.interface.text
         }
     }
 }

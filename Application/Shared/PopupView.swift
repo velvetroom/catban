@@ -23,7 +23,6 @@ class PopupView<P:Presenter>:View<P> {
         let blur = UIVisualEffectView(effect:UIBlurEffect(style:.dark))
         blur.translatesAutoresizingMaskIntoConstraints = false
         blur.isUserInteractionEnabled = false
-        blur.alpha = 0.85
         view.addSubview(blur)
         
         let back = UIControl()
@@ -33,7 +32,7 @@ class PopupView<P:Presenter>:View<P> {
         
         let base = UIView()
         base.translatesAutoresizingMaskIntoConstraints = false
-        base.backgroundColor = .white
+        base.backgroundColor = Application.interface.over
         base.layer.cornerRadius = 8
         base.clipsToBounds = true
         view.addSubview(base)

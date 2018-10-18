@@ -40,7 +40,7 @@ class TestLibrary_Default:XCTestCase {
             expectLoad.fulfill()
         }
         DispatchQueue.global(qos:.background).async { self.library.loadSession() }
-        waitForExpectations(timeout:3)
+        waitForExpectations(timeout:1)
     }
     
     func testNewBoardThrows() {

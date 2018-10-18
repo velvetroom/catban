@@ -5,6 +5,8 @@ class TestReport:XCTestCase {
     private var report:Report!
     
     override func setUp() {
+        Factory.cache = MockCache.self
+        Factory.database = MockDatabase.self
         report = Report()
     }
 

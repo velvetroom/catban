@@ -45,11 +45,10 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     }
     
     func updateDelegate() {
-        NSUbiquitousKeyValueStore.default.set(Array(library.boards.keys), forKey:"iturbide.catban.boards")
         if library.boards.isEmpty {
             showEmpty()
         } else {
-            DispatchQueue.global(qos:.background).async { [weak self] in self?.updateItems() }
+            updateItems()
         }
     }
     
@@ -78,7 +77,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
     
     @objc func manuallyLoadCloud() {
         update(viewModel:LibraryItems())
-        DispatchQueue.global(qos:.background).asyncAfter(deadline:.now() + 20) { [weak self] in    
+        DispatchQueue.main.asyncAfter(deadline:.now() + 10) { [weak self] in
             self?.loadCloud()
         }
     }
@@ -142,6 +141,7 @@ class LibraryPresenter:Presenter, LibraryDelegate, QRViewDelegate {
         viewModel.loadingHidden = true
         viewModel.actionsEnabled = true
         Today(items:viewModel.items).store()
+        NSUbiquitousKeyValueStore.default.set(Array(library.boards.keys), forKey:"iturbide.catban.boards")
         update(viewModel:viewModel)
     }
     

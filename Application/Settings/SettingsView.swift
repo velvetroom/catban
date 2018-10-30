@@ -190,6 +190,7 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         
         about.topAnchor.constraint(equalTo:content.topAnchor).isActive = true
         about.heightAnchor.constraint(equalToConstant:300).isActive = true
@@ -278,9 +279,6 @@ class SettingsView:View<SettingsPresenter>, MFMailComposeViewControllerDelegate 
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
-            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
     

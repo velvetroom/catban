@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2A8F15B97B8245C5B2232546 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */; };
+		DA05157D21886ECC00C71766 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA05157321886ECC00C71766 /* LaunchScreen.storyboard */; };
+		DA05157E21886ECC00C71766 /* InfoBoard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA05157421886ECC00C71766 /* InfoBoard.md */; };
+		DA05157F21886ECC00C71766 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA05157521886ECC00C71766 /* brand.xcassets */; };
+		DA05158021886ECC00C71766 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA05157721886ECC00C71766 /* Localizable.strings */; };
+		DA05158121886ECC00C71766 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA05157921886ECC00C71766 /* InfoPlist.strings */; };
+		DA05158221886ECC00C71766 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA05157B21886ECC00C71766 /* assets.xcassets */; };
+		DA05158321886ECC00C71766 /* InfoCard.md in Resources */ = {isa = PBXBuildFile; fileRef = DA05157C21886ECC00C71766 /* InfoCard.md */; };
+		DA05158821886EE900C71766 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA05158521886EE900C71766 /* Localizable.strings */; };
+		DA05158921886EE900C71766 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA05158721886EE900C71766 /* assets.xcassets */; };
 		DA1602FB2132AD2C004F6D44 /* TestLibrary_Ready.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */; };
 		DA28AED721353C250030AE9E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA28AED621353C250030AE9E /* PopupView.swift */; };
 		DA2E4B3D211DD97400861576 /* libCatban.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4C64D1211DD40300ECAD21 /* libCatban.a */; };
@@ -139,6 +148,15 @@
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA05157021886E1300C71766 /* Application.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Application.entitlements; sourceTree = "<group>"; };
 		DA05157121886E1300C71766 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
+		DA05157321886ECC00C71766 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA05157421886ECC00C71766 /* InfoBoard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoBoard.md; sourceTree = "<group>"; };
+		DA05157521886ECC00C71766 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
+		DA05157821886ECC00C71766 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DA05157A21886ECC00C71766 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DA05157B21886ECC00C71766 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		DA05157C21886ECC00C71766 /* InfoCard.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = InfoCard.md; sourceTree = "<group>"; };
+		DA05158621886EE900C71766 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DA05158721886EE900C71766 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Ready.swift; sourceTree = "<group>"; };
 		DA28AED621353C250030AE9E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
@@ -282,6 +300,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA05157221886ECC00C71766 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA05157621886ECC00C71766 /* Application */,
+				DA05158421886EE900C71766 /* Widget */,
+				DA05157321886ECC00C71766 /* LaunchScreen.storyboard */,
+				DA05157421886ECC00C71766 /* InfoBoard.md */,
+				DA05157521886ECC00C71766 /* brand.xcassets */,
+				DA05157C21886ECC00C71766 /* InfoCard.md */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DA05157621886ECC00C71766 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DA05157721886ECC00C71766 /* Localizable.strings */,
+				DA05157921886ECC00C71766 /* InfoPlist.strings */,
+				DA05157B21886ECC00C71766 /* assets.xcassets */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DA05158421886EE900C71766 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				DA05158521886EE900C71766 /* Localizable.strings */,
+				DA05158721886EE900C71766 /* assets.xcassets */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		DA14501D211DD1F700D1BD9E = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +340,7 @@
 				DA4C6519211DD58A00ECAD21 /* Application */,
 				DA6C362E2138194F0009583A /* Today */,
 				DA4C64D5211DD4E400ECAD21 /* Configuration */,
+				DA05157221886ECC00C71766 /* Resources */,
 				AC95CFA14D508AB0D223134C /* Pods */,
 				8B65E65B103781A85F381C5A /* Frameworks */,
 				DA4C64D1211DD40300ECAD21 /* libCatban.a */,
@@ -673,7 +724,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA05158321886ECC00C71766 /* InfoCard.md in Resources */,
+				DA05158021886ECC00C71766 /* Localizable.strings in Resources */,
+				DA05158121886ECC00C71766 /* InfoPlist.strings in Resources */,
+				DA05157E21886ECC00C71766 /* InfoBoard.md in Resources */,
+				DA05157F21886ECC00C71766 /* brand.xcassets in Resources */,
 				DA4C64D9211DD4F900ECAD21 /* GoogleService-Info.plist in Resources */,
+				DA05158221886ECC00C71766 /* assets.xcassets in Resources */,
+				DA05157D21886ECC00C71766 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +739,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA05158921886EE900C71766 /* assets.xcassets in Resources */,
+				DA05158821886EE900C71766 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +907,33 @@
 			targetProxy = DA6C36352138194F0009583A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DA05157721886ECC00C71766 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA05157821886ECC00C71766 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		DA05157921886ECC00C71766 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA05157A21886ECC00C71766 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DA05158521886EE900C71766 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA05158621886EE900C71766 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DA14502B211DD1F700D1BD9E /* Debug */ = {

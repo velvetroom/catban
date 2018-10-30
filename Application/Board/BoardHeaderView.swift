@@ -13,7 +13,7 @@ class BoardHeaderView:BoardItemView {
         addSubview(label)
         self.label = label
         
-        label.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
+        label.topAnchor.constraint(equalTo:topAnchor).isActive = true
         label.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
         label.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
     }

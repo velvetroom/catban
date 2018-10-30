@@ -12,7 +12,7 @@ class BoardDrawer {
     private let hero = Hero()
     private let options = NSStringDrawingOptions([.usesFontLeading, .usesLineFragmentOrigin])
     private let size = CGSize(width:BoardDrawer.columnWidth, height:10000)
-    private static let columnWidth:CGFloat = 190
+    private static let columnWidth:CGFloat = 270
     
     func draw() {
         clearContent()
@@ -28,7 +28,8 @@ class BoardDrawer {
     
     func makeCard(column:Column, card:Card) {
         let text = hero.parse(string:card.content)
-        let textHeight = ceil(text.boundingRect(with:size, options:options, context:nil).size.height)
+        let textSize = text.boundingRect(with:size, options:options, context:nil).size
+        let textWidth = min(ceil(textSize.width + 10), BoardDrawer.columnWidth)
         let item = BoardCardView()
         item.column = column
         item.card = card
@@ -37,7 +38,7 @@ class BoardDrawer {
         item.dragGesture.addTarget(view, action:#selector(view.dragCard(pan:)))
         item.longGesture.addTarget(view, action:#selector(view.long(gesture:)))
         addItem(item:item)
-        layout(item:item, height:textHeight + 10, width:BoardDrawer.columnWidth)
+        layout(item:item, height:ceil(textSize.height) + 10, width:textWidth)
     }
     
     func makeNewCard(column:Column) {
@@ -63,7 +64,7 @@ class BoardDrawer {
         item.label.text = column.name
         item.add(target:view.presenter, selector:#selector(view.presenter.editColumn(view:)))
         addColumn(item:item)
-        layout(item:item, height:50, width:BoardDrawer.columnWidth)
+        layout(item:item, height:40, width:BoardDrawer.columnWidth)
     }
     
     private func clearContent() {

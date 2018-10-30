@@ -146,6 +146,8 @@
 /* Begin PBXFileReference section */
 		3EDC74E69924C4AE255DEAE3 /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33FDA03AE178C194CD7098A /* libPods-Catban.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Catban.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA05157021886E1300C71766 /* Application.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Application.entitlements; sourceTree = "<group>"; };
+		DA05157121886E1300C71766 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
 		DA1602FA2132AD2C004F6D44 /* TestLibrary_Ready.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLibrary_Ready.swift; sourceTree = "<group>"; };
 		DA28AED621353C250030AE9E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		DA2FB7CD212032E3001C758E /* BoardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderView.swift; sourceTree = "<group>"; };
@@ -214,8 +216,6 @@
 		DA6C363C21381AEC0009583A /* today.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = today.plist; sourceTree = "<group>"; };
 		DA6C363E21381AF80009583A /* TodayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		DA6C3640213824C50009583A /* TodayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCellView.swift; sourceTree = "<group>"; };
-		DA6C36432138316C0009583A /* Application.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Application.entitlements; sourceTree = "<group>"; };
-		DA6C3644213834280009583A /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
 		DA741D92213924C6002555E4 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		DA759E1F2126AB8B00E92FD9 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		DA759E212126AB9C00E92FD9 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -321,6 +321,8 @@
 		DA4C64D5211DD4E400ECAD21 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				DA05157021886E1300C71766 /* Application.entitlements */,
+				DA05157121886E1300C71766 /* Today.entitlements */,
 				DA6C363C21381AEC0009583A /* today.plist */,
 				DA4C64D6211DD4E400ECAD21 /* tests.plist */,
 				DA4C64D7211DD4E400ECAD21 /* application.plist */,
@@ -414,7 +416,6 @@
 		DA4C6519211DD58A00ECAD21 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DA6C36432138316C0009583A /* Application.entitlements */,
 				DA4C6530211DD58A00ECAD21 /* Shared */,
 				DA4C6529211DD58A00ECAD21 /* Library */,
 				DA4C6521211DD58A00ECAD21 /* Board */,
@@ -528,7 +529,6 @@
 		DA6C362E2138194F0009583A /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				DA6C3644213834280009583A /* Today.entitlements */,
 				DA6C363E21381AF80009583A /* TodayView.swift */,
 				DA6C3640213824C50009583A /* TodayCellView.swift */,
 			);
@@ -1119,7 +1119,7 @@
 			baseConfigurationReference = EF2AD30BA7F2E2A002D78D36 /* Pods-Application.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Application/Application.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Application.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/application.plist;
@@ -1138,7 +1138,7 @@
 			baseConfigurationReference = E1A186EED2CF0D527F6E84AD /* Pods-Application.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Application/Application.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Application.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/application.plist;
@@ -1155,7 +1155,7 @@
 		DA6C36382138194F0009583A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Today.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/today.plist;
@@ -1176,7 +1176,7 @@
 		DA6C36392138194F0009583A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Today.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/today.plist;

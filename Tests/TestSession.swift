@@ -5,6 +5,8 @@ class TestSession:XCTestCase {
     private var session:Session!
     
     override func setUp() {
+        Factory.cache = MockCache.self
+        Factory.database = MockDatabase.self
         session = Session()
     }
     

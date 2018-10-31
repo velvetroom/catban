@@ -85,9 +85,11 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         
         message.leftAnchor.constraint(equalTo:view.leftAnchor, constant:17).isActive = true
         message.rightAnchor.constraint(equalTo:view.rightAnchor, constant:-17).isActive = true
+        message.topAnchor.constraint(equalTo:view.topAnchor, constant:17).isActive = true
         
         load.topAnchor.constraint(equalTo:message.bottomAnchor, constant:20).isActive = true
         load.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
@@ -99,11 +101,6 @@ class LibraryView:View<LibraryPresenter>, UIViewControllerPreviewingDelegate {
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
-            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-            message.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:17).isActive = true
-        } else {
-            scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-            message.topAnchor.constraint(equalTo:view.topAnchor, constant:17).isActive = true
         }
     }
     

@@ -20,7 +20,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             gesture.isEnabled = false
             detach(card:view)
             view.top.constant = 0
-            view.left.constant += view.width.constant
+            view.left.constant += 270
             attach(card:view)
         case .cancelled, .ended, .failed:
             gesture.isEnabled = true
@@ -91,9 +91,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
     private func makeOutlets() {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.clipsToBounds = true
-        scroll.showsVerticalScrollIndicator = false
-        scroll.showsHorizontalScrollIndicator = false
+        scroll.indicatorStyle = Application.interface.scroll
         scroll.alwaysBounceVertical = true
         scroll.alwaysBounceHorizontal = true
         scroll.decelerationRate = .fast
@@ -166,6 +164,7 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
         scroll.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         scroll.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         scroll.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         
         report.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         report.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
@@ -214,9 +213,6 @@ class BoardView:View<BoardPresenter>, UISearchResultsUpdating, UISearchBarDelega
             
             navigationItem.searchController = search
             navigationItem.largeTitleDisplayMode = .always
-            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            scroll.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
     

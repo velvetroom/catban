@@ -8,10 +8,10 @@ class BoardLayouter {
         var maxY:CGFloat = 0
         var column = view.drawer.firstColumn
         while let currentColumn = column {
-            var top:CGFloat = 0
+            var top:CGFloat = -40
             var item = column
             while let currentItem = item {
-                top += 15
+                top += 40
                 item?.top.constant = top
                 item?.left.constant = left
                 item = currentItem.down
@@ -19,7 +19,7 @@ class BoardLayouter {
                 maxY = max(maxY, top)
             }
             column = currentColumn.right
-            left += currentColumn.width.constant + 30
+            left += currentColumn.width.constant + 20
         }
         update(width:left, height:maxY)
     }

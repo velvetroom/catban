@@ -8,7 +8,7 @@ class BoardButtonView:BoardItemView {
         image.isUserInteractionEnabled = false
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
-        image.contentMode = .bottomLeft
+        image.contentMode = .topLeft
         image.tintColor = Application.interface.tint
         addSubview(image)
         self.image = image

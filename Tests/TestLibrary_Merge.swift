@@ -27,7 +27,7 @@ class TestLibrary_Merge:XCTestCase {
         }
         delegate.onBoardsUpdated = { expectUpdate.fulfill() }
         XCTAssertNoThrow(try library.merge(boards:["hello world", "lorem ipsum"]))
-        waitForExpectations(timeout:1)
+        waitForExpectations(timeout:2)
     }
     
     func testNotRepeating() {
@@ -38,6 +38,6 @@ class TestLibrary_Merge:XCTestCase {
         }
         library.session.boards["hello world"] = Board()
         XCTAssertNoThrow(try library.merge(boards:["hello world"]))
-        waitForExpectations(timeout:1)
+        waitForExpectations(timeout:2)
     }
 }

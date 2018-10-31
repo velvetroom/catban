@@ -43,7 +43,7 @@ class SharePresenter:Presenter {
                 CGRect(x:115, y:size.height - 94, width:CGFloat(code.width), height:50))
         UIGraphicsGetCurrentContext()!.translateBy(x:0, y:size.height)
         UIGraphicsGetCurrentContext()!.scaleBy(x:1, y:-1)
-        UIGraphicsGetCurrentContext()!.draw(#imageLiteral(resourceName: "assetLogoSmall.pdf").cgImage!, in:CGRect(x:51, y:45, width:50, height:50))
+        UIGraphicsGetCurrentContext()!.draw(#imageLiteral(resourceName: "assetLogo.pdf").cgImage!, in:CGRect(x:51, y:45, width:50, height:50))
         UIGraphicsGetCurrentContext()!.draw(code, in:CGRect(x:45, y:125, width:CGFloat(code.width), height:CGFloat(code.height)))
         let image = UIImage(cgImage:UIGraphicsGetCurrentContext()!.makeImage()!)
         UIGraphicsEndImageContext()

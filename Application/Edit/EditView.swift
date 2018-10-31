@@ -64,6 +64,12 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image:#imageLiteral(resourceName: "assetDone.pdf"), style:.plain, target:self, action:#selector(save))]
         
+        text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        text.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+        layoutBottom = text.bottomAnchor.constraint(equalTo:view.bottomAnchor)
+        layoutBottom.isActive = true
+        
         if presenter.infoSource != nil {
             navigationItem.rightBarButtonItems!.append(
                 UIBarButtonItem(image:#imageLiteral(resourceName: "assetInfo.pdf"), style:.plain, target:presenter, action:#selector(presenter.info)))
@@ -76,19 +82,10 @@ class EditView:View<EditPresenter>, UITextViewDelegate {
             navigationItem.leftBarButtonItem = UIBarButtonItem(
                 barButtonSystemItem:.stop, target:presenter, action:#selector(presenter.delete))
         }
-        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
             text.contentInsetAdjustmentBehavior = .never
-            text.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-            layoutBottom = text.bottomAnchor.constraint(equalTo:view.bottomAnchor)
-        } else {
-            text.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-            layoutBottom = text.bottomAnchor.constraint(equalTo:view.bottomAnchor)
         }
-        text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        layoutBottom.isActive = true
     }
     
     @objc private func save() {

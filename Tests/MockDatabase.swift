@@ -2,7 +2,6 @@ import Foundation
 @testable import Catban
 
 class MockDatabase:DatabaseService {
-    var error:Error?
     var onLoad:(() -> Void)?
     var onCreate:(() -> Void)?
     var onSave:(() -> Void)?
@@ -12,13 +11,7 @@ class MockDatabase:DatabaseService {
     
     func load(identifier:String, board:@escaping((Board) -> Void), error:@escaping(() -> Void)) {
         onLoad?()
-        DispatchQueue.global(qos:.background).async { [weak self] in
-            if self?.error == nil {
-                if let item = self?.board {
-                    board(item)
-                }
-            }
-        }
+        board(self.board)
     }
     
     func create(board:Board) -> String {

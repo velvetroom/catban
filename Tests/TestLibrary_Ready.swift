@@ -21,7 +21,7 @@ class TestLibrary_Ready:XCTestCase {
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async { try? self.library.loadBoards() }
-        waitForExpectations(timeout:1)
+        waitForExpectations(timeout:2)
     }
     
     func testLoadUpdatesNonEmptyBoards() {
